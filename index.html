@@ -4,55 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PolishUI — UI Style Reference for Designers</title>
-<meta name="description" content="Pre-made UI styles (Metal, Glass, Neon, Sakura...) with Figma, CSS and Roblox Lua exports. For Figma, Photoshop and Roblox UI designers.">
+<meta name="description" content="Pre-made UI styles (Metal, Glass, Neon, Sakura...) with Figma, CSS and Roblox Lua exports.">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root[data-theme="light"] {
-  --bg: #fafafa;
-  --bg-2: #ffffff;
-  --bg-3: #f3f4f6;
-  --bg-hover: #f9fafb;
-  --text: #111827;
-  --text-2: #374151;
-  --text-muted: #6b7280;
-  --text-dim: #9ca3af;
-  --border: #e5e7eb;
-  --border-strong: #d1d5db;
-  --accent: #3b82f6;
-  --accent-2: #2563eb;
-  --accent-glow: rgba(59, 130, 246, 0.15);
-  --success: #10b981;
-  --danger: #ef4444;
+  --bg: #fafafa; --bg-2: #ffffff; --bg-3: #f3f4f6; --bg-hover: #f9fafb;
+  --text: #111827; --text-2: #374151; --text-muted: #6b7280; --text-dim: #9ca3af;
+  --border: #e5e7eb; --border-strong: #d1d5db;
+  --accent: #3b82f6; --accent-2: #2563eb; --accent-glow: rgba(59,130,246,0.15);
+  --success: #10b981; --danger: #ef4444;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
   --shadow: 0 4px 12px rgba(0,0,0,0.08);
   --shadow-lg: 0 12px 30px rgba(0,0,0,0.12);
-  --canvas-bg: #f3f4f6;
-  --canvas-grid: rgba(0,0,0,0.04);
+  --canvas-bg: #f3f4f6; --canvas-grid: rgba(0,0,0,0.04);
 }
 :root[data-theme="dark"] {
-  --bg: #0a0a0b;
-  --bg-2: #111114;
-  --bg-3: #18181b;
-  --bg-hover: #1c1c20;
-  --text: #f4f4f5;
-  --text-2: #d4d4d8;
-  --text-muted: #a1a1aa;
-  --text-dim: #71717a;
-  --border: rgba(255,255,255,0.08);
-  --border-strong: rgba(255,255,255,0.16);
-  --accent: #60a5fa;
-  --accent-2: #3b82f6;
-  --accent-glow: rgba(96, 165, 250, 0.2);
-  --success: #34d399;
-  --danger: #f87171;
+  --bg: #0a0a0b; --bg-2: #111114; --bg-3: #18181b; --bg-hover: #1c1c20;
+  --text: #f4f4f5; --text-2: #d4d4d8; --text-muted: #a1a1aa; --text-dim: #71717a;
+  --border: rgba(255,255,255,0.08); --border-strong: rgba(255,255,255,0.16);
+  --accent: #60a5fa; --accent-2: #3b82f6; --accent-glow: rgba(96,165,250,0.2);
+  --success: #34d399; --danger: #f87171;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
   --shadow: 0 4px 12px rgba(0,0,0,0.4);
   --shadow-lg: 0 12px 30px rgba(0,0,0,0.5);
-  --canvas-bg: #0a0a0b;
-  --canvas-grid: rgba(255,255,255,0.04);
+  --canvas-bg: #0a0a0b; --canvas-grid: rgba(255,255,255,0.04);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -65,20 +43,16 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* ═══ TOPBAR ═══ */
 .topbar {
   height: 56px; background: var(--bg-2);
   border-bottom: 1px solid var(--border);
-  display: flex; align-items: center;
-  padding: 0 20px; gap: 16px;
-  z-index: 100;
+  display: flex; align-items: center; padding: 0 20px; gap: 16px; z-index: 100;
 }
 .brand {
   display: flex; align-items: center; gap: 10px;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700; font-size: 16px;
-  color: var(--text); text-decoration: none;
-  letter-spacing: -0.3px;
+  color: var(--text); text-decoration: none; letter-spacing: -0.3px;
 }
 .brand-logo {
   width: 28px; height: 28px; border-radius: 8px;
@@ -88,11 +62,7 @@ body {
   box-shadow: 0 4px 12px var(--accent-glow);
 }
 .brand .pro { color: var(--accent); }
-
-.topbar-info {
-  font-size: 12px; color: var(--text-muted); font-weight: 500;
-  display: flex; align-items: center; gap: 6px;
-}
+.topbar-info { font-size: 12px; color: var(--text-muted); font-weight: 500; display: flex; align-items: center; gap: 6px; }
 .topbar-divider { width: 1px; height: 24px; background: var(--border); }
 .topbar-actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 
@@ -115,27 +85,17 @@ body {
 }
 .btn-ghost:hover { background: var(--bg-hover); border-color: var(--border-strong); }
 
-/* ═══ WORKSPACE ═══ */
-.workspace {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  height: calc(100vh - 56px);
-}
+.workspace { display: grid; grid-template-columns: 280px 1fr; height: calc(100vh - 56px); }
 
-/* ═══ SIDEBAR ═══ */
 .sidebar {
-  background: var(--bg-2);
-  border-right: 1px solid var(--border);
+  background: var(--bg-2); border-right: 1px solid var(--border);
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-strong) transparent;
+  scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent;
 }
 .sidebar::-webkit-scrollbar { width: 6px; }
 .sidebar::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
 
-.sidebar-header {
-  padding: 14px 18px 8px;
-}
+.sidebar-header { padding: 14px 18px 8px; }
 .sidebar-header h3 {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 10px; font-weight: 700;
@@ -143,12 +103,9 @@ body {
   color: var(--text-muted);
 }
 
-/* CATEGORY TABS */
 .category-tabs {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 6px;
-  padding: 4px 14px 14px;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 6px; padding: 4px 14px 14px;
 }
 .cat-tab {
   display: flex; flex-direction: column; align-items: center;
@@ -164,72 +121,38 @@ body {
   box-shadow: 0 4px 12px var(--accent-glow);
 }
 .cat-tab .cat-emoji { font-size: 18px; }
-.cat-tab .cat-name {
-  font-size: 11px; font-weight: 600;
-  font-family: 'Space Grotesk', sans-serif;
-}
+.cat-tab .cat-name { font-size: 11px; font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
 
-/* MATERIAL GRID */
-.materials-section {
-  padding: 4px 14px 20px;
-}
+.materials-section { padding: 4px 14px 20px; }
 .materials-section h4 {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 10px; font-weight: 700;
   text-transform: uppercase; letter-spacing: 1.5px;
-  color: var(--text-muted); margin-bottom: 10px;
-  padding-left: 4px;
+  color: var(--text-muted); margin-bottom: 10px; padding-left: 4px;
 }
 
-.material-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-}
+.material-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
 .material-card {
-  cursor: pointer;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--bg-2);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
+  cursor: pointer; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--border); background: var(--bg-2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); position: relative;
 }
-.material-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow);
-}
+.material-card:hover { transform: translateY(-2px); border-color: var(--border-strong); box-shadow: var(--shadow); }
 .material-card.selected {
   border-color: var(--accent);
   box-shadow: 0 0 0 2px var(--accent-glow), var(--shadow);
 }
-.material-preview {
-  height: 60px;
-  width: 100%;
-  /* style burada inline ile uygulanacak */
-}
+.material-preview { height: 60px; width: 100%; }
 .material-name {
-  padding: 6px 8px;
-  font-size: 11px; font-weight: 600;
-  color: var(--text-2);
-  text-align: center;
+  padding: 6px 8px; font-size: 11px; font-weight: 600;
+  color: var(--text-2); text-align: center;
   font-family: 'Space Grotesk', sans-serif;
-  background: var(--bg-2);
-  border-top: 1px solid var(--border);
+  background: var(--bg-2); border-top: 1px solid var(--border);
 }
-.material-card.selected .material-name {
-  color: var(--accent);
-}
+.material-card.selected .material-name { color: var(--accent); }
 
-/* ═══ MAIN AREA ═══ */
-.main {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  overflow: hidden;
-}
+.main { display: grid; grid-template-rows: auto 1fr auto; overflow: hidden; }
 
-/* CANVAS */
 .canvas-wrap {
   background: var(--canvas-bg);
   background-image:
@@ -237,43 +160,28 @@ body {
     linear-gradient(90deg, var(--canvas-grid) 1px, transparent 1px);
   background-size: 24px 24px;
   display: flex; align-items: center; justify-content: center;
-  padding: 30px; overflow: auto;
-  position: relative;
+  padding: 30px; overflow: auto; position: relative;
 }
 #preview-element {
   display: flex; align-items: center; justify-content: center;
   font-family: 'Inter', sans-serif; font-weight: 700;
   color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-  position: relative;
+  transition: all 0.3s ease; position: relative;
 }
-
 .preview-empty {
-  color: var(--text-dim);
-  font-size: 14px;
-  text-align: center;
-  padding: 60px;
+  color: var(--text-dim); font-size: 14px; text-align: center; padding: 60px;
+  background: none !important; box-shadow: none !important; border: none !important;
 }
-.preview-empty i {
-  font-size: 40px;
-  display: block;
-  margin-bottom: 12px;
-  opacity: 0.4;
-}
+.preview-empty i { font-size: 40px; display: block; margin-bottom: 12px; opacity: 0.4; }
 
-/* CONTROLS BAR (above canvas) */
 .controls-bar {
-  padding: 12px 20px;
-  background: var(--bg-2);
+  padding: 12px 20px; background: var(--bg-2);
   border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; gap: 12px;
-  flex-wrap: wrap;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
 }
-
 .element-tabs {
   display: flex; gap: 3px; background: var(--bg-3);
-  padding: 3px; border-radius: 8px;
-  border: 1px solid var(--border);
+  padding: 3px; border-radius: 8px; border: 1px solid var(--border);
 }
 .elem-tab {
   padding: 6px 10px; border-radius: 5px;
@@ -286,11 +194,7 @@ body {
 .elem-tab:hover { color: var(--text); }
 .elem-tab.active { background: var(--bg-2); color: var(--text); box-shadow: var(--shadow-sm); }
 
-.hue-control {
-  display: flex; align-items: center; gap: 10px;
-  flex: 1; min-width: 200px;
-  max-width: 360px;
-}
+.hue-control { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 200px; max-width: 360px; }
 .hue-control label {
   font-size: 11px; color: var(--text-muted); font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.5px;
@@ -298,80 +202,54 @@ body {
 .hue-slider {
   flex: 1; -webkit-appearance: none; appearance: none;
   height: 8px; border-radius: 4px; outline: none; cursor: pointer;
-  background: linear-gradient(to right, 
-    hsl(0,80%,60%), hsl(60,80%,60%), hsl(120,80%,60%), 
-    hsl(180,80%,60%), hsl(240,80%,60%), hsl(300,80%,60%), hsl(360,80%,60%)
-  );
+  background: linear-gradient(to right,
+    hsl(0,80%,60%), hsl(60,80%,60%), hsl(120,80%,60%),
+    hsl(180,80%,60%), hsl(240,80%,60%), hsl(300,80%,60%), hsl(360,80%,60%));
 }
 .hue-slider::-webkit-slider-thumb {
   -webkit-appearance: none; appearance: none;
   width: 18px; height: 18px; border-radius: 50%;
-  background: #fff; cursor: pointer;
-  border: 2px solid var(--bg-2);
+  background: #fff; cursor: pointer; border: 2px solid var(--bg-2);
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 .hue-slider::-moz-range-thumb {
   width: 18px; height: 18px; border-radius: 50%;
-  background: #fff; cursor: pointer;
-  border: 2px solid var(--bg-2);
+  background: #fff; cursor: pointer; border: 2px solid var(--bg-2);
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
-.hue-val {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px; color: var(--text-2);
-  min-width: 36px; text-align: right; font-weight: 600;
-}
-
+.hue-val { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-2); min-width: 36px; text-align: right; font-weight: 600; }
 .reset-hue {
-  background: none; border: 1px solid var(--border);
-  border-radius: 6px; padding: 6px 8px;
-  color: var(--text-muted); cursor: pointer;
+  background: none; border: 1px solid var(--border); border-radius: 6px;
+  padding: 6px 8px; color: var(--text-muted); cursor: pointer;
   font-size: 10px; transition: all 0.15s;
 }
 .reset-hue:hover { background: var(--bg-hover); color: var(--text); }
 
-/* ═══ SETTINGS PANEL (bottom) ═══ */
 .settings-panel {
-  background: var(--bg-2);
-  border-top: 1px solid var(--border);
-  max-height: 40vh;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-strong) transparent;
+  background: var(--bg-2); border-top: 1px solid var(--border);
+  max-height: 42vh; overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent;
 }
 .settings-panel::-webkit-scrollbar { width: 6px; }
 .settings-panel::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
 
 .settings-header {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 20px 10px;
-  position: sticky; top: 0;
-  background: var(--bg-2);
-  border-bottom: 1px solid var(--border);
-  z-index: 10;
+  padding: 14px 20px 10px; position: sticky; top: 0;
+  background: var(--bg-2); border-bottom: 1px solid var(--border);
+  z-index: 10; flex-wrap: wrap; gap: 10px;
 }
-.settings-title {
-  display: flex; align-items: center; gap: 10px;
-}
-.settings-title h3 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px; font-weight: 700;
-  color: var(--text);
-}
+.settings-title { display: flex; align-items: center; gap: 10px; }
+.settings-title h3 { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); }
 .settings-title .style-name {
-  font-size: 12px; color: var(--text-muted);
-  font-weight: 500;
+  font-size: 12px; color: var(--text-muted); font-weight: 500;
   padding: 3px 10px; border-radius: 999px;
   background: var(--bg-3); border: 1px solid var(--border);
 }
 
-.export-tabs {
-  display: flex; gap: 4px; background: var(--bg-3);
-  padding: 3px; border-radius: 7px; border: 1px solid var(--border);
-}
+.export-tabs { display: flex; gap: 4px; background: var(--bg-3); padding: 3px; border-radius: 7px; border: 1px solid var(--border); }
 .export-tab {
-  padding: 6px 12px; border-radius: 5px;
-  border: none; background: transparent;
+  padding: 6px 12px; border-radius: 5px; border: none; background: transparent;
   color: var(--text-muted);
   font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
   cursor: pointer; transition: all 0.15s;
@@ -382,19 +260,16 @@ body {
 
 .settings-body { padding: 16px 20px 20px; }
 
-/* SETTINGS DISPLAY (Figma view) */
 .settings-block {
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   background: var(--bg-3);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: 10px; overflow: hidden;
 }
 .settings-block-header {
   display: flex; align-items: center; gap: 8px;
   padding: 10px 14px;
-  background: var(--bg-2);
-  border-bottom: 1px solid var(--border);
+  background: var(--bg-2); border-bottom: 1px solid var(--border);
   font-family: 'Space Grotesk', sans-serif;
   font-size: 11px; font-weight: 700;
   text-transform: uppercase; letter-spacing: 1px;
@@ -405,62 +280,36 @@ body {
   display: flex; align-items: center; justify-content: center;
   color: #fff; font-size: 9px;
 }
-.settings-block-body {
-  padding: 12px 14px;
-  display: flex; flex-direction: column; gap: 8px;
-}
+.settings-block-body { padding: 10px 14px; display: flex; flex-direction: column; gap: 6px; }
 .settings-row {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 12px;
-  padding: 6px 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 5px 0;
 }
-.settings-row + .settings-row {
-  border-top: 1px solid var(--border);
-}
-.settings-row .key {
-  font-size: 11px; color: var(--text-muted);
-  font-weight: 500; min-width: 90px;
-}
+.settings-row + .settings-row { border-top: 1px solid var(--border); }
+.settings-row .key { font-size: 11px; color: var(--text-muted); font-weight: 500; min-width: 90px; }
 .settings-row .value {
   display: flex; align-items: center; gap: 8px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px; color: var(--text); font-weight: 500;
   flex: 1; justify-content: flex-end;
 }
-.color-chip {
-  width: 18px; height: 18px; border-radius: 4px;
-  border: 1px solid var(--border-strong);
-  flex-shrink: 0;
-}
+.color-chip { width: 18px; height: 18px; border-radius: 4px; border: 1px solid var(--border-strong); flex-shrink: 0; }
 .copy-btn {
   width: 24px; height: 24px; border-radius: 5px;
-  border: 1px solid var(--border);
-  background: var(--bg-2); color: var(--text-muted);
+  border: 1px solid var(--border); background: var(--bg-2); color: var(--text-muted);
   cursor: pointer; font-size: 10px;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.15s;
+  display: flex; align-items: center; justify-content: center; transition: all 0.15s;
 }
 .copy-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 .copy-btn.copied { background: var(--success); color: #fff; border-color: var(--success); }
 
-/* CODE BLOCKS */
 .code-block {
-  background: var(--bg-3);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--text-2);
-  white-space: pre-wrap;
-  overflow-x: auto;
-  line-height: 1.6;
-  max-height: 300px;
-  overflow-y: auto;
+  background: var(--bg-3); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  color: var(--text-2); white-space: pre-wrap; overflow-x: auto;
+  line-height: 1.6; max-height: 300px; overflow-y: auto;
 }
-.code-actions {
-  display: flex; gap: 8px; margin-top: 10px;
-}
+.code-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
 .code-btn {
   padding: 8px 14px; border-radius: 7px;
   background: var(--accent); color: #fff; border: none;
@@ -471,13 +320,11 @@ body {
 .code-btn:hover { background: var(--accent-2); transform: translateY(-1px); }
 .code-btn.success { background: var(--success); }
 
-/* Block icons */
 .icon-fill { background: linear-gradient(135deg, #3b82f6, #8b5cf6); }
 .icon-stroke { background: linear-gradient(135deg, #10b981, #06b6d4); }
 .icon-effect { background: linear-gradient(135deg, #1f2937, #000); }
 .icon-corner { background: linear-gradient(135deg, #ec4899, #a855f7); }
 
-/* TOAST */
 .toast-stack {
   position: fixed; bottom: 24px; right: 24px;
   display: flex; flex-direction: column-reverse; gap: 8px;
@@ -491,15 +338,9 @@ body {
   animation: slideIn 0.3s ease, fadeOut 0.3s 2s ease forwards;
   pointer-events: all;
 }
-@keyframes slideIn {
-  from { transform: translateX(20px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-@keyframes fadeOut {
-  to { opacity: 0; transform: translateX(20px); }
-}
+@keyframes slideIn { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes fadeOut { to { opacity: 0; transform: translateX(20px); } }
 
-/* MOBILE */
 @media(max-width: 900px) {
   body { overflow: auto; height: auto; }
   .workspace { grid-template-columns: 1fr; height: auto; }
@@ -511,7 +352,6 @@ body {
   .canvas-wrap { min-height: 280px; padding: 20px; }
   .settings-panel { max-height: none; }
 }
-
 @media(max-width: 500px) {
   .material-grid { grid-template-columns: repeat(2, 1fr); }
   .element-tabs { overflow-x: auto; }
@@ -521,7 +361,6 @@ body {
 </head>
 <body>
 
-<!-- TOPBAR -->
 <header class="topbar">
   <a href="#" class="brand">
     <div class="brand-logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
@@ -532,7 +371,6 @@ body {
     <i class="fa-solid fa-bookmark"></i>
     UI Style Reference
   </span>
-
   <div class="topbar-actions">
     <button class="btn-ghost" onclick="showHelp()">
       <i class="fa-regular fa-circle-question"></i> Help
@@ -543,31 +381,18 @@ body {
   </div>
 </header>
 
-<!-- WORKSPACE -->
 <div class="workspace">
 
-  <!-- SIDEBAR: Categories + Materials -->
   <aside class="sidebar">
-    <div class="sidebar-header">
-      <h3>Categories</h3>
-    </div>
-    
-    <div class="category-tabs" id="category-tabs">
-      <!-- Kategoriler JS ile dolacak -->
-    </div>
-    
+    <div class="sidebar-header"><h3>Categories</h3></div>
+    <div class="category-tabs" id="category-tabs"></div>
     <div class="materials-section">
       <h4 id="materials-heading">Styles</h4>
-      <div class="material-grid" id="material-grid">
-        <!-- Materialler JS ile dolacak -->
-      </div>
+      <div class="material-grid" id="material-grid"></div>
     </div>
   </aside>
 
-  <!-- MAIN -->
   <main class="main">
-    
-    <!-- Controls -->
     <div class="controls-bar">
       <div class="element-tabs" id="element-tabs">
         <button class="elem-tab active" data-element="button"><i class="fa-solid fa-square"></i> Button</button>
@@ -589,7 +414,6 @@ body {
       </div>
     </div>
 
-    <!-- Canvas -->
     <div class="canvas-wrap">
       <div id="preview-element">
         <div class="preview-empty">
@@ -599,7 +423,6 @@ body {
       </div>
     </div>
 
-    <!-- Settings & Export -->
     <div class="settings-panel">
       <div class="settings-header">
         <div class="settings-title">
@@ -619,15 +442,1152 @@ body {
         </p>
       </div>
     </div>
-
   </main>
 </div>
 
-<!-- TOAST CONTAINER -->
 <div class="toast-stack" id="toast-stack"></div>
 
 <script>
-/* THEME TOGGLE */
+/* ═══════════════════════════════════════════
+   MATERIALS DATABASE — 40 styles
+   ═══════════════════════════════════════════ */
+
+// HSL based so hue shift works
+// fill: { type, angle, stops:[{h,s,l,pos}] }
+// stroke: { h,s,l,a, width, position }
+// effects: [{ type:'inner-shadow'|'drop-shadow', h,s,l,a, x,y,blur,spread }]
+// radius: px
+
+const MATERIALS = {
+  anime: [
+    {
+      id: 'sakura', name: 'Sakura',
+      fill: { type: 'linear', angle: 135, stops: [
+        { h: 340, s: 100, l: 88, pos: 0 },
+        { h: 330, s: 90, l: 75, pos: 100 }
+      ]},
+      stroke: { h: 340, s: 80, l: 65, a: 100, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 60, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 340, s: 70, l: 60, a: 30, x: 0, y: 4, blur: 12, spread: 0 }
+      ],
+      radius: 14
+    },
+    {
+      id: 'pastel-dream', name: 'Pastel Dream',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 200, s: 100, l: 92, pos: 0 },
+        { h: 280, s: 80, l: 88, pos: 100 }
+      ]},
+      stroke: { h: 240, s: 50, l: 80, a: 100, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 80, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 240, s: 60, l: 70, a: 25, x: 0, y: 6, blur: 16, spread: 0 }
+      ],
+      radius: 16
+    },
+    {
+      id: 'magic-glow', name: 'Magic Glow',
+      fill: { type: 'linear', angle: 135, stops: [
+        { h: 280, s: 100, l: 75, pos: 0 },
+        { h: 240, s: 100, l: 65, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 40, width: 1, position: 'inside' },
+      effects: [
+        { type: 'drop-shadow', h: 270, s: 100, l: 60, a: 60, x: 0, y: 0, blur: 24, spread: 0 },
+        { type: 'drop-shadow', h: 270, s: 100, l: 70, a: 40, x: 0, y: 0, blur: 48, spread: 0 }
+      ],
+      radius: 12
+    },
+    {
+      id: 'cherry-blossom', name: 'Cherry Blossom',
+      fill: { type: 'radial', angle: 0, stops: [
+        { h: 350, s: 100, l: 90, pos: 0 },
+        { h: 340, s: 90, l: 70, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 80, width: 1.5, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 70, x: 0, y: 2, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 340, s: 80, l: 60, a: 35, x: 0, y: 6, blur: 18, spread: 0 }
+      ],
+      radius: 20
+    },
+    {
+      id: 'kawaii', name: 'Kawaii',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 320, s: 100, l: 85, pos: 0 },
+        { h: 310, s: 95, l: 72, pos: 100 }
+      ]},
+      stroke: { h: 320, s: 100, l: 50, a: 100, width: 2, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 50, x: 0, y: 2, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 320, s: 100, l: 50, a: 40, x: 0, y: 4, blur: 0, spread: 0 }
+      ],
+      radius: 16
+    },
+    {
+      id: 'soft-cloud', name: 'Soft Cloud',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 200, s: 60, l: 96, pos: 0 },
+        { h: 210, s: 50, l: 88, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 0, width: 0, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 100, x: 0, y: 2, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 210, s: 30, l: 50, a: 15, x: 0, y: 8, blur: 24, spread: 0 }
+      ],
+      radius: 18
+    },
+    {
+      id: 'anime-card', name: 'Anime Card',
+      fill: { type: 'linear', angle: 135, stops: [
+        { h: 240, s: 100, l: 70, pos: 0 },
+        { h: 320, s: 100, l: 70, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 60, width: 2, position: 'inside' },
+      effects: [
+        { type: 'drop-shadow', h: 280, s: 80, l: 50, a: 45, x: 0, y: 8, blur: 20, spread: 0 }
+      ],
+      radius: 12
+    },
+    {
+      id: 'lavender-mist', name: 'Lavender Mist',
+      fill: { type: 'radial', angle: 0, stops: [
+        { h: 280, s: 60, l: 92, pos: 0 },
+        { h: 260, s: 50, l: 80, pos: 100 }
+      ]},
+      stroke: { h: 270, s: 40, l: 70, a: 100, width: 1, position: 'inside' },
+      effects: [
+        { type: 'drop-shadow', h: 270, s: 60, l: 60, a: 20, x: 0, y: 6, blur: 18, spread: 0 }
+      ],
+      radius: 14
+    },
+    {
+      id: 'magical-girl', name: 'Magical Girl',
+      fill: { type: 'linear', angle: 135, stops: [
+        { h: 320, s: 100, l: 75, pos: 0 },
+        { h: 220, s: 100, l: 70, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 80, width: 1.5, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 60, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 280, s: 100, l: 60, a: 50, x: 0, y: 0, blur: 20, spread: 0 }
+      ],
+      radius: 14
+    },
+    {
+      id: 'manga-panel', name: 'Manga Panel',
+      fill: { type: 'solid', angle: 0, stops: [
+        { h: 0, s: 0, l: 100, pos: 0 }
+      ]},
+      stroke: { h: 0, s: 0, l: 10, a: 100, width: 2.5, position: 'inside' },
+      effects: [
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 100, x: 4, y: 4, blur: 0, spread: 0 }
+      ],
+      radius: 4
+    }
+  ],
+  
+  cartoon: [
+    {
+      id: 'jelly', name: 'Jelly',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 10, s: 100, l: 70, pos: 0 },
+        { h: 350, s: 100, l: 55, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 0, a: 100, width: 2, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 60, x: 0, y: 3, blur: 2, spread: 0 },
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 80, x: 0, y: 4, blur: 0, spread: 0 }
+      ],
+      radius: 18
+    },
+    {
+      id: 'bubble-pop', name: 'Bubble Pop',
+      fill: { type: 'radial', angle: 0, stops: [
+        { h: 200, s: 100, l: 75, pos: 0 },
+        { h: 220, s: 100, l: 55, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 100, width: 3, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 70, x: -4, y: -4, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 30, x: 0, y: 6, blur: 0, spread: 0 }
+      ],
+      radius: 999
+    },
+    {
+      id: 'cartoon-outline', name: 'Cartoon Outline',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 50, s: 100, l: 65, pos: 0 },
+        { h: 40, s: 100, l: 55, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 0, a: 100, width: 3, position: 'inside' },
+      effects: [
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 100, x: 0, y: 5, blur: 0, spread: 0 }
+      ],
+      radius: 12
+    },
+    {
+      id: 'sticker', name: 'Sticker',
+      fill: { type: 'solid', angle: 0, stops: [
+        { h: 0, s: 90, l: 60, pos: 0 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 100, width: 5, position: 'inside' },
+      effects: [
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 30, x: 0, y: 4, blur: 8, spread: 0 }
+      ],
+      radius: 12
+    },
+    {
+      id: 'comic-pop', name: 'Comic Pop',
+      fill: { type: 'linear', angle: 135, stops: [
+        { h: 50, s: 100, l: 60, pos: 0 },
+        { h: 25, s: 100, l: 55, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 0, a: 100, width: 3, position: 'inside' },
+      effects: [
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 100, x: 5, y: 5, blur: 0, spread: 0 }
+      ],
+      radius: 8
+    },
+    {
+      id: 'toon-shade', name: 'Toon Shade',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 145, s: 70, l: 60, pos: 0 },
+        { h: 145, s: 70, l: 60, pos: 50 },
+        { h: 145, s: 70, l: 40, pos: 51 },
+        { h: 145, s: 70, l: 40, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 0, a: 100, width: 2, position: 'inside' },
+      effects: [
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 60, x: 0, y: 4, blur: 0, spread: 0 }
+      ],
+      radius: 10
+    },
+    {
+      id: 'pop-button', name: 'Pop Button',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 0, s: 90, l: 70, pos: 0 },
+        { h: 0, s: 90, l: 50, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 80, l: 35, a: 100, width: 2, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 60, x: 0, y: 3, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 0, s: 80, l: 35, a: 100, x: 0, y: 5, blur: 0, spread: 0 }
+      ],
+      radius: 14
+    },
+    {
+      id: 'candy', name: 'Candy',
+      fill: { type: 'linear', angle: 135, stops: [
+        { h: 320, s: 100, l: 75, pos: 0 },
+        { h: 280, s: 100, l: 65, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 100, width: 3, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 50, x: 0, y: 2, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 300, s: 80, l: 50, a: 40, x: 0, y: 6, blur: 0, spread: 0 }
+      ],
+      radius: 999
+    },
+    {
+      id: 'plastic-toy', name: 'Plastic Toy',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 200, s: 100, l: 70, pos: 0 },
+        { h: 220, s: 100, l: 50, pos: 100 }
+      ]},
+      stroke: { h: 220, s: 80, l: 30, a: 100, width: 2, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 80, x: 2, y: 2, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 220, s: 80, l: 20, a: 60, x: 0, y: 4, blur: 0, spread: 0 }
+      ],
+      radius: 16
+    },
+    {
+      id: 'rubber', name: 'Rubber',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 50, s: 100, l: 65, pos: 0 },
+        { h: 40, s: 100, l: 45, pos: 100 }
+      ]},
+      stroke: { h: 30, s: 100, l: 25, a: 100, width: 2.5, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 0, a: 30, x: 0, y: -3, blur: 6, spread: 0 },
+        { type: 'drop-shadow', h: 30, s: 100, l: 25, a: 70, x: 0, y: 4, blur: 0, spread: 0 }
+      ],
+      radius: 12
+    }
+  ],
+  
+  premium: [
+    {
+      id: 'metal', name: 'Metal',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 0, s: 0, l: 92, pos: 0 },
+        { h: 0, s: 0, l: 72, pos: 50 },
+        { h: 0, s: 0, l: 50, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 30, a: 100, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 60, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'inner-shadow', h: 0, s: 0, l: 0, a: 30, x: 0, y: -1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 25, x: 0, y: 2, blur: 4, spread: 0 }
+      ],
+      radius: 8
+    },
+    {
+      id: 'gold', name: 'Gold',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 45, s: 100, l: 80, pos: 0 },
+        { h: 42, s: 90, l: 60, pos: 50 },
+        { h: 38, s: 85, l: 45, pos: 100 }
+      ]},
+      stroke: { h: 40, s: 80, l: 30, a: 100, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 50, s: 100, l: 90, a: 70, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'inner-shadow', h: 30, s: 100, l: 20, a: 50, x: 0, y: -1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 40, s: 90, l: 30, a: 40, x: 0, y: 4, blur: 8, spread: 0 }
+      ],
+      radius: 8
+    },
+    {
+      id: 'glass', name: 'Glass',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 0, s: 0, l: 100, pos: 0 },
+        { h: 0, s: 0, l: 95, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 60, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 80, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 10, x: 0, y: 8, blur: 24, spread: 0 }
+      ],
+      radius: 16
+    },
+    {
+      id: 'frosted-glass', name: 'Frosted Glass',
+      fill: { type: 'linear', angle: 135, stops: [
+        { h: 220, s: 30, l: 95, pos: 0 },
+        { h: 220, s: 20, l: 85, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 80, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 60, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 220, s: 30, l: 30, a: 20, x: 0, y: 8, blur: 20, spread: 0 }
+      ],
+      radius: 16
+    },
+    {
+      id: 'marble', name: 'Marble',
+      fill: { type: 'linear', angle: 135, stops: [
+        { h: 0, s: 0, l: 96, pos: 0 },
+        { h: 220, s: 10, l: 88, pos: 50 },
+        { h: 0, s: 0, l: 92, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 70, a: 100, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 40, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 20, x: 0, y: 6, blur: 16, spread: 0 }
+      ],
+      radius: 12
+    },
+    {
+      id: 'diamond', name: 'Diamond',
+      fill: { type: 'linear', angle: 135, stops: [
+        { h: 200, s: 100, l: 95, pos: 0 },
+        { h: 210, s: 80, l: 85, pos: 50 },
+        { h: 220, s: 70, l: 75, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 80, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 80, x: 0, y: 2, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 200, s: 100, l: 70, a: 50, x: 0, y: 0, blur: 20, spread: 0 }
+      ],
+      radius: 8
+    },
+    {
+      id: 'carbon-fiber', name: 'Carbon Fiber',
+      fill: { type: 'linear', angle: 135, stops: [
+        { h: 0, s: 0, l: 18, pos: 0 },
+        { h: 0, s: 0, l: 10, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 5, a: 100, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 8, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 60, x: 0, y: 4, blur: 10, spread: 0 }
+      ],
+      radius: 10
+    },
+    {
+      id: 'platinum', name: 'Platinum',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 210, s: 15, l: 90, pos: 0 },
+        { h: 220, s: 12, l: 78, pos: 50 },
+        { h: 220, s: 10, l: 65, pos: 100 }
+      ]},
+      stroke: { h: 220, s: 10, l: 50, a: 100, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 70, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 220, s: 20, l: 40, a: 25, x: 0, y: 3, blur: 8, spread: 0 }
+      ],
+      radius: 8
+    },
+    {
+      id: 'rose-gold', name: 'Rose Gold',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 15, s: 80, l: 80, pos: 0 },
+        { h: 10, s: 70, l: 65, pos: 50 },
+        { h: 5, s: 65, l: 50, pos: 100 }
+      ]},
+      stroke: { h: 10, s: 60, l: 35, a: 100, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 20, s: 100, l: 90, a: 60, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 10, s: 70, l: 40, a: 35, x: 0, y: 4, blur: 10, spread: 0 }
+      ],
+      radius: 10
+    },
+    {
+      id: 'velvet', name: 'Velvet',
+      fill: { type: 'radial', angle: 0, stops: [
+        { h: 350, s: 60, l: 35, pos: 0 },
+        { h: 350, s: 70, l: 20, pos: 100 }
+      ]},
+      stroke: { h: 350, s: 80, l: 15, a: 100, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 350, s: 60, l: 50, a: 40, x: 0, y: 2, blur: 4, spread: 0 },
+        { type: 'drop-shadow', h: 350, s: 70, l: 10, a: 60, x: 0, y: 6, blur: 14, spread: 0 }
+      ],
+      radius: 14
+    }
+  ],
+  
+  rpg: [
+    {
+      id: 'iron', name: 'Iron',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 210, s: 10, l: 50, pos: 0 },
+        { h: 210, s: 15, l: 30, pos: 100 }
+      ]},
+      stroke: { h: 210, s: 20, l: 15, a: 100, width: 2, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 210, s: 20, l: 70, a: 30, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'inner-shadow', h: 0, s: 0, l: 0, a: 50, x: 0, y: -2, blur: 4, spread: 0 },
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 50, x: 0, y: 3, blur: 6, spread: 0 }
+      ],
+      radius: 4
+    },
+    {
+      id: 'crystal', name: 'Crystal',
+      fill: { type: 'linear', angle: 135, stops: [
+        { h: 200, s: 100, l: 70, pos: 0 },
+        { h: 220, s: 100, l: 55, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 70, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 60, x: 0, y: 2, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 210, s: 100, l: 60, a: 70, x: 0, y: 0, blur: 24, spread: 0 }
+      ],
+      radius: 6
+    },
+    {
+      id: 'fire-rune', name: 'Fire Rune',
+      fill: { type: 'radial', angle: 0, stops: [
+        { h: 30, s: 100, l: 70, pos: 0 },
+        { h: 5, s: 100, l: 50, pos: 60 },
+        { h: 0, s: 100, l: 30, pos: 100 }
+      ]},
+      stroke: { h: 25, s: 100, l: 50, a: 100, width: 1.5, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 50, s: 100, l: 80, a: 60, x: 0, y: 0, blur: 4, spread: 0 },
+        { type: 'drop-shadow', h: 15, s: 100, l: 50, a: 80, x: 0, y: 0, blur: 20, spread: 0 },
+        { type: 'drop-shadow', h: 30, s: 100, l: 60, a: 50, x: 0, y: 0, blur: 40, spread: 0 }
+      ],
+      radius: 8
+    },
+    {
+      id: 'ice-shard', name: 'Ice Shard',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 195, s: 100, l: 90, pos: 0 },
+        { h: 200, s: 90, l: 70, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 80, width: 1.5, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 90, x: 0, y: 2, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 195, s: 100, l: 60, a: 60, x: 0, y: 0, blur: 18, spread: 0 }
+      ],
+      radius: 4
+    },
+    {
+      id: 'wood-plank', name: 'Wood Plank',
+      fill: { type: 'linear', angle: 90, stops: [
+        { h: 30, s: 50, l: 45, pos: 0 },
+        { h: 25, s: 55, l: 35, pos: 50 },
+        { h: 30, s: 50, l: 45, pos: 100 }
+      ]},
+      stroke: { h: 25, s: 60, l: 20, a: 100, width: 2, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 35, s: 60, l: 60, a: 30, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 25, s: 60, l: 15, a: 50, x: 0, y: 4, blur: 8, spread: 0 }
+      ],
+      radius: 4
+    },
+    {
+      id: 'leather', name: 'Leather',
+      fill: { type: 'radial', angle: 0, stops: [
+        { h: 20, s: 50, l: 35, pos: 0 },
+        { h: 18, s: 55, l: 22, pos: 100 }
+      ]},
+      stroke: { h: 18, s: 70, l: 12, a: 100, width: 1.5, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 20, s: 60, l: 50, a: 40, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'inner-shadow', h: 0, s: 0, l: 0, a: 60, x: 0, y: -2, blur: 4, spread: 0 },
+        { type: 'drop-shadow', h: 18, s: 60, l: 10, a: 60, x: 0, y: 4, blur: 8, spread: 0 }
+      ],
+      radius: 8
+    },
+    {
+      id: 'mana-potion', name: 'Mana Potion',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 240, s: 100, l: 70, pos: 0 },
+        { h: 260, s: 100, l: 50, pos: 100 }
+      ]},
+      stroke: { h: 0, s: 0, l: 100, a: 50, width: 1, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 0, s: 0, l: 100, a: 70, x: 0, y: 2, blur: 4, spread: 0 },
+        { type: 'drop-shadow', h: 250, s: 100, l: 60, a: 80, x: 0, y: 0, blur: 24, spread: 0 }
+      ],
+      radius: 8
+    },
+    {
+      id: 'dark-stone', name: 'Dark Stone',
+      fill: { type: 'linear', angle: 180, stops: [
+        { h: 220, s: 10, l: 25, pos: 0 },
+        { h: 220, s: 15, l: 12, pos: 100 }
+      ]},
+      stroke: { h: 220, s: 20, l: 5, a: 100, width: 2, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 220, s: 20, l: 50, a: 25, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'inner-shadow', h: 0, s: 0, l: 0, a: 80, x: 0, y: -2, blur: 6, spread: 0 },
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 70, x: 0, y: 4, blur: 10, spread: 0 }
+      ],
+      radius: 6
+    },
+    {
+      id: 'poison', name: 'Poison',
+      fill: { type: 'radial', angle: 0, stops: [
+        { h: 100, s: 100, l: 55, pos: 0 },
+        { h: 90, s: 100, l: 30, pos: 100 }
+      ]},
+      stroke: { h: 90, s: 100, l: 20, a: 100, width: 1.5, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 110, s: 100, l: 80, a: 50, x: 0, y: 0, blur: 6, spread: 0 },
+        { type: 'drop-shadow', h: 100, s: 100, l: 40, a: 80, x: 0, y: 0, blur: 20, spread: 0 }
+      ],
+      radius: 8
+    },
+    {
+      id: 'epic-quest', name: 'Epic Quest',
+      fill: { type: 'linear', angle: 135, stops: [
+        { h: 280, s: 90, l: 45, pos: 0 },
+        { h: 320, s: 90, l: 40, pos: 100 }
+      ]},
+      stroke: { h: 45, s: 100, l: 60, a: 100, width: 2, position: 'inside' },
+      effects: [
+        { type: 'inner-shadow', h: 45, s: 100, l: 80, a: 30, x: 0, y: 1, blur: 0, spread: 0 },
+        { type: 'drop-shadow', h: 280, s: 100, l: 50, a: 60, x: 0, y: 0, blur: 16, spread: 0 },
+        { type: 'drop-shadow', h: 0, s: 0, l: 0, a: 40, x: 0, y: 6, blur: 12, spread: 0 }
+      ],
+      radius: 8
+    }
+  ]
+};
+
+const CATEGORIES = [
+  { id: 'anime', emoji: '🌸', name: 'Anime' },
+  { id: 'cartoon', emoji: '🎨', name: 'Cartoon' },
+  { id: 'premium', emoji: '💎', name: 'Premium' },
+  { id: 'rpg', emoji: '⚔️', name: 'RPG' }
+];
+
+/* ═══════════════════════════════════════════
+   STATE
+   ═══════════════════════════════════════════ */
+let currentCategory = 'premium';
+let currentMaterialId = null;
+let currentElement = 'button';
+let currentExportTab = 'figma';
+let hueShift = 0;
+
+/* ═══════════════════════════════════════════
+   HELPERS
+   ═══════════════════════════════════════════ */
+
+function hslToHex(h, s, l) {
+  h = ((h % 360) + 360) % 360;
+  l /= 100;
+  const a = s * Math.min(l, 1 - l) / 100;
+  const f = n => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color).toString(16).padStart(2, '0');
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+function hslToRgb(h, s, l) {
+  h = ((h % 360) + 360) % 360;
+  l /= 100;
+  const a = s * Math.min(l, 1 - l) / 100;
+  const f = n => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color);
+  };
+  return { r: f(0), g: f(8), b: f(4) };
+}
+
+function shiftedH(originalH) {
+  return ((originalH + hueShift) % 360 + 360) % 360;
+}
+
+function hslaCss(h, s, l, a) {
+  return `hsla(${shiftedH(h)}, ${s}%, ${l}%, ${(a || 100) / 100})`;
+}
+
+/* ═══════════════════════════════════════════
+   RENDER CATEGORIES
+   ═══════════════════════════════════════════ */
+function renderCategories() {
+  const container = document.getElementById('category-tabs');
+  container.innerHTML = CATEGORIES.map(cat => `
+    <div class="cat-tab ${cat.id === currentCategory ? 'active' : ''}" 
+         onclick="selectCategory('${cat.id}')">
+      <div class="cat-emoji">${cat.emoji}</div>
+      <div class="cat-name">${cat.name}</div>
+    </div>
+  `).join('');
+}
+
+function selectCategory(catId) {
+  currentCategory = catId;
+  renderCategories();
+  renderMaterials();
+  const cat = CATEGORIES.find(c => c.id === catId);
+  document.getElementById('materials-heading').textContent = cat.name + ' Styles';
+}
+
+/* ═══════════════════════════════════════════
+   RENDER MATERIALS
+   ═══════════════════════════════════════════ */
+function renderMaterials() {
+  const container = document.getElementById('material-grid');
+  const mats = MATERIALS[currentCategory] || [];
+  container.innerHTML = mats.map(mat => {
+    const previewCss = buildPreviewCss(mat);
+    return `
+      <div class="material-card ${mat.id === currentMaterialId ? 'selected' : ''}" 
+           onclick="selectMaterial('${mat.id}')">
+        <div class="material-preview" style="${previewCss}"></div>
+        <div class="material-name">${mat.name}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function buildPreviewCss(mat) {
+  // Mini preview - sadece fill
+  let bg = '';
+  if (mat.fill.type === 'solid') {
+    bg = hslaCss(mat.fill.stops[0].h, mat.fill.stops[0].s, mat.fill.stops[0].l, 100);
+  } else if (mat.fill.type === 'linear') {
+    const stops = mat.fill.stops.map(s => `${hslaCss(s.h, s.s, s.l, 100)} ${s.pos}%`).join(', ');
+    bg = `linear-gradient(${mat.fill.angle}deg, ${stops})`;
+  } else if (mat.fill.type === 'radial') {
+    const stops = mat.fill.stops.map(s => `${hslaCss(s.h, s.s, s.l, 100)} ${s.pos}%`).join(', ');
+    bg = `radial-gradient(circle, ${stops})`;
+  }
+  return `background: ${bg};`;
+}
+
+function selectMaterial(matId) {
+  currentMaterialId = matId;
+  renderMaterials();
+  applyMaterial();
+  renderSettings();
+}
+
+/* ═══════════════════════════════════════════
+   APPLY MATERIAL TO PREVIEW
+   ═══════════════════════════════════════════ */
+function applyMaterial() {
+  const mat = getCurrentMaterial();
+  const el = document.getElementById('preview-element');
+  if (!mat) return;
+  
+  el.innerHTML = '';
+  el.style.cssText = '';
+  
+  const configs = {
+    button:    { w: '160px', h: '52px',  text: 'Button',    fs: '14px' },
+    card:      { w: '240px', h: '300px', text: 'Card',      fs: '16px' },
+    frame:     { w: '320px', h: '200px', text: 'Frame',     fs: '14px' },
+    panel:     { w: '380px', h: '240px', text: 'Panel',     fs: '15px' },
+    badge:     { w: '90px',  h: '32px',  text: 'NEW',       fs: '11px' },
+    container: { w: '300px', h: '180px', text: 'Container', fs: '14px' },
+    icon:      { w: '72px',  h: '72px',  text: '★',         fs: '28px' }
+  };
+  const cfg = configs[currentElement];
+  
+  // Background (Fill)
+  let bg = '';
+  if (mat.fill.type === 'solid') {
+    bg = hslaCss(mat.fill.stops[0].h, mat.fill.stops[0].s, mat.fill.stops[0].l, 100);
+  } else if (mat.fill.type === 'linear') {
+    const stops = mat.fill.stops.map(s => `${hslaCss(s.h, s.s, s.l, 100)} ${s.pos}%`).join(', ');
+    bg = `linear-gradient(${mat.fill.angle}deg, ${stops})`;
+  } else if (mat.fill.type === 'radial') {
+    const stops = mat.fill.stops.map(s => `${hslaCss(s.h, s.s, s.l, 100)} ${s.pos}%`).join(', ');
+    bg = `radial-gradient(circle, ${stops})`;
+  }
+  el.style.background = bg;
+  
+  // Border (Stroke)
+  if (mat.stroke && mat.stroke.width > 0) {
+    el.style.border = `${mat.stroke.width}px solid ${hslaCss(mat.stroke.h, mat.stroke.s, mat.stroke.l, mat.stroke.a)}`;
+  } else {
+    el.style.border = 'none';
+  }
+  
+  // Effects (shadows)
+  const shadows = [];
+  if (mat.effects) {
+    mat.effects.forEach(fx => {
+      const color = hslaCss(fx.h, fx.s, fx.l, fx.a);
+      if (fx.type === 'inner-shadow') {
+        shadows.push(`inset ${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread || 0}px ${color}`);
+      } else if (fx.type === 'drop-shadow') {
+        shadows.push(`${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread || 0}px ${color}`);
+      }
+    });
+  }
+  el.style.boxShadow = shadows.length ? shadows.join(', ') : 'none';
+  
+  // Radius
+  el.style.borderRadius = (mat.radius || 8) + 'px';
+  
+  // Size & text
+  el.style.width = cfg.w;
+  el.style.height = cfg.h;
+  el.style.fontSize = cfg.fs;
+  el.style.display = 'flex';
+  el.style.alignItems = 'center';
+  el.style.justifyContent = 'center';
+  el.style.color = '#fff';
+  el.style.fontWeight = '700';
+  el.style.textShadow = '0 1px 2px rgba(0,0,0,0.3)';
+  el.textContent = cfg.text;
+  
+  // Update name
+  document.getElementById('style-name-display').textContent = mat.name;
+}
+
+function getCurrentMaterial() {
+  if (!currentMaterialId) return null;
+  return MATERIALS[currentCategory].find(m => m.id === currentMaterialId);
+}
+
+/* ═══════════════════════════════════════════
+   ELEMENT TABS
+   ═══════════════════════════════════════════ */
+document.querySelectorAll('.elem-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.elem-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentElement = btn.dataset.element;
+    if (currentMaterialId) applyMaterial();
+  });
+});
+
+/* ═══════════════════════════════════════════
+   HUE SLIDER
+   ═══════════════════════════════════════════ */
+const hueSlider = document.getElementById('hue-slider');
+const hueVal = document.getElementById('hue-val');
+hueSlider.addEventListener('input', () => {
+  hueShift = parseInt(hueSlider.value);
+  hueVal.textContent = hueShift + '°';
+  renderMaterials();
+  if (currentMaterialId) {
+    applyMaterial();
+    renderSettings();
+  }
+});
+
+function resetHue() {
+  hueShift = 0;
+  hueSlider.value = 0;
+  hueVal.textContent = '0°';
+  renderMaterials();
+  if (currentMaterialId) {
+    applyMaterial();
+    renderSettings();
+  }
+}
+
+/* ═══════════════════════════════════════════
+   EXPORT TABS
+   ═══════════════════════════════════════════ */
+document.querySelectorAll('.export-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.export-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentExportTab = btn.dataset.tab;
+    renderSettings();
+  });
+});
+
+/* ═══════════════════════════════════════════
+   SETTINGS DISPLAY (Figma / CSS / Lua)
+   ═══════════════════════════════════════════ */
+function renderSettings() {
+  const mat = getCurrentMaterial();
+  const body = document.getElementById('settings-body');
+  if (!mat) {
+    body.innerHTML = `
+      <p style="color: var(--text-muted); font-size: 13px; text-align: center; padding: 40px 0;">
+        <i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i>
+        Select a material from the sidebar to view its settings
+      </p>`;
+    return;
+  }
+  
+  if (currentExportTab === 'figma') {
+    body.innerHTML = renderFigmaSettings(mat);
+  } else if (currentExportTab === 'css') {
+    body.innerHTML = renderCssSettings(mat);
+  } else if (currentExportTab === 'lua') {
+    body.innerHTML = renderLuaSettings(mat);
+  }
+}
+
+/* ── FIGMA VIEW ── */
+function renderFigmaSettings(mat) {
+  let html = '';
+  
+  // FILL block
+  html += `<div class="settings-block">
+    <div class="settings-block-header">
+      <span class="block-icon icon-fill"><i class="fa-solid fa-fill-drip"></i></span>
+      Fill
+    </div>
+    <div class="settings-block-body">`;
+  
+  if (mat.fill.type === 'solid') {
+    const c = mat.fill.stops[0];
+    const hex = hslToHex(shiftedH(c.h), c.s, c.l);
+    html += rowWithCopy('Type', 'Solid');
+    html += colorRow('Color', hex);
+  } else {
+    const typeName = mat.fill.type.charAt(0).toUpperCase() + mat.fill.type.slice(1) + ' Gradient';
+    html += rowWithCopy('Type', typeName);
+    if (mat.fill.type === 'linear' || mat.fill.type === 'conic') {
+      html += rowWithCopy('Angle', mat.fill.angle + '°');
+    }
+    mat.fill.stops.forEach((s, i) => {
+      const hex = hslToHex(shiftedH(s.h), s.s, s.l);
+      html += colorRow(`Stop ${i + 1} (at ${s.pos}%)`, hex);
+    });
+  }
+  html += `</div></div>`;
+  
+  // STROKE block
+  if (mat.stroke && mat.stroke.width > 0) {
+    const hex = hslToHex(shiftedH(mat.stroke.h), mat.stroke.s, mat.stroke.l);
+    html += `<div class="settings-block">
+      <div class="settings-block-header">
+        <span class="block-icon icon-stroke"><i class="fa-regular fa-square"></i></span>
+        Stroke
+      </div>
+      <div class="settings-block-body">
+        ${colorRow('Color', hex, mat.stroke.a)}
+        ${rowWithCopy('Weight', mat.stroke.width + 'px')}
+        ${rowWithCopy('Position', mat.stroke.position || 'Inside')}
+      </div>
+    </div>`;
+  }
+  
+  // EFFECTS block
+  if (mat.effects && mat.effects.length) {
+    mat.effects.forEach((fx, i) => {
+      const isInner = fx.type === 'inner-shadow';
+      const hex = hslToHex(shiftedH(fx.h), fx.s, fx.l);
+      html += `<div class="settings-block">
+        <div class="settings-block-header">
+          <span class="block-icon icon-effect"><i class="fa-solid ${isInner ? 'fa-circle-half-stroke' : 'fa-clone'}"></i></span>
+          ${isInner ? 'Inner Shadow' : 'Drop Shadow'} ${mat.effects.length > 1 ? '#' + (i + 1) : ''}
+        </div>
+        <div class="settings-block-body">
+          ${colorRow('Color', hex, fx.a)}
+          ${rowWithCopy('X', fx.x + 'px')}
+          ${rowWithCopy('Y', fx.y + 'px')}
+          ${rowWithCopy('Blur', fx.blur + 'px')}
+          ${rowWithCopy('Spread', (fx.spread || 0) + 'px')}
+        </div>
+      </div>`;
+    });
+  }
+  
+  // CORNER RADIUS
+  html += `<div class="settings-block">
+    <div class="settings-block-header">
+      <span class="block-icon icon-corner"><i class="fa-solid fa-vector-square"></i></span>
+      Corner Radius
+    </div>
+    <div class="settings-block-body">
+      ${rowWithCopy('Radius', mat.radius + 'px')}
+    </div>
+  </div>`;
+  
+  // COPY ALL
+  html += `
+    <div class="code-actions" style="margin-top: 6px;">
+      <button class="code-btn" onclick="copyAllFigma()">
+        <i class="fa-solid fa-copy"></i> Copy All Settings
+      </button>
+    </div>
+  `;
+  
+  return html;
+}
+
+function rowWithCopy(key, value) {
+  return `
+    <div class="settings-row">
+      <span class="key">${key}</span>
+      <span class="value">
+        ${value}
+        <button class="copy-btn" onclick="copyText('${escapeAttr(value)}', this)" title="Copy">
+          <i class="fa-regular fa-copy"></i>
+        </button>
+      </span>
+    </div>`;
+}
+
+function colorRow(key, hex, opacity) {
+  const display = opacity !== undefined && opacity < 100 ? `${hex} · ${opacity}%` : hex;
+  return `
+    <div class="settings-row">
+      <span class="key">${key}</span>
+      <span class="value">
+        <span class="color-chip" style="background:${hex};"></span>
+        ${display}
+        <button class="copy-btn" onclick="copyText('${hex}', this)" title="Copy hex">
+          <i class="fa-regular fa-copy"></i>
+        </button>
+      </span>
+    </div>`;
+}
+
+function escapeAttr(s) {
+  return String(s).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+/* ── CSS VIEW ── */
+function renderCssSettings(mat) {
+  const css = buildCssCode(mat);
+  return `
+    <div class="code-block">${escapeHtml(css)}</div>
+    <div class="code-actions">
+      <button class="code-btn" onclick="copyText(\`${css.replace(/`/g, '\\`')}\`, this)">
+        <i class="fa-solid fa-copy"></i> Copy CSS
+      </button>
+    </div>
+  `;
+}
+
+function buildCssCode(mat) {
+  let bg = '';
+  if (mat.fill.type === 'solid') {
+    bg = hslToHex(shiftedH(mat.fill.stops[0].h), mat.fill.stops[0].s, mat.fill.stops[0].l);
+  } else if (mat.fill.type === 'linear') {
+    const stops = mat.fill.stops.map(s => `${hslToHex(shiftedH(s.h), s.s, s.l)} ${s.pos}%`).join(', ');
+    bg = `linear-gradient(${mat.fill.angle}deg, ${stops})`;
+  } else if (mat.fill.type === 'radial') {
+    const stops = mat.fill.stops.map(s => `${hslToHex(shiftedH(s.h), s.s, s.l)} ${s.pos}%`).join(', ');
+    bg = `radial-gradient(circle, ${stops})`;
+  }
+  
+  let css = `.${mat.id} {\n  background: ${bg};\n`;
+  
+  if (mat.stroke && mat.stroke.width > 0) {
+    const rgba = hslaCssExport(mat.stroke.h, mat.stroke.s, mat.stroke.l, mat.stroke.a);
+    css += `  border: ${mat.stroke.width}px solid ${rgba};\n`;
+  }
+  
+  if (mat.effects && mat.effects.length) {
+    const shadows = mat.effects.map(fx => {
+      const color = hslaCssExport(fx.h, fx.s, fx.l, fx.a);
+      if (fx.type === 'inner-shadow') {
+        return `inset ${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread || 0}px ${color}`;
+      } else {
+        return `${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread || 0}px ${color}`;
+      }
+    });
+    css += `  box-shadow:\n    ${shadows.join(',\n    ')};\n`;
+  }
+  
+  css += `  border-radius: ${mat.radius}px;\n}`;
+  return css;
+}
+
+function hslaCssExport(h, s, l, a) {
+  const { r, g, b } = hslToRgb(shiftedH(h), s, l);
+  return `rgba(${r}, ${g}, ${b}, ${(a || 100) / 100})`;
+}
+
+/* ── LUA VIEW (Roblox) ── */
+function renderLuaSettings(mat) {
+  const lua = buildLuaCode(mat);
+  return `
+    <div class="code-block">${escapeHtml(lua)}</div>
+    <div class="code-actions">
+      <button class="code-btn" onclick="copyText(\`${lua.replace(/`/g, '\\`')}\`, this)">
+        <i class="fa-solid fa-copy"></i> Copy Lua
+      </button>
+    </div>
+  `;
+}
+
+function buildLuaCode(mat) {
+  const name = mat.id.replace(/-/g, '_');
+  let lua = `-- PolishUI: ${mat.name}\n`;
+  lua += `local frame = Instance.new("Frame")\n`;
+  lua += `frame.Name = "${mat.name}"\n`;
+  lua += `frame.Size = UDim2.new(0, 200, 0, 60)\n`;
+  lua += `frame.AnchorPoint = Vector2.new(0.5, 0.5)\n`;
+  lua += `frame.Position = UDim2.new(0.5, 0, 0.5, 0)\n`;
+  
+  // BG color (main)
+  const main = mat.fill.stops[Math.floor(mat.fill.stops.length / 2)];
+  const rgb = hslToRgb(shiftedH(main.h), main.s, main.l);
+  lua += `frame.BackgroundColor3 = Color3.fromRGB(${rgb.r}, ${rgb.g}, ${rgb.b})\n`;
+  lua += `frame.BorderSizePixel = 0\n\n`;
+  
+  // Corner radius
+  lua += `local corner = Instance.new("UICorner")\n`;
+  lua += `corner.CornerRadius = UDim.new(0, ${mat.radius})\n`;
+  lua += `corner.Parent = frame\n\n`;
+  
+  // Gradient
+  if (mat.fill.type !== 'solid' && mat.fill.stops.length >= 2) {
+    lua += `local gradient = Instance.new("UIGradient")\n`;
+    const seq = mat.fill.stops.map(s => {
+      const c = hslToRgb(shiftedH(s.h), s.s, s.l);
+      const t = (s.pos / 100).toFixed(2);
+      return `ColorSequenceKeypoint.new(${t}, Color3.fromRGB(${c.r}, ${c.g}, ${c.b}))`;
+    }).join(',\n  ');
+    lua += `gradient.Color = ColorSequence.new({\n  ${seq}\n})\n`;
+    
+    let rot = 0;
+    if (mat.fill.type === 'linear') rot = mat.fill.angle - 90; // Roblox 0deg = top to bottom
+    lua += `gradient.Rotation = ${rot}\n`;
+    lua += `gradient.Parent = frame\n\n`;
+  }
+  
+  // Stroke
+  if (mat.stroke && mat.stroke.width > 0) {
+    const sc = hslToRgb(shiftedH(mat.stroke.h), mat.stroke.s, mat.stroke.l);
+    lua += `local stroke = Instance.new("UIStroke")\n`;
+    lua += `stroke.Color = Color3.fromRGB(${sc.r}, ${sc.g}, ${sc.b})\n`;
+    lua += `stroke.Thickness = ${mat.stroke.width}\n`;
+    lua += `stroke.Transparency = ${(1 - (mat.stroke.a || 100) / 100).toFixed(2)}\n`;
+    lua += `stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border\n`;
+    lua += `stroke.Parent = frame\n\n`;
+  }
+  
+  // Drop shadow (Roblox uses ImageLabel)
+  const dropShadow = (mat.effects || []).find(fx => fx.type === 'drop-shadow');
+  if (dropShadow) {
+    const sc = hslToRgb(shiftedH(dropShadow.h), dropShadow.s, dropShadow.l);
+    lua += `-- Drop Shadow (use ImageLabel with shadow asset)\n`;
+    lua += `-- Color: Color3.fromRGB(${sc.r}, ${sc.g}, ${sc.b})\n`;
+    lua += `-- Transparency: ${(1 - dropShadow.a / 100).toFixed(2)}\n`;
+    lua += `-- Offset: X=${dropShadow.x}, Y=${dropShadow.y}\n`;
+    lua += `-- Blur (use ImageRectSize): ${dropShadow.blur}px\n\n`;
+  }
+  
+  lua += `frame.Parent = script.Parent`;
+  return lua;
+}
+
+/* ═══════════════════════════════════════════
+   COPY HELPERS
+   ═══════════════════════════════════════════ */
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    if (btn) {
+      btn.classList.add('copied');
+      const icon = btn.innerHTML;
+      btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = icon;
+      }, 1500);
+    }
+    toast('Copied to clipboard', 'success');
+  });
+}
+
+function copyAllFigma() {
+  const mat = getCurrentMaterial();
+  if (!mat) return;
+  let txt = `═══ POLISHUI: ${mat.name.toUpperCase()} ═══\n\n`;
+  
+  // Fill
+  txt += `▸ FILL\n`;
+  if (mat.fill.type === 'solid') {
+    txt += `  Type: Solid\n`;
+    txt += `  Color: ${hslToHex(shiftedH(mat.fill.stops[0].h), mat.fill.stops[0].s, mat.fill.stops[0].l)}\n`;
+  } else {
+    txt += `  Type: ${mat.fill.type.charAt(0).toUpperCase() + mat.fill.type.slice(1)} Gradient\n`;
+    if (mat.fill.type !== 'radial') txt += `  Angle: ${mat.fill.angle}°\n`;
+    mat.fill.stops.forEach((s, i) => {
+      txt += `  Stop ${i + 1}: ${hslToHex(shiftedH(s.h), s.s, s.l)} at ${s.pos}%\n`;
+    });
+  }
+  
+  // Stroke
+  if (mat.stroke && mat.stroke.width > 0) {
+    txt += `\n▸ STROKE\n`;
+    txt += `  Color: ${hslToHex(shiftedH(mat.stroke.h), mat.stroke.s, mat.stroke.l)} (${mat.stroke.a}%)\n`;
+    txt += `  Weight: ${mat.stroke.width}px\n`;
+    txt += `  Position: ${mat.stroke.position || 'Inside'}\n`;
+  }
+  
+  // Effects
+  if (mat.effects && mat.effects.length) {
+    mat.effects.forEach((fx, i) => {
+      const isInner = fx.type === 'inner-shadow';
+      txt += `\n▸ ${isInner ? 'INNER SHADOW' : 'DROP SHADOW'}${mat.effects.length > 1 ? ' #' + (i + 1) : ''}\n`;
+      txt += `  Color: ${hslToHex(shiftedH(fx.h), fx.s, fx.l)} (${fx.a}%)\n`;
+      txt += `  X: ${fx.x}px   Y: ${fx.y}px\n`;
+      txt += `  Blur: ${fx.blur}px   Spread: ${fx.spread || 0}px\n`;
+    });
+  }
+  
+  // Radius
+  txt += `\n▸ CORNER RADIUS: ${mat.radius}px\n`;
+  
+  navigator.clipboard.writeText(txt).then(() => {
+    toast('All settings copied! Paste into Figma manually', 'success');
+  });
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/* ═══════════════════════════════════════════
+   THEME
+   ═══════════════════════════════════════════ */
 function toggleTheme() {
   const html = document.documentElement;
   const current = html.getAttribute('data-theme');
@@ -644,7 +1604,9 @@ function toggleTheme() {
   }
 })();
 
-/* TOAST */
+/* ═══════════════════════════════════════════
+   TOAST + HELP
+   ═══════════════════════════════════════════ */
 function toast(msg, type) {
   const stack = document.getElementById('toast-stack');
   const t = document.createElement('div');
@@ -662,8 +1624,11 @@ function showHelp() {
   toast('Pick category → choose style → copy settings to Figma/CSS/Lua', 'info');
 }
 
-// Materials database (Mesaj 2'de gelecek) ve motor (Mesaj 3'te gelecek) yüklenecek
-// Bu noktada site açılır ama boş olur — "Pick a style from the left to start" gözükür
+/* ═══════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════ */
+renderCategories();
+renderMaterials();
 </script>
 
 </body>
