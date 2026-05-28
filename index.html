@@ -754,6 +754,902 @@ function downloadPNG() { toast('PNG export will work after Mesaj 5 is added', 'i
 
 // PART 2-6 buraya gelecek (UI sections, themes, props, rendering, export)
 console.log('PolishUI 2.0 — Part 1/6 loaded. Waiting for parts 2-6 to be added.');
+
+/* ═══════════════════════════════════════════
+   PART 2 START — UI SECTIONS DATABASE + RENDER
+   ═══════════════════════════════════════════ */
+
+/* ── 20 UI SECTION DEFINITIONS ── */
+const SECTIONS = [
+  // COMBAT & PLAYER
+  { id: 'hud',         name: 'HUD',           icon: 'fa-heart-pulse',     group: 'Combat & Player' },
+  { id: 'skills',      name: 'Skill Bar',     icon: 'fa-bolt',            group: 'Combat & Player' },
+  { id: 'death',       name: 'Death Screen',  icon: 'fa-skull',           group: 'Combat & Player' },
+  { id: 'levelup',     name: 'Level Up',      icon: 'fa-arrow-up-from-bracket', group: 'Combat & Player' },
+  
+  // GAME MECHANICS
+  { id: 'shop',        name: 'Shop',          icon: 'fa-cart-shopping',   group: 'Game Mechanics' },
+  { id: 'inventory',   name: 'Inventory',     icon: 'fa-box-open',        group: 'Game Mechanics' },
+  { id: 'summon',      name: 'Summon / Gacha',icon: 'fa-gem',             group: 'Game Mechanics' },
+  { id: 'rewards',     name: 'Daily Rewards', icon: 'fa-gift',            group: 'Game Mechanics' },
+  { id: 'battlepass',  name: 'Battle Pass',   icon: 'fa-medal',           group: 'Game Mechanics' },
+  
+  // SOCIAL
+  { id: 'chat',        name: 'Chat',          icon: 'fa-comment-dots',    group: 'Social' },
+  { id: 'friends',     name: 'Friends',       icon: 'fa-user-group',      group: 'Social' },
+  { id: 'leaderboard', name: 'Leaderboard',   icon: 'fa-trophy',          group: 'Social' },
+  { id: 'mail',        name: 'Mail / Inbox',  icon: 'fa-envelope',        group: 'Social' },
+  
+  // QUESTS & PROGRESS
+  { id: 'quest',       name: 'Quest Log',     icon: 'fa-scroll',          group: 'Quests & Progress' },
+  { id: 'achievement', name: 'Achievements',  icon: 'fa-award',           group: 'Quests & Progress' },
+  { id: 'stats',       name: 'Stats Panel',   icon: 'fa-chart-line',      group: 'Quests & Progress' },
+  
+  // MENUS
+  { id: 'settings',    name: 'Settings',      icon: 'fa-gear',            group: 'Menus' },
+  { id: 'profile',     name: 'Profile',       icon: 'fa-user-circle',     group: 'Menus' },
+  
+  // NOTIFICATIONS
+  { id: 'dialog',      name: 'NPC Dialog',    icon: 'fa-message',         group: 'Notifications' },
+  { id: 'notifs',      name: 'Notifications', icon: 'fa-bell',            group: 'Notifications' }
+];
+
+/* ── 10 THEMES ── */
+const THEMES = [
+  { id: 'anime',     name: 'Anime',     emoji: '🌸' },
+  { id: 'cartoon',   name: 'Cartoon',   emoji: '🎨' },
+  { id: 'premium',   name: 'Premium',   emoji: '💎' },
+  { id: 'rpg',       name: 'RPG',       emoji: '⚔️' },
+  { id: 'cyber',     name: 'Cyber',     emoji: '🚀' },
+  { id: 'gaming',    name: 'Gaming',    emoji: '🎮' },
+  { id: 'minimal',   name: 'Minimal',   emoji: '⚪' },
+  { id: 'vaporwave', name: 'Vaporwave', emoji: '🌃' },
+  { id: 'fantasy',   name: 'Fantasy',   emoji: '🧙' },
+  { id: 'modern',    name: 'Modern',    emoji: '✨' }
+];
+
+/* ── STATE ── */
+const STATE = {
+  currentSection: null,
+  currentTheme: 'anime',
+  searchQuery: '',
+  exportTab: 'html',
+  // Section-specific props (her section'ın kendi ayarları)
+  props: {}
+};
+
+/* ═══════════════════════════════════════════
+   RENDER: SECTION LIST (sol panel)
+   ═══════════════════════════════════════════ */
+function renderSectionList() {
+  const list = document.getElementById('section-list');
+  const q = STATE.searchQuery.toLowerCase();
+  
+  // Filter + group
+  const filtered = SECTIONS.filter(s => 
+    s.name.toLowerCase().includes(q) || 
+    s.group.toLowerCase().includes(q)
+  );
+  
+  if (!filtered.length) {
+    list.innerHTML = `<div style="padding:30px 14px;text-align:center;color:var(--app-dim);font-size:12px;">
+      <i class="fa-regular fa-folder-open" style="font-size:24px;opacity:.4;display:block;margin-bottom:8px;"></i>
+      No sections found
+    </div>`;
+    return;
+  }
+  
+  // Group by category
+  const grouped = {};
+  filtered.forEach(s => {
+    if (!grouped[s.group]) grouped[s.group] = [];
+    grouped[s.group].push(s);
+  });
+  
+  let html = '';
+  Object.keys(grouped).forEach(groupName => {
+    html += `<div class="section-group">${groupName}</div>`;
+    grouped[groupName].forEach(s => {
+      html += `
+        <div class="section-item ${s.id === STATE.currentSection ? 'active' : ''}" 
+             onclick="selectSection('${s.id}')">
+          <div class="icon"><i class="fa-solid ${s.icon}"></i></div>
+          <div class="label">${s.name}</div>
+        </div>`;
+    });
+  });
+  
+  list.innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════
+   RENDER: THEME PILLS (üstte)
+   ═══════════════════════════════════════════ */
+function renderThemePills() {
+  const container = document.getElementById('theme-pills');
+  container.innerHTML = THEMES.map(t => `
+    <button class="theme-pill ${t.id === STATE.currentTheme ? 'active' : ''}" 
+            onclick="selectTheme('${t.id}')">
+      <span>${t.emoji}</span> ${t.name}
+    </button>
+  `).join('');
+}
+
+function selectTheme(themeId) {
+  STATE.currentTheme = themeId;
+  renderThemePills();
+  if (STATE.currentSection) renderStage();
+}
+
+/* ═══════════════════════════════════════════
+   SELECT SECTION
+   ═══════════════════════════════════════════ */
+function selectSection(sectionId) {
+  STATE.currentSection = sectionId;
+  // Reset section props (her section'ın default'ları olacak)
+  STATE.props = getDefaultProps(sectionId);
+  renderSectionList();
+  renderStage();
+  renderProps();
+}
+
+/* ═══════════════════════════════════════════
+   DEFAULT PROPS (her section için varsayılan ayarlar)
+   ═══════════════════════════════════════════ */
+function getDefaultProps(sectionId) {
+  const defaults = {
+    hud:        { playerName: 'PlayerOne', level: 24, hp: 75, mp: 60, xp: 45, gold: 12500, gems: 350 },
+    skills:     { slots: 4 },
+    death:      { killer: 'DarkMage', cooldown: 5 },
+    levelup:    { newLevel: 25, rewards: 3 },
+    shop:       { title: 'Item Shop', itemCount: 6, currency: 'Gold' },
+    inventory:  { slots: 24, equipped: 3 },
+    summon:     { bannerName: 'Mythic Heroes', cost: 100, pity: 5 },
+    rewards:    { day: 4, totalDays: 7 },
+    battlepass: { tier: 12, maxTier: 50, season: 'Season 5' },
+    chat:       { messages: 5 },
+    friends:    { online: 8, total: 24 },
+    leaderboard:{ topCount: 5, myRank: 42 },
+    mail:       { unread: 3, total: 12 },
+    quest:      { questCount: 4 },
+    achievement:{ unlocked: 18, total: 50 },
+    stats:      { wins: 142, losses: 38, kdr: 3.7 },
+    settings:   { volume: 75 },
+    profile:    { name: 'PlayerOne', level: 24, title: 'Dragon Slayer' },
+    dialog:     { speaker: 'Old Sage', text: 'The journey ahead is treacherous, young warrior. Are you ready?' },
+    notifs:     { count: 3 }
+  };
+  return defaults[sectionId] || {};
+}
+
+/* ═══════════════════════════════════════════
+   RENDER STAGE (orta canvas)
+   ═══════════════════════════════════════════ */
+function renderStage() {
+  const stage = document.getElementById('stage-content');
+  if (!STATE.currentSection) {
+    stage.innerHTML = `
+      <div class="stage-empty">
+        <i class="fa-solid fa-hand-pointer"></i>
+        <h2>Welcome to PolishUI</h2>
+        <div>Pick a UI section from the left to get started</div>
+      </div>`;
+    return;
+  }
+  
+  // Çağır: belirli section + tema kombinasyonunun render fonksiyonunu
+  const renderer = SECTION_RENDERERS[STATE.currentSection];
+  if (!renderer) {
+    stage.innerHTML = `<div class="stage-empty"><i class="fa-solid fa-triangle-exclamation"></i><h2>Coming soon</h2><div>This section will be added in Part 3 or 4</div></div>`;
+    return;
+  }
+  
+  stage.innerHTML = `<div class="ui-theme-${STATE.currentTheme}">${renderer(STATE.props, STATE.currentTheme)}</div>`;
+}
+
+/* ═══════════════════════════════════════════
+   SECTION RENDERERS (HTML templates)
+   Mesaj 3 ve 4'te daha fazlası gelecek
+   ═══════════════════════════════════════════ */
+const SECTION_RENDERERS = {};
+
+// Helper: render a generic themed container
+function themedBox(content, opts = {}) {
+  const { width = 'auto', padding = '16px' } = opts;
+  return `
+    <div style="
+      background: var(--t-bg, rgba(20,20,30,.9));
+      border: 2px solid var(--t-border, #fff);
+      border-radius: var(--t-radius, 8px);
+      padding: ${padding};
+      color: var(--t-text, #fff);
+      font-family: var(--t-font, 'Inter', sans-serif);
+      width: ${width};
+      box-shadow: 0 8px 24px rgba(0,0,0,.4);
+      backdrop-filter: blur(8px);
+    ">${content}</div>`;
+}
+
+/* ─── HUD RENDERER ─── */
+SECTION_RENDERERS.hud = function(p, theme) {
+  return `
+    <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center; align-items:flex-start; padding:20px;">
+      
+      <!-- Player Info + Bars -->
+      <div style="
+        background: var(--t-bg, rgba(20,20,30,.9));
+        border: 2px solid var(--t-border, #fff);
+        border-radius: var(--t-radius, 8px);
+        padding: 14px 18px;
+        color: var(--t-text, #fff);
+        font-family: var(--t-font, 'Inter', sans-serif);
+        min-width: 280px;
+        backdrop-filter: blur(8px);
+      ">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <div style="
+            width: 44px; height: 44px;
+            background: var(--t-accent, #ff6ec7);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 700; color: #fff;
+            border: 2px solid var(--t-text, #fff);
+          ">Lv${p.level}</div>
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:14px;">${p.playerName}</div>
+            <div style="font-size:11px; opacity:.7;">Level ${p.level} • Warrior</div>
+          </div>
+        </div>
+        
+        <!-- HP Bar -->
+        <div style="margin-bottom:6px;">
+          <div style="display:flex; justify-content:space-between; font-size:10px; margin-bottom:3px;">
+            <span>HP</span><span>${p.hp}/100</span>
+          </div>
+          <div style="height:10px; background:rgba(0,0,0,.4); border-radius:5px; overflow:hidden; border:1px solid var(--t-border, #fff);">
+            <div style="height:100%; width:${p.hp}%; background:linear-gradient(90deg, #ff4444, #ff0000); transition:.3s;"></div>
+          </div>
+        </div>
+        
+        <!-- MP Bar -->
+        <div style="margin-bottom:6px;">
+          <div style="display:flex; justify-content:space-between; font-size:10px; margin-bottom:3px;">
+            <span>MP</span><span>${p.mp}/100</span>
+          </div>
+          <div style="height:8px; background:rgba(0,0,0,.4); border-radius:4px; overflow:hidden; border:1px solid var(--t-border, #fff);">
+            <div style="height:100%; width:${p.mp}%; background:linear-gradient(90deg, #4488ff, #0066ff);"></div>
+          </div>
+        </div>
+        
+        <!-- XP Bar -->
+        <div>
+          <div style="display:flex; justify-content:space-between; font-size:10px; margin-bottom:3px;">
+            <span>XP</span><span>${p.xp}%</span>
+          </div>
+          <div style="height:6px; background:rgba(0,0,0,.4); border-radius:3px; overflow:hidden; border:1px solid var(--t-border, #fff);">
+            <div style="height:100%; width:${p.xp}%; background:linear-gradient(90deg, #ffdd44, #ffaa00);"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Currency -->
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="
+          background: var(--t-bg, rgba(20,20,30,.9));
+          border: 2px solid var(--t-border, #fff);
+          border-radius: var(--t-radius, 8px);
+          padding: 10px 18px;
+          color: var(--t-text, #fff);
+          font-family: var(--t-font, 'Inter', sans-serif);
+          display: flex; align-items: center; gap: 10px;
+          min-width: 180px;
+          backdrop-filter: blur(8px);
+        ">
+          <div style="
+            width:28px; height:28px; border-radius:50%;
+            background:linear-gradient(135deg, #ffd700, #ff8c00);
+            display:flex; align-items:center; justify-content:center;
+            font-size:14px;
+          ">🪙</div>
+          <div style="flex:1; font-weight:700; font-size:16px;">${p.gold.toLocaleString()}</div>
+          <button style="
+            background: var(--t-accent, #ff6ec7);
+            border: none; width:24px; height:24px; border-radius:6px;
+            color:#fff; cursor:pointer; font-weight:700;
+          ">+</button>
+        </div>
+        <div style="
+          background: var(--t-bg, rgba(20,20,30,.9));
+          border: 2px solid var(--t-border, #fff);
+          border-radius: var(--t-radius, 8px);
+          padding: 10px 18px;
+          color: var(--t-text, #fff);
+          font-family: var(--t-font, 'Inter', sans-serif);
+          display: flex; align-items: center; gap: 10px;
+          min-width: 180px;
+          backdrop-filter: blur(8px);
+        ">
+          <div style="
+            width:28px; height:28px; border-radius:50%;
+            background:linear-gradient(135deg, #00ddff, #0066ff);
+            display:flex; align-items:center; justify-content:center;
+            font-size:14px;
+          ">💎</div>
+          <div style="flex:1; font-weight:700; font-size:16px;">${p.gems.toLocaleString()}</div>
+          <button style="
+            background: var(--t-accent, #ff6ec7);
+            border: none; width:24px; height:24px; border-radius:6px;
+            color:#fff; cursor:pointer; font-weight:700;
+          ">+</button>
+        </div>
+      </div>
+    </div>
+  `;
+};
+
+/* ─── SKILL BAR RENDERER ─── */
+SECTION_RENDERERS.skills = function(p, theme) {
+  const keys = ['M1', 'E', 'Q', 'R'];
+  const icons = ['⚔️', '🔥', '⚡', '✨'];
+  
+  return `
+    <div style="
+      display: flex; gap: 10px; padding: 16px;
+      background: var(--t-bg, rgba(20,20,30,.9));
+      border: 2px solid var(--t-border, #fff);
+      border-radius: var(--t-radius, 8px);
+      backdrop-filter: blur(8px);
+    ">
+      ${Array.from({length: p.slots}).map((_, i) => `
+        <div style="
+          width: 70px; height: 70px;
+          background: rgba(0,0,0,.6);
+          border: 2px solid var(--t-border, #fff);
+          border-radius: var(--t-radius, 8px);
+          display: flex; flex-direction: column;
+          align-items: center; justify-content: center;
+          color: var(--t-text, #fff);
+          font-family: var(--t-font, 'Inter', sans-serif);
+          position: relative;
+          cursor: pointer;
+          transition: all .15s;
+        ">
+          <div style="
+            position: absolute; top: 4px; right: 4px;
+            font-size: 9px; font-weight: 700;
+            background: var(--t-accent, #ff6ec7);
+            color: #fff; padding: 1px 5px; border-radius: 3px;
+          ">${keys[i]}</div>
+          <div style="font-size: 28px;">${icons[i]}</div>
+          ${i === 2 ? '<div style="position:absolute;inset:0;background:rgba(0,0,0,.7);border-radius:inherit;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;">3s</div>' : ''}
+        </div>
+      `).join('')}
+    </div>
+  `;
+};
+
+/* ─── SHOP RENDERER ─── */
+SECTION_RENDERERS.shop = function(p, theme) {
+  const items = [
+    { name: 'Iron Sword',  price: 250, rarity: 'common',    icon: '⚔️' },
+    { name: 'Magic Wand',  price: 480, rarity: 'rare',      icon: '🪄' },
+    { name: 'Dragon Bow',  price: 1200, rarity: 'epic',     icon: '🏹' },
+    { name: 'Hero Shield', price: 350, rarity: 'common',    icon: '🛡️' },
+    { name: 'Phoenix Egg', price: 2500, rarity: 'legendary',icon: '🥚' },
+    { name: 'Mystic Orb',  price: 800, rarity: 'rare',      icon: '🔮' }
+  ];
+  const rarityColors = {
+    common: '#9e9e9e', rare: '#4488ff',
+    epic: '#aa44ff', legendary: '#ffaa00'
+  };
+  
+  return `
+    <div style="
+      background: var(--t-bg, rgba(20,20,30,.9));
+      border: 2px solid var(--t-border, #fff);
+      border-radius: var(--t-radius, 8px);
+      padding: 20px;
+      color: var(--t-text, #fff);
+      font-family: var(--t-font, 'Inter', sans-serif);
+      width: 520px; max-width: 95vw;
+      backdrop-filter: blur(8px);
+    ">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; padding-bottom:12px; border-bottom: 2px solid var(--t-border, #fff);">
+        <h2 style="font-size: 20px; font-weight: 700; margin: 0;">🛒 ${p.title}</h2>
+        <div style="display:flex; align-items:center; gap:6px; background:rgba(0,0,0,.4); padding:6px 12px; border-radius: var(--t-radius, 8px); font-weight:700;">
+          🪙 12,500
+        </div>
+      </div>
+      
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+        ${items.slice(0, p.itemCount).map(item => `
+          <div style="
+            background: rgba(0,0,0,.4);
+            border: 2px solid ${rarityColors[item.rarity]};
+            border-radius: var(--t-radius, 8px);
+            padding: 12px 10px;
+            text-align: center;
+            transition: all .15s;
+            cursor: pointer;
+          ">
+            <div style="font-size: 32px; margin-bottom: 6px;">${item.icon}</div>
+            <div style="font-size: 12px; font-weight: 700; margin-bottom: 4px;">${item.name}</div>
+            <div style="font-size: 9px; color: ${rarityColors[item.rarity]}; text-transform: uppercase; font-weight: 700; margin-bottom: 6px;">${item.rarity}</div>
+            <button style="
+              width: 100%; padding: 6px;
+              background: var(--t-accent, #ff6ec7);
+              border: none; border-radius: 4px;
+              color: #fff; font-weight: 700; font-size: 11px;
+              cursor: pointer; font-family: inherit;
+            ">${item.price} 🪙</button>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+};
+
+/* ─── QUEST RENDERER ─── */
+SECTION_RENDERERS.quest = function(p, theme) {
+  const quests = [
+    { name: 'Join 3 Matches', progress: 1, total: 3, reward: '100 💎', icon: '⚔️' },
+    { name: 'Kill 10 Players', progress: 6, total: 10, reward: '200 🪙', icon: '💀' },
+    { name: 'Reach Level 30', progress: 24, total: 30, reward: '150 💎', icon: '⭐' },
+    { name: 'Daily Login', progress: 1, total: 1, reward: '100 🪙', icon: '👤', done: true }
+  ];
+  
+  return `
+    <div style="
+      background: var(--t-bg, rgba(20,20,30,.9));
+      border: 2px solid var(--t-border, #fff);
+      border-radius: var(--t-radius, 8px);
+      padding: 18px;
+      color: var(--t-text, #fff);
+      font-family: var(--t-font, 'Inter', sans-serif);
+      width: 340px; max-width: 95vw;
+      backdrop-filter: blur(8px);
+    ">
+      <h2 style="font-size: 18px; font-weight: 700; margin: 0 0 14px 0; display:flex; align-items:center; gap:8px;">
+        📜 Quests
+      </h2>
+      
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        ${quests.slice(0, p.questCount).map(q => `
+          <div style="
+            background: rgba(0,0,0,.4);
+            border: 1px solid var(--t-border, #fff);
+            border-radius: 6px;
+            padding: 10px 12px;
+            display: flex; align-items: center; gap: 10px;
+            ${q.done ? 'opacity: .6;' : ''}
+          ">
+            <div style="
+              width: 34px; height: 34px;
+              background: var(--t-accent, #ff6ec7);
+              border-radius: 6px;
+              display: flex; align-items: center; justify-content: center;
+              font-size: 18px;
+            ">${q.icon}</div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-size: 12px; font-weight: 700; margin-bottom: 4px;">${q.name}</div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <div style="flex:1; height: 6px; background: rgba(0,0,0,.5); border-radius: 3px; overflow:hidden;">
+                  <div style="height:100%; width:${(q.progress/q.total*100)}%; background: ${q.done ? '#10b981' : 'var(--t-accent, #ff6ec7)'}; transition:.3s;"></div>
+                </div>
+                <span style="font-size:10px; opacity:.7;">${q.progress}/${q.total}</span>
+              </div>
+            </div>
+            <div style="font-size: 10px; font-weight: 700; color: var(--t-accent, #ff6ec7); white-space: nowrap;">${q.reward}</div>
+          </div>
+        `).join('')}
+      </div>
+      
+      <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--t-border, #fff); text-align:center; font-size:10px; opacity:.7;">
+        🕐 Refreshes in: 12h 45m
+      </div>
+    </div>
+  `;
+};
+
+/* ─── SUMMON / GACHA RENDERER ─── */
+SECTION_RENDERERS.summon = function(p, theme) {
+  return `
+    <div style="
+      background: var(--t-bg, rgba(20,20,30,.9));
+      border: 2px solid var(--t-border, #fff);
+      border-radius: var(--t-radius, 8px);
+      padding: 20px;
+      color: var(--t-text, #fff);
+      font-family: var(--t-font, 'Inter', sans-serif);
+      width: 480px; max-width: 95vw;
+      backdrop-filter: blur(8px);
+    ">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
+        <div>
+          <h2 style="font-size: 22px; font-weight: 800; margin: 0;">SUMMON</h2>
+          <div style="font-size: 10px; opacity:.7; margin-top: 2px;">Banner Resets in: 15h 12m 37s</div>
+        </div>
+        <div style="
+          padding: 4px 10px; background: var(--t-accent, #ff6ec7);
+          color: #fff; font-size: 10px; font-weight: 700;
+          border-radius: 4px;
+        ">▶ SPECIAL BANNER</div>
+      </div>
+      
+      <!-- Character preview -->
+      <div style="
+        background: linear-gradient(135deg, rgba(120, 80, 200, .4), rgba(200, 80, 200, .4));
+        border-radius: 10px;
+        padding: 30px 20px;
+        text-align: center;
+        margin-bottom: 14px;
+        position: relative;
+      ">
+        <div style="font-size: 70px; margin-bottom: 10px;">🧚‍♀️</div>
+        <div style="font-size: 18px; font-weight: 800; letter-spacing: 1px;">${p.bannerName}</div>
+        <div style="
+          display:inline-block; margin-top:8px;
+          padding: 3px 14px;
+          background: linear-gradient(90deg, #ff0080, #7928ca, #ff0080);
+          background-size: 200% 100%;
+          border-radius: 999px;
+          font-size: 11px; font-weight: 700;
+          color: #fff;
+        ">MYTHICAL</div>
+      </div>
+      
+      <!-- Pity bar -->
+      <div style="margin-bottom: 14px;">
+        <div style="display:flex; justify-content:space-between; font-size: 10px; margin-bottom: 4px;">
+          <span style="font-weight: 700;">MYTHIC PITY</span>
+          <span>${p.pity}/30</span>
+        </div>
+        <div style="height: 10px; background: rgba(0,0,0,.5); border-radius: 5px; overflow: hidden;">
+          <div style="height:100%; width:${(p.pity/30*100)}%; background: linear-gradient(90deg, #ff0080, #7928ca);"></div>
+        </div>
+      </div>
+      
+      <!-- Buttons -->
+      <div style="display:flex; gap: 10px;">
+        <button style="
+          flex: 1; padding: 14px;
+          background: var(--t-bg-2, rgba(40,40,60,.9));
+          border: 2px solid var(--t-border, #fff);
+          border-radius: var(--t-radius, 8px);
+          color: var(--t-text, #fff);
+          font-family: inherit; font-weight: 700; font-size: 13px;
+          cursor: pointer;
+        ">
+          SUMMON X1<br><span style="font-size: 11px; opacity: .8;">💎 ${p.cost}</span>
+        </button>
+        <button style="
+          flex: 1; padding: 14px;
+          background: var(--t-accent, #ff6ec7);
+          border: 2px solid var(--t-border, #fff);
+          border-radius: var(--t-radius, 8px);
+          color: #fff;
+          font-family: inherit; font-weight: 700; font-size: 13px;
+          cursor: pointer;
+        ">
+          SUMMON X10<br><span style="font-size: 11px;">💎 ${p.cost * 10}</span>
+        </button>
+      </div>
+    </div>
+  `;
+};
+
+/* ─── INVENTORY RENDERER ─── */
+SECTION_RENDERERS.inventory = function(p, theme) {
+  const items = [
+    { icon: '⚔️', rarity: 'epic',      equipped: true },
+    { icon: '🛡️', rarity: 'rare',     equipped: true },
+    { icon: '👑', rarity: 'legendary', equipped: true },
+    { icon: '🥾', rarity: 'common'    },
+    { icon: '🧪', rarity: 'rare'      },
+    { icon: '🔮', rarity: 'epic'      },
+    { icon: '💎', rarity: 'legendary' },
+    { icon: '📜', rarity: 'common'    },
+    { icon: '🗝️', rarity: 'rare'     },
+    { icon: '🍖', rarity: 'common'    },
+    { icon: '⚗️', rarity: 'rare'      },
+    { icon: '🏹', rarity: 'epic'      }
+  ];
+  const rarityColors = {
+    common: '#9e9e9e', rare: '#4488ff',
+    epic: '#aa44ff', legendary: '#ffaa00'
+  };
+  const slotsToShow = Math.min(p.slots, 24);
+  
+  return `
+    <div style="
+      background: var(--t-bg, rgba(20,20,30,.9));
+      border: 2px solid var(--t-border, #fff);
+      border-radius: var(--t-radius, 8px);
+      padding: 18px;
+      color: var(--t-text, #fff);
+      font-family: var(--t-font, 'Inter', sans-serif);
+      width: 420px; max-width: 95vw;
+      backdrop-filter: blur(8px);
+    ">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 2px solid var(--t-border, #fff);">
+        <h2 style="font-size: 18px; font-weight: 700; margin: 0;">📦 Inventory</h2>
+        <div style="font-size: 11px; opacity: .7;">${items.length}/${p.slots}</div>
+      </div>
+      
+      <div style="display:grid; grid-template-columns: repeat(6, 1fr); gap: 6px;">
+        ${Array.from({length: slotsToShow}).map((_, i) => {
+          const item = items[i];
+          if (!item) {
+            return `<div style="
+              aspect-ratio:1; background: rgba(0,0,0,.3);
+              border: 1px dashed var(--t-border, rgba(255,255,255,.2));
+              border-radius: 6px;
+            "></div>`;
+          }
+          return `<div style="
+            aspect-ratio:1; background: rgba(0,0,0,.5);
+            border: 2px solid ${rarityColors[item.rarity]};
+            border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; cursor: pointer; position: relative;
+            transition: all .15s;
+          ">
+            ${item.icon}
+            ${item.equipped ? '<div style="position:absolute;top:2px;left:2px;width:8px;height:8px;background:#10b981;border-radius:50%;border:1px solid #fff;"></div>' : ''}
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+  `;
+};
+
+/* ─── CHAT RENDERER ─── */
+SECTION_RENDERERS.chat = function(p, theme) {
+  const messages = [
+    { user: 'DragonSlayer',  text: 'GG everyone!',           color: '#ff6b6b' },
+    { user: 'WizardKing',    text: 'Nice match guys',         color: '#4ecdc4' },
+    { user: 'NinjaShadow',   text: 'Anyone wanna duo?',       color: '#ffe66d' },
+    { user: 'PhantomRogue',  text: 'I\'m in! Join my party',  color: '#a8dadc' },
+    { user: 'EpicHero',      text: 'Let\'s go to the dungeon',color: '#f08080' }
+  ];
+  
+  return `
+    <div style="
+      background: var(--t-bg, rgba(20,20,30,.9));
+      border: 2px solid var(--t-border, #fff);
+      border-radius: var(--t-radius, 8px);
+      padding: 14px;
+      color: var(--t-text, #fff);
+      font-family: var(--t-font, 'Inter', sans-serif);
+      width: 340px; max-width: 95vw;
+      backdrop-filter: blur(8px);
+    ">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+        <h2 style="font-size: 14px; font-weight: 700; margin: 0;">💬 Chat</h2>
+        <div style="display:flex; gap: 4px;">
+          <span style="font-size: 9px; padding: 2px 8px; background: var(--t-accent, #ff6ec7); color: #fff; border-radius: 999px; font-weight: 700;">GLOBAL</span>
+          <span style="font-size: 9px; padding: 2px 8px; background: rgba(0,0,0,.3); color: var(--t-text, #fff); border-radius: 999px;">TEAM</span>
+        </div>
+      </div>
+      
+      <div style="display:flex; flex-direction:column; gap: 6px; max-height: 240px; overflow-y: auto; padding: 6px; background: rgba(0,0,0,.3); border-radius: 6px;">
+        ${messages.slice(0, p.messages).map(m => `
+          <div style="font-size: 12px; line-height: 1.4;">
+            <span style="color: ${m.color}; font-weight: 700;">${m.user}:</span>
+            <span style="opacity: .9; margin-left: 4px;">${m.text}</span>
+          </div>
+        `).join('')}
+      </div>
+      
+      <div style="display:flex; gap: 6px; margin-top: 10px;">
+        <input type="text" placeholder="Type a message..." style="
+          flex:1; padding: 8px 10px;
+          background: rgba(0,0,0,.4);
+          border: 1px solid var(--t-border, #fff);
+          border-radius: 5px;
+          color: var(--t-text, #fff);
+          font-size: 11px;
+          font-family: inherit;
+          outline: none;
+        ">
+        <button style="
+          padding: 8px 14px;
+          background: var(--t-accent, #ff6ec7);
+          border: none; border-radius: 5px;
+          color: #fff; font-weight: 700; font-size: 11px;
+          cursor: pointer;
+        ">SEND</button>
+      </div>
+    </div>
+  `;
+};
+
+/* ─── LEADERBOARD RENDERER ─── */
+SECTION_RENDERERS.leaderboard = function(p, theme) {
+  const players = [
+    { rank: 1, name: 'DragonGod',   score: 158420, badge: '👑' },
+    { rank: 2, name: 'ShadowKing',  score: 142150, badge: '🥈' },
+    { rank: 3, name: 'NinjaQueen',  score: 138900, badge: '🥉' },
+    { rank: 4, name: 'WizardMage',  score: 125780, badge: '' },
+    { rank: 5, name: 'PhantomLord', score: 118650, badge: '' }
+  ];
+  
+  return `
+    <div style="
+      background: var(--t-bg, rgba(20,20,30,.9));
+      border: 2px solid var(--t-border, #fff);
+      border-radius: var(--t-radius, 8px);
+      padding: 18px;
+      color: var(--t-text, #fff);
+      font-family: var(--t-font, 'Inter', sans-serif);
+      width: 380px; max-width: 95vw;
+      backdrop-filter: blur(8px);
+    ">
+      <div style="text-align: center; margin-bottom: 14px;">
+        <h2 style="font-size: 22px; font-weight: 800; margin: 0; letter-spacing: 1px;">🏆 LEADERBOARD</h2>
+        <div style="font-size: 10px; opacity: .7; margin-top: 4px;">SEASON 5 • TOP PLAYERS</div>
+      </div>
+      
+      <div style="display:flex; flex-direction:column; gap: 5px;">
+        ${players.slice(0, p.topCount).map((pl, i) => `
+          <div style="
+            display: flex; align-items: center; gap: 12px;
+            padding: 10px 12px;
+            background: ${i === 0 ? 'linear-gradient(90deg, rgba(255,215,0,.3), transparent)' : 'rgba(0,0,0,.3)'};
+            border: 1px solid ${i === 0 ? '#ffd700' : 'var(--t-border, #fff)'};
+            border-radius: 6px;
+          ">
+            <div style="
+              width: 28px; height: 28px;
+              background: ${i === 0 ? '#ffd700' : i === 1 ? '#c0c0c0' : i === 2 ? '#cd7f32' : 'var(--t-accent, #ff6ec7)'};
+              border-radius: 50%;
+              display: flex; align-items: center; justify-content: center;
+              font-size: 12px; font-weight: 800; color: #000;
+            ">${pl.rank}</div>
+            <div style="flex: 1; font-weight: 700; font-size: 13px;">${pl.name} ${pl.badge}</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; opacity: .9;">${pl.score.toLocaleString()}</div>
+          </div>
+        `).join('')}
+      </div>
+      
+      <div style="margin-top: 12px; padding: 8px 12px; background: var(--t-accent, #ff6ec7); border-radius: 6px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="font-size: 11px; font-weight: 700; color: #fff;">YOUR RANK</div>
+        <div style="font-size: 14px; font-weight: 800; color: #fff;">#${p.myRank}</div>
+      </div>
+    </div>
+  `;
+};
+
+/* ─── DIALOG RENDERER ─── */
+SECTION_RENDERERS.dialog = function(p, theme) {
+  return `
+    <div style="
+      background: var(--t-bg, rgba(20,20,30,.9));
+      border: 2px solid var(--t-border, #fff);
+      border-radius: var(--t-radius, 8px);
+      padding: 0;
+      color: var(--t-text, #fff);
+      font-family: var(--t-font, 'Inter', sans-serif);
+      width: 500px; max-width: 95vw;
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+    ">
+      <!-- Speaker tag -->
+      <div style="
+        background: var(--t-accent, #ff6ec7);
+        padding: 8px 18px;
+        font-size: 14px; font-weight: 800;
+        color: #fff;
+        font-style: italic;
+        display: inline-block;
+        position: relative;
+        margin: 14px 0 0 14px;
+        border-radius: var(--t-radius, 8px);
+      ">${p.speaker}</div>
+      
+      <!-- Dialog text -->
+      <div style="padding: 14px 22px 18px;">
+        <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+          ${p.text}
+        </p>
+      </div>
+      
+      <!-- Continue indicator -->
+      <div style="
+        display:flex; justify-content: flex-end;
+        padding: 0 18px 14px;
+      ">
+        <div style="
+          font-size: 16px; color: var(--t-accent, #ff6ec7);
+          animation: bounce 1s infinite;
+        ">▼</div>
+      </div>
+    </div>
+  `;
+};
+
+/* ═══════════════════════════════════════════
+   PROPS PANEL (right sidebar)
+   Geçici basit hali - Mesaj 5'te tamamen yenilenecek
+   ═══════════════════════════════════════════ */
+function renderProps() {
+  const body = document.getElementById('props-body');
+  const badge = document.getElementById('props-badge');
+  
+  if (!STATE.currentSection) {
+    body.innerHTML = `<p style="color:var(--app-muted);font-size:12px;text-align:center;padding:40px 0;">
+      <i class="fa-regular fa-circle-info" style="display:block;font-size:24px;margin-bottom:10px;opacity:.4;"></i>
+      Select a UI section to see its properties and code
+    </p>`;
+    badge.textContent = 'none';
+    return;
+  }
+  
+  const sec = SECTIONS.find(s => s.id === STATE.currentSection);
+  badge.textContent = sec.name;
+  
+  let html = '';
+  
+  // Property sliders & inputs (simple version - Mesaj 5'te güzelleşecek)
+  Object.keys(STATE.props).forEach(key => {
+    const val = STATE.props[key];
+    if (typeof val === 'number') {
+      const max = key.includes('hp') || key.includes('mp') || key.includes('xp') || key.includes('volume') ? 100 : 
+                  key.includes('Count') || key.includes('total') || key.includes('messages') ? 20 :
+                  key === 'level' || key === 'tier' || key === 'newLevel' ? 100 :
+                  key === 'slots' ? 30 :
+                  key.includes('rank') || key.includes('Rank') ? 1000 :
+                  val * 10;
+      html += `
+        <div class="prop-row">
+          <label>${key}</label>
+          <input type="range" min="0" max="${max}" value="${val}" 
+                 oninput="updateProp('${key}', this.value); document.getElementById('val-${key}').textContent = this.value;">
+          <span class="val" id="val-${key}">${val}</span>
+        </div>`;
+    } else {
+      html += `
+        <div style="margin-bottom: 10px;">
+          <label style="font-size:11px;color:var(--app-muted);font-weight:500;display:block;margin-bottom:4px;">${key}</label>
+          <input type="text" class="prop-input" value="${val}" oninput="updateProp('${key}', this.value)">
+        </div>`;
+    }
+  });
+  
+  // Export placeholder (Mesaj 5'te dolacak)
+  html += `<div class="prop-group" style="margin-top: 20px;">
+    <div class="prop-label">Export Code</div>
+    <p style="color:var(--app-muted);font-size:11px;text-align:center;padding:20px 0;">
+      <i class="fa-solid fa-code" style="display:block;font-size:20px;margin-bottom:8px;opacity:.4;"></i>
+      Code export will be available after Part 5 is added
+    </p>
+  </div>`;
+  
+  body.innerHTML = html;
+}
+
+function updateProp(key, value) {
+  // Convert to number if numeric
+  const numVal = Number(value);
+  STATE.props[key] = isNaN(numVal) ? value : numVal;
+  renderStage();
+}
+
+/* ═══════════════════════════════════════════
+   SEARCH
+   ═══════════════════════════════════════════ */
+document.getElementById('section-search-input').addEventListener('input', (e) => {
+  STATE.searchQuery = e.target.value;
+  renderSectionList();
+});
+
+/* ═══════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════ */
+renderSectionList();
+renderThemePills();
+
+/* ═══ PART 2 END ═══ */
 </script>
 
 </body>
