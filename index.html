@@ -3,1654 +3,606 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PolishUI — Complete UI Template Library</title>
-<meta name="description" content="Full UI section library for Roblox/Figma/Web designers. Shop, Inventory, HUD, Quest, Summon and more — all themed.">
-
+<title>PolishUI — UI Style Reference</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Bebas+Neue&family=Russo+One&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════
-   POLISHUI 2.0 — Design System
-   ═══════════════════════════════════════════ */
-
-:root[data-theme="light"] {
-  --app-bg: #fafafa; --app-bg-2: #ffffff; --app-bg-3: #f3f4f6; --app-hover: #f9fafb;
-  --app-text: #111827; --app-text-2: #374151; --app-muted: #6b7280; --app-dim: #9ca3af;
-  --app-border: #e5e7eb; --app-border-strong: #d1d5db;
-  --app-accent: #3b82f6; --app-accent-2: #2563eb; --app-glow: rgba(59,130,246,.15);
-  --app-success: #10b981; --app-danger: #ef4444; --app-warn: #f59e0b;
-  --app-shadow-sm: 0 1px 2px rgba(0,0,0,.05);
-  --app-shadow: 0 4px 12px rgba(0,0,0,.08);
-  --app-shadow-lg: 0 12px 30px rgba(0,0,0,.12);
-  --stage-bg: #1a1a1f;
-  --stage-grid: rgba(255,255,255,.04);
-}
-
-:root[data-theme="dark"] {
-  --app-bg: #0a0a0b; --app-bg-2: #111114; --app-bg-3: #18181b; --app-hover: #1c1c20;
-  --app-text: #f4f4f5; --app-text-2: #d4d4d8; --app-muted: #a1a1aa; --app-dim: #71717a;
-  --app-border: rgba(255,255,255,.08); --app-border-strong: rgba(255,255,255,.16);
-  --app-accent: #60a5fa; --app-accent-2: #3b82f6; --app-glow: rgba(96,165,250,.2);
-  --app-success: #34d399; --app-danger: #f87171; --app-warn: #fbbf24;
-  --app-shadow-sm: 0 1px 2px rgba(0,0,0,.4);
-  --app-shadow: 0 4px 12px rgba(0,0,0,.4);
-  --app-shadow-lg: 0 12px 30px rgba(0,0,0,.5);
-  --stage-bg: #050507;
-  --stage-grid: rgba(255,255,255,.03);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { background: var(--app-bg); }
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--app-bg); color: var(--app-text);
-  -webkit-font-smoothing: antialiased;
-  height: 100vh; overflow: hidden;
-  transition: background .3s, color .3s;
-}
-
-/* ═══ TOPBAR ═══ */
-.topbar {
-  height: 56px; background: var(--app-bg-2);
-  border-bottom: 1px solid var(--app-border);
-  display: flex; align-items: center; padding: 0 20px; gap: 16px;
-  z-index: 100; position: relative;
-}
-.brand {
-  display: flex; align-items: center; gap: 10px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700; font-size: 16px;
-  color: var(--app-text); text-decoration: none;
-  letter-spacing: -.3px;
-}
-.brand-logo {
-  width: 28px; height: 28px; border-radius: 8px;
-  background: linear-gradient(135deg, var(--app-accent), #8b5cf6);
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 13px;
-  box-shadow: 0 4px 12px var(--app-glow);
-}
-.brand .pro { color: var(--app-accent); }
-.tb-divider { width: 1px; height: 24px; background: var(--app-border); }
-.tb-info { font-size: 12px; color: var(--app-muted); font-weight: 500; display: flex; align-items: center; gap: 6px; }
-.tb-actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
-
-.icon-btn {
-  width: 36px; height: 36px; border-radius: 8px;
-  border: 1px solid var(--app-border); background: var(--app-bg-2);
-  color: var(--app-muted); cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; transition: all .15s;
-}
-.icon-btn:hover { background: var(--app-hover); color: var(--app-text); border-color: var(--app-border-strong); }
-
-.btn-ghost {
-  padding: 8px 14px; border-radius: 8px;
-  background: transparent; color: var(--app-text-2);
-  border: 1px solid var(--app-border);
-  font-size: 13px; font-weight: 500;
-  cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
-  transition: all .15s;
-}
-.btn-ghost:hover { background: var(--app-hover); border-color: var(--app-border-strong); }
-
-/* ═══ WORKSPACE ═══ */
-.workspace {
-  display: grid;
-  grid-template-columns: 280px 1fr 320px;
-  height: calc(100vh - 56px);
-}
-
-/* ═══ SIDEBAR (LEFT) - UI SECTIONS ═══ */
-.sidebar-left {
-  background: var(--app-bg-2); border-right: 1px solid var(--app-border);
-  overflow-y: auto; scrollbar-width: thin;
-}
-.sidebar-left::-webkit-scrollbar { width: 6px; }
-.sidebar-left::-webkit-scrollbar-thumb { background: var(--app-border-strong); border-radius: 3px; }
-
-.section-search {
-  padding: 12px 14px 6px; position: sticky; top: 0;
-  background: var(--app-bg-2); z-index: 5;
-  border-bottom: 1px solid var(--app-border);
-}
-.section-search-input {
-  width: 100%; padding: 9px 12px 9px 32px;
-  border: 1px solid var(--app-border); border-radius: 8px;
-  background: var(--app-bg-3);
-  font-size: 12px; color: var(--app-text);
-  outline: none; transition: all .15s;
-}
-.section-search-input:focus { border-color: var(--app-accent); background: var(--app-bg-2); }
-.section-search { position: relative; }
-.section-search i.search-icon {
-  position: absolute; left: 24px; top: 50%;
-  transform: translateY(-50%); color: var(--app-dim);
-  font-size: 11px; pointer-events: none;
-}
-
-.sb-header {
-  padding: 14px 18px 8px; display: flex; justify-content: space-between; align-items: center;
-}
-.sb-header h3 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 1.5px;
-  color: var(--app-muted);
-}
-
-.section-list { padding: 4px 8px 20px; display: flex; flex-direction: column; gap: 2px; }
-
-.section-group {
-  font-size: 9px; font-weight: 700; color: var(--app-dim);
-  text-transform: uppercase; letter-spacing: 1.2px;
-  padding: 12px 10px 6px;
-  display: flex; align-items: center; gap: 8px;
-}
-.section-group::after {
-  content: ''; flex: 1; height: 1px; background: var(--app-border);
-}
-
-.section-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 9px 10px; border-radius: 8px;
-  cursor: pointer; transition: all .15s;
-  font-size: 13px; color: var(--app-text-2);
-  border: 1px solid transparent;
-}
-.section-item:hover { background: var(--app-hover); color: var(--app-text); }
-.section-item.active {
-  background: var(--app-accent); color: #fff;
-  box-shadow: 0 2px 8px var(--app-glow);
-}
-.section-item .icon {
-  width: 24px; height: 24px; border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; background: var(--app-bg-3);
-  color: var(--app-muted);
-}
-.section-item.active .icon { background: rgba(255,255,255,.2); color: #fff; }
-.section-item .label { flex: 1; font-weight: 500; }
-
-/* ═══ STAGE (MIDDLE) ═══ */
-.stage-wrap {
-  display: flex; flex-direction: column;
-  overflow: hidden; background: var(--stage-bg);
-}
-
-.stage-toolbar {
-  padding: 10px 16px; background: var(--app-bg-2);
-  border-bottom: 1px solid var(--app-border);
-  display: flex; align-items: center; gap: 10px;
-  flex-wrap: wrap; flex-shrink: 0;
-}
-
-.theme-pills {
-  display: flex; gap: 3px; background: var(--app-bg-3);
-  padding: 3px; border-radius: 8px; border: 1px solid var(--app-border);
-  overflow-x: auto; max-width: 100%;
-}
-.theme-pill {
-  padding: 6px 12px; border-radius: 5px;
-  border: none; background: transparent;
-  color: var(--app-muted);
-  font-size: 11px; font-weight: 600;
-  cursor: pointer; transition: all .15s;
-  display: flex; align-items: center; gap: 5px;
-  white-space: nowrap;
-}
-.theme-pill:hover { color: var(--app-text); }
-.theme-pill.active {
-  background: var(--app-bg-2); color: var(--app-text);
-  box-shadow: var(--app-shadow-sm);
-}
-
-.stage-tool-btn {
-  padding: 6px 12px; border-radius: 7px;
-  border: 1px solid var(--app-border); background: var(--app-bg-2);
-  color: var(--app-text-2);
-  font-size: 11px; font-weight: 600;
-  cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
-  transition: all .15s;
-}
-.stage-tool-btn:hover { background: var(--app-accent); color: #fff; border-color: var(--app-accent); transform: translateY(-1px); }
-
-/* STAGE CANVAS */
-.stage-canvas {
-  flex: 1; overflow: auto; position: relative;
-  background: var(--stage-bg);
-  background-image:
-    linear-gradient(var(--stage-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--stage-grid) 1px, transparent 1px);
-  background-size: 24px 24px;
-  display: flex; align-items: center; justify-content: center;
-  padding: 30px;
-}
-
-/* Stage backgrounds */
-.stage-canvas.bg-game-1 { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); background-image: none; }
-.stage-canvas.bg-game-2 { background: linear-gradient(180deg, #0f0c29 0%, #302b63 50%, #24243e 100%); background-image: none; }
-.stage-canvas.bg-anime { background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); background-image: none; }
-.stage-canvas.bg-night { background: radial-gradient(ellipse at top, #0a0a0b 0%, #000 100%); background-image: none; }
-.stage-canvas.bg-grid { background: var(--stage-bg); }
-
-#stage-content {
-  position: relative; max-width: 100%; max-height: 100%;
-  transition: transform .25s ease;
-}
-
-.stage-empty {
-  color: rgba(255,255,255,.4);
-  font-size: 14px; text-align: center; padding: 60px;
-}
-.stage-empty i {
-  font-size: 50px; display: block; margin-bottom: 16px;
-  opacity: .3;
-}
-.stage-empty h2 {
-  font-size: 20px; margin-bottom: 8px; color: rgba(255,255,255,.6);
-  font-family: 'Space Grotesk', sans-serif;
-}
-
-/* ═══ SIDEBAR (RIGHT) - PROPS + EXPORT ═══ */
-.sidebar-right {
-  background: var(--app-bg-2); border-left: 1px solid var(--app-border);
-  overflow-y: auto; scrollbar-width: thin;
-}
-.sidebar-right::-webkit-scrollbar { width: 6px; }
-.sidebar-right::-webkit-scrollbar-thumb { background: var(--app-border-strong); border-radius: 3px; }
-
-.props-header {
-  padding: 14px 18px 10px;
-  border-bottom: 1px solid var(--app-border);
-  position: sticky; top: 0; background: var(--app-bg-2); z-index: 5;
-}
-.props-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px; font-weight: 700;
-  display: flex; align-items: center; gap: 8px;
-}
-.props-title .badge {
-  font-size: 10px; color: var(--app-muted);
-  padding: 2px 8px; border-radius: 999px;
-  background: var(--app-bg-3); border: 1px solid var(--app-border);
-  font-weight: 500;
-}
-
-.props-body { padding: 14px 18px 20px; }
-
-.prop-group {
-  margin-bottom: 14px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--app-border);
-}
-.prop-group:last-child { border-bottom: none; }
-.prop-label {
-  font-size: 10px; font-weight: 700;
-  color: var(--app-muted);
-  text-transform: uppercase; letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-
-.prop-row {
-  display: flex; align-items: center; gap: 8px;
-  margin-bottom: 8px;
-}
-.prop-row label {
-  font-size: 11px; color: var(--app-muted);
-  font-weight: 500; min-width: 60px;
-}
-.prop-row input[type="range"] {
-  flex: 1; height: 4px; -webkit-appearance: none; appearance: none;
-  background: var(--app-bg-3); border-radius: 2px;
-  outline: none; cursor: pointer;
-}
-.prop-row input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none; width: 14px; height: 14px;
-  border-radius: 50%; background: var(--app-accent);
-  cursor: pointer; border: 2px solid var(--app-bg-2);
-}
-.prop-row .val {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  color: var(--app-text-2); min-width: 36px; text-align: right;
-}
-
-.prop-input {
-  width: 100%; padding: 8px 10px;
-  border: 1px solid var(--app-border); border-radius: 6px;
-  background: var(--app-bg-3); color: var(--app-text);
-  font-size: 12px; outline: none;
-  font-family: 'Inter', sans-serif;
-}
-.prop-input:focus { border-color: var(--app-accent); background: var(--app-bg-2); }
-
-.color-picker-row {
-  display: flex; align-items: center; gap: 8px;
-  padding: 6px; border-radius: 7px;
-  background: var(--app-bg-3); border: 1px solid var(--app-border);
-}
-.color-picker-row input[type="color"] {
-  width: 28px; height: 28px; border: none; padding: 0;
-  background: transparent; cursor: pointer; border-radius: 5px;
-}
-.color-picker-row input[type="text"] {
-  flex: 1; background: transparent; border: none;
-  font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  color: var(--app-text); outline: none; min-width: 0;
-}
-
-/* EXPORT SECTION */
-.export-tabs {
-  display: flex; gap: 3px;
-  background: var(--app-bg-3); padding: 3px;
-  border-radius: 7px; border: 1px solid var(--app-border);
-  margin-bottom: 10px;
-}
-.export-tab {
-  flex: 1; padding: 7px 8px; border-radius: 5px;
-  border: none; background: transparent;
-  color: var(--app-muted); font-size: 10px; font-weight: 600;
-  cursor: pointer; transition: all .15s;
-  display: flex; align-items: center; justify-content: center; gap: 4px;
-}
-.export-tab:hover { color: var(--app-text); }
-.export-tab.active {
-  background: var(--app-bg-2); color: var(--app-text);
-  box-shadow: var(--app-shadow-sm);
-}
-
-.code-block {
-  background: #0d1117; border: 1px solid var(--app-border);
-  border-radius: 8px; padding: 12px;
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  color: #d4d4d8; white-space: pre; overflow-x: auto;
-  line-height: 1.5; max-height: 280px; overflow-y: auto;
-}
-.code-block .k { color: #79b8ff; }
-.code-block .s { color: #9ecbff; }
-.code-block .n { color: #ffab70; }
-.code-block .c { color: #6a737d; font-style: italic; }
-.code-block .p { color: #f97583; }
-
-.copy-code-btn {
-  width: 100%; margin-top: 8px;
-  padding: 8px; border-radius: 7px;
-  background: var(--app-accent); color: #fff; border: none;
-  font-size: 11px; font-weight: 600;
-  cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  transition: all .15s;
-}
-.copy-code-btn:hover { background: var(--app-accent-2); }
-
-/* ═══ TOAST ═══ */
-.toast-stack {
-  position: fixed; bottom: 24px; right: 24px;
-  display: flex; flex-direction: column-reverse; gap: 8px;
-  z-index: 9999; pointer-events: none;
-}
-.toast {
-  background: var(--app-bg-2); border: 1px solid var(--app-border);
-  box-shadow: var(--app-shadow-lg); border-radius: 10px;
-  padding: 12px 16px; display: flex; align-items: center; gap: 10px;
-  font-size: 13px; font-weight: 500;
-  animation: slideIn .3s ease, fadeOut .3s 2s ease forwards;
-  pointer-events: all;
-}
-@keyframes slideIn {
-  from { transform: translateX(20px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-@keyframes fadeOut {
-  to { opacity: 0; transform: translateX(20px); }
-}
-
-/* ═══ MODAL ═══ */
-.modal-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,.6);
-  backdrop-filter: blur(6px); z-index: 9000;
-  display: none; align-items: center; justify-content: center;
-  padding: 20px;
-}
-.modal-overlay.open { display: flex; }
-.modal {
-  background: var(--app-bg-2); border: 1px solid var(--app-border);
-  border-radius: 14px; max-width: 520px; width: 100%;
-  padding: 24px; box-shadow: var(--app-shadow-lg);
-}
-.modal h2 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 18px; margin-bottom: 12px;
-  display: flex; align-items: center; gap: 10px;
-}
-.modal p { color: var(--app-muted); font-size: 13px; line-height: 1.6; margin-bottom: 12px; }
-.modal-step {
-  display: flex; gap: 14px; align-items: flex-start;
-  padding: 12px; background: var(--app-bg-3); border-radius: 9px;
-  margin-bottom: 8px;
-}
-.step-num {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: var(--app-accent); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 12px; flex-shrink: 0;
-}
-.step-text { font-size: 13px; color: var(--app-text); }
-.modal-close-btn {
-  margin-top: 14px; width: 100%; padding: 11px;
-  background: var(--app-accent); color: #fff; border: none;
-  border-radius: 9px; font-size: 13px; font-weight: 600;
-  cursor: pointer; transition: all .15s;
-}
-.modal-close-btn:hover { background: var(--app-accent-2); }
-
-/* ═══ RESPONSIVE ═══ */
-@media(max-width: 1100px) {
-  .workspace { grid-template-columns: 240px 1fr 280px; }
-}
-@media(max-width: 900px) {
-  body { overflow: auto; height: auto; }
-  .workspace { grid-template-columns: 1fr; height: auto; }
-  .sidebar-left, .sidebar-right {
-    border: none; border-bottom: 1px solid var(--app-border);
-    max-height: 50vh;
-  }
-  .stage-canvas { min-height: 60vh; padding: 16px; }
-}
-
-/* ═══════════════════════════════════════════
-   UI THEME STYLES (Mesaj 6'da genişletilecek)
-   ═══════════════════════════════════════════ */
-
-/* Theme: ANIME */
-.ui-theme-anime {
-  --t-bg: rgba(20, 10, 30, 0.85);
-  --t-bg-2: rgba(40, 20, 60, 0.9);
-  --t-border: #ff6ec7;
-  --t-accent: #ff6ec7;
-  --t-accent-2: #7c5cff;
-  --t-text: #fff;
-  --t-muted: rgba(255,255,255,.7);
-  --t-font: 'Noto Sans JP', 'Inter', sans-serif;
-  --t-radius: 12px;
-}
-
-/* Theme: CARTOON */
-.ui-theme-cartoon {
-  --t-bg: #ffeb3b;
-  --t-bg-2: #fff;
-  --t-border: #000;
-  --t-accent: #ff5722;
-  --t-accent-2: #2196f3;
-  --t-text: #000;
-  --t-muted: #555;
-  --t-font: 'Bebas Neue', 'Inter', sans-serif;
-  --t-radius: 14px;
-}
-
-/* Theme: PREMIUM */
-.ui-theme-premium {
-  --t-bg: rgba(15, 15, 20, 0.95);
-  --t-bg-2: rgba(25, 25, 35, 0.98);
-  --t-border: #d4af37;
-  --t-accent: #d4af37;
-  --t-accent-2: #fff;
-  --t-text: #fff;
-  --t-muted: rgba(255,255,255,.6);
-  --t-font: 'Inter', sans-serif;
-  --t-radius: 8px;
-}
-
-/* Theme: RPG */
-.ui-theme-rpg {
-  --t-bg: #3d2817;
-  --t-bg-2: #5d3e22;
-  --t-border: #c9a063;
-  --t-accent: #c9a063;
-  --t-accent-2: #8b4513;
-  --t-text: #f4e8d0;
-  --t-muted: #c9a063;
-  --t-font: 'Russo One', 'Inter', sans-serif;
-  --t-radius: 4px;
-}
-
-/* Theme: CYBER */
-.ui-theme-cyber {
-  --t-bg: rgba(0, 5, 15, 0.95);
-  --t-bg-2: rgba(0, 15, 30, 0.95);
-  --t-border: #00f0ff;
-  --t-accent: #00f0ff;
-  --t-accent-2: #ff00ea;
-  --t-text: #00f0ff;
-  --t-muted: rgba(0, 240, 255, .6);
-  --t-font: 'Space Grotesk', sans-serif;
-  --t-radius: 2px;
-}
-
-/* Theme: GAMING */
-.ui-theme-gaming {
-  --t-bg: linear-gradient(135deg, #1e3c72, #2a5298);
-  --t-bg-2: #1e3c72;
-  --t-border: #ff4655;
-  --t-accent: #ff4655;
-  --t-accent-2: #fff;
-  --t-text: #fff;
-  --t-muted: rgba(255,255,255,.7);
-  --t-font: 'Russo One', 'Inter', sans-serif;
-  --t-radius: 6px;
-}
-
-/* Theme: MINIMAL */
-.ui-theme-minimal {
-  --t-bg: #fff;
-  --t-bg-2: #f5f5f5;
-  --t-border: #e0e0e0;
-  --t-accent: #000;
-  --t-accent-2: #666;
-  --t-text: #000;
-  --t-muted: #666;
-  --t-font: 'Inter', sans-serif;
-  --t-radius: 10px;
-}
-
-/* Theme: VAPORWAVE */
-.ui-theme-vaporwave {
-  --t-bg: linear-gradient(135deg, #ff006e, #8338ec);
-  --t-bg-2: rgba(255, 0, 110, 0.8);
-  --t-border: #00f5d4;
-  --t-accent: #00f5d4;
-  --t-accent-2: #ffbe0b;
-  --t-text: #fff;
-  --t-muted: rgba(255,255,255,.7);
-  --t-font: 'Space Grotesk', sans-serif;
-  --t-radius: 8px;
-}
-
-/* Theme: FANTASY */
-.ui-theme-fantasy {
-  --t-bg: linear-gradient(180deg, #2c1810, #5d3e22);
-  --t-bg-2: rgba(60, 35, 20, 0.95);
-  --t-border: #b8941f;
-  --t-accent: #b8941f;
-  --t-accent-2: #4a90e2;
-  --t-text: #f4e8d0;
-  --t-muted: #d4b483;
-  --t-font: 'Russo One', 'Inter', sans-serif;
-  --t-radius: 8px;
-}
-
-/* Theme: MODERN */
-.ui-theme-modern {
-  --t-bg: rgba(255, 255, 255, 0.95);
-  --t-bg-2: rgba(245, 245, 245, 0.95);
-  --t-border: #3b82f6;
-  --t-accent: #3b82f6;
-  --t-accent-2: #8b5cf6;
-  --t-text: #111;
-  --t-muted: #666;
-  --t-font: 'Inter', sans-serif;
-  --t-radius: 12px;
-}
-
+:root[data-theme="light"]{--bg:#fafafa;--bg-2:#fff;--bg-3:#f3f4f6;--hover:#f9fafb;--text:#111827;--text-2:#374151;--muted:#6b7280;--dim:#9ca3af;--border:#e5e7eb;--border-s:#d1d5db;--accent:#3b82f6;--accent-2:#2563eb;--glow:rgba(59,130,246,.15);--success:#10b981;--danger:#ef4444;--warn:#f59e0b;--shadow:0 4px 12px rgba(0,0,0,.08);--shadow-lg:0 12px 30px rgba(0,0,0,.12);--canvas:#f3f4f6;--grid:rgba(0,0,0,.04)}
+:root[data-theme="dark"]{--bg:#0a0a0b;--bg-2:#111114;--bg-3:#18181b;--hover:#1c1c20;--text:#f4f4f5;--text-2:#d4d4d8;--muted:#a1a1aa;--dim:#71717a;--border:rgba(255,255,255,.08);--border-s:rgba(255,255,255,.16);--accent:#60a5fa;--accent-2:#3b82f6;--glow:rgba(96,165,250,.2);--success:#34d399;--danger:#f87171;--warn:#fbbf24;--shadow:0 4px 12px rgba(0,0,0,.4);--shadow-lg:0 12px 30px rgba(0,0,0,.5);--canvas:#0a0a0b;--grid:rgba(255,255,255,.04)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--bg)}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;height:100vh;overflow:hidden;transition:background .3s,color .3s}
+.topbar{height:56px;background:var(--bg-2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:16px;z-index:100}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:var(--text);text-decoration:none}
+.brand-logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;box-shadow:0 4px 12px var(--glow)}
+.brand .pro{color:var(--accent)}
+.tb-info{font-size:12px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:6px}
+.tb-divider{width:1px;height:24px;background:var(--border)}
+.tb-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.icon-btn{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--bg-2);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s}
+.icon-btn:hover{background:var(--hover);color:var(--text);border-color:var(--border-s)}
+.btn-ghost{padding:8px 14px;border-radius:8px;background:transparent;color:var(--text-2);border:1px solid var(--border);font-size:13px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+.btn-ghost:hover{background:var(--hover);border-color:var(--border-s)}
+.workspace{display:grid;grid-template-columns:300px 1fr;height:calc(100vh - 56px)}
+.sidebar{background:var(--bg-2);border-right:1px solid var(--border);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border-s) transparent}
+.sidebar::-webkit-scrollbar{width:6px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border-s);border-radius:3px}
+.search-wrap{padding:12px 14px 8px;position:sticky;top:0;background:var(--bg-2);z-index:5;border-bottom:1px solid var(--border)}
+.search-input{width:100%;padding:9px 12px 9px 32px;border:1px solid var(--border);border-radius:8px;background:var(--bg-3);font-size:12px;color:var(--text);outline:none;transition:all .15s}
+.search-input:focus{border-color:var(--accent);background:var(--bg-2)}
+.search-wrap{position:relative}
+.search-wrap i.search-icon{position:absolute;left:24px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:11px;pointer-events:none}
+.sb-header{padding:14px 18px 8px;display:flex;align-items:center;justify-content:space-between}
+.sb-header h3{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)}
+.sb-header .count{font-size:10px;color:var(--dim);font-family:'JetBrains Mono',monospace}
+.category-tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;padding:4px 14px 14px}
+.cat-tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px;border:1px solid var(--border);background:var(--bg-2);border-radius:8px;cursor:pointer;transition:all .15s;color:var(--text-2)}
+.cat-tab:hover{background:var(--hover);border-color:var(--border-s)}
+.cat-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 4px 12px var(--glow)}
+.cat-tab .cat-emoji{font-size:16px}
+.cat-tab .cat-name{font-size:10px;font-weight:600;font-family:'Space Grotesk',sans-serif}
+.cat-tab.special{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#fff;border-color:transparent}
+.cat-tab.special.active{background:linear-gradient(135deg,#fbbf24,#f59e0b);box-shadow:0 4px 12px rgba(251,191,36,.4)}
+.materials-section{padding:4px 14px 20px}
+.materials-section h4{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:10px;padding-left:4px;display:flex;justify-content:space-between;align-items:center}
+.material-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.material-card{cursor:pointer;border-radius:9px;overflow:hidden;border:1px solid var(--border);background:var(--bg-2);transition:all .2s cubic-bezier(.16,1,.3,1);position:relative}
+.material-card:hover{transform:translateY(-2px);border-color:var(--border-s);box-shadow:var(--shadow)}
+.material-card.selected{border-color:var(--accent);box-shadow:0 0 0 2px var(--glow),var(--shadow)}
+.material-preview{height:56px;width:100%}
+.material-name{padding:5px 7px;font-size:10px;font-weight:600;color:var(--text-2);text-align:center;font-family:'Space Grotesk',sans-serif;background:var(--bg-2);border-top:1px solid var(--border)}
+.material-card.selected .material-name{color:var(--accent)}
+.fav-btn{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.5);border:none;color:#fff;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;transition:all .15s;backdrop-filter:blur(8px)}
+.material-card:hover .fav-btn,.fav-btn.fav-on{opacity:1}
+.fav-btn.fav-on{background:#fbbf24}
+.empty-state{padding:30px 16px;text-align:center;color:var(--dim);font-size:11px}
+.empty-state i{font-size:24px;display:block;margin-bottom:8px;opacity:.5}
+.main{display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+.canvas-wrap{background:var(--canvas);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;padding:30px;overflow:auto;position:relative;transition:background .3s}
+.canvas-wrap.bg-white{background:#fff;background-image:none}
+.canvas-wrap.bg-black{background:#000;background-image:none}
+.canvas-wrap.bg-checker{background:#fff;background-image:linear-gradient(45deg,#ddd 25%,transparent 25%),linear-gradient(-45deg,#ddd 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#ddd 75%),linear-gradient(-45deg,transparent 75%,#ddd 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0}
+#preview-element{display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.2);transition:all .3s ease;position:relative}
+.preview-empty{color:var(--dim);font-size:14px;text-align:center;padding:60px;background:none!important;box-shadow:none!important;border:none!important}
+.preview-empty i{font-size:40px;display:block;margin-bottom:12px;opacity:.4}
+.controls-bar{padding:10px 16px;background:var(--bg-2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.element-tabs{display:flex;gap:3px;background:var(--bg-3);padding:3px;border-radius:7px;border:1px solid var(--border)}
+.elem-tab{padding:5px 9px;border-radius:5px;border:none;background:transparent;color:var(--muted);font-size:11px;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
+.elem-tab:hover{color:var(--text)}
+.elem-tab.active{background:var(--bg-2);color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.bg-tabs{display:flex;gap:3px;background:var(--bg-3);padding:3px;border-radius:7px;border:1px solid var(--border)}
+.bg-tab{width:26px;height:26px;border-radius:4px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted);background:transparent;transition:all .15s}
+.bg-tab:hover{color:var(--text)}
+.bg-tab.active{background:var(--bg-2);color:var(--accent);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.color-pick-wrap{display:flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--border);background:var(--bg-3);border-radius:7px}
+.color-pick-wrap label{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.color-pick-wrap input[type="color"]{width:24px;height:24px;border:none;padding:0;background:transparent;cursor:pointer;border-radius:5px}
+.color-pick-wrap input[type="color"]::-webkit-color-swatch-wrapper{padding:0}
+.color-pick-wrap input[type="color"]::-webkit-color-swatch{border:1px solid var(--border-s);border-radius:5px}
+.color-pick-wrap .reset{background:none;border:none;color:var(--dim);cursor:pointer;font-size:10px;padding:2px 4px}
+.color-pick-wrap .reset:hover{color:var(--danger)}
+.hue-control{display:flex;align-items:center;gap:8px;flex:1;min-width:160px;max-width:280px;padding:0 10px;border:1px solid var(--border);background:var(--bg-3);border-radius:7px;height:32px}
+.hue-control label{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.hue-slider{flex:1;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;outline:none;cursor:pointer;background:linear-gradient(to right,hsl(0,80%,60%),hsl(60,80%,60%),hsl(120,80%,60%),hsl(180,80%,60%),hsl(240,80%,60%),hsl(300,80%,60%),hsl(360,80%,60%))}
+.hue-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;cursor:pointer;border:2px solid var(--bg-2);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.hue-val{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-2);min-width:32px;text-align:right;font-weight:600}
+.action-btn{padding:6px 12px;border-radius:7px;border:1px solid var(--border);background:var(--bg-2);color:var(--text-2);font-size:11px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+.action-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:translateY(-1px)}
+.settings-panel{background:var(--bg-2);border-top:1px solid var(--border);max-height:42vh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border-s) transparent}
+.settings-panel::-webkit-scrollbar{width:6px}
+.settings-panel::-webkit-scrollbar-thumb{background:var(--border-s);border-radius:3px}
+.settings-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px;position:sticky;top:0;background:var(--bg-2);border-bottom:1px solid var(--border);z-index:10;flex-wrap:wrap;gap:10px}
+.settings-title{display:flex;align-items:center;gap:10px}
+.settings-title h3{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700}
+.settings-title .style-name{font-size:11px;color:var(--muted);font-weight:500;padding:3px 10px;border-radius:999px;background:var(--bg-3);border:1px solid var(--border)}
+.export-tabs{display:flex;gap:3px;background:var(--bg-3);padding:3px;border-radius:7px;border:1px solid var(--border)}
+.export-tab{padding:6px 11px;border-radius:5px;border:none;background:transparent;color:var(--muted);font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
+.export-tab:hover{color:var(--text)}
+.export-tab.active{background:var(--bg-2);color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.settings-body{padding:14px 18px 18px}
+.settings-block{margin-bottom:12px;background:var(--bg-3);border:1px solid var(--border);border-radius:9px;overflow:hidden}
+.settings-block-header{display:flex;align-items:center;gap:8px;padding:9px 13px;background:var(--bg-2);border-bottom:1px solid var(--border);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-2)}
+.settings-block-header .block-icon{width:18px;height:18px;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:8px}
+.settings-block-body{padding:9px 13px;display:flex;flex-direction:column;gap:4px}
+.settings-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:5px 0}
+.settings-row+.settings-row{border-top:1px solid var(--border)}
+.settings-row .key{font-size:11px;color:var(--muted);font-weight:500;min-width:80px}
+.settings-row .value{display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text);font-weight:500;flex:1;justify-content:flex-end}
+.color-chip{width:16px;height:16px;border-radius:4px;border:1px solid var(--border-s);flex-shrink:0}
+.copy-btn{width:22px;height:22px;border-radius:5px;border:1px solid var(--border);background:var(--bg-2);color:var(--muted);cursor:pointer;font-size:9px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.copy-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.copy-btn.copied{background:var(--success);color:#fff;border-color:var(--success)}
+.code-block{background:#0d1117;border:1px solid var(--border);border-radius:9px;padding:14px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#d4d4d8;white-space:pre;overflow-x:auto;line-height:1.6;max-height:300px;overflow-y:auto}
+.code-block .k{color:#79b8ff}.code-block .s{color:#9ecbff}.code-block .n{color:#ffab70}.code-block .c{color:#6a737d;font-style:italic}.code-block .p{color:#f97583}
+.code-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.code-btn{padding:8px 14px;border-radius:7px;background:var(--accent);color:#fff;border:none;font-size:12px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
+.code-btn:hover{background:var(--accent-2);transform:translateY(-1px)}
+.icon-fill{background:linear-gradient(135deg,#3b82f6,#8b5cf6)}.icon-stroke{background:linear-gradient(135deg,#10b981,#06b6d4)}.icon-effect{background:linear-gradient(135deg,#1f2937,#000)}.icon-corner{background:linear-gradient(135deg,#ec4899,#a855f7)}
+.toast-stack{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column-reverse;gap:8px;z-index:9999;pointer-events:none}
+.toast{background:var(--bg-2);border:1px solid var(--border);box-shadow:var(--shadow-lg);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;animation:slideIn .3s ease,fadeOut .3s 2s ease forwards;pointer-events:all}
+@keyframes slideIn{from{transform:translateX(20px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes fadeOut{to{opacity:0;transform:translateX(20px)}}
+@media(max-width:900px){body{overflow:auto;height:auto}.workspace{grid-template-columns:1fr;height:auto}.sidebar{border-right:none;border-bottom:1px solid var(--border);max-height:none}.category-tabs{grid-template-columns:repeat(4,1fr)}.material-grid{grid-template-columns:repeat(3,1fr)}.controls-bar{flex-direction:column;align-items:stretch}.hue-control{width:100%;max-width:none}.canvas-wrap{min-height:280px;padding:20px}.settings-panel{max-height:none}}
+@media(max-width:500px){.material-grid{grid-template-columns:repeat(2,1fr)}.element-tabs{overflow-x:auto}.elem-tab{white-space:nowrap}.category-tabs{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
 
-<!-- ═══ TOPBAR ═══ -->
 <header class="topbar">
-  <a href="#" class="brand">
-    <div class="brand-logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-    <span>Polish<span class="pro">UI</span></span>
-  </a>
+  <a href="#" class="brand"><div class="brand-logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div><span>Polish<span class="pro">UI</span></span></a>
   <div class="tb-divider"></div>
-  <span class="tb-info"><i class="fa-solid fa-layer-group"></i> UI Template Library</span>
-
+  <span class="tb-info"><i class="fa-solid fa-bookmark"></i> UI Style Reference · <span id="total-count">0</span> styles</span>
   <div class="tb-actions">
-    <button class="btn-ghost" onclick="showHelp()">
-      <i class="fa-regular fa-circle-question"></i> Help
-    </button>
-    <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">
-      <i class="fa-regular fa-moon" id="themeIcon"></i>
-    </button>
+    <button class="btn-ghost" onclick="randomStyle()"><i class="fa-solid fa-dice"></i> Random</button>
+    <button class="icon-btn" onclick="toggleTheme()" title="Theme"><i class="fa-regular fa-moon" id="themeIcon"></i></button>
   </div>
 </header>
 
-<!-- ═══ WORKSPACE ═══ -->
 <div class="workspace">
-
-  <!-- LEFT: Section list -->
-  <aside class="sidebar-left">
-    <div class="section-search">
+  <aside class="sidebar">
+    <div class="search-wrap">
       <i class="fa-solid fa-magnifying-glass search-icon"></i>
-      <input type="text" class="section-search-input" id="section-search-input" placeholder="Search sections...">
+      <input type="text" class="search-input" id="search-input" placeholder="Search materials...">
     </div>
-    <div class="sb-header"><h3>UI Sections</h3></div>
-    <div class="section-list" id="section-list">
-      <!-- JS ile dolacak -->
+    <div class="sb-header"><h3>Categories</h3></div>
+    <div class="category-tabs" id="category-tabs"></div>
+    <div class="materials-section">
+      <h4><span id="materials-heading">Styles</span> <span class="count" id="mat-count"></span></h4>
+      <div class="material-grid" id="material-grid"></div>
     </div>
   </aside>
 
-  <!-- MIDDLE: Stage (preview) -->
-  <main class="stage-wrap">
-    <div class="stage-toolbar">
-      <div class="theme-pills" id="theme-pills">
-        <!-- JS ile dolacak -->
+  <main class="main">
+    <div class="controls-bar">
+      <div class="element-tabs" id="element-tabs">
+        <button class="elem-tab active" data-element="button"><i class="fa-solid fa-square"></i> Button</button>
+        <button class="elem-tab" data-element="card"><i class="fa-solid fa-id-card"></i> Card</button>
+        <button class="elem-tab" data-element="frame"><i class="fa-regular fa-square"></i> Frame</button>
+        <button class="elem-tab" data-element="panel"><i class="fa-solid fa-window-maximize"></i> Panel</button>
+        <button class="elem-tab" data-element="badge"><i class="fa-solid fa-certificate"></i> Badge</button>
+        <button class="elem-tab" data-element="container"><i class="fa-solid fa-box"></i> Container</button>
+        <button class="elem-tab" data-element="icon"><i class="fa-solid fa-circle"></i> Icon</button>
       </div>
-      
-      <div style="margin-left: auto; display: flex; gap: 6px;">
-        <button class="stage-tool-btn" onclick="changeStageBg()" title="Change background">
-          <i class="fa-solid fa-image"></i> BG
-        </button>
-        <button class="stage-tool-btn" onclick="downloadPNG()" title="Download PNG">
-          <i class="fa-solid fa-download"></i> PNG
-        </button>
+      <div class="bg-tabs">
+        <button class="bg-tab active" data-bg="grid" title="Grid"><i class="fa-solid fa-border-all"></i></button>
+        <button class="bg-tab" data-bg="white" title="White"><i class="fa-regular fa-sun"></i></button>
+        <button class="bg-tab" data-bg="black" title="Black"><i class="fa-solid fa-moon"></i></button>
+        <button class="bg-tab" data-bg="checker" title="Checker"><i class="fa-solid fa-chess-board"></i></button>
+      </div>
+      <div class="hue-control">
+        <label>Hue</label>
+        <input type="range" class="hue-slider" id="hue-slider" min="-180" max="180" value="0">
+        <span class="hue-val" id="hue-val">0°</span>
+      </div>
+      <div class="color-pick-wrap">
+        <label>Tint</label>
+        <input type="color" id="tint-color" value="#3b82f6">
+        <button class="reset" onclick="resetTint()" title="Reset"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <button class="action-btn" onclick="downloadPNG()"><i class="fa-solid fa-download"></i> PNG</button>
+    </div>
+
+    <div class="canvas-wrap" id="canvas-wrap">
+      <div id="preview-element">
+        <div class="preview-empty"><i class="fa-solid fa-hand-pointer"></i><div>Pick a style from the left to start</div></div>
       </div>
     </div>
-    
-    <div class="stage-canvas bg-grid" id="stage-canvas">
-      <div id="stage-content">
-        <div class="stage-empty">
-          <i class="fa-solid fa-hand-pointer"></i>
-          <h2>Welcome to PolishUI</h2>
-          <div>Pick a UI section from the left to get started</div>
+
+    <div class="settings-panel">
+      <div class="settings-header">
+        <div class="settings-title"><h3>Style Settings</h3><span class="style-name" id="style-name-display">No style</span></div>
+        <div class="export-tabs" id="export-tabs">
+          <button class="export-tab active" data-tab="figma"><i class="fa-brands fa-figma"></i> Figma</button>
+          <button class="export-tab" data-tab="css"><i class="fa-brands fa-css3-alt"></i> CSS</button>
+          <button class="export-tab" data-tab="lua"><i class="fa-solid fa-cube"></i> Lua</button>
         </div>
+      </div>
+      <div class="settings-body" id="settings-body">
+        <p style="color:var(--muted);font-size:13px;text-align:center;padding:40px 0;"><i class="fa-solid fa-arrow-left" style="margin-right:8px;"></i>Select a material from the sidebar</p>
       </div>
     </div>
   </main>
-
-  <!-- RIGHT: Props + Export -->
-  <aside class="sidebar-right">
-    <div class="props-header">
-      <div class="props-title">
-        <i class="fa-solid fa-sliders" style="color: var(--app-accent);"></i>
-        Properties
-        <span class="badge" id="props-badge">none</span>
-      </div>
-    </div>
-    <div class="props-body" id="props-body">
-      <p style="color: var(--app-muted); font-size: 12px; text-align: center; padding: 40px 0;">
-        <i class="fa-regular fa-circle-info" style="display: block; font-size: 24px; margin-bottom: 10px; opacity: .4;"></i>
-        Select a UI section to see its properties and code
-      </p>
-    </div>
-  </aside>
-
 </div>
 
-<!-- TOAST -->
 <div class="toast-stack" id="toast-stack"></div>
 
-<!-- HELP MODAL -->
-<div class="modal-overlay" id="help-modal" onclick="if(event.target===this)closeHelp()">
-  <div class="modal">
-    <h2><i class="fa-solid fa-rocket" style="color: var(--app-accent);"></i> Welcome to PolishUI 2.0</h2>
-    <p>The complete UI template library for game designers. Here's how it works:</p>
-    <div class="modal-step"><div class="step-num">1</div><div class="step-text"><strong>Pick a UI section</strong> from the left (Shop, Inventory, HUD, Quest, etc.)</div></div>
-    <div class="modal-step"><div class="step-num">2</div><div class="step-text"><strong>Choose a theme</strong> from top tabs (Anime, RPG, Cyber, etc.) — the whole UI updates instantly</div></div>
-    <div class="modal-step"><div class="step-num">3</div><div class="step-text"><strong>Customize properties</strong> on the right (colors, sizes, text)</div></div>
-    <div class="modal-step"><div class="step-num">4</div><div class="step-text"><strong>Copy CSS / Lua / HTML</strong> to use in your project</div></div>
-    <button class="modal-close-btn" onclick="closeHelp()">Let's start!</button>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     JAVASCRIPT (Mesaj 2-6'da dolacak)
-     ═══════════════════════════════════════════ -->
 <script>
-/* PART 1: THEME TOGGLE + BASIC HELPERS */
-
-function toggleTheme() {
-  const html = document.documentElement;
-  const current = html.getAttribute('data-theme');
-  const next = current === 'light' ? 'dark' : 'light';
-  html.setAttribute('data-theme', next);
-  localStorage.setItem('polishui-app-theme', next);
-  document.getElementById('themeIcon').className = next === 'light' ? 'fa-regular fa-moon' : 'fa-regular fa-sun';
-}
-(function() {
-  const saved = localStorage.getItem('polishui-app-theme');
-  if (saved) {
-    document.documentElement.setAttribute('data-theme', saved);
-    document.getElementById('themeIcon').className = saved === 'light' ? 'fa-regular fa-moon' : 'fa-regular fa-sun';
-  }
-})();
-
-function toast(msg, type) {
-  const stack = document.getElementById('toast-stack');
-  const t = document.createElement('div');
-  t.className = 'toast';
-  t.innerHTML = `
-    <i class="fa-solid ${type === 'success' ? 'fa-circle-check' : 'fa-info-circle'}" 
-       style="color: ${type === 'success' ? 'var(--app-success)' : 'var(--app-accent)'}"></i>
-    <span>${msg}</span>
-  `;
-  stack.appendChild(t);
-  setTimeout(() => t.remove(), 2500);
-}
-
-function showHelp() { document.getElementById('help-modal').classList.add('open'); }
-function closeHelp() {
-  document.getElementById('help-modal').classList.remove('open');
-  localStorage.setItem('polishui-help-seen', '1');
-}
-
-// Show help on first visit
-if (!localStorage.getItem('polishui-help-seen')) {
-  setTimeout(showHelp, 600);
-}
-
-// Stage BG cycle
-let bgIndex = 0;
-const STAGE_BGS = ['bg-grid', 'bg-game-1', 'bg-game-2', 'bg-anime', 'bg-night'];
-function changeStageBg() {
-  bgIndex = (bgIndex + 1) % STAGE_BGS.length;
-  const canvas = document.getElementById('stage-canvas');
-  STAGE_BGS.forEach(b => canvas.classList.remove(b));
-  canvas.classList.add(STAGE_BGS[bgIndex]);
-}
-
-// Placeholder functions (Mesaj 5'te gerçek implementation gelecek)
-function downloadPNG() { toast('PNG export will work after Mesaj 5 is added', 'info'); }
-
-// PART 2-6 buraya gelecek (UI sections, themes, props, rendering, export)
-console.log('PolishUI 2.0 — Part 1/6 loaded. Waiting for parts 2-6 to be added.');
-
 /* ═══════════════════════════════════════════
-   PART 2 START — UI SECTIONS DATABASE + RENDER
+   MATERIAL DEFINITIONS — PART 1
    ═══════════════════════════════════════════ */
-
-/* ── 20 UI SECTION DEFINITIONS ── */
-const SECTIONS = [
-  // COMBAT & PLAYER
-  { id: 'hud',         name: 'HUD',           icon: 'fa-heart-pulse',     group: 'Combat & Player' },
-  { id: 'skills',      name: 'Skill Bar',     icon: 'fa-bolt',            group: 'Combat & Player' },
-  { id: 'death',       name: 'Death Screen',  icon: 'fa-skull',           group: 'Combat & Player' },
-  { id: 'levelup',     name: 'Level Up',      icon: 'fa-arrow-up-from-bracket', group: 'Combat & Player' },
+const MATERIALS = {
+  premium: [
+    // METAL & CLASSIC
+    {id:'metal-silver',name:'Silver',fill:{type:'linear',angle:180,stops:[{h:0,s:0,l:92,pos:0},{h:0,s:0,l:72,pos:50},{h:0,s:0,l:50,pos:100}]},stroke:{h:0,s:0,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:60,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:30,x:0,y:-1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:25,x:0,y:2,blur:4,spread:0}],radius:8},
+    {id:'metal-chrome',name:'Chrome',fill:{type:'linear',angle:180,stops:[{h:210,s:30,l:95,pos:0},{h:210,s:20,l:70,pos:30},{h:210,s:25,l:85,pos:55},{h:210,s:30,l:55,pos:100}]},stroke:{h:210,s:30,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:210,s:30,l:30,a:30,x:0,y:3,blur:6,spread:0}],radius:6},
+    {id:'metal-steel',name:'Steel',fill:{type:'linear',angle:180,stops:[{h:210,s:15,l:65,pos:0},{h:210,s:20,l:45,pos:100}]},stroke:{h:210,s:25,l:25,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:210,s:20,l:80,a:50,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:40,x:0,y:-1,blur:2,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:40,x:0,y:3,blur:6,spread:0}],radius:6},
+    {id:'metal-platinum',name:'Platinum',fill:{type:'linear',angle:180,stops:[{h:210,s:15,l:90,pos:0},{h:220,s:12,l:78,pos:50},{h:220,s:10,l:65,pos:100}]},stroke:{h:220,s:10,l:50,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:70,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:220,s:20,l:40,a:25,x:0,y:3,blur:8,spread:0}],radius:8},
+    {id:'metal-iron',name:'Iron',fill:{type:'linear',angle:180,stops:[{h:210,s:10,l:50,pos:0},{h:210,s:15,l:30,pos:100}]},stroke:{h:210,s:20,l:15,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:210,s:20,l:70,a:30,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:50,x:0,y:-2,blur:4,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:50,x:0,y:3,blur:6,spread:0}],radius:4},
+    {id:'metal-titanium',name:'Titanium',fill:{type:'linear',angle:180,stops:[{h:220,s:8,l:75,pos:0},{h:220,s:10,l:55,pos:100}]},stroke:{h:220,s:15,l:35,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:220,s:10,l:90,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:220,s:15,l:25,a:35,x:0,y:3,blur:6,spread:0}],radius:6},
+    {id:'metal-aluminum',name:'Aluminum',fill:{type:'linear',angle:180,stops:[{h:0,s:0,l:88,pos:0},{h:0,s:0,l:75,pos:100}]},stroke:{h:0,s:0,l:55,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:70,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:20,x:0,y:2,blur:4,spread:0}],radius:6},
+    {id:'metal-tungsten',name:'Tungsten',fill:{type:'linear',angle:180,stops:[{h:0,s:0,l:35,pos:0},{h:0,s:0,l:18,pos:100}]},stroke:{h:0,s:0,l:8,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:60,a:40,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:60,x:0,y:4,blur:8,spread:0}],radius:4},
+    
+    // GOLD VARIANTS
+    {id:'gold-classic',name:'Gold',fill:{type:'linear',angle:180,stops:[{h:45,s:100,l:80,pos:0},{h:42,s:90,l:60,pos:50},{h:38,s:85,l:45,pos:100}]},stroke:{h:40,s:80,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:50,s:100,l:90,a:70,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:30,s:100,l:20,a:50,x:0,y:-1,blur:0,spread:0},{type:'drop-shadow',h:40,s:90,l:30,a:40,x:0,y:4,blur:8,spread:0}],radius:8},
+    {id:'gold-rose',name:'Rose Gold',fill:{type:'linear',angle:180,stops:[{h:15,s:80,l:80,pos:0},{h:10,s:70,l:65,pos:50},{h:5,s:65,l:50,pos:100}]},stroke:{h:10,s:60,l:35,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:20,s:100,l:90,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:10,s:70,l:40,a:35,x:0,y:4,blur:10,spread:0}],radius:10},
+    {id:'gold-white',name:'White Gold',fill:{type:'linear',angle:180,stops:[{h:50,s:30,l:92,pos:0},{h:48,s:25,l:78,pos:100}]},stroke:{h:48,s:30,l:55,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:50,s:50,l:98,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:48,s:30,l:50,a:30,x:0,y:3,blur:6,spread:0}],radius:8},
+    {id:'gold-yellow',name:'Yellow Gold',fill:{type:'linear',angle:180,stops:[{h:50,s:100,l:75,pos:0},{h:45,s:100,l:55,pos:100}]},stroke:{h:42,s:100,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:55,s:100,l:90,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:45,s:100,l:30,a:50,x:0,y:4,blur:10,spread:0}],radius:6},
+    {id:'gold-antique',name:'Antique Gold',fill:{type:'linear',angle:180,stops:[{h:40,s:60,l:55,pos:0},{h:35,s:70,l:35,pos:100}]},stroke:{h:35,s:80,l:18,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:45,s:80,l:75,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:35,s:70,l:15,a:50,x:0,y:3,blur:6,spread:0}],radius:4},
+    
+    // GEMS
+    {id:'gem-diamond',name:'Diamond',fill:{type:'linear',angle:135,stops:[{h:200,s:100,l:95,pos:0},{h:210,s:80,l:85,pos:50},{h:220,s:70,l:75,pos:100}]},stroke:{h:0,s:0,l:100,a:80,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:200,s:100,l:70,a:50,x:0,y:0,blur:20,spread:0}],radius:8},
+    {id:'gem-ruby',name:'Ruby',fill:{type:'radial',angle:0,stops:[{h:355,s:100,l:65,pos:0},{h:0,s:100,l:35,pos:100}]},stroke:{h:0,s:100,l:20,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:100,l:80,a:70,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:0,s:100,l:40,a:70,x:0,y:0,blur:20,spread:0}],radius:8},
+    {id:'gem-emerald',name:'Emerald',fill:{type:'radial',angle:0,stops:[{h:140,s:100,l:55,pos:0},{h:150,s:100,l:25,pos:100}]},stroke:{h:150,s:100,l:15,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:130,s:100,l:80,a:70,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:140,s:100,l:30,a:70,x:0,y:0,blur:20,spread:0}],radius:8},
+    {id:'gem-sapphire',name:'Sapphire',fill:{type:'radial',angle:0,stops:[{h:220,s:100,l:55,pos:0},{h:230,s:100,l:25,pos:100}]},stroke:{h:230,s:100,l:15,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:210,s:100,l:80,a:70,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:220,s:100,l:30,a:70,x:0,y:0,blur:20,spread:0}],radius:8},
+    {id:'gem-amethyst',name:'Amethyst',fill:{type:'radial',angle:0,stops:[{h:280,s:80,l:65,pos:0},{h:290,s:90,l:35,pos:100}]},stroke:{h:285,s:100,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:280,s:100,l:85,a:70,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:285,s:100,l:40,a:60,x:0,y:0,blur:20,spread:0}],radius:8},
+    {id:'gem-topaz',name:'Topaz',fill:{type:'radial',angle:0,stops:[{h:35,s:100,l:65,pos:0},{h:30,s:100,l:40,pos:100}]},stroke:{h:30,s:100,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:45,s:100,l:85,a:70,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:30,s:100,l:40,a:60,x:0,y:0,blur:18,spread:0}],radius:8},
+    {id:'gem-opal',name:'Opal',fill:{type:'linear',angle:135,stops:[{h:200,s:60,l:90,pos:0},{h:280,s:50,l:85,pos:33},{h:140,s:60,l:85,pos:66},{h:30,s:80,l:85,pos:100}]},stroke:{h:0,s:0,l:100,a:80,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:200,s:60,l:60,a:40,x:0,y:4,blur:14,spread:0}],radius:10},
+    {id:'gem-jade',name:'Jade',fill:{type:'radial',angle:0,stops:[{h:140,s:50,l:70,pos:0},{h:150,s:60,l:45,pos:100}]},stroke:{h:150,s:70,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:120,s:60,l:85,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:140,s:60,l:30,a:40,x:0,y:3,blur:8,spread:0}],radius:6},
+    {id:'gem-onyx',name:'Onyx',fill:{type:'radial',angle:0,stops:[{h:0,s:0,l:25,pos:0},{h:0,s:0,l:5,pos:100}]},stroke:{h:0,s:0,l:0,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:50,a:30,x:0,y:1,blur:2,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:80,x:0,y:4,blur:12,spread:0}],radius:6},
+    {id:'gem-pearl',name:'Pearl',fill:{type:'radial',angle:0,stops:[{h:0,s:0,l:98,pos:0},{h:280,s:30,l:88,pos:60},{h:200,s:30,l:85,pos:100}]},stroke:{h:0,s:0,l:80,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:90,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:280,s:30,l:50,a:25,x:0,y:5,blur:14,spread:0}],radius:999},
+    {id:'gem-crystal',name:'Crystal',fill:{type:'linear',angle:135,stops:[{h:200,s:100,l:70,pos:0},{h:220,s:100,l:55,pos:100}]},stroke:{h:0,s:0,l:100,a:70,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:60,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:210,s:100,l:60,a:70,x:0,y:0,blur:24,spread:0}],radius:6},
+    
+    // GLASS & MARBLE
+    {id:'glass-clear',name:'Glass',fill:{type:'linear',angle:180,stops:[{h:0,s:0,l:100,pos:0},{h:0,s:0,l:95,pos:100}]},stroke:{h:0,s:0,l:100,a:60,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:10,x:0,y:8,blur:24,spread:0}],radius:16},
+    {id:'glass-frosted',name:'Frosted Glass',fill:{type:'linear',angle:135,stops:[{h:220,s:30,l:95,pos:0},{h:220,s:20,l:85,pos:100}]},stroke:{h:0,s:0,l:100,a:80,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:220,s:30,l:30,a:20,x:0,y:8,blur:20,spread:0}],radius:16},
+    {id:'glass-tinted',name:'Tinted Glass',fill:{type:'linear',angle:135,stops:[{h:200,s:60,l:35,pos:0},{h:220,s:70,l:20,pos:100}]},stroke:{h:0,s:0,l:100,a:30,width:1,position:'inside'},effects:[{type:'inner-shadow',h:200,s:80,l:80,a:30,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:30,x:0,y:8,blur:20,spread:0}],radius:12},
+    {id:'glass-mirror',name:'Mirror',fill:{type:'linear',angle:180,stops:[{h:200,s:20,l:85,pos:0},{h:200,s:30,l:55,pos:100}]},stroke:{h:0,s:0,l:100,a:90,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:90,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:200,s:30,l:40,a:30,x:0,y:4,blur:10,spread:0}],radius:6},
+    {id:'marble-white',name:'White Marble',fill:{type:'linear',angle:135,stops:[{h:0,s:0,l:96,pos:0},{h:220,s:10,l:88,pos:50},{h:0,s:0,l:92,pos:100}]},stroke:{h:0,s:0,l:70,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:40,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:20,x:0,y:6,blur:16,spread:0}],radius:12},
+    {id:'marble-black',name:'Black Marble',fill:{type:'linear',angle:135,stops:[{h:0,s:0,l:15,pos:0},{h:220,s:20,l:8,pos:50},{h:0,s:0,l:18,pos:100}]},stroke:{h:0,s:0,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:50,a:30,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:80,x:0,y:6,blur:14,spread:0}],radius:10},
+    {id:'marble-rose',name:'Rose Marble',fill:{type:'linear',angle:135,stops:[{h:340,s:30,l:90,pos:0},{h:0,s:30,l:85,pos:50},{h:340,s:30,l:88,pos:100}]},stroke:{h:340,s:30,l:60,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:340,s:30,l:40,a:25,x:0,y:5,blur:14,spread:0}],radius:10},
+    {id:'obsidian',name:'Obsidian',fill:{type:'linear',angle:135,stops:[{h:240,s:30,l:15,pos:0},{h:240,s:40,l:5,pos:100}]},stroke:{h:240,s:30,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:240,s:50,l:50,a:30,x:0,y:1,blur:2,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:80,x:0,y:6,blur:14,spread:0}],radius:10},
+    
+    // SPECIAL METALS
+    {id:'metal-copper',name:'Copper',fill:{type:'linear',angle:180,stops:[{h:20,s:80,l:65,pos:0},{h:15,s:75,l:50,pos:50},{h:10,s:70,l:35,pos:100}]},stroke:{h:15,s:80,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:30,s:100,l:85,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:15,s:80,l:25,a:40,x:0,y:4,blur:10,spread:0}],radius:8},
+    {id:'metal-brass',name:'Brass',fill:{type:'linear',angle:180,stops:[{h:42,s:70,l:65,pos:0},{h:40,s:75,l:45,pos:100}]},stroke:{h:38,s:80,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:50,s:90,l:80,a:65,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:40,s:70,l:25,a:40,x:0,y:3,blur:8,spread:0}],radius:6},
+    {id:'metal-bronze',name:'Bronze',fill:{type:'linear',angle:180,stops:[{h:25,s:60,l:50,pos:0},{h:20,s:70,l:30,pos:100}]},stroke:{h:20,s:80,l:15,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:35,s:80,l:70,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:20,s:70,l:15,a:50,x:0,y:3,blur:8,spread:0}],radius:6},
+    {id:'metal-gunmetal',name:'Gunmetal',fill:{type:'linear',angle:180,stops:[{h:220,s:15,l:35,pos:0},{h:220,s:20,l:18,pos:100}]},stroke:{h:220,s:25,l:10,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:220,s:20,l:55,a:40,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:60,x:0,y:4,blur:8,spread:0}],radius:4},
+    {id:'carbon-fiber',name:'Carbon Fiber',fill:{type:'linear',angle:135,stops:[{h:0,s:0,l:18,pos:0},{h:0,s:0,l:10,pos:100}]},stroke:{h:0,s:0,l:5,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:8,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:60,x:0,y:4,blur:10,spread:0}],radius:10},
+    {id:'metal-mercury',name:'Mercury',fill:{type:'radial',angle:0,stops:[{h:0,s:0,l:90,pos:0},{h:0,s:0,l:65,pos:50},{h:0,s:0,l:40,pos:100}]},stroke:{h:0,s:0,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:100,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:40,x:0,y:4,blur:10,spread:0}],radius:999},
+    
+    // LUXURY
+    {id:'velvet-red',name:'Red Velvet',fill:{type:'radial',angle:0,stops:[{h:350,s:60,l:35,pos:0},{h:350,s:70,l:20,pos:100}]},stroke:{h:350,s:80,l:15,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:350,s:60,l:50,a:40,x:0,y:2,blur:4,spread:0},{type:'drop-shadow',h:350,s:70,l:10,a:60,x:0,y:6,blur:14,spread:0}],radius:14},
+    {id:'velvet-purple',name:'Purple Velvet',fill:{type:'radial',angle:0,stops:[{h:280,s:60,l:35,pos:0},{h:285,s:70,l:18,pos:100}]},stroke:{h:280,s:80,l:12,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:280,s:60,l:50,a:40,x:0,y:2,blur:4,spread:0},{type:'drop-shadow',h:280,s:70,l:10,a:60,x:0,y:6,blur:14,spread:0}],radius:14},
+    {id:'silk-gold',name:'Gold Silk',fill:{type:'linear',angle:135,stops:[{h:48,s:80,l:78,pos:0},{h:42,s:90,l:60,pos:50},{h:38,s:85,l:55,pos:100}]},stroke:{h:40,s:60,l:35,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:55,s:100,l:90,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:40,s:80,l:30,a:30,x:0,y:4,blur:10,spread:0}],radius:8},
+    {id:'leather-brown',name:'Brown Leather',fill:{type:'radial',angle:0,stops:[{h:25,s:50,l:35,pos:0},{h:20,s:60,l:22,pos:100}]},stroke:{h:20,s:70,l:12,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:25,s:60,l:50,a:40,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:60,x:0,y:-2,blur:4,spread:0},{type:'drop-shadow',h:20,s:60,l:10,a:60,x:0,y:4,blur:8,spread:0}],radius:8},
+    {id:'leather-black',name:'Black Leather',fill:{type:'radial',angle:0,stops:[{h:0,s:0,l:15,pos:0},{h:0,s:0,l:5,pos:100}]},stroke:{h:0,s:0,l:0,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:40,a:30,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:70,x:0,y:-2,blur:3,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:70,x:0,y:4,blur:8,spread:0}],radius:8},
+    {id:'silk-pink',name:'Pink Silk',fill:{type:'linear',angle:135,stops:[{h:330,s:80,l:80,pos:0},{h:340,s:90,l:65,pos:100}]},stroke:{h:340,s:60,l:40,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:330,s:100,l:95,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:340,s:80,l:40,a:30,x:0,y:4,blur:10,spread:0}],radius:10},
+    
+    // HOLOGRAPHIC & IRIDESCENT
+    {id:'holographic',name:'Holographic',fill:{type:'linear',angle:135,stops:[{h:280,s:100,l:75,pos:0},{h:200,s:100,l:75,pos:33},{h:120,s:100,l:75,pos:66},{h:60,s:100,l:75,pos:100}]},stroke:{h:0,s:0,l:100,a:80,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:280,s:100,l:60,a:40,x:0,y:0,blur:20,spread:0}],radius:12},
+    {id:'iridescent',name:'Iridescent',fill:{type:'linear',angle:45,stops:[{h:180,s:80,l:85,pos:0},{h:260,s:80,l:80,pos:33},{h:330,s:80,l:80,pos:66},{h:40,s:80,l:85,pos:100}]},stroke:{h:0,s:0,l:100,a:60,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:300,s:60,l:50,a:30,x:0,y:4,blur:14,spread:0}],radius:10}
+  ],
   
-  // GAME MECHANICS
-  { id: 'shop',        name: 'Shop',          icon: 'fa-cart-shopping',   group: 'Game Mechanics' },
-  { id: 'inventory',   name: 'Inventory',     icon: 'fa-box-open',        group: 'Game Mechanics' },
-  { id: 'summon',      name: 'Summon / Gacha',icon: 'fa-gem',             group: 'Game Mechanics' },
-  { id: 'rewards',     name: 'Daily Rewards', icon: 'fa-gift',            group: 'Game Mechanics' },
-  { id: 'battlepass',  name: 'Battle Pass',   icon: 'fa-medal',           group: 'Game Mechanics' },
-  
-  // SOCIAL
-  { id: 'chat',        name: 'Chat',          icon: 'fa-comment-dots',    group: 'Social' },
-  { id: 'friends',     name: 'Friends',       icon: 'fa-user-group',      group: 'Social' },
-  { id: 'leaderboard', name: 'Leaderboard',   icon: 'fa-trophy',          group: 'Social' },
-  { id: 'mail',        name: 'Mail / Inbox',  icon: 'fa-envelope',        group: 'Social' },
-  
-  // QUESTS & PROGRESS
-  { id: 'quest',       name: 'Quest Log',     icon: 'fa-scroll',          group: 'Quests & Progress' },
-  { id: 'achievement', name: 'Achievements',  icon: 'fa-award',           group: 'Quests & Progress' },
-  { id: 'stats',       name: 'Stats Panel',   icon: 'fa-chart-line',      group: 'Quests & Progress' },
-  
-  // MENUS
-  { id: 'settings',    name: 'Settings',      icon: 'fa-gear',            group: 'Menus' },
-  { id: 'profile',     name: 'Profile',       icon: 'fa-user-circle',     group: 'Menus' },
-  
-  // NOTIFICATIONS
-  { id: 'dialog',      name: 'NPC Dialog',    icon: 'fa-message',         group: 'Notifications' },
-  { id: 'notifs',      name: 'Notifications', icon: 'fa-bell',            group: 'Notifications' }
-];
-
-/* ── 10 THEMES ── */
-const THEMES = [
-  { id: 'anime',     name: 'Anime',     emoji: '🌸' },
-  { id: 'cartoon',   name: 'Cartoon',   emoji: '🎨' },
-  { id: 'premium',   name: 'Premium',   emoji: '💎' },
-  { id: 'rpg',       name: 'RPG',       emoji: '⚔️' },
-  { id: 'cyber',     name: 'Cyber',     emoji: '🚀' },
-  { id: 'gaming',    name: 'Gaming',    emoji: '🎮' },
-  { id: 'minimal',   name: 'Minimal',   emoji: '⚪' },
-  { id: 'vaporwave', name: 'Vaporwave', emoji: '🌃' },
-  { id: 'fantasy',   name: 'Fantasy',   emoji: '🧙' },
-  { id: 'modern',    name: 'Modern',    emoji: '✨' }
-];
-
-/* ── STATE ── */
-const STATE = {
-  currentSection: null,
-  currentTheme: 'anime',
-  searchQuery: '',
-  exportTab: 'html',
-  // Section-specific props (her section'ın kendi ayarları)
-  props: {}
+  rpg: [
+    // SWORDS & WEAPONS
+    {id:'iron-sword',name:'Iron Sword',fill:{type:'linear',angle:180,stops:[{h:210,s:10,l:60,pos:0},{h:210,s:15,l:35,pos:100}]},stroke:{h:210,s:20,l:18,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:210,s:20,l:75,a:40,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:50,x:0,y:-2,blur:4,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:50,x:0,y:3,blur:6,spread:0}],radius:4},
+    {id:'mithril',name:'Mithril',fill:{type:'linear',angle:180,stops:[{h:200,s:50,l:85,pos:0},{h:210,s:60,l:60,pos:100}]},stroke:{h:210,s:80,l:30,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:200,s:100,l:100,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:210,s:80,l:50,a:60,x:0,y:0,blur:20,spread:0}],radius:6},
+    {id:'adamantite',name:'Adamantite',fill:{type:'linear',angle:180,stops:[{h:280,s:80,l:50,pos:0},{h:290,s:90,l:25,pos:100}]},stroke:{h:285,s:100,l:15,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:280,s:100,l:80,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:285,s:100,l:30,a:70,x:0,y:0,blur:18,spread:0}],radius:6},
+    
+    // ELEMENTAL
+    {id:'fire',name:'Fire',fill:{type:'radial',angle:0,stops:[{h:30,s:100,l:70,pos:0},{h:5,s:100,l:50,pos:60},{h:0,s:100,l:30,pos:100}]},stroke:{h:25,s:100,l:50,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:50,s:100,l:80,a:60,x:0,y:0,blur:4,spread:0},{type:'drop-shadow',h:15,s:100,l:50,a:80,x:0,y:0,blur:20,spread:0},{type:'drop-shadow',h:30,s:100,l:60,a:50,x:0,y:0,blur:40,spread:0}],radius:8},
+    {id:'lava',name:'Lava',fill:{type:'radial',angle:0,stops:[{h:50,s:100,l:60,pos:0},{h:15,s:100,l:45,pos:60},{h:0,s:100,l:25,pos:100}]},stroke:{h:0,s:100,l:30,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:50,s:100,l:70,a:60,x:0,y:0,blur:8,spread:0},{type:'drop-shadow',h:15,s:100,l:50,a:80,x:0,y:0,blur:24,spread:0}],radius:8},
+    {id:'ice',name:'Ice',fill:{type:'linear',angle:180,stops:[{h:195,s:100,l:90,pos:0},{h:200,s:90,l:70,pos:100}]},stroke:{h:0,s:0,l:100,a:80,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:90,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:195,s:100,l:60,a:60,x:0,y:0,blur:18,spread:0}],radius:4},
+    {id:'frost',name:'Frost',fill:{type:'radial',angle:0,stops:[{h:200,s:80,l:95,pos:0},{h:210,s:70,l:75,pos:100}]},stroke:{h:200,s:100,l:50,a:80,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:90,x:0,y:2,blur:2,spread:0},{type:'drop-shadow',h:200,s:80,l:60,a:60,x:0,y:0,blur:24,spread:0}],radius:6},
+    {id:'lightning',name:'Lightning',fill:{type:'linear',angle:135,stops:[{h:55,s:100,l:75,pos:0},{h:50,s:100,l:55,pos:100}]},stroke:{h:50,s:100,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:60,s:100,l:90,a:80,x:0,y:0,blur:4,spread:0},{type:'drop-shadow',h:55,s:100,l:60,a:90,x:0,y:0,blur:24,spread:0}],radius:4},
+    {id:'poison',name:'Poison',fill:{type:'radial',angle:0,stops:[{h:100,s:100,l:55,pos:0},{h:90,s:100,l:30,pos:100}]},stroke:{h:90,s:100,l:20,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:110,s:100,l:80,a:50,x:0,y:0,blur:6,spread:0},{type:'drop-shadow',h:100,s:100,l:40,a:80,x:0,y:0,blur:20,spread:0}],radius:8},
+    {id:'nature',name:'Nature',fill:{type:'radial',angle:0,stops:[{h:120,s:60,l:55,pos:0},{h:130,s:70,l:30,pos:100}]},stroke:{h:130,s:80,l:18,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:115,s:60,l:75,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:130,s:70,l:25,a:50,x:0,y:4,blur:10,spread:0}],radius:6},
+    {id:'water',name:'Water',fill:{type:'linear',angle:180,stops:[{h:200,s:80,l:65,pos:0},{h:215,s:90,l:40,pos:100}]},stroke:{h:215,s:100,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:190,s:100,l:85,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:200,s:90,l:40,a:60,x:0,y:0,blur:16,spread:0}],radius:8},
+    {id:'wind',name:'Wind',fill:{type:'linear',angle:135,stops:[{h:175,s:50,l:85,pos:0},{h:180,s:60,l:65,pos:100}]},stroke:{h:180,s:80,l:50,a:60,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:175,s:60,l:60,a:40,x:0,y:0,blur:18,spread:0}],radius:8},
+    {id:'earth',name:'Earth',fill:{type:'linear',angle:180,stops:[{h:30,s:50,l:50,pos:0},{h:25,s:60,l:30,pos:100}]},stroke:{h:25,s:70,l:18,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:35,s:60,l:65,a:40,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:25,s:60,l:15,a:50,x:0,y:4,blur:8,spread:0}],radius:4},
+    
+    // MAGIC & ARCANE
+    {id:'arcane',name:'Arcane',fill:{type:'radial',angle:0,stops:[{h:280,s:100,l:65,pos:0},{h:260,s:100,l:30,pos:100}]},stroke:{h:280,s:100,l:50,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:300,s:100,l:80,a:60,x:0,y:0,blur:6,spread:0},{type:'drop-shadow',h:280,s:100,l:50,a:80,x:0,y:0,blur:24,spread:0}],radius:8},
+    {id:'holy-light',name:'Holy Light',fill:{type:'radial',angle:0,stops:[{h:50,s:100,l:90,pos:0},{h:45,s:100,l:70,pos:100}]},stroke:{h:0,s:0,l:100,a:90,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:0,blur:6,spread:0},{type:'drop-shadow',h:50,s:100,l:70,a:80,x:0,y:0,blur:30,spread:0}],radius:10},
+    {id:'shadow',name:'Shadow',fill:{type:'radial',angle:0,stops:[{h:270,s:60,l:20,pos:0},{h:280,s:80,l:5,pos:100}]},stroke:{h:280,s:60,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:280,s:80,l:40,a:50,x:0,y:0,blur:6,spread:0},{type:'drop-shadow',h:270,s:80,l:10,a:80,x:0,y:0,blur:24,spread:0}],radius:8},
+    {id:'mana',name:'Mana',fill:{type:'linear',angle:180,stops:[{h:240,s:100,l:70,pos:0},{h:260,s:100,l:50,pos:100}]},stroke:{h:0,s:0,l:100,a:50,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:70,x:0,y:2,blur:4,spread:0},{type:'drop-shadow',h:250,s:100,l:60,a:80,x:0,y:0,blur:24,spread:0}],radius:8},
+    {id:'cursed',name:'Cursed',fill:{type:'radial',angle:0,stops:[{h:280,s:80,l:25,pos:0},{h:300,s:100,l:10,pos:100}]},stroke:{h:280,s:100,l:40,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:290,s:100,l:50,a:60,x:0,y:0,blur:6,spread:0},{type:'drop-shadow',h:280,s:100,l:30,a:80,x:0,y:0,blur:24,spread:0}],radius:6},
+    {id:'divine',name:'Divine',fill:{type:'linear',angle:135,stops:[{h:50,s:100,l:85,pos:0},{h:0,s:0,l:100,pos:50},{h:50,s:100,l:75,pos:100}]},stroke:{h:50,s:100,l:50,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:90,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:50,s:100,l:65,a:80,x:0,y:0,blur:30,spread:0}],radius:8},
+    
+    // MATERIALS
+    {id:'wood',name:'Wood',fill:{type:'linear',angle:90,stops:[{h:30,s:50,l:45,pos:0},{h:25,s:55,l:35,pos:50},{h:30,s:50,l:45,pos:100}]},stroke:{h:25,s:60,l:20,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:35,s:60,l:60,a:30,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:25,s:60,l:15,a:50,x:0,y:4,blur:8,spread:0}],radius:4},
+    {id:'wood-dark',name:'Dark Wood',fill:{type:'linear',angle:90,stops:[{h:20,s:50,l:25,pos:0},{h:18,s:60,l:15,pos:100}]},stroke:{h:18,s:70,l:8,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:25,s:60,l:40,a:30,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:60,x:0,y:4,blur:8,spread:0}],radius:4},
+    {id:'stone',name:'Stone',fill:{type:'linear',angle:180,stops:[{h:0,s:0,l:55,pos:0},{h:0,s:0,l:35,pos:100}]},stroke:{h:0,s:0,l:20,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:75,a:30,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:50,x:0,y:-1,blur:2,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:50,x:0,y:3,blur:6,spread:0}],radius:4},
+    {id:'dark-stone',name:'Dark Stone',fill:{type:'linear',angle:180,stops:[{h:220,s:10,l:25,pos:0},{h:220,s:15,l:12,pos:100}]},stroke:{h:220,s:20,l:5,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:220,s:20,l:50,a:25,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:80,x:0,y:-2,blur:6,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:70,x:0,y:4,blur:10,spread:0}],radius:6},
+    {id:'bone',name:'Bone',fill:{type:'linear',angle:180,stops:[{h:45,s:30,l:88,pos:0},{h:40,s:40,l:72,pos:100}]},stroke:{h:40,s:50,l:40,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:50,s:50,l:95,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:40,s:50,l:30,a:40,x:0,y:3,blur:8,spread:0}],radius:6},
+    {id:'parchment',name:'Parchment',fill:{type:'linear',angle:135,stops:[{h:40,s:50,l:80,pos:0},{h:35,s:60,l:65,pos:100}]},stroke:{h:30,s:70,l:35,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:45,s:60,l:90,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:30,s:60,l:25,a:40,x:0,y:3,blur:8,spread:0}],radius:6},
+    {id:'dragon-scale',name:'Dragon Scale',fill:{type:'linear',angle:135,stops:[{h:140,s:80,l:45,pos:0},{h:170,s:90,l:30,pos:100}]},stroke:{h:150,s:100,l:15,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:150,s:100,l:70,a:50,x:0,y:1,blur:2,spread:0},{type:'drop-shadow',h:150,s:80,l:20,a:60,x:0,y:4,blur:10,spread:0}],radius:6},
+    
+    // RARITIES
+    {id:'common',name:'Common',fill:{type:'linear',angle:180,stops:[{h:0,s:0,l:75,pos:0},{h:0,s:0,l:55,pos:100}]},stroke:{h:0,s:0,l:30,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:40,x:0,y:3,blur:6,spread:0}],radius:6},
+    {id:'uncommon',name:'Uncommon',fill:{type:'linear',angle:180,stops:[{h:120,s:60,l:55,pos:0},{h:130,s:70,l:35,pos:100}]},stroke:{h:130,s:80,l:20,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:115,s:80,l:75,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:130,s:80,l:30,a:60,x:0,y:0,blur:14,spread:0}],radius:6},
+    {id:'rare',name:'Rare',fill:{type:'linear',angle:180,stops:[{h:210,s:100,l:60,pos:0},{h:220,s:100,l:40,pos:100}]},stroke:{h:200,s:100,l:80,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:200,s:100,l:80,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:210,s:100,l:50,a:70,x:0,y:0,blur:14,spread:0}],radius:6},
+    {id:'epic',name:'Epic',fill:{type:'linear',angle:180,stops:[{h:280,s:100,l:60,pos:0},{h:290,s:100,l:35,pos:100}]},stroke:{h:280,s:100,l:80,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:280,s:100,l:80,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:280,s:100,l:50,a:80,x:0,y:0,blur:18,spread:0}],radius:6},
+    {id:'legendary',name:'Legendary',fill:{type:'linear',angle:180,stops:[{h:30,s:100,l:65,pos:0},{h:20,s:100,l:45,pos:100}]},stroke:{h:45,s:100,l:70,a:100,width:2.5,position:'inside'},effects:[{type:'inner-shadow',h:50,s:100,l:90,a:70,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:30,s:100,l:55,a:80,x:0,y:0,blur:20,spread:0},{type:'drop-shadow',h:30,s:100,l:60,a:50,x:0,y:0,blur:40,spread:0}],radius:6},
+    {id:'mythic',name:'Mythic',fill:{type:'linear',angle:180,stops:[{h:0,s:100,l:55,pos:0},{h:320,s:100,l:45,pos:100}]},stroke:{h:340,s:100,l:70,a:100,width:2.5,position:'inside'},effects:[{type:'drop-shadow',h:340,s:100,l:50,a:90,x:0,y:0,blur:24,spread:0}],radius:6},
+    {id:'celestial',name:'Celestial',fill:{type:'linear',angle:135,stops:[{h:200,s:100,l:80,pos:0},{h:280,s:100,l:70,pos:100}]},stroke:{h:0,s:0,l:100,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:240,s:100,l:60,a:80,x:0,y:0,blur:28,spread:0}],radius:8}
+  ]
 };
 
-/* ═══════════════════════════════════════════
-   RENDER: SECTION LIST (sol panel)
-   ═══════════════════════════════════════════ */
-function renderSectionList() {
-  const list = document.getElementById('section-list');
-  const q = STATE.searchQuery.toLowerCase();
-  
-  // Filter + group
-  const filtered = SECTIONS.filter(s => 
-    s.name.toLowerCase().includes(q) || 
-    s.group.toLowerCase().includes(q)
-  );
-  
-  if (!filtered.length) {
-    list.innerHTML = `<div style="padding:30px 14px;text-align:center;color:var(--app-dim);font-size:12px;">
-      <i class="fa-regular fa-folder-open" style="font-size:24px;opacity:.4;display:block;margin-bottom:8px;"></i>
-      No sections found
-    </div>`;
-    return;
-  }
-  
-  // Group by category
-  const grouped = {};
-  filtered.forEach(s => {
-    if (!grouped[s.group]) grouped[s.group] = [];
-    grouped[s.group].push(s);
-  });
-  
-  let html = '';
-  Object.keys(grouped).forEach(groupName => {
-    html += `<div class="section-group">${groupName}</div>`;
-    grouped[groupName].forEach(s => {
-      html += `
-        <div class="section-item ${s.id === STATE.currentSection ? 'active' : ''}" 
-             onclick="selectSection('${s.id}')">
-          <div class="icon"><i class="fa-solid ${s.icon}"></i></div>
-          <div class="label">${s.name}</div>
-        </div>`;
+const CATEGORIES = [
+  {id:'favorites',emoji:'⭐',name:'Favorites',special:true},
+  {id:'premium',emoji:'💎',name:'Premium'},
+  {id:'rpg',emoji:'⚔️',name:'RPG'},
+  {id:'anime',emoji:'🌸',name:'Anime'},
+  {id:'cartoon',emoji:'🎨',name:'Cartoon'},
+  {id:'cyber',emoji:'🚀',name:'Cyber'},
+  {id:'gaming',emoji:'🎮',name:'Gaming'},
+  {id:'minimal',emoji:'⚪',name:'Minimal'},
+  {id:'vaporwave',emoji:'🌃',name:'Vaporwave'},
+  {id:'fantasy',emoji:'🧙',name:'Fantasy'},
+  {id:'modern',emoji:'✨',name:'Modern'}
+];
+
+let currentCategory = 'premium';
+let currentMaterialId = null;
+let currentElement = 'button';
+let currentExportTab = 'figma';
+let currentBg = 'grid';
+let hueShift = 0;
+let tintHue = null;
+let tintEnabled = false;
+let searchQuery = '';
+let favorites = JSON.parse(localStorage.getItem('polishui-favs') || '[]');
+
+function hslToHex(h,s,l){h=((h%360)+360)%360;l/=100;const a=s*Math.min(l,1-l)/100;const f=n=>{const k=(n+h/30)%12;const c=l-a*Math.max(Math.min(k-3,9-k,1),-1);return Math.round(255*c).toString(16).padStart(2,'0');};return`#${f(0)}${f(8)}${f(4)}`;}
+function hslToRgb(h,s,l){h=((h%360)+360)%360;l/=100;const a=s*Math.min(l,1-l)/100;const f=n=>{const k=(n+h/30)%12;const c=l-a*Math.max(Math.min(k-3,9-k,1),-1);return Math.round(255*c);};return{r:f(0),g:f(8),b:f(4)};}
+function hexToHsl(hex){hex=hex.replace('#','');let r=parseInt(hex.substr(0,2),16)/255,g=parseInt(hex.substr(2,2),16)/255,b=parseInt(hex.substr(4,2),16)/255;let max=Math.max(r,g,b),min=Math.min(r,g,b);let h,s,l=(max+min)/2;if(max==min){h=s=0;}else{let d=max-min;s=l>0.5?d/(2-max-min):d/(max+min);switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4;break;}h/=6;}return{h:Math.round(h*360),s:Math.round(s*100),l:Math.round(l*100)};}
+function shiftedH(originalH){let h=originalH;if(tintEnabled&&tintHue!==null){const tintBase=215;h=((h-tintBase+tintHue)%360+360)%360;}return((h+hueShift)%360+360)%360;}
+function hslaCss(h,s,l,a){return`hsla(${shiftedH(h)}, ${s}%, ${l}%, ${(a||100)/100})`;}
+
+function renderCategories(){
+  document.getElementById('category-tabs').innerHTML = CATEGORIES.map(cat=>`
+    <div class="cat-tab ${cat.id===currentCategory?'active':''} ${cat.special?'special':''}" onclick="selectCategory('${cat.id}')">
+      <div class="cat-emoji">${cat.emoji}</div><div class="cat-name">${cat.name}</div>
+    </div>`).join('');
+  // Update total count
+  let total = 0;
+  Object.keys(MATERIALS).forEach(k => total += MATERIALS[k].length);
+  document.getElementById('total-count').textContent = total;
+}
+
+function selectCategory(catId){
+  currentCategory=catId;
+  renderCategories();
+  renderMaterials();
+  const cat=CATEGORIES.find(c=>c.id===catId);
+  document.getElementById('materials-heading').textContent=cat.name+' Styles';
+}
+
+function getMaterialsForCategory(catId){
+  if(catId==='favorites'){
+    const all=[];
+    Object.keys(MATERIALS).forEach(k=>{
+      MATERIALS[k].forEach(m=>{if(favorites.includes(`${k}:${m.id}`))all.push({...m,_cat:k});});
     });
+    return all;
+  }
+  return (MATERIALS[catId]||[]).map(m=>({...m,_cat:catId}));
+}
+
+function renderMaterials(){
+  let mats=getMaterialsForCategory(currentCategory);
+  if(searchQuery){
+    const q=searchQuery.toLowerCase();
+    mats=mats.filter(m=>m.name.toLowerCase().includes(q));
+  }
+  document.getElementById('mat-count').textContent=mats.length;
+  const container=document.getElementById('material-grid');
+  if(!mats.length){
+    container.innerHTML=`<div class="empty-state" style="grid-column:1/-1"><i class="fa-regular fa-folder-open"></i>${currentCategory==='favorites'?'No favorites yet. Click ⭐ on any style!':'No styles in this category yet'}</div>`;
+    return;
+  }
+  container.innerHTML=mats.map(mat=>{
+    const previewCss=buildPreviewCss(mat);
+    const favKey=`${mat._cat}:${mat.id}`;
+    const isFav=favorites.includes(favKey);
+    return`<div class="material-card ${mat.id===currentMaterialId?'selected':''}" onclick="selectMaterial('${mat.id}','${mat._cat}')">
+      <button class="fav-btn ${isFav?'fav-on':''}" onclick="event.stopPropagation();toggleFav('${favKey}')"><i class="fa-${isFav?'solid':'regular'} fa-star"></i></button>
+      <div class="material-preview" style="${previewCss}"></div>
+      <div class="material-name">${mat.name}</div>
+    </div>`;
+  }).join('');
+}
+
+function buildPreviewCss(mat){
+  let bg='';
+  if(mat.fill.type==='solid'){bg=hslaCss(mat.fill.stops[0].h,mat.fill.stops[0].s,mat.fill.stops[0].l,100);}
+  else if(mat.fill.type==='linear'){const stops=mat.fill.stops.map(s=>`${hslaCss(s.h,s.s,s.l,100)} ${s.pos}%`).join(', ');bg=`linear-gradient(${mat.fill.angle}deg, ${stops})`;}
+  else if(mat.fill.type==='radial'){const stops=mat.fill.stops.map(s=>`${hslaCss(s.h,s.s,s.l,100)} ${s.pos}%`).join(', ');bg=`radial-gradient(circle, ${stops})`;}
+  return`background: ${bg};`;
+}
+
+function selectMaterial(matId,fromCat){
+  currentMaterialId=matId;
+  renderMaterials();
+  applyMaterial();
+  renderSettings();
+}
+
+function toggleFav(key){
+  const i=favorites.indexOf(key);
+  if(i>-1){favorites.splice(i,1);toast('Removed from favorites','info');}
+  else{favorites.push(key);toast('Added to favorites','success');}
+  localStorage.setItem('polishui-favs',JSON.stringify(favorites));
+  renderMaterials();
+}
+
+function getCurrentMaterial(){
+  if(!currentMaterialId)return null;
+  for(const cat of Object.keys(MATERIALS)){
+    const m=MATERIALS[cat].find(m=>m.id===currentMaterialId);
+    if(m)return{...m,_cat:cat};
+  }
+  return null;
+}
+
+function applyMaterial(){
+  const mat=getCurrentMaterial();
+  const el=document.getElementById('preview-element');
+  if(!mat)return;
+  el.innerHTML='';el.style.cssText='';
+  const configs={button:{w:'160px',h:'52px',text:'Button',fs:'14px'},card:{w:'240px',h:'300px',text:'Card',fs:'16px'},frame:{w:'320px',h:'200px',text:'Frame',fs:'14px'},panel:{w:'380px',h:'240px',text:'Panel',fs:'15px'},badge:{w:'90px',h:'32px',text:'NEW',fs:'11px'},container:{w:'300px',h:'180px',text:'Container',fs:'14px'},icon:{w:'72px',h:'72px',text:'★',fs:'28px'}};
+  const cfg=configs[currentElement];
+  let bg='';
+  if(mat.fill.type==='solid'){bg=hslaCss(mat.fill.stops[0].h,mat.fill.stops[0].s,mat.fill.stops[0].l,100);}
+  else if(mat.fill.type==='linear'){const stops=mat.fill.stops.map(s=>`${hslaCss(s.h,s.s,s.l,100)} ${s.pos}%`).join(', ');bg=`linear-gradient(${mat.fill.angle}deg, ${stops})`;}
+  else if(mat.fill.type==='radial'){const stops=mat.fill.stops.map(s=>`${hslaCss(s.h,s.s,s.l,100)} ${s.pos}%`).join(', ');bg=`radial-gradient(circle, ${stops})`;}
+  el.style.background=bg;
+  if(mat.stroke&&mat.stroke.width>0){el.style.border=`${mat.stroke.width}px solid ${hslaCss(mat.stroke.h,mat.stroke.s,mat.stroke.l,mat.stroke.a)}`;}
+  const shadows=[];
+  if(mat.effects){mat.effects.forEach(fx=>{const c=hslaCss(fx.h,fx.s,fx.l,fx.a);if(fx.type==='inner-shadow'){shadows.push(`inset ${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread||0}px ${c}`);}else{shadows.push(`${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread||0}px ${c}`);}});}
+  el.style.boxShadow=shadows.length?shadows.join(', '):'none';
+  el.style.borderRadius=(mat.radius||8)+'px';
+  el.style.width=cfg.w;el.style.height=cfg.h;el.style.fontSize=cfg.fs;
+  el.style.display='flex';el.style.alignItems='center';el.style.justifyContent='center';
+  el.style.color='#fff';el.style.fontWeight='700';el.style.textShadow='0 1px 2px rgba(0,0,0,0.3)';
+  el.textContent=cfg.text;
+  document.getElementById('style-name-display').textContent=mat.name;
+}
+
+document.querySelectorAll('.elem-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.elem-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentElement=btn.dataset.element;if(currentMaterialId)applyMaterial();});});
+document.querySelectorAll('.bg-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.bg-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentBg=btn.dataset.bg;const wrap=document.getElementById('canvas-wrap');wrap.className='canvas-wrap';if(currentBg!=='grid')wrap.classList.add('bg-'+currentBg);});});
+
+const hueSlider=document.getElementById('hue-slider');
+hueSlider.addEventListener('input',()=>{hueShift=parseInt(hueSlider.value);document.getElementById('hue-val').textContent=hueShift+'°';renderMaterials();if(currentMaterialId){applyMaterial();renderSettings();}});
+
+const tintColor=document.getElementById('tint-color');
+tintColor.addEventListener('input',()=>{const hsl=hexToHsl(tintColor.value);tintHue=hsl.h;tintEnabled=true;renderMaterials();if(currentMaterialId){applyMaterial();renderSettings();}});
+function resetTint(){tintEnabled=false;tintHue=null;tintColor.value='#3b82f6';renderMaterials();if(currentMaterialId){applyMaterial();renderSettings();}}
+
+document.getElementById('search-input').addEventListener('input',e=>{searchQuery=e.target.value;renderMaterials();});
+
+function randomStyle(){
+  const cats=Object.keys(MATERIALS);
+  const cat=cats[Math.floor(Math.random()*cats.length)];
+  const mats=MATERIALS[cat];
+  const mat=mats[Math.floor(Math.random()*mats.length)];
+  currentCategory=cat;currentMaterialId=mat.id;
+  renderCategories();renderMaterials();applyMaterial();renderSettings();
+  toast('🎲 '+mat.name,'info');
+}
+
+document.querySelectorAll('.export-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.export-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentExportTab=btn.dataset.tab;renderSettings();});});
+
+function renderSettings(){
+  const mat=getCurrentMaterial();
+  const body=document.getElementById('settings-body');
+  if(!mat){body.innerHTML=`<p style="color:var(--muted);font-size:13px;text-align:center;padding:40px 0;"><i class="fa-solid fa-arrow-left" style="margin-right:8px;"></i>Select a material from the sidebar</p>`;return;}
+  if(currentExportTab==='figma')body.innerHTML=renderFigmaSettings(mat);
+  else if(currentExportTab==='css')body.innerHTML=renderCssSettings(mat);
+  else if(currentExportTab==='lua')body.innerHTML=renderLuaSettings(mat);
+}
+
+function renderFigmaSettings(mat){
+  let html='';
+  html+=`<div class="settings-block"><div class="settings-block-header"><span class="block-icon icon-fill"><i class="fa-solid fa-fill-drip"></i></span>Fill</div><div class="settings-block-body">`;
+  if(mat.fill.type==='solid'){const c=mat.fill.stops[0];html+=rowWithCopy('Type','Solid');html+=colorRow('Color',hslToHex(shiftedH(c.h),c.s,c.l));}
+  else{const tn=mat.fill.type.charAt(0).toUpperCase()+mat.fill.type.slice(1)+' Gradient';html+=rowWithCopy('Type',tn);if(mat.fill.type==='linear')html+=rowWithCopy('Angle',mat.fill.angle+'°');mat.fill.stops.forEach((s,i)=>{html+=colorRow(`Stop ${i+1} (${s.pos}%)`,hslToHex(shiftedH(s.h),s.s,s.l));});}
+  html+=`</div></div>`;
+  if(mat.stroke&&mat.stroke.width>0){html+=`<div class="settings-block"><div class="settings-block-header"><span class="block-icon icon-stroke"><i class="fa-regular fa-square"></i></span>Stroke</div><div class="settings-block-body">${colorRow('Color',hslToHex(shiftedH(mat.stroke.h),mat.stroke.s,mat.stroke.l),mat.stroke.a)}${rowWithCopy('Weight',mat.stroke.width+'px')}${rowWithCopy('Position',mat.stroke.position||'Inside')}</div></div>`;}
+  if(mat.effects&&mat.effects.length){mat.effects.forEach((fx,i)=>{const isInner=fx.type==='inner-shadow';html+=`<div class="settings-block"><div class="settings-block-header"><span class="block-icon icon-effect"><i class="fa-solid ${isInner?'fa-circle-half-stroke':'fa-clone'}"></i></span>${isInner?'Inner Shadow':'Drop Shadow'}${mat.effects.length>1?' #'+(i+1):''}</div><div class="settings-block-body">${colorRow('Color',hslToHex(shiftedH(fx.h),fx.s,fx.l),fx.a)}${rowWithCopy('X',fx.x+'px')}${rowWithCopy('Y',fx.y+'px')}${rowWithCopy('Blur',fx.blur+'px')}${rowWithCopy('Spread',(fx.spread||0)+'px')}</div></div>`;});}
+  html+=`<div class="settings-block"><div class="settings-block-header"><span class="block-icon icon-corner"><i class="fa-solid fa-vector-square"></i></span>Corner Radius</div><div class="settings-block-body">${rowWithCopy('Radius',mat.radius+'px')}</div></div>`;
+  html+=`<div class="code-actions"><button class="code-btn" onclick="copyAllFigma()"><i class="fa-solid fa-copy"></i> Copy All Settings</button></div>`;
+  return html;
+}
+
+function rowWithCopy(k,v){return`<div class="settings-row"><span class="key">${k}</span><span class="value">${v}<button class="copy-btn" onclick="copyText('${escapeAttr(v)}',this)"><i class="fa-regular fa-copy"></i></button></span></div>`;}
+function colorRow(k,hex,a){const d=a!==undefined&&a<100?`${hex} · ${a}%`:hex;return`<div class="settings-row"><span class="key">${k}</span><span class="value"><span class="color-chip" style="background:${hex}"></span>${d}<button class="copy-btn" onclick="copyText('${hex}',this)"><i class="fa-regular fa-copy"></i></button></span></div>`;}
+function escapeAttr(s){return String(s).replace(/'/g,"\\'").replace(/"/g,'&quot;');}
+
+function renderCssSettings(mat){
+  const css=buildCssCode(mat);
+  return`<div class="code-block">${highlightCss(css)}</div><div class="code-actions"><button class="code-btn" onclick="copyText(${JSON.stringify(css)},this)"><i class="fa-solid fa-copy"></i> Copy CSS</button></div>`;
+}
+
+function buildCssCode(mat){
+  let bg='';
+  if(mat.fill.type==='solid'){bg=hslToHex(shiftedH(mat.fill.stops[0].h),mat.fill.stops[0].s,mat.fill.stops[0].l);}
+  else if(mat.fill.type==='linear'){const stops=mat.fill.stops.map(s=>`${hslToHex(shiftedH(s.h),s.s,s.l)} ${s.pos}%`).join(', ');bg=`linear-gradient(${mat.fill.angle}deg, ${stops})`;}
+  else if(mat.fill.type==='radial'){const stops=mat.fill.stops.map(s=>`${hslToHex(shiftedH(s.h),s.s,s.l)} ${s.pos}%`).join(', ');bg=`radial-gradient(circle, ${stops})`;}
+  let css=`.${mat.id} {\n  background: ${bg};\n`;
+  if(mat.stroke&&mat.stroke.width>0){const rgba=hslaCssExport(mat.stroke.h,mat.stroke.s,mat.stroke.l,mat.stroke.a);css+=`  border: ${mat.stroke.width}px solid ${rgba};\n`;}
+  if(mat.effects&&mat.effects.length){const shadows=mat.effects.map(fx=>{const c=hslaCssExport(fx.h,fx.s,fx.l,fx.a);if(fx.type==='inner-shadow')return`inset ${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread||0}px ${c}`;return`${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread||0}px ${c}`;});css+=`  box-shadow:\n    ${shadows.join(',\n    ')};\n`;}
+  css+=`  border-radius: ${mat.radius}px;\n}`;
+  return css;
+}
+
+function hslaCssExport(h,s,l,a){const{r,g,b}=hslToRgb(shiftedH(h),s,l);return`rgba(${r}, ${g}, ${b}, ${(a||100)/100})`;}
+function highlightCss(css){return css.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/(\/\*[\s\S]*?\*\/)/g,'<span class="c">$1</span>').replace(/([a-z-]+)(\s*):/g,'<span class="k">$1</span>$2:').replace(/(#[0-9a-fA-F]{3,8})/g,'<span class="n">$1</span>').replace(/(rgba?\([^)]+\))/g,'<span class="n">$1</span>').replace(/(\d+(?:\.\d+)?(?:px|%|deg|em|rem)?)/g,'<span class="n">$1</span>');}
+
+function renderLuaSettings(mat){
+  const lua=buildLuaCode(mat);
+  return`<div class="code-block">${highlightLua(lua)}</div><div class="code-actions"><button class="code-btn" onclick="copyText(${JSON.stringify(lua)},this)"><i class="fa-solid fa-copy"></i> Copy Lua</button></div>`;
+}
+
+function buildLuaCode(mat){
+  let lua=`-- PolishUI: ${mat.name}\n`;
+  lua+=`local frame = Instance.new("Frame")\n`;
+  lua+=`frame.Name = "${mat.name}"\n`;
+  lua+=`frame.Size = UDim2.new(0, 200, 0, 60)\n`;
+  lua+=`frame.AnchorPoint = Vector2.new(0.5, 0.5)\n`;
+  lua+=`frame.Position = UDim2.new(0.5, 0, 0.5, 0)\n`;
+  const main=mat.fill.stops[Math.floor(mat.fill.stops.length/2)];
+  const rgb=hslToRgb(shiftedH(main.h),main.s,main.l);
+  lua+=`frame.BackgroundColor3 = Color3.fromRGB(${rgb.r}, ${rgb.g}, ${rgb.b})\n`;
+  lua+=`frame.BorderSizePixel = 0\n\n`;
+  lua+=`local corner = Instance.new("UICorner")\n`;
+  lua+=`corner.CornerRadius = UDim.new(0, ${mat.radius})\n`;
+  lua+=`corner.Parent = frame\n\n`;
+  if(mat.fill.type!=='solid'&&mat.fill.stops.length>=2){
+    lua+=`local gradient = Instance.new("UIGradient")\n`;
+    const seq=mat.fill.stops.map(s=>{const c=hslToRgb(shiftedH(s.h),s.s,s.l);const t=(s.pos/100).toFixed(2);return`ColorSequenceKeypoint.new(${t}, Color3.fromRGB(${c.r}, ${c.g}, ${c.b}))`;}).join(',\n  ');
+    lua+=`gradient.Color = ColorSequence.new({\n  ${seq}\n})\n`;
+    let rot=0;if(mat.fill.type==='linear')rot=mat.fill.angle-90;
+    lua+=`gradient.Rotation = ${rot}\n`;
+    lua+=`gradient.Parent = frame\n\n`;
+  }
+  if(mat.stroke&&mat.stroke.width>0){
+    const sc=hslToRgb(shiftedH(mat.stroke.h),mat.stroke.s,mat.stroke.l);
+    lua+=`local stroke = Instance.new("UIStroke")\n`;
+    lua+=`stroke.Color = Color3.fromRGB(${sc.r}, ${sc.g}, ${sc.b})\n`;
+    lua+=`stroke.Thickness = ${mat.stroke.width}\n`;
+    lua+=`stroke.Transparency = ${(1-(mat.stroke.a||100)/100).toFixed(2)}\n`;
+    lua+=`stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border\n`;
+    lua+=`stroke.Parent = frame\n\n`;
+  }
+  lua+=`frame.Parent = script.Parent`;
+  return lua;
+}
+
+function highlightLua(code){return code.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/(--[^\n]*)/g,'<span class="c">$1</span>').replace(/\b(local|function|end|if|then|else|return|for|do|while)\b/g,'<span class="p">$1</span>').replace(/\b(Instance|Color3|UDim2|UDim|Vector2|Enum|ColorSequence|ColorSequenceKeypoint)\b/g,'<span class="k">$1</span>').replace(/("[^"]*")/g,'<span class="s">$1</span>').replace(/\b(\d+(?:\.\d+)?)\b/g,'<span class="n">$1</span>');}
+
+function copyText(text,btn){
+  navigator.clipboard.writeText(text).then(()=>{
+    if(btn){btn.classList.add('copied');const ic=btn.innerHTML;btn.innerHTML='<i class="fa-solid fa-check"></i>';setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML=ic;},1500);}
+    toast('Copied!','success');
   });
-  
-  list.innerHTML = html;
 }
 
-/* ═══════════════════════════════════════════
-   RENDER: THEME PILLS (üstte)
-   ═══════════════════════════════════════════ */
-function renderThemePills() {
-  const container = document.getElementById('theme-pills');
-  container.innerHTML = THEMES.map(t => `
-    <button class="theme-pill ${t.id === STATE.currentTheme ? 'active' : ''}" 
-            onclick="selectTheme('${t.id}')">
-      <span>${t.emoji}</span> ${t.name}
-    </button>
-  `).join('');
+function copyAllFigma(){
+  const mat=getCurrentMaterial();if(!mat)return;
+  let t=`═══ POLISHUI: ${mat.name.toUpperCase()} ═══\n\n▸ FILL\n`;
+  if(mat.fill.type==='solid'){t+=`  Type: Solid\n  Color: ${hslToHex(shiftedH(mat.fill.stops[0].h),mat.fill.stops[0].s,mat.fill.stops[0].l)}\n`;}
+  else{t+=`  Type: ${mat.fill.type.charAt(0).toUpperCase()+mat.fill.type.slice(1)} Gradient\n`;if(mat.fill.type!=='radial')t+=`  Angle: ${mat.fill.angle}°\n`;mat.fill.stops.forEach((s,i)=>{t+=`  Stop ${i+1}: ${hslToHex(shiftedH(s.h),s.s,s.l)} at ${s.pos}%\n`;});}
+  if(mat.stroke&&mat.stroke.width>0){t+=`\n▸ STROKE\n  Color: ${hslToHex(shiftedH(mat.stroke.h),mat.stroke.s,mat.stroke.l)} (${mat.stroke.a}%)\n  Weight: ${mat.stroke.width}px\n  Position: ${mat.stroke.position||'Inside'}\n`;}
+  if(mat.effects&&mat.effects.length){mat.effects.forEach((fx,i)=>{const isI=fx.type==='inner-shadow';t+=`\n▸ ${isI?'INNER SHADOW':'DROP SHADOW'}${mat.effects.length>1?' #'+(i+1):''}\n  Color: ${hslToHex(shiftedH(fx.h),fx.s,fx.l)} (${fx.a}%)\n  X: ${fx.x}px   Y: ${fx.y}px\n  Blur: ${fx.blur}px   Spread: ${fx.spread||0}px\n`;});}
+  t+=`\n▸ CORNER RADIUS: ${mat.radius}px\n`;
+  navigator.clipboard.writeText(t).then(()=>{toast('All settings copied!','success');});
 }
 
-function selectTheme(themeId) {
-  STATE.currentTheme = themeId;
-  renderThemePills();
-  if (STATE.currentSection) renderStage();
+function downloadPNG(){
+  const mat=getCurrentMaterial();
+  if(!mat){toast('Pick a style first','info');return;}
+  toast('PNG export coming soon','info');
 }
 
-/* ═══════════════════════════════════════════
-   SELECT SECTION
-   ═══════════════════════════════════════════ */
-function selectSection(sectionId) {
-  STATE.currentSection = sectionId;
-  // Reset section props (her section'ın default'ları olacak)
-  STATE.props = getDefaultProps(sectionId);
-  renderSectionList();
-  renderStage();
-  renderProps();
-}
+function toggleTheme(){const html=document.documentElement;const cur=html.getAttribute('data-theme');const nx=cur==='light'?'dark':'light';html.setAttribute('data-theme',nx);localStorage.setItem('polishui-theme',nx);document.getElementById('themeIcon').className=nx==='light'?'fa-regular fa-moon':'fa-regular fa-sun';}
+(function(){const s=localStorage.getItem('polishui-theme');if(s){document.documentElement.setAttribute('data-theme',s);document.getElementById('themeIcon').className=s==='light'?'fa-regular fa-moon':'fa-regular fa-sun';}})();
 
-/* ═══════════════════════════════════════════
-   DEFAULT PROPS (her section için varsayılan ayarlar)
-   ═══════════════════════════════════════════ */
-function getDefaultProps(sectionId) {
-  const defaults = {
-    hud:        { playerName: 'PlayerOne', level: 24, hp: 75, mp: 60, xp: 45, gold: 12500, gems: 350 },
-    skills:     { slots: 4 },
-    death:      { killer: 'DarkMage', cooldown: 5 },
-    levelup:    { newLevel: 25, rewards: 3 },
-    shop:       { title: 'Item Shop', itemCount: 6, currency: 'Gold' },
-    inventory:  { slots: 24, equipped: 3 },
-    summon:     { bannerName: 'Mythic Heroes', cost: 100, pity: 5 },
-    rewards:    { day: 4, totalDays: 7 },
-    battlepass: { tier: 12, maxTier: 50, season: 'Season 5' },
-    chat:       { messages: 5 },
-    friends:    { online: 8, total: 24 },
-    leaderboard:{ topCount: 5, myRank: 42 },
-    mail:       { unread: 3, total: 12 },
-    quest:      { questCount: 4 },
-    achievement:{ unlocked: 18, total: 50 },
-    stats:      { wins: 142, losses: 38, kdr: 3.7 },
-    settings:   { volume: 75 },
-    profile:    { name: 'PlayerOne', level: 24, title: 'Dragon Slayer' },
-    dialog:     { speaker: 'Old Sage', text: 'The journey ahead is treacherous, young warrior. Are you ready?' },
-    notifs:     { count: 3 }
-  };
-  return defaults[sectionId] || {};
-}
+function toast(msg,type){const stack=document.getElementById('toast-stack');const t=document.createElement('div');t.className='toast';t.innerHTML=`<i class="fa-solid ${type==='success'?'fa-circle-check':'fa-info-circle'}" style="color:${type==='success'?'var(--success)':'var(--accent)'}"></i><span>${msg}</span>`;stack.appendChild(t);setTimeout(()=>t.remove(),2500);}
 
-/* ═══════════════════════════════════════════
-   RENDER STAGE (orta canvas)
-   ═══════════════════════════════════════════ */
-function renderStage() {
-  const stage = document.getElementById('stage-content');
-  if (!STATE.currentSection) {
-    stage.innerHTML = `
-      <div class="stage-empty">
-        <i class="fa-solid fa-hand-pointer"></i>
-        <h2>Welcome to PolishUI</h2>
-        <div>Pick a UI section from the left to get started</div>
-      </div>`;
-    return;
-  }
-  
-  // Çağır: belirli section + tema kombinasyonunun render fonksiyonunu
-  const renderer = SECTION_RENDERERS[STATE.currentSection];
-  if (!renderer) {
-    stage.innerHTML = `<div class="stage-empty"><i class="fa-solid fa-triangle-exclamation"></i><h2>Coming soon</h2><div>This section will be added in Part 3 or 4</div></div>`;
-    return;
-  }
-  
-  stage.innerHTML = `<div class="ui-theme-${STATE.currentTheme}">${renderer(STATE.props, STATE.currentTheme)}</div>`;
-}
-
-/* ═══════════════════════════════════════════
-   SECTION RENDERERS (HTML templates)
-   Mesaj 3 ve 4'te daha fazlası gelecek
-   ═══════════════════════════════════════════ */
-const SECTION_RENDERERS = {};
-
-// Helper: render a generic themed container
-function themedBox(content, opts = {}) {
-  const { width = 'auto', padding = '16px' } = opts;
-  return `
-    <div style="
-      background: var(--t-bg, rgba(20,20,30,.9));
-      border: 2px solid var(--t-border, #fff);
-      border-radius: var(--t-radius, 8px);
-      padding: ${padding};
-      color: var(--t-text, #fff);
-      font-family: var(--t-font, 'Inter', sans-serif);
-      width: ${width};
-      box-shadow: 0 8px 24px rgba(0,0,0,.4);
-      backdrop-filter: blur(8px);
-    ">${content}</div>`;
-}
-
-/* ─── HUD RENDERER ─── */
-SECTION_RENDERERS.hud = function(p, theme) {
-  return `
-    <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center; align-items:flex-start; padding:20px;">
-      
-      <!-- Player Info + Bars -->
-      <div style="
-        background: var(--t-bg, rgba(20,20,30,.9));
-        border: 2px solid var(--t-border, #fff);
-        border-radius: var(--t-radius, 8px);
-        padding: 14px 18px;
-        color: var(--t-text, #fff);
-        font-family: var(--t-font, 'Inter', sans-serif);
-        min-width: 280px;
-        backdrop-filter: blur(8px);
-      ">
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-          <div style="
-            width: 44px; height: 44px;
-            background: var(--t-accent, #ff6ec7);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 14px; font-weight: 700; color: #fff;
-            border: 2px solid var(--t-text, #fff);
-          ">Lv${p.level}</div>
-          <div style="flex:1;">
-            <div style="font-weight:700; font-size:14px;">${p.playerName}</div>
-            <div style="font-size:11px; opacity:.7;">Level ${p.level} • Warrior</div>
-          </div>
-        </div>
-        
-        <!-- HP Bar -->
-        <div style="margin-bottom:6px;">
-          <div style="display:flex; justify-content:space-between; font-size:10px; margin-bottom:3px;">
-            <span>HP</span><span>${p.hp}/100</span>
-          </div>
-          <div style="height:10px; background:rgba(0,0,0,.4); border-radius:5px; overflow:hidden; border:1px solid var(--t-border, #fff);">
-            <div style="height:100%; width:${p.hp}%; background:linear-gradient(90deg, #ff4444, #ff0000); transition:.3s;"></div>
-          </div>
-        </div>
-        
-        <!-- MP Bar -->
-        <div style="margin-bottom:6px;">
-          <div style="display:flex; justify-content:space-between; font-size:10px; margin-bottom:3px;">
-            <span>MP</span><span>${p.mp}/100</span>
-          </div>
-          <div style="height:8px; background:rgba(0,0,0,.4); border-radius:4px; overflow:hidden; border:1px solid var(--t-border, #fff);">
-            <div style="height:100%; width:${p.mp}%; background:linear-gradient(90deg, #4488ff, #0066ff);"></div>
-          </div>
-        </div>
-        
-        <!-- XP Bar -->
-        <div>
-          <div style="display:flex; justify-content:space-between; font-size:10px; margin-bottom:3px;">
-            <span>XP</span><span>${p.xp}%</span>
-          </div>
-          <div style="height:6px; background:rgba(0,0,0,.4); border-radius:3px; overflow:hidden; border:1px solid var(--t-border, #fff);">
-            <div style="height:100%; width:${p.xp}%; background:linear-gradient(90deg, #ffdd44, #ffaa00);"></div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Currency -->
-      <div style="display:flex; flex-direction:column; gap:8px;">
-        <div style="
-          background: var(--t-bg, rgba(20,20,30,.9));
-          border: 2px solid var(--t-border, #fff);
-          border-radius: var(--t-radius, 8px);
-          padding: 10px 18px;
-          color: var(--t-text, #fff);
-          font-family: var(--t-font, 'Inter', sans-serif);
-          display: flex; align-items: center; gap: 10px;
-          min-width: 180px;
-          backdrop-filter: blur(8px);
-        ">
-          <div style="
-            width:28px; height:28px; border-radius:50%;
-            background:linear-gradient(135deg, #ffd700, #ff8c00);
-            display:flex; align-items:center; justify-content:center;
-            font-size:14px;
-          ">🪙</div>
-          <div style="flex:1; font-weight:700; font-size:16px;">${p.gold.toLocaleString()}</div>
-          <button style="
-            background: var(--t-accent, #ff6ec7);
-            border: none; width:24px; height:24px; border-radius:6px;
-            color:#fff; cursor:pointer; font-weight:700;
-          ">+</button>
-        </div>
-        <div style="
-          background: var(--t-bg, rgba(20,20,30,.9));
-          border: 2px solid var(--t-border, #fff);
-          border-radius: var(--t-radius, 8px);
-          padding: 10px 18px;
-          color: var(--t-text, #fff);
-          font-family: var(--t-font, 'Inter', sans-serif);
-          display: flex; align-items: center; gap: 10px;
-          min-width: 180px;
-          backdrop-filter: blur(8px);
-        ">
-          <div style="
-            width:28px; height:28px; border-radius:50%;
-            background:linear-gradient(135deg, #00ddff, #0066ff);
-            display:flex; align-items:center; justify-content:center;
-            font-size:14px;
-          ">💎</div>
-          <div style="flex:1; font-weight:700; font-size:16px;">${p.gems.toLocaleString()}</div>
-          <button style="
-            background: var(--t-accent, #ff6ec7);
-            border: none; width:24px; height:24px; border-radius:6px;
-            color:#fff; cursor:pointer; font-weight:700;
-          ">+</button>
-        </div>
-      </div>
-    </div>
-  `;
-};
-
-/* ─── SKILL BAR RENDERER ─── */
-SECTION_RENDERERS.skills = function(p, theme) {
-  const keys = ['M1', 'E', 'Q', 'R'];
-  const icons = ['⚔️', '🔥', '⚡', '✨'];
-  
-  return `
-    <div style="
-      display: flex; gap: 10px; padding: 16px;
-      background: var(--t-bg, rgba(20,20,30,.9));
-      border: 2px solid var(--t-border, #fff);
-      border-radius: var(--t-radius, 8px);
-      backdrop-filter: blur(8px);
-    ">
-      ${Array.from({length: p.slots}).map((_, i) => `
-        <div style="
-          width: 70px; height: 70px;
-          background: rgba(0,0,0,.6);
-          border: 2px solid var(--t-border, #fff);
-          border-radius: var(--t-radius, 8px);
-          display: flex; flex-direction: column;
-          align-items: center; justify-content: center;
-          color: var(--t-text, #fff);
-          font-family: var(--t-font, 'Inter', sans-serif);
-          position: relative;
-          cursor: pointer;
-          transition: all .15s;
-        ">
-          <div style="
-            position: absolute; top: 4px; right: 4px;
-            font-size: 9px; font-weight: 700;
-            background: var(--t-accent, #ff6ec7);
-            color: #fff; padding: 1px 5px; border-radius: 3px;
-          ">${keys[i]}</div>
-          <div style="font-size: 28px;">${icons[i]}</div>
-          ${i === 2 ? '<div style="position:absolute;inset:0;background:rgba(0,0,0,.7);border-radius:inherit;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;">3s</div>' : ''}
-        </div>
-      `).join('')}
-    </div>
-  `;
-};
-
-/* ─── SHOP RENDERER ─── */
-SECTION_RENDERERS.shop = function(p, theme) {
-  const items = [
-    { name: 'Iron Sword',  price: 250, rarity: 'common',    icon: '⚔️' },
-    { name: 'Magic Wand',  price: 480, rarity: 'rare',      icon: '🪄' },
-    { name: 'Dragon Bow',  price: 1200, rarity: 'epic',     icon: '🏹' },
-    { name: 'Hero Shield', price: 350, rarity: 'common',    icon: '🛡️' },
-    { name: 'Phoenix Egg', price: 2500, rarity: 'legendary',icon: '🥚' },
-    { name: 'Mystic Orb',  price: 800, rarity: 'rare',      icon: '🔮' }
-  ];
-  const rarityColors = {
-    common: '#9e9e9e', rare: '#4488ff',
-    epic: '#aa44ff', legendary: '#ffaa00'
-  };
-  
-  return `
-    <div style="
-      background: var(--t-bg, rgba(20,20,30,.9));
-      border: 2px solid var(--t-border, #fff);
-      border-radius: var(--t-radius, 8px);
-      padding: 20px;
-      color: var(--t-text, #fff);
-      font-family: var(--t-font, 'Inter', sans-serif);
-      width: 520px; max-width: 95vw;
-      backdrop-filter: blur(8px);
-    ">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; padding-bottom:12px; border-bottom: 2px solid var(--t-border, #fff);">
-        <h2 style="font-size: 20px; font-weight: 700; margin: 0;">🛒 ${p.title}</h2>
-        <div style="display:flex; align-items:center; gap:6px; background:rgba(0,0,0,.4); padding:6px 12px; border-radius: var(--t-radius, 8px); font-weight:700;">
-          🪙 12,500
-        </div>
-      </div>
-      
-      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-        ${items.slice(0, p.itemCount).map(item => `
-          <div style="
-            background: rgba(0,0,0,.4);
-            border: 2px solid ${rarityColors[item.rarity]};
-            border-radius: var(--t-radius, 8px);
-            padding: 12px 10px;
-            text-align: center;
-            transition: all .15s;
-            cursor: pointer;
-          ">
-            <div style="font-size: 32px; margin-bottom: 6px;">${item.icon}</div>
-            <div style="font-size: 12px; font-weight: 700; margin-bottom: 4px;">${item.name}</div>
-            <div style="font-size: 9px; color: ${rarityColors[item.rarity]}; text-transform: uppercase; font-weight: 700; margin-bottom: 6px;">${item.rarity}</div>
-            <button style="
-              width: 100%; padding: 6px;
-              background: var(--t-accent, #ff6ec7);
-              border: none; border-radius: 4px;
-              color: #fff; font-weight: 700; font-size: 11px;
-              cursor: pointer; font-family: inherit;
-            ">${item.price} 🪙</button>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `;
-};
-
-/* ─── QUEST RENDERER ─── */
-SECTION_RENDERERS.quest = function(p, theme) {
-  const quests = [
-    { name: 'Join 3 Matches', progress: 1, total: 3, reward: '100 💎', icon: '⚔️' },
-    { name: 'Kill 10 Players', progress: 6, total: 10, reward: '200 🪙', icon: '💀' },
-    { name: 'Reach Level 30', progress: 24, total: 30, reward: '150 💎', icon: '⭐' },
-    { name: 'Daily Login', progress: 1, total: 1, reward: '100 🪙', icon: '👤', done: true }
-  ];
-  
-  return `
-    <div style="
-      background: var(--t-bg, rgba(20,20,30,.9));
-      border: 2px solid var(--t-border, #fff);
-      border-radius: var(--t-radius, 8px);
-      padding: 18px;
-      color: var(--t-text, #fff);
-      font-family: var(--t-font, 'Inter', sans-serif);
-      width: 340px; max-width: 95vw;
-      backdrop-filter: blur(8px);
-    ">
-      <h2 style="font-size: 18px; font-weight: 700; margin: 0 0 14px 0; display:flex; align-items:center; gap:8px;">
-        📜 Quests
-      </h2>
-      
-      <div style="display:flex; flex-direction:column; gap:8px;">
-        ${quests.slice(0, p.questCount).map(q => `
-          <div style="
-            background: rgba(0,0,0,.4);
-            border: 1px solid var(--t-border, #fff);
-            border-radius: 6px;
-            padding: 10px 12px;
-            display: flex; align-items: center; gap: 10px;
-            ${q.done ? 'opacity: .6;' : ''}
-          ">
-            <div style="
-              width: 34px; height: 34px;
-              background: var(--t-accent, #ff6ec7);
-              border-radius: 6px;
-              display: flex; align-items: center; justify-content: center;
-              font-size: 18px;
-            ">${q.icon}</div>
-            <div style="flex:1; min-width:0;">
-              <div style="font-size: 12px; font-weight: 700; margin-bottom: 4px;">${q.name}</div>
-              <div style="display:flex; align-items:center; gap:8px;">
-                <div style="flex:1; height: 6px; background: rgba(0,0,0,.5); border-radius: 3px; overflow:hidden;">
-                  <div style="height:100%; width:${(q.progress/q.total*100)}%; background: ${q.done ? '#10b981' : 'var(--t-accent, #ff6ec7)'}; transition:.3s;"></div>
-                </div>
-                <span style="font-size:10px; opacity:.7;">${q.progress}/${q.total}</span>
-              </div>
-            </div>
-            <div style="font-size: 10px; font-weight: 700; color: var(--t-accent, #ff6ec7); white-space: nowrap;">${q.reward}</div>
-          </div>
-        `).join('')}
-      </div>
-      
-      <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--t-border, #fff); text-align:center; font-size:10px; opacity:.7;">
-        🕐 Refreshes in: 12h 45m
-      </div>
-    </div>
-  `;
-};
-
-/* ─── SUMMON / GACHA RENDERER ─── */
-SECTION_RENDERERS.summon = function(p, theme) {
-  return `
-    <div style="
-      background: var(--t-bg, rgba(20,20,30,.9));
-      border: 2px solid var(--t-border, #fff);
-      border-radius: var(--t-radius, 8px);
-      padding: 20px;
-      color: var(--t-text, #fff);
-      font-family: var(--t-font, 'Inter', sans-serif);
-      width: 480px; max-width: 95vw;
-      backdrop-filter: blur(8px);
-    ">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px;">
-        <div>
-          <h2 style="font-size: 22px; font-weight: 800; margin: 0;">SUMMON</h2>
-          <div style="font-size: 10px; opacity:.7; margin-top: 2px;">Banner Resets in: 15h 12m 37s</div>
-        </div>
-        <div style="
-          padding: 4px 10px; background: var(--t-accent, #ff6ec7);
-          color: #fff; font-size: 10px; font-weight: 700;
-          border-radius: 4px;
-        ">▶ SPECIAL BANNER</div>
-      </div>
-      
-      <!-- Character preview -->
-      <div style="
-        background: linear-gradient(135deg, rgba(120, 80, 200, .4), rgba(200, 80, 200, .4));
-        border-radius: 10px;
-        padding: 30px 20px;
-        text-align: center;
-        margin-bottom: 14px;
-        position: relative;
-      ">
-        <div style="font-size: 70px; margin-bottom: 10px;">🧚‍♀️</div>
-        <div style="font-size: 18px; font-weight: 800; letter-spacing: 1px;">${p.bannerName}</div>
-        <div style="
-          display:inline-block; margin-top:8px;
-          padding: 3px 14px;
-          background: linear-gradient(90deg, #ff0080, #7928ca, #ff0080);
-          background-size: 200% 100%;
-          border-radius: 999px;
-          font-size: 11px; font-weight: 700;
-          color: #fff;
-        ">MYTHICAL</div>
-      </div>
-      
-      <!-- Pity bar -->
-      <div style="margin-bottom: 14px;">
-        <div style="display:flex; justify-content:space-between; font-size: 10px; margin-bottom: 4px;">
-          <span style="font-weight: 700;">MYTHIC PITY</span>
-          <span>${p.pity}/30</span>
-        </div>
-        <div style="height: 10px; background: rgba(0,0,0,.5); border-radius: 5px; overflow: hidden;">
-          <div style="height:100%; width:${(p.pity/30*100)}%; background: linear-gradient(90deg, #ff0080, #7928ca);"></div>
-        </div>
-      </div>
-      
-      <!-- Buttons -->
-      <div style="display:flex; gap: 10px;">
-        <button style="
-          flex: 1; padding: 14px;
-          background: var(--t-bg-2, rgba(40,40,60,.9));
-          border: 2px solid var(--t-border, #fff);
-          border-radius: var(--t-radius, 8px);
-          color: var(--t-text, #fff);
-          font-family: inherit; font-weight: 700; font-size: 13px;
-          cursor: pointer;
-        ">
-          SUMMON X1<br><span style="font-size: 11px; opacity: .8;">💎 ${p.cost}</span>
-        </button>
-        <button style="
-          flex: 1; padding: 14px;
-          background: var(--t-accent, #ff6ec7);
-          border: 2px solid var(--t-border, #fff);
-          border-radius: var(--t-radius, 8px);
-          color: #fff;
-          font-family: inherit; font-weight: 700; font-size: 13px;
-          cursor: pointer;
-        ">
-          SUMMON X10<br><span style="font-size: 11px;">💎 ${p.cost * 10}</span>
-        </button>
-      </div>
-    </div>
-  `;
-};
-
-/* ─── INVENTORY RENDERER ─── */
-SECTION_RENDERERS.inventory = function(p, theme) {
-  const items = [
-    { icon: '⚔️', rarity: 'epic',      equipped: true },
-    { icon: '🛡️', rarity: 'rare',     equipped: true },
-    { icon: '👑', rarity: 'legendary', equipped: true },
-    { icon: '🥾', rarity: 'common'    },
-    { icon: '🧪', rarity: 'rare'      },
-    { icon: '🔮', rarity: 'epic'      },
-    { icon: '💎', rarity: 'legendary' },
-    { icon: '📜', rarity: 'common'    },
-    { icon: '🗝️', rarity: 'rare'     },
-    { icon: '🍖', rarity: 'common'    },
-    { icon: '⚗️', rarity: 'rare'      },
-    { icon: '🏹', rarity: 'epic'      }
-  ];
-  const rarityColors = {
-    common: '#9e9e9e', rare: '#4488ff',
-    epic: '#aa44ff', legendary: '#ffaa00'
-  };
-  const slotsToShow = Math.min(p.slots, 24);
-  
-  return `
-    <div style="
-      background: var(--t-bg, rgba(20,20,30,.9));
-      border: 2px solid var(--t-border, #fff);
-      border-radius: var(--t-radius, 8px);
-      padding: 18px;
-      color: var(--t-text, #fff);
-      font-family: var(--t-font, 'Inter', sans-serif);
-      width: 420px; max-width: 95vw;
-      backdrop-filter: blur(8px);
-    ">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 2px solid var(--t-border, #fff);">
-        <h2 style="font-size: 18px; font-weight: 700; margin: 0;">📦 Inventory</h2>
-        <div style="font-size: 11px; opacity: .7;">${items.length}/${p.slots}</div>
-      </div>
-      
-      <div style="display:grid; grid-template-columns: repeat(6, 1fr); gap: 6px;">
-        ${Array.from({length: slotsToShow}).map((_, i) => {
-          const item = items[i];
-          if (!item) {
-            return `<div style="
-              aspect-ratio:1; background: rgba(0,0,0,.3);
-              border: 1px dashed var(--t-border, rgba(255,255,255,.2));
-              border-radius: 6px;
-            "></div>`;
-          }
-          return `<div style="
-            aspect-ratio:1; background: rgba(0,0,0,.5);
-            border: 2px solid ${rarityColors[item.rarity]};
-            border-radius: 6px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 24px; cursor: pointer; position: relative;
-            transition: all .15s;
-          ">
-            ${item.icon}
-            ${item.equipped ? '<div style="position:absolute;top:2px;left:2px;width:8px;height:8px;background:#10b981;border-radius:50%;border:1px solid #fff;"></div>' : ''}
-          </div>`;
-        }).join('')}
-      </div>
-    </div>
-  `;
-};
-
-/* ─── CHAT RENDERER ─── */
-SECTION_RENDERERS.chat = function(p, theme) {
-  const messages = [
-    { user: 'DragonSlayer',  text: 'GG everyone!',           color: '#ff6b6b' },
-    { user: 'WizardKing',    text: 'Nice match guys',         color: '#4ecdc4' },
-    { user: 'NinjaShadow',   text: 'Anyone wanna duo?',       color: '#ffe66d' },
-    { user: 'PhantomRogue',  text: 'I\'m in! Join my party',  color: '#a8dadc' },
-    { user: 'EpicHero',      text: 'Let\'s go to the dungeon',color: '#f08080' }
-  ];
-  
-  return `
-    <div style="
-      background: var(--t-bg, rgba(20,20,30,.9));
-      border: 2px solid var(--t-border, #fff);
-      border-radius: var(--t-radius, 8px);
-      padding: 14px;
-      color: var(--t-text, #fff);
-      font-family: var(--t-font, 'Inter', sans-serif);
-      width: 340px; max-width: 95vw;
-      backdrop-filter: blur(8px);
-    ">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
-        <h2 style="font-size: 14px; font-weight: 700; margin: 0;">💬 Chat</h2>
-        <div style="display:flex; gap: 4px;">
-          <span style="font-size: 9px; padding: 2px 8px; background: var(--t-accent, #ff6ec7); color: #fff; border-radius: 999px; font-weight: 700;">GLOBAL</span>
-          <span style="font-size: 9px; padding: 2px 8px; background: rgba(0,0,0,.3); color: var(--t-text, #fff); border-radius: 999px;">TEAM</span>
-        </div>
-      </div>
-      
-      <div style="display:flex; flex-direction:column; gap: 6px; max-height: 240px; overflow-y: auto; padding: 6px; background: rgba(0,0,0,.3); border-radius: 6px;">
-        ${messages.slice(0, p.messages).map(m => `
-          <div style="font-size: 12px; line-height: 1.4;">
-            <span style="color: ${m.color}; font-weight: 700;">${m.user}:</span>
-            <span style="opacity: .9; margin-left: 4px;">${m.text}</span>
-          </div>
-        `).join('')}
-      </div>
-      
-      <div style="display:flex; gap: 6px; margin-top: 10px;">
-        <input type="text" placeholder="Type a message..." style="
-          flex:1; padding: 8px 10px;
-          background: rgba(0,0,0,.4);
-          border: 1px solid var(--t-border, #fff);
-          border-radius: 5px;
-          color: var(--t-text, #fff);
-          font-size: 11px;
-          font-family: inherit;
-          outline: none;
-        ">
-        <button style="
-          padding: 8px 14px;
-          background: var(--t-accent, #ff6ec7);
-          border: none; border-radius: 5px;
-          color: #fff; font-weight: 700; font-size: 11px;
-          cursor: pointer;
-        ">SEND</button>
-      </div>
-    </div>
-  `;
-};
-
-/* ─── LEADERBOARD RENDERER ─── */
-SECTION_RENDERERS.leaderboard = function(p, theme) {
-  const players = [
-    { rank: 1, name: 'DragonGod',   score: 158420, badge: '👑' },
-    { rank: 2, name: 'ShadowKing',  score: 142150, badge: '🥈' },
-    { rank: 3, name: 'NinjaQueen',  score: 138900, badge: '🥉' },
-    { rank: 4, name: 'WizardMage',  score: 125780, badge: '' },
-    { rank: 5, name: 'PhantomLord', score: 118650, badge: '' }
-  ];
-  
-  return `
-    <div style="
-      background: var(--t-bg, rgba(20,20,30,.9));
-      border: 2px solid var(--t-border, #fff);
-      border-radius: var(--t-radius, 8px);
-      padding: 18px;
-      color: var(--t-text, #fff);
-      font-family: var(--t-font, 'Inter', sans-serif);
-      width: 380px; max-width: 95vw;
-      backdrop-filter: blur(8px);
-    ">
-      <div style="text-align: center; margin-bottom: 14px;">
-        <h2 style="font-size: 22px; font-weight: 800; margin: 0; letter-spacing: 1px;">🏆 LEADERBOARD</h2>
-        <div style="font-size: 10px; opacity: .7; margin-top: 4px;">SEASON 5 • TOP PLAYERS</div>
-      </div>
-      
-      <div style="display:flex; flex-direction:column; gap: 5px;">
-        ${players.slice(0, p.topCount).map((pl, i) => `
-          <div style="
-            display: flex; align-items: center; gap: 12px;
-            padding: 10px 12px;
-            background: ${i === 0 ? 'linear-gradient(90deg, rgba(255,215,0,.3), transparent)' : 'rgba(0,0,0,.3)'};
-            border: 1px solid ${i === 0 ? '#ffd700' : 'var(--t-border, #fff)'};
-            border-radius: 6px;
-          ">
-            <div style="
-              width: 28px; height: 28px;
-              background: ${i === 0 ? '#ffd700' : i === 1 ? '#c0c0c0' : i === 2 ? '#cd7f32' : 'var(--t-accent, #ff6ec7)'};
-              border-radius: 50%;
-              display: flex; align-items: center; justify-content: center;
-              font-size: 12px; font-weight: 800; color: #000;
-            ">${pl.rank}</div>
-            <div style="flex: 1; font-weight: 700; font-size: 13px;">${pl.name} ${pl.badge}</div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; opacity: .9;">${pl.score.toLocaleString()}</div>
-          </div>
-        `).join('')}
-      </div>
-      
-      <div style="margin-top: 12px; padding: 8px 12px; background: var(--t-accent, #ff6ec7); border-radius: 6px; display:flex; justify-content:space-between; align-items:center;">
-        <div style="font-size: 11px; font-weight: 700; color: #fff;">YOUR RANK</div>
-        <div style="font-size: 14px; font-weight: 800; color: #fff;">#${p.myRank}</div>
-      </div>
-    </div>
-  `;
-};
-
-/* ─── DIALOG RENDERER ─── */
-SECTION_RENDERERS.dialog = function(p, theme) {
-  return `
-    <div style="
-      background: var(--t-bg, rgba(20,20,30,.9));
-      border: 2px solid var(--t-border, #fff);
-      border-radius: var(--t-radius, 8px);
-      padding: 0;
-      color: var(--t-text, #fff);
-      font-family: var(--t-font, 'Inter', sans-serif);
-      width: 500px; max-width: 95vw;
-      backdrop-filter: blur(8px);
-      overflow: hidden;
-    ">
-      <!-- Speaker tag -->
-      <div style="
-        background: var(--t-accent, #ff6ec7);
-        padding: 8px 18px;
-        font-size: 14px; font-weight: 800;
-        color: #fff;
-        font-style: italic;
-        display: inline-block;
-        position: relative;
-        margin: 14px 0 0 14px;
-        border-radius: var(--t-radius, 8px);
-      ">${p.speaker}</div>
-      
-      <!-- Dialog text -->
-      <div style="padding: 14px 22px 18px;">
-        <p style="font-size: 14px; line-height: 1.6; margin: 0;">
-          ${p.text}
-        </p>
-      </div>
-      
-      <!-- Continue indicator -->
-      <div style="
-        display:flex; justify-content: flex-end;
-        padding: 0 18px 14px;
-      ">
-        <div style="
-          font-size: 16px; color: var(--t-accent, #ff6ec7);
-          animation: bounce 1s infinite;
-        ">▼</div>
-      </div>
-    </div>
-  `;
-};
-
-/* ═══════════════════════════════════════════
-   PROPS PANEL (right sidebar)
-   Geçici basit hali - Mesaj 5'te tamamen yenilenecek
-   ═══════════════════════════════════════════ */
-function renderProps() {
-  const body = document.getElementById('props-body');
-  const badge = document.getElementById('props-badge');
-  
-  if (!STATE.currentSection) {
-    body.innerHTML = `<p style="color:var(--app-muted);font-size:12px;text-align:center;padding:40px 0;">
-      <i class="fa-regular fa-circle-info" style="display:block;font-size:24px;margin-bottom:10px;opacity:.4;"></i>
-      Select a UI section to see its properties and code
-    </p>`;
-    badge.textContent = 'none';
-    return;
-  }
-  
-  const sec = SECTIONS.find(s => s.id === STATE.currentSection);
-  badge.textContent = sec.name;
-  
-  let html = '';
-  
-  // Property sliders & inputs (simple version - Mesaj 5'te güzelleşecek)
-  Object.keys(STATE.props).forEach(key => {
-    const val = STATE.props[key];
-    if (typeof val === 'number') {
-      const max = key.includes('hp') || key.includes('mp') || key.includes('xp') || key.includes('volume') ? 100 : 
-                  key.includes('Count') || key.includes('total') || key.includes('messages') ? 20 :
-                  key === 'level' || key === 'tier' || key === 'newLevel' ? 100 :
-                  key === 'slots' ? 30 :
-                  key.includes('rank') || key.includes('Rank') ? 1000 :
-                  val * 10;
-      html += `
-        <div class="prop-row">
-          <label>${key}</label>
-          <input type="range" min="0" max="${max}" value="${val}" 
-                 oninput="updateProp('${key}', this.value); document.getElementById('val-${key}').textContent = this.value;">
-          <span class="val" id="val-${key}">${val}</span>
-        </div>`;
-    } else {
-      html += `
-        <div style="margin-bottom: 10px;">
-          <label style="font-size:11px;color:var(--app-muted);font-weight:500;display:block;margin-bottom:4px;">${key}</label>
-          <input type="text" class="prop-input" value="${val}" oninput="updateProp('${key}', this.value)">
-        </div>`;
-    }
-  });
-  
-  // Export placeholder (Mesaj 5'te dolacak)
-  html += `<div class="prop-group" style="margin-top: 20px;">
-    <div class="prop-label">Export Code</div>
-    <p style="color:var(--app-muted);font-size:11px;text-align:center;padding:20px 0;">
-      <i class="fa-solid fa-code" style="display:block;font-size:20px;margin-bottom:8px;opacity:.4;"></i>
-      Code export will be available after Part 5 is added
-    </p>
-  </div>`;
-  
-  body.innerHTML = html;
-}
-
-function updateProp(key, value) {
-  // Convert to number if numeric
-  const numVal = Number(value);
-  STATE.props[key] = isNaN(numVal) ? value : numVal;
-  renderStage();
-}
-
-/* ═══════════════════════════════════════════
-   SEARCH
-   ═══════════════════════════════════════════ */
-document.getElementById('section-search-input').addEventListener('input', (e) => {
-  STATE.searchQuery = e.target.value;
-  renderSectionList();
-});
-
-/* ═══════════════════════════════════════════
-   INIT
-   ═══════════════════════════════════════════ */
-renderSectionList();
-renderThemePills();
-
-/* ═══ PART 2 END ═══ */
+renderCategories();
+renderMaterials();
 </script>
-
 </body>
 </html>
