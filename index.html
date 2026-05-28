@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PolishUI — UI Style Generator for Designers</title>
+<meta name="description" content="Free UI styling tool for Roblox, Figma, Web designers. Create stunning gradients, materials and effects in seconds.">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   POLISHUI — Design System
+   ═══════════════════════════════════════════ */
+
+/* LIGHT THEME (default) */
+:root[data-theme="light"] {
+  --bg: #fafafa;
+  --bg-2: #ffffff;
+  --bg-3: #f3f4f6;
+  --bg-card: #ffffff;
+  --bg-hover: #f9fafb;
+  --text: #111827;
+  --text-2: #374151;
+  --text-muted: #6b7280;
+  --text-dim: #9ca3af;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --accent: #3b82f6;
+  --accent-2: #2563eb;
+  --accent-glow: rgba(59, 130, 246, 0.15);
+  --success: #10b981;
+  --danger: #ef4444;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 30px rgba(0,0,0,0.12);
+  --canvas-bg: #f3f4f6;
+  --canvas-grid: rgba(0,0,0,0.04);
+}
+
+/* DARK THEME */
+:root[data-theme="dark"] {
+  --bg: #0a0a0b;
+  --bg-2: #111114;
+  --bg-3: #18181b;
+  --bg-card: #131316;
+  --bg-hover: #1c1c20;
+  --text: #f4f4f5;
+  --text-2: #d4d4d8;
+  --text-muted: #a1a1aa;
+  --text-dim: #71717a;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.16);
+  --accent: #60a5fa;
+  --accent-2: #3b82f6;
+  --accent-glow: rgba(96, 165, 250, 0.2);
+  --success: #34d399;
+  --danger: #f87171;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 30px rgba(0,0,0,0.5);
+  --canvas-bg: #0a0a0b;
+  --canvas-grid: rgba(255,255,255,0.04);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ═══════════════════════════════════════════
+   TOPBAR
+   ═══════════════════════════════════════════ */
+.topbar {
+  height: 56px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 16px;
+  position: relative;
+  z-index: 100;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.3px;
+}
+.brand-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+.brand-name { font-weight: 700; }
+.brand-name .pro { color: var(--accent); }
+
+.topbar-divider { width: 1px; height: 24px; background: var(--border); }
+
+.topbar-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  transition: all 0.15s;
+}
+.icon-btn:hover { background: var(--bg-hover); color: var(--text); border-color: var(--border-strong); }
+
+.btn-primary {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+.btn-primary:hover { background: var(--accent-2); transform: translateY(-1px); box-shadow: 0 4px 12px var(--accent-glow); }
+
+.btn-ghost {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+.btn-ghost:hover { background: var(--bg-hover); border-color: var(--border-strong); }
+
+/* ═══════════════════════════════════════════
+   3-COLUMN LAYOUT
+   ═══════════════════════════════════════════ */
+.workspace {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  height: calc(100vh - 56px);
+  background: var(--bg);
+}
+
+.panel {
+  background: var(--bg-2);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+.panel::-webkit-scrollbar { width: 6px; }
+.panel::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+.panel::-webkit-scrollbar-track { background: transparent; }
+
+.panel-left { border-right: 1px solid var(--border); }
+.panel-right { border-left: 1px solid var(--border); }
+
+.panel-header {
+  padding: 14px 18px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.panel-header h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+
+/* CANVAS (Middle) */
+.canvas-wrap {
+  background: var(--canvas-bg);
+  background-image:
+    linear-gradient(var(--canvas-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--canvas-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.canvas-toolbar {
+  padding: 12px 18px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.element-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-3);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.elem-tab {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+.elem-tab:hover { color: var(--text); }
+.elem-tab.active {
+  background: var(--bg-2);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+}
+
+.canvas-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  overflow: auto;
+}
+
+/* Preview element placeholder */
+#preview-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  transition: all 0.25s ease;
+}
+
+/* ═══════════════════════════════════════════
+   SECTIONS (in panels)
+   ═══════════════════════════════════════════ */
+.section {
+  border-bottom: 1px solid var(--border);
+  padding: 12px 18px 16px;
+}
+.section:last-child { border-bottom: none; }
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+.section-title h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title i.chevron {
+  color: var(--text-dim);
+  font-size: 11px;
+  transition: transform 0.2s;
+}
+.section.collapsed .section-title i.chevron { transform: rotate(-90deg); }
+.section.collapsed .section-body { display: none; }
+
+.section-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Toggle visibility */
+.toggle-eye {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  border: none;
+  background: var(--bg-3);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.toggle-eye:hover { background: var(--bg-hover); color: var(--text); }
+.toggle-eye.on { background: var(--accent); color: #fff; }
+
+/* ═══════════════════════════════════════════
+   FORM CONTROLS (yer tutucu, Part 2'de doldurulacak)
+   ═══════════════════════════════════════════ */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.row-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  min-width: 50px;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media(max-width: 1100px) {
+  .workspace { grid-template-columns: 240px 1fr 280px; }
+}
+@media(max-width: 900px) {
+  body { overflow: auto; height: auto; }
+  .workspace {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .panel-left, .panel-right { border: none; border-bottom: 1px solid var(--border); max-height: none; }
+  .canvas-wrap { min-height: 50vh; }
+  .canvas-stage { padding: 20px; min-height: 350px; }
+}
+
+/* Welcome toast */
+.welcome-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  z-index: 200;
+  animation: slideUp 0.4s ease;
+}
+.welcome-toast .close-toast {
+  background: none; border: none; color: var(--text-muted);
+  cursor: pointer; font-size: 13px; padding: 4px 8px;
+}
+.welcome-toast .close-toast:hover { color: var(--text); }
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.welcome-toast.gone { display: none; }
+</style>
+</head>
+<body>
+
+<!-- ═══ TOPBAR ═══ -->
+<header class="topbar">
+  <a href="#" class="brand">
+    <div class="brand-logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+    <span class="brand-name">Polish<span class="pro">UI</span></span>
+  </a>
+  <div class="topbar-divider"></div>
+  <span style="font-size: 12px; color: var(--text-muted); font-weight: 500;">
+    <i class="fa-regular fa-file" style="margin-right: 6px;"></i> Untitled Style
+  </span>
+
+  <div class="topbar-actions">
+    <button class="btn-ghost" onclick="showHelp()">
+      <i class="fa-regular fa-circle-question"></i> Help
+    </button>
+    <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme" id="themeBtn">
+      <i class="fa-regular fa-moon" id="themeIcon"></i>
+    </button>
+    <button class="btn-primary" onclick="exportStyle()">
+      <i class="fa-solid fa-code"></i> Export Code
+    </button>
+  </div>
+</header>
+
+<!-- ═══ WORKSPACE (3 columns) ═══ -->
+<div class="workspace">
+
+  <!-- LEFT: Effects panel (Part 2'de dolacak) -->
+  <aside class="panel panel-left">
+    <div class="panel-header">
+      <h3>Effects</h3>
+      <button class="icon-btn" title="Reset all effects" onclick="resetAll()" style="width:28px;height:28px;font-size:11px;">
+        <i class="fa-solid fa-rotate-left"></i>
+      </button>
+    </div>
+    
+    <!-- BURAYA Part 2'de Fill, Stroke, Shadow vs efekt panelleri gelecek -->
+    <div id="effects-container">
+      <!-- placeholder -->
+      <div class="section">
+        <div class="section-title">
+          <h4><i class="fa-solid fa-fill-drip" style="color: var(--accent);"></i> Effects loading...</h4>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted); padding: 4px 0;">
+          Part 2'de tüm efektler buraya gelecek.
+        </p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MIDDLE: Canvas / Preview -->
+  <main class="canvas-wrap">
+    <div class="canvas-toolbar">
+      <div class="element-tabs">
+        <button class="elem-tab active" data-element="button"><i class="fa-solid fa-square"></i> Button</button>
+        <button class="elem-tab" data-element="card"><i class="fa-solid fa-id-card"></i> Card</button>
+        <button class="elem-tab" data-element="frame"><i class="fa-regular fa-square"></i> Frame</button>
+        <button class="elem-tab" data-element="panel"><i class="fa-solid fa-window-maximize"></i> Panel</button>
+        <button class="elem-tab" data-element="badge"><i class="fa-solid fa-certificate"></i> Badge</button>
+        <button class="elem-tab" data-element="container"><i class="fa-solid fa-box"></i> Container</button>
+        <button class="elem-tab" data-element="icon"><i class="fa-solid fa-circle"></i> Icon BG</button>
+      </div>
+      
+      <div style="margin-left: auto; display: flex; gap: 8px;">
+        <button class="btn-ghost" onclick="randomizeStyle()" title="Random style">
+          <i class="fa-solid fa-dice"></i> Random
+        </button>
+      </div>
+    </div>
+    
+    <div class="canvas-stage">
+      <div id="preview-element">
+        Preview
+      </div>
+    </div>
+  </main>
+
+  <!-- RIGHT: Presets panel (Part 3'te dolacak) -->
+  <aside class="panel panel-right">
+    <div class="panel-header">
+      <h3>Presets</h3>
+    </div>
+    
+    <div id="presets-container">
+      <!-- placeholder -->
+      <div class="section">
+        <div class="section-title">
+          <h4><i class="fa-solid fa-palette" style="color: var(--accent);"></i> Categories loading...</h4>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted); padding: 4px 0;">
+          Part 3'te kategoriler ve material'lar buraya gelecek.
+        </p>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- Welcome toast -->
+<div class="welcome-toast" id="welcomeToast">
+  <i class="fa-solid fa-sparkles" style="color: var(--accent);"></i>
+  <div>
+    <div style="font-weight: 600; margin-bottom: 2px;">Welcome to PolishUI!</div>
+    <div style="font-size: 11px; color: var(--text-muted);">Pick a preset on the right to start.</div>
+  </div>
+  <button class="close-toast" onclick="document.getElementById('welcomeToast').classList.add('gone')">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   THEME TOGGLE
+   ═══════════════════════════════════════════ */
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('polishui-theme', next);
+  
+  document.getElementById('themeIcon').className = next === 'light' 
+    ? 'fa-regular fa-moon' 
+    : 'fa-regular fa-sun';
+}
+
+// Load saved theme
+(function() {
+  const saved = localStorage.getItem('polishui-theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    document.getElementById('themeIcon').className = saved === 'light' 
+      ? 'fa-regular fa-moon' 
+      : 'fa-regular fa-sun';
+  }
+})();
+
+/* ═══════════════════════════════════════════
+   ELEMENT TAB SWITCHING
+   ═══════════════════════════════════════════ */
+let currentElement = 'button';
+
+document.querySelectorAll('.elem-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.elem-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentElement = btn.dataset.element;
+    renderPreviewElement();
+  });
+});
+
+function renderPreviewElement() {
+  const el = document.getElementById('preview-element');
+  
+  // Reset
+  el.style.cssText = '';
+  el.innerHTML = '';
+  
+  const configs = {
+    button:    { w: '160px', h: '48px',  br: '10px', text: 'Button',  fs: '14px' },
+    card:      { w: '260px', h: '320px', br: '16px', text: 'Card',    fs: '16px' },
+    frame:     { w: '320px', h: '200px', br: '12px', text: 'Frame',   fs: '14px' },
+    panel:     { w: '380px', h: '240px', br: '14px', text: 'Panel',   fs: '15px' },
+    badge:     { w: '90px',  h: '32px',  br: '999px',text: 'NEW',     fs: '11px' },
+    container: { w: '300px', h: '180px', br: '20px', text: 'Container',fs: '14px' },
+    icon:      { w: '72px',  h: '72px',  br: '20px', text: '★',       fs: '28px' }
+  };
+  
+  const cfg = configs[currentElement];
+  el.style.width = cfg.w;
+  el.style.height = cfg.h;
+  el.style.borderRadius = cfg.br;
+  el.style.fontSize = cfg.fs;
+  el.style.background = 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)';
+  el.style.display = 'flex';
+  el.style.alignItems = 'center';
+  el.style.justifyContent = 'center';
+  el.style.color = '#fff';
+  el.style.fontWeight = '600';
+  el.style.boxShadow = '0 8px 20px rgba(99, 102, 241, 0.3)';
+  el.textContent = cfg.text;
+}
+
+// Initial render
+renderPreviewElement();
+
+/* ═══════════════════════════════════════════
+   PLACEHOLDER FUNCTIONS (Part 2-4'te dolacak)
+   ═══════════════════════════════════════════ */
+function showHelp() {
+  alert('Help system — Part 4\'te interactive tour ve guide eklenecek');
+}
+
+function exportStyle() {
+  alert('Export — Part 4\'te CSS/Lua/JSON çıktısı eklenecek');
+}
+
+function resetAll() {
+  alert('Reset — Part 2\'de tüm efektleri sıfırlayacak');
+}
+
+function randomizeStyle() {
+  // Geçici: random renkli gradient
+  const el = document.getElementById('preview-element');
+  const hue1 = Math.floor(Math.random() * 360);
+  const hue2 = (hue1 + 60) % 360;
+  el.style.background = `linear-gradient(135deg, hsl(${hue1}, 75%, 60%) 0%, hsl(${hue2}, 75%, 50%) 100%)`;
+  el.style.boxShadow = `0 8px 20px hsla(${hue1}, 75%, 50%, 0.35)`;
+}
+</script>
+
+</body>
+      </html>
