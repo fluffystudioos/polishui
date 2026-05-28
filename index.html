@@ -10,11 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-/* ═══════════════════════════════════════════
-   POLISHUI — Design System
-   ═══════════════════════════════════════════ */
-
-/* LIGHT THEME (default) */
+/* LIGHT THEME */
 :root[data-theme="light"] {
   --bg: #fafafa;
   --bg-2: #ffffff;
@@ -68,130 +64,76 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  background: var(--bg); color: var(--text);
   -webkit-font-smoothing: antialiased;
-  overflow: hidden;
-  height: 100vh;
+  overflow: hidden; height: 100vh;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* ═══════════════════════════════════════════
-   TOPBAR
-   ═══════════════════════════════════════════ */
+/* TOPBAR */
 .topbar {
-  height: 56px;
-  background: var(--bg-2);
+  height: 56px; background: var(--bg-2);
   border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  gap: 16px;
-  position: relative;
-  z-index: 100;
+  display: flex; align-items: center;
+  padding: 0 20px; gap: 16px;
+  position: relative; z-index: 100;
 }
-
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: flex; align-items: center; gap: 10px;
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  color: var(--text);
-  text-decoration: none;
+  font-weight: 700; font-size: 16px;
+  color: var(--text); text-decoration: none;
   letter-spacing: -0.3px;
 }
 .brand-logo {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+  width: 28px; height: 28px; border-radius: 8px;
   background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 13px;
   box-shadow: 0 4px 12px var(--accent-glow);
 }
-.brand-name { font-weight: 700; }
 .brand-name .pro { color: var(--accent); }
-
 .topbar-divider { width: 1px; height: 24px; background: var(--border); }
-
-.topbar-actions {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+.topbar-actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 
 .icon-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--bg-2);
-  color: var(--text-muted);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  transition: all 0.15s;
+  width: 36px; height: 36px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg-2);
+  color: var(--text-muted); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; transition: all 0.15s;
 }
 .icon-btn:hover { background: var(--bg-hover); color: var(--text); border-color: var(--border-strong); }
 
 .btn-primary {
-  padding: 8px 16px;
-  border-radius: 8px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.15s;
-  text-decoration: none;
+  padding: 8px 16px; border-radius: 8px;
+  background: var(--accent); color: #fff; border: none;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+  transition: all 0.15s; text-decoration: none;
 }
 .btn-primary:hover { background: var(--accent-2); transform: translateY(-1px); box-shadow: 0 4px 12px var(--accent-glow); }
 
 .btn-ghost {
-  padding: 8px 14px;
-  border-radius: 8px;
-  background: transparent;
-  color: var(--text-2);
+  padding: 8px 14px; border-radius: 8px;
+  background: transparent; color: var(--text-2);
   border: 1px solid var(--border);
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
   transition: all 0.15s;
 }
 .btn-ghost:hover { background: var(--bg-hover); border-color: var(--border-strong); }
 
-/* ═══════════════════════════════════════════
-   3-COLUMN LAYOUT
-   ═══════════════════════════════════════════ */
+/* WORKSPACE */
 .workspace {
   display: grid;
   grid-template-columns: 280px 1fr 320px;
   height: calc(100vh - 56px);
   background: var(--bg);
 }
-
 .panel {
-  background: var(--bg-2);
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-strong) transparent;
+  background: var(--bg-2); overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent;
 }
 .panel::-webkit-scrollbar { width: 6px; }
 .panel::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
@@ -202,199 +144,231 @@ body {
 
 .panel-header {
   padding: 14px 18px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between;
 }
 .panel-header h3 {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
   color: var(--text-muted);
 }
 
-/* CANVAS (Middle) */
+/* CANVAS */
 .canvas-wrap {
   background: var(--canvas-bg);
   background-image:
     linear-gradient(var(--canvas-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--canvas-grid) 1px, transparent 1px);
   background-size: 24px 24px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
 }
-
 .canvas-toolbar {
-  padding: 12px 18px;
-  background: var(--bg-2);
+  padding: 12px 18px; background: var(--bg-2);
   border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
 }
-
 .element-tabs {
-  display: flex;
-  gap: 4px;
-  background: var(--bg-3);
-  padding: 4px;
-  border-radius: 10px;
+  display: flex; gap: 4px; background: var(--bg-3);
+  padding: 4px; border-radius: 10px;
   border: 1px solid var(--border);
 }
 .elem-tab {
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: none;
-  background: transparent;
+  padding: 6px 12px; border-radius: 6px;
+  border: none; background: transparent;
   color: var(--text-muted);
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500;
+  cursor: pointer; display: flex; align-items: center; gap: 6px;
   transition: all 0.15s;
 }
 .elem-tab:hover { color: var(--text); }
-.elem-tab.active {
-  background: var(--bg-2);
-  color: var(--text);
-  box-shadow: var(--shadow-sm);
-}
+.elem-tab.active { background: var(--bg-2); color: var(--text); box-shadow: var(--shadow-sm); }
 
 .canvas-stage {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  overflow: auto;
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 40px; overflow: auto;
 }
-
-/* Preview element placeholder */
 #preview-element {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif; font-weight: 600;
+  color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.2);
   transition: all 0.25s ease;
 }
 
-/* ═══════════════════════════════════════════
-   SECTIONS (in panels)
-   ═══════════════════════════════════════════ */
+/* SECTIONS */
 .section {
   border-bottom: 1px solid var(--border);
   padding: 12px 18px 16px;
 }
 .section:last-child { border-bottom: none; }
-
 .section-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  cursor: pointer;
-  user-select: none;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px; cursor: pointer; user-select: none;
 }
 .section-title h4 {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.2px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-size: 12px; font-weight: 700;
+  color: var(--text); letter-spacing: -0.2px;
+  display: flex; align-items: center; gap: 8px;
 }
 .section-title i.chevron {
-  color: var(--text-dim);
-  font-size: 11px;
+  color: var(--text-dim); font-size: 11px;
   transition: transform 0.2s;
 }
 .section.collapsed .section-title i.chevron { transform: rotate(-90deg); }
 .section.collapsed .section-body { display: none; }
+.section-body { display: flex; flex-direction: column; gap: 10px; }
 
-.section-body {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Toggle visibility */
 .toggle-eye {
-  width: 22px;
-  height: 22px;
-  border-radius: 5px;
-  border: none;
-  background: var(--bg-3);
-  color: var(--text-muted);
-  cursor: pointer;
-  font-size: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 22px; height: 22px; border-radius: 5px;
+  border: none; background: var(--bg-3);
+  color: var(--text-muted); cursor: pointer;
+  font-size: 10px; display: flex; align-items: center; justify-content: center;
   transition: all 0.15s;
 }
 .toggle-eye:hover { background: var(--bg-hover); color: var(--text); }
 .toggle-eye.on { background: var(--accent); color: #fff; }
 
-/* ═══════════════════════════════════════════
-   FORM CONTROLS (yer tutucu, Part 2'de doldurulacak)
-   ═══════════════════════════════════════════ */
-.row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* PART 2: EFFECT CONTROLS */
+.slider-row { display: flex; align-items: center; gap: 10px; }
+.slider-row label {
+  font-size: 11px; color: var(--text-muted); font-weight: 500;
+  min-width: 42px;
 }
-.row-label {
-  font-size: 11px;
-  color: var(--text-muted);
-  font-weight: 500;
-  min-width: 50px;
+.slider-row input[type="range"] {
+  flex: 1; -webkit-appearance: none; appearance: none;
+  height: 4px; background: var(--bg-3);
+  border-radius: 4px; outline: none; cursor: pointer;
+}
+.slider-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--accent); cursor: pointer;
+  border: 2px solid var(--bg-2); box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  transition: transform 0.1s;
+}
+.slider-row input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+.slider-row input[type="range"]::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--accent); cursor: pointer; border: 2px solid var(--bg-2);
+}
+.slider-row .val {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--text-2); min-width: 38px; text-align: right; font-weight: 500;
 }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE
-   ═══════════════════════════════════════════ */
+.color-stops { display: flex; flex-direction: column; gap: 6px; }
+.color-stop {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px; border-radius: 8px;
+  background: var(--bg-3); border: 1px solid var(--border);
+}
+.color-stop input[type="color"] {
+  width: 28px; height: 28px; border: none; padding: 0;
+  background: transparent; cursor: pointer; border-radius: 6px;
+}
+.color-stop input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+.color-stop input[type="color"]::-webkit-color-swatch {
+  border: 1px solid var(--border-strong); border-radius: 6px;
+}
+.color-stop input[type="text"] {
+  flex: 1; background: transparent; border: none;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--text); outline: none; min-width: 0;
+}
+.color-stop input[type="number"] {
+  width: 42px; background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 5px; padding: 4px 6px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--text); text-align: center; outline: none;
+}
+.color-stop .remove-stop {
+  background: none; border: none; color: var(--text-dim);
+  cursor: pointer; padding: 4px; font-size: 11px; transition: color 0.15s;
+}
+.color-stop .remove-stop:hover { color: var(--danger); }
+
+.add-stop-btn {
+  background: var(--bg-3); border: 1px dashed var(--border-strong);
+  color: var(--text-muted); padding: 7px;
+  border-radius: 8px; cursor: pointer; font-size: 11px; font-weight: 500;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  transition: all 0.15s;
+}
+.add-stop-btn:hover { background: var(--bg-hover); color: var(--text); border-color: var(--accent); }
+
+.type-pills {
+  display: flex; gap: 4px; background: var(--bg-3);
+  padding: 3px; border-radius: 8px; border: 1px solid var(--border);
+}
+.type-pill {
+  flex: 1; padding: 6px 8px; border: none; background: transparent;
+  color: var(--text-muted); font-family: 'Inter', sans-serif; font-size: 11px;
+  font-weight: 500; cursor: pointer; border-radius: 5px;
+  transition: all 0.15s;
+}
+.type-pill:hover { color: var(--text); }
+.type-pill.active { background: var(--bg-2); color: var(--text); box-shadow: var(--shadow-sm); }
+
+.single-color {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px; border-radius: 8px;
+  background: var(--bg-3); border: 1px solid var(--border);
+}
+.single-color input[type="color"] {
+  width: 28px; height: 28px; border: none; padding: 0;
+  background: transparent; cursor: pointer; border-radius: 6px;
+}
+.single-color input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+.single-color input[type="color"]::-webkit-color-swatch {
+  border: 1px solid var(--border-strong); border-radius: 6px;
+}
+.single-color input[type="text"] {
+  flex: 1; background: transparent; border: none;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--text); outline: none;
+}
+
+.sub-label {
+  font-size: 10px; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  font-weight: 600; margin-top: 2px; margin-bottom: 2px;
+}
+
+.effect-icon {
+  width: 22px; height: 22px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: #fff;
+}
+.icon-fill { background: linear-gradient(135deg, #3b82f6, #8b5cf6); }
+.icon-stroke { background: linear-gradient(135deg, #10b981, #06b6d4); }
+.icon-ishadow { background: linear-gradient(135deg, #6b7280, #374151); }
+.icon-dshadow { background: linear-gradient(135deg, #1f2937, #000); }
+.icon-glow { background: linear-gradient(135deg, #fbbf24, #f59e0b); box-shadow: 0 0 8px rgba(251,191,36,0.6); }
+.icon-bevel { background: linear-gradient(135deg, #d97706, #92400e); }
+.icon-texture { background: linear-gradient(135deg, #ec4899, #a855f7); }
+
+.section.is-off .section-body { opacity: 0.4; pointer-events: none; }
+
+/* RESPONSIVE */
 @media(max-width: 1100px) {
   .workspace { grid-template-columns: 240px 1fr 280px; }
 }
 @media(max-width: 900px) {
   body { overflow: auto; height: auto; }
-  .workspace {
-    grid-template-columns: 1fr;
-    height: auto;
-  }
+  .workspace { grid-template-columns: 1fr; height: auto; }
   .panel-left, .panel-right { border: none; border-bottom: 1px solid var(--border); max-height: none; }
   .canvas-wrap { min-height: 50vh; }
   .canvas-stage { padding: 20px; min-height: 350px; }
 }
 
-/* Welcome toast */
+/* TOAST */
 .welcome-toast {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-lg);
-  border-radius: 12px;
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 13px;
-  z-index: 200;
+  position: fixed; bottom: 24px; right: 24px;
+  background: var(--bg-2); border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg); border-radius: 12px;
+  padding: 14px 18px; display: flex; align-items: center; gap: 12px;
+  font-size: 13px; z-index: 200;
   animation: slideUp 0.4s ease;
 }
 .welcome-toast .close-toast {
@@ -411,7 +385,7 @@ body {
 </head>
 <body>
 
-<!-- ═══ TOPBAR ═══ -->
+<!-- TOPBAR -->
 <header class="topbar">
   <a href="#" class="brand">
     <div class="brand-logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
@@ -435,10 +409,10 @@ body {
   </div>
 </header>
 
-<!-- ═══ WORKSPACE (3 columns) ═══ -->
+<!-- WORKSPACE -->
 <div class="workspace">
 
-  <!-- LEFT: Effects panel (Part 2'de dolacak) -->
+  <!-- LEFT: Effects panel -->
   <aside class="panel panel-left">
     <div class="panel-header">
       <h3>Effects</h3>
@@ -447,21 +421,261 @@ body {
       </button>
     </div>
     
-    <!-- BURAYA Part 2'de Fill, Stroke, Shadow vs efekt panelleri gelecek -->
     <div id="effects-container">
-      <!-- placeholder -->
-      <div class="section">
-        <div class="section-title">
-          <h4><i class="fa-solid fa-fill-drip" style="color: var(--accent);"></i> Effects loading...</h4>
+
+      <!-- FILL -->
+      <div class="section" data-effect="fill">
+        <div class="section-title" onclick="toggleSection(this)">
+          <h4>
+            <span class="effect-icon icon-fill"><i class="fa-solid fa-fill-drip"></i></span>
+            Fill
+          </h4>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <button class="toggle-eye on" onclick="event.stopPropagation(); toggleEffect('fill', this)" title="Toggle">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+            <i class="fa-solid fa-chevron-down chevron"></i>
+          </div>
         </div>
-        <p style="font-size: 12px; color: var(--text-muted); padding: 4px 0;">
-          Part 2'de tüm efektler buraya gelecek.
-        </p>
+        <div class="section-body">
+          <div class="type-pills" id="fill-type">
+            <button class="type-pill" data-type="solid">Solid</button>
+            <button class="type-pill active" data-type="linear">Linear</button>
+            <button class="type-pill" data-type="radial">Radial</button>
+            <button class="type-pill" data-type="conic">Conic</button>
+          </div>
+          
+          <div class="sub-label">Colors</div>
+          <div class="color-stops" id="fill-stops"></div>
+          <button class="add-stop-btn" onclick="addFillStop()">
+            <i class="fa-solid fa-plus"></i> Add color
+          </button>
+          
+          <div id="fill-angle-row">
+            <div class="sub-label">Angle</div>
+            <div class="slider-row">
+              <label>°</label>
+              <input type="range" id="fill-angle" min="0" max="360" value="135">
+              <span class="val" id="fill-angle-val">135°</span>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- STROKE -->
+      <div class="section is-off" data-effect="stroke">
+        <div class="section-title" onclick="toggleSection(this)">
+          <h4>
+            <span class="effect-icon icon-stroke"><i class="fa-regular fa-square"></i></span>
+            Stroke
+          </h4>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <button class="toggle-eye" onclick="event.stopPropagation(); toggleEffect('stroke', this)" title="Toggle">
+              <i class="fa-solid fa-eye-slash"></i>
+            </button>
+            <i class="fa-solid fa-chevron-down chevron"></i>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="sub-label">Color</div>
+          <div class="single-color">
+            <input type="color" id="stroke-color" value="#ffffff">
+            <input type="text" id="stroke-color-hex" value="#FFFFFF">
+          </div>
+          
+          <div class="sub-label">Width</div>
+          <div class="slider-row">
+            <label>px</label>
+            <input type="range" id="stroke-width" min="0" max="20" step="0.5" value="2">
+            <span class="val" id="stroke-width-val">2px</span>
+          </div>
+          
+          <div class="sub-label">Opacity</div>
+          <div class="slider-row">
+            <label>%</label>
+            <input type="range" id="stroke-opacity" min="0" max="100" value="100">
+            <span class="val" id="stroke-opacity-val">100%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- INNER SHADOW -->
+      <div class="section is-off" data-effect="ishadow">
+        <div class="section-title" onclick="toggleSection(this)">
+          <h4>
+            <span class="effect-icon icon-ishadow"><i class="fa-solid fa-circle-half-stroke"></i></span>
+            Inner Shadow
+          </h4>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <button class="toggle-eye" onclick="event.stopPropagation(); toggleEffect('ishadow', this)">
+              <i class="fa-solid fa-eye-slash"></i>
+            </button>
+            <i class="fa-solid fa-chevron-down chevron"></i>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="sub-label">Color</div>
+          <div class="single-color">
+            <input type="color" id="ishadow-color" value="#000000">
+            <input type="text" id="ishadow-color-hex" value="#000000">
+          </div>
+          
+          <div class="slider-row">
+            <label>X</label>
+            <input type="range" id="ishadow-x" min="-30" max="30" value="0">
+            <span class="val" id="ishadow-x-val">0px</span>
+          </div>
+          <div class="slider-row">
+            <label>Y</label>
+            <input type="range" id="ishadow-y" min="-30" max="30" value="2">
+            <span class="val" id="ishadow-y-val">2px</span>
+          </div>
+          <div class="slider-row">
+            <label>Blur</label>
+            <input type="range" id="ishadow-blur" min="0" max="60" value="6">
+            <span class="val" id="ishadow-blur-val">6px</span>
+          </div>
+          <div class="slider-row">
+            <label>%</label>
+            <input type="range" id="ishadow-opacity" min="0" max="100" value="50">
+            <span class="val" id="ishadow-opacity-val">50%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DROP SHADOW -->
+      <div class="section" data-effect="dshadow">
+        <div class="section-title" onclick="toggleSection(this)">
+          <h4>
+            <span class="effect-icon icon-dshadow"><i class="fa-solid fa-clone"></i></span>
+            Drop Shadow
+          </h4>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <button class="toggle-eye on" onclick="event.stopPropagation(); toggleEffect('dshadow', this)">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+            <i class="fa-solid fa-chevron-down chevron"></i>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="sub-label">Color</div>
+          <div class="single-color">
+            <input type="color" id="dshadow-color" value="#000000">
+            <input type="text" id="dshadow-color-hex" value="#000000">
+          </div>
+          
+          <div class="slider-row">
+            <label>X</label>
+            <input type="range" id="dshadow-x" min="-50" max="50" value="0">
+            <span class="val" id="dshadow-x-val">0px</span>
+          </div>
+          <div class="slider-row">
+            <label>Y</label>
+            <input type="range" id="dshadow-y" min="-50" max="50" value="8">
+            <span class="val" id="dshadow-y-val">8px</span>
+          </div>
+          <div class="slider-row">
+            <label>Blur</label>
+            <input type="range" id="dshadow-blur" min="0" max="100" value="20">
+            <span class="val" id="dshadow-blur-val">20px</span>
+          </div>
+          <div class="slider-row">
+            <label>%</label>
+            <input type="range" id="dshadow-opacity" min="0" max="100" value="30">
+            <span class="val" id="dshadow-opacity-val">30%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GLOW -->
+      <div class="section is-off" data-effect="glow">
+        <div class="section-title" onclick="toggleSection(this)">
+          <h4>
+            <span class="effect-icon icon-glow"><i class="fa-solid fa-sun"></i></span>
+            Glow
+          </h4>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <button class="toggle-eye" onclick="event.stopPropagation(); toggleEffect('glow', this)">
+              <i class="fa-solid fa-eye-slash"></i>
+            </button>
+            <i class="fa-solid fa-chevron-down chevron"></i>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="sub-label">Color</div>
+          <div class="single-color">
+            <input type="color" id="glow-color" value="#3b82f6">
+            <input type="text" id="glow-color-hex" value="#3B82F6">
+          </div>
+          
+          <div class="slider-row">
+            <label>Size</label>
+            <input type="range" id="glow-size" min="0" max="80" value="20">
+            <span class="val" id="glow-size-val">20px</span>
+          </div>
+          <div class="slider-row">
+            <label>%</label>
+            <input type="range" id="glow-opacity" min="0" max="100" value="60">
+            <span class="val" id="glow-opacity-val">60%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BEVEL -->
+      <div class="section is-off" data-effect="bevel">
+        <div class="section-title" onclick="toggleSection(this)">
+          <h4>
+            <span class="effect-icon icon-bevel"><i class="fa-solid fa-mountain"></i></span>
+            Bevel
+          </h4>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <button class="toggle-eye" onclick="event.stopPropagation(); toggleEffect('bevel', this)">
+              <i class="fa-solid fa-eye-slash"></i>
+            </button>
+            <i class="fa-solid fa-chevron-down chevron"></i>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="slider-row">
+            <label>Depth</label>
+            <input type="range" id="bevel-depth" min="0" max="20" value="3">
+            <span class="val" id="bevel-depth-val">3px</span>
+          </div>
+          <div class="slider-row">
+            <label>Light</label>
+            <input type="range" id="bevel-light" min="0" max="100" value="60">
+            <span class="val" id="bevel-light-val">60%</span>
+          </div>
+          <div class="slider-row">
+            <label>Dark</label>
+            <input type="range" id="bevel-dark" min="0" max="100" value="40">
+            <span class="val" id="bevel-dark-val">40%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CORNERS / RADIUS -->
+      <div class="section" data-effect="radius">
+        <div class="section-title" onclick="toggleSection(this)">
+          <h4>
+            <span class="effect-icon icon-texture"><i class="fa-solid fa-vector-square"></i></span>
+            Corners
+          </h4>
+          <i class="fa-solid fa-chevron-down chevron"></i>
+        </div>
+        <div class="section-body">
+          <div class="slider-row">
+            <label>Radius</label>
+            <input type="range" id="radius-val" min="0" max="100" value="12">
+            <span class="val" id="radius-val-display">12px</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </aside>
 
-  <!-- MIDDLE: Canvas / Preview -->
+  <!-- MIDDLE: Canvas -->
   <main class="canvas-wrap">
     <div class="canvas-toolbar">
       <div class="element-tabs">
@@ -482,20 +696,16 @@ body {
     </div>
     
     <div class="canvas-stage">
-      <div id="preview-element">
-        Preview
-      </div>
+      <div id="preview-element">Preview</div>
     </div>
   </main>
 
-  <!-- RIGHT: Presets panel (Part 3'te dolacak) -->
+  <!-- RIGHT: Presets (Part 3'te dolacak) -->
   <aside class="panel panel-right">
     <div class="panel-header">
       <h3>Presets</h3>
     </div>
-    
     <div id="presets-container">
-      <!-- placeholder -->
       <div class="section">
         <div class="section-title">
           <h4><i class="fa-solid fa-palette" style="color: var(--accent);"></i> Categories loading...</h4>
@@ -509,7 +719,7 @@ body {
 
 </div>
 
-<!-- Welcome toast -->
+<!-- WELCOME TOAST -->
 <div class="welcome-toast" id="welcomeToast">
   <i class="fa-solid fa-sparkles" style="color: var(--accent);"></i>
   <div>
@@ -522,37 +732,25 @@ body {
 </div>
 
 <script>
-/* ═══════════════════════════════════════════
-   THEME TOGGLE
-   ═══════════════════════════════════════════ */
+/* THEME TOGGLE */
 function toggleTheme() {
   const html = document.documentElement;
   const current = html.getAttribute('data-theme');
   const next = current === 'light' ? 'dark' : 'light';
   html.setAttribute('data-theme', next);
   localStorage.setItem('polishui-theme', next);
-  
-  document.getElementById('themeIcon').className = next === 'light' 
-    ? 'fa-regular fa-moon' 
-    : 'fa-regular fa-sun';
+  document.getElementById('themeIcon').className = next === 'light' ? 'fa-regular fa-moon' : 'fa-regular fa-sun';
 }
-
-// Load saved theme
 (function() {
   const saved = localStorage.getItem('polishui-theme');
   if (saved) {
     document.documentElement.setAttribute('data-theme', saved);
-    document.getElementById('themeIcon').className = saved === 'light' 
-      ? 'fa-regular fa-moon' 
-      : 'fa-regular fa-sun';
+    document.getElementById('themeIcon').className = saved === 'light' ? 'fa-regular fa-moon' : 'fa-regular fa-sun';
   }
 })();
 
-/* ═══════════════════════════════════════════
-   ELEMENT TAB SWITCHING
-   ═══════════════════════════════════════════ */
+/* ELEMENT TABS */
 let currentElement = 'button';
-
 document.querySelectorAll('.elem-tab').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.elem-tab').forEach(b => b.classList.remove('active'));
@@ -564,63 +762,388 @@ document.querySelectorAll('.elem-tab').forEach(btn => {
 
 function renderPreviewElement() {
   const el = document.getElementById('preview-element');
-  
-  // Reset
   el.style.cssText = '';
   el.innerHTML = '';
   
   const configs = {
-    button:    { w: '160px', h: '48px',  br: '10px', text: 'Button',  fs: '14px' },
-    card:      { w: '260px', h: '320px', br: '16px', text: 'Card',    fs: '16px' },
-    frame:     { w: '320px', h: '200px', br: '12px', text: 'Frame',   fs: '14px' },
-    panel:     { w: '380px', h: '240px', br: '14px', text: 'Panel',   fs: '15px' },
-    badge:     { w: '90px',  h: '32px',  br: '999px',text: 'NEW',     fs: '11px' },
-    container: { w: '300px', h: '180px', br: '20px', text: 'Container',fs: '14px' },
-    icon:      { w: '72px',  h: '72px',  br: '20px', text: '★',       fs: '28px' }
+    button:    { w: '160px', h: '48px',  text: 'Button',  fs: '14px' },
+    card:      { w: '260px', h: '320px', text: 'Card',    fs: '16px' },
+    frame:     { w: '320px', h: '200px', text: 'Frame',   fs: '14px' },
+    panel:     { w: '380px', h: '240px', text: 'Panel',   fs: '15px' },
+    badge:     { w: '90px',  h: '32px',  text: 'NEW',     fs: '11px' },
+    container: { w: '300px', h: '180px', text: 'Container',fs: '14px' },
+    icon:      { w: '72px',  h: '72px',  text: '★',       fs: '28px' }
   };
   
   const cfg = configs[currentElement];
   el.style.width = cfg.w;
   el.style.height = cfg.h;
-  el.style.borderRadius = cfg.br;
   el.style.fontSize = cfg.fs;
-  el.style.background = 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)';
   el.style.display = 'flex';
   el.style.alignItems = 'center';
   el.style.justifyContent = 'center';
   el.style.color = '#fff';
   el.style.fontWeight = '600';
-  el.style.boxShadow = '0 8px 20px rgba(99, 102, 241, 0.3)';
   el.textContent = cfg.text;
+  
+  if (typeof applyStyle === 'function') applyStyle();
 }
-
-// Initial render
-renderPreviewElement();
 
 /* ═══════════════════════════════════════════
-   PLACEHOLDER FUNCTIONS (Part 2-4'te dolacak)
+   EFFECTS ENGINE
    ═══════════════════════════════════════════ */
-function showHelp() {
-  alert('Help system — Part 4\'te interactive tour ve guide eklenecek');
+const STATE = {
+  fill: {
+    enabled: true, type: 'linear', angle: 135,
+    stops: [
+      { color: '#6366f1', pos: 0 },
+      { color: '#8b5cf6', pos: 100 }
+    ]
+  },
+  stroke: { enabled: false, color: '#ffffff', width: 2, opacity: 100 },
+  ishadow: { enabled: false, color: '#000000', x: 0, y: 2, blur: 6, opacity: 50 },
+  dshadow: { enabled: true, color: '#000000', x: 0, y: 8, blur: 20, opacity: 30 },
+  glow: { enabled: false, color: '#3b82f6', size: 20, opacity: 60 },
+  bevel: { enabled: false, depth: 3, light: 60, dark: 40 },
+  radius: 12
+};
+
+function toggleSection(headerEl) { headerEl.parentElement.classList.toggle('collapsed'); }
+
+function toggleEffect(effectName, btn) {
+  STATE[effectName].enabled = !STATE[effectName].enabled;
+  const section = btn.closest('.section');
+  if (STATE[effectName].enabled) {
+    btn.classList.add('on');
+    btn.innerHTML = '<i class="fa-solid fa-eye"></i>';
+    section.classList.remove('is-off');
+  } else {
+    btn.classList.remove('on');
+    btn.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+    section.classList.add('is-off');
+  }
+  applyStyle();
 }
 
-function exportStyle() {
-  alert('Export — Part 4\'te CSS/Lua/JSON çıktısı eklenecek');
+/* FILL TYPE PILLS */
+document.querySelectorAll('#fill-type .type-pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#fill-type .type-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    STATE.fill.type = btn.dataset.type;
+    const angleRow = document.getElementById('fill-angle-row');
+    angleRow.style.display = (STATE.fill.type === 'linear' || STATE.fill.type === 'conic') ? '' : 'none';
+    applyStyle();
+  });
+});
+
+/* FILL STOPS */
+function renderFillStops() {
+  const container = document.getElementById('fill-stops');
+  container.innerHTML = '';
+  STATE.fill.stops.forEach((stop, i) => {
+    const row = document.createElement('div');
+    row.className = 'color-stop';
+    row.innerHTML = `
+      <input type="color" value="${stop.color}" onchange="updateFillStop(${i}, 'color', this.value)">
+      <input type="text" value="${stop.color.toUpperCase()}" onchange="updateFillStop(${i}, 'color', this.value)">
+      <input type="number" value="${stop.pos}" min="0" max="100" onchange="updateFillStop(${i}, 'pos', this.value)">
+      ${STATE.fill.stops.length > 2 ? `<button class="remove-stop" onclick="removeFillStop(${i})"><i class="fa-solid fa-xmark"></i></button>` : ''}
+    `;
+    container.appendChild(row);
+  });
 }
 
-function resetAll() {
-  alert('Reset — Part 2\'de tüm efektleri sıfırlayacak');
+function updateFillStop(i, key, val) {
+  if (key === 'pos') val = parseInt(val);
+  STATE.fill.stops[i][key] = val;
+  if (key === 'color') renderFillStops();
+  applyStyle();
 }
 
-function randomizeStyle() {
-  // Geçici: random renkli gradient
+function addFillStop() {
+  if (STATE.fill.stops.length >= 6) { showToast('Max 6 colors allowed', 'warn'); return; }
+  const last = STATE.fill.stops[STATE.fill.stops.length - 1];
+  const newPos = Math.min(100, last.pos + 25);
+  STATE.fill.stops.push({ color: '#ffffff', pos: newPos });
+  renderFillStops();
+  applyStyle();
+}
+
+function removeFillStop(i) {
+  if (STATE.fill.stops.length <= 2) return;
+  STATE.fill.stops.splice(i, 1);
+  renderFillStops();
+  applyStyle();
+}
+
+/* SLIDERS */
+function bindSlider(id, valId, unit, cb) {
+  const inp = document.getElementById(id);
+  const display = document.getElementById(valId);
+  if (!inp || !display) return;
+  inp.addEventListener('input', () => {
+    display.textContent = inp.value + unit;
+    cb(inp.value);
+  });
+}
+function bindColor(colorId, hexId, cb) {
+  const colorInp = document.getElementById(colorId);
+  const hexInp = document.getElementById(hexId);
+  if (!colorInp || !hexInp) return;
+  colorInp.addEventListener('input', () => {
+    hexInp.value = colorInp.value.toUpperCase();
+    cb(colorInp.value);
+  });
+  hexInp.addEventListener('change', () => {
+    let v = hexInp.value.trim();
+    if (!v.startsWith('#')) v = '#' + v;
+    if (/^#[0-9A-F]{6}$/i.test(v)) {
+      colorInp.value = v;
+      cb(v);
+    }
+  });
+}
+
+bindSlider('fill-angle', 'fill-angle-val', '°', v => { STATE.fill.angle = parseInt(v); applyStyle(); });
+
+bindColor('stroke-color', 'stroke-color-hex', v => { STATE.stroke.color = v; applyStyle(); });
+bindSlider('stroke-width', 'stroke-width-val', 'px', v => { STATE.stroke.width = parseFloat(v); applyStyle(); });
+bindSlider('stroke-opacity', 'stroke-opacity-val', '%', v => { STATE.stroke.opacity = parseInt(v); applyStyle(); });
+
+bindColor('ishadow-color', 'ishadow-color-hex', v => { STATE.ishadow.color = v; applyStyle(); });
+bindSlider('ishadow-x', 'ishadow-x-val', 'px', v => { STATE.ishadow.x = parseInt(v); applyStyle(); });
+bindSlider('ishadow-y', 'ishadow-y-val', 'px', v => { STATE.ishadow.y = parseInt(v); applyStyle(); });
+bindSlider('ishadow-blur', 'ishadow-blur-val', 'px', v => { STATE.ishadow.blur = parseInt(v); applyStyle(); });
+bindSlider('ishadow-opacity', 'ishadow-opacity-val', '%', v => { STATE.ishadow.opacity = parseInt(v); applyStyle(); });
+
+bindColor('dshadow-color', 'dshadow-color-hex', v => { STATE.dshadow.color = v; applyStyle(); });
+bindSlider('dshadow-x', 'dshadow-x-val', 'px', v => { STATE.dshadow.x = parseInt(v); applyStyle(); });
+bindSlider('dshadow-y', 'dshadow-y-val', 'px', v => { STATE.dshadow.y = parseInt(v); applyStyle(); });
+bindSlider('dshadow-blur', 'dshadow-blur-val', 'px', v => { STATE.dshadow.blur = parseInt(v); applyStyle(); });
+bindSlider('dshadow-opacity', 'dshadow-opacity-val', '%', v => { STATE.dshadow.opacity = parseInt(v); applyStyle(); });
+
+bindColor('glow-color', 'glow-color-hex', v => { STATE.glow.color = v; applyStyle(); });
+bindSlider('glow-size', 'glow-size-val', 'px', v => { STATE.glow.size = parseInt(v); applyStyle(); });
+bindSlider('glow-opacity', 'glow-opacity-val', '%', v => { STATE.glow.opacity = parseInt(v); applyStyle(); });
+
+bindSlider('bevel-depth', 'bevel-depth-val', 'px', v => { STATE.bevel.depth = parseInt(v); applyStyle(); });
+bindSlider('bevel-light', 'bevel-light-val', '%', v => { STATE.bevel.light = parseInt(v); applyStyle(); });
+bindSlider('bevel-dark', 'bevel-dark-val', '%', v => { STATE.bevel.dark = parseInt(v); applyStyle(); });
+
+bindSlider('radius-val', 'radius-val-display', 'px', v => { STATE.radius = parseInt(v); applyStyle(); });
+
+/* HEX TO RGBA */
+function hexToRgba(hex, opacity) {
+  hex = hex.replace('#', '');
+  const r = parseInt(hex.substr(0,2), 16);
+  const g = parseInt(hex.substr(2,2), 16);
+  const b = parseInt(hex.substr(4,2), 16);
+  return `rgba(${r}, ${g}, ${b}, ${opacity / 100})`;
+}
+
+/* APPLY STYLE */
+function applyStyle() {
   const el = document.getElementById('preview-element');
-  const hue1 = Math.floor(Math.random() * 360);
-  const hue2 = (hue1 + 60) % 360;
-  el.style.background = `linear-gradient(135deg, hsl(${hue1}, 75%, 60%) 0%, hsl(${hue2}, 75%, 50%) 100%)`;
-  el.style.boxShadow = `0 8px 20px hsla(${hue1}, 75%, 50%, 0.35)`;
+  if (!el) return;
+  
+  let bg = 'transparent';
+  if (STATE.fill.enabled) {
+    if (STATE.fill.type === 'solid') {
+      bg = STATE.fill.stops[0].color;
+    } else if (STATE.fill.type === 'linear') {
+      const stops = STATE.fill.stops.map(s => `${s.color} ${s.pos}%`).join(', ');
+      bg = `linear-gradient(${STATE.fill.angle}deg, ${stops})`;
+    } else if (STATE.fill.type === 'radial') {
+      const stops = STATE.fill.stops.map(s => `${s.color} ${s.pos}%`).join(', ');
+      bg = `radial-gradient(circle, ${stops})`;
+    } else if (STATE.fill.type === 'conic') {
+      const stops = STATE.fill.stops.map(s => `${s.color} ${s.pos}%`).join(', ');
+      bg = `conic-gradient(from ${STATE.fill.angle}deg, ${stops})`;
+    }
+  }
+  el.style.background = bg;
+  
+  if (STATE.stroke.enabled && STATE.stroke.width > 0) {
+    el.style.border = `${STATE.stroke.width}px solid ${hexToRgba(STATE.stroke.color, STATE.stroke.opacity)}`;
+  } else {
+    el.style.border = 'none';
+  }
+  
+  const shadows = [];
+  if (STATE.ishadow.enabled) {
+    shadows.push(`inset ${STATE.ishadow.x}px ${STATE.ishadow.y}px ${STATE.ishadow.blur}px ${hexToRgba(STATE.ishadow.color, STATE.ishadow.opacity)}`);
+  }
+  if (STATE.dshadow.enabled) {
+    shadows.push(`${STATE.dshadow.x}px ${STATE.dshadow.y}px ${STATE.dshadow.blur}px ${hexToRgba(STATE.dshadow.color, STATE.dshadow.opacity)}`);
+  }
+  if (STATE.glow.enabled) {
+    shadows.push(`0 0 ${STATE.glow.size}px ${hexToRgba(STATE.glow.color, STATE.glow.opacity)}`);
+    shadows.push(`0 0 ${STATE.glow.size * 2}px ${hexToRgba(STATE.glow.color, STATE.glow.opacity * 0.5)}`);
+  }
+  if (STATE.bevel.enabled && STATE.bevel.depth > 0) {
+    shadows.push(`inset ${STATE.bevel.depth}px ${STATE.bevel.depth}px ${STATE.bevel.depth * 2}px rgba(255,255,255,${STATE.bevel.light / 100})`);
+    shadows.push(`inset -${STATE.bevel.depth}px -${STATE.bevel.depth}px ${STATE.bevel.depth * 2}px rgba(0,0,0,${STATE.bevel.dark / 100})`);
+  }
+  el.style.boxShadow = shadows.length ? shadows.join(', ') : 'none';
+  el.style.borderRadius = STATE.radius + 'px';
 }
+
+/* RESET */
+function resetAll() {
+  if (!confirm('Reset all effects?')) return;
+  STATE.fill = { enabled: true, type: 'linear', angle: 135, stops: [{ color: '#6366f1', pos: 0 }, { color: '#8b5cf6', pos: 100 }] };
+  STATE.stroke = { enabled: false, color: '#ffffff', width: 2, opacity: 100 };
+  STATE.ishadow = { enabled: false, color: '#000000', x: 0, y: 2, blur: 6, opacity: 50 };
+  STATE.dshadow = { enabled: true, color: '#000000', x: 0, y: 8, blur: 20, opacity: 30 };
+  STATE.glow = { enabled: false, color: '#3b82f6', size: 20, opacity: 60 };
+  STATE.bevel = { enabled: false, depth: 3, light: 60, dark: 40 };
+  STATE.radius = 12;
+  syncUIToState();
+  applyStyle();
+  showToast('All effects reset', 'success');
+}
+
+function syncUIToState() {
+  document.querySelectorAll('#fill-type .type-pill').forEach(b => {
+    b.classList.toggle('active', b.dataset.type === STATE.fill.type);
+  });
+  document.getElementById('fill-angle').value = STATE.fill.angle;
+  document.getElementById('fill-angle-val').textContent = STATE.fill.angle + '°';
+  document.getElementById('fill-angle-row').style.display = (STATE.fill.type === 'linear' || STATE.fill.type === 'conic') ? '' : 'none';
+  renderFillStops();
+  
+  document.getElementById('stroke-color').value = STATE.stroke.color;
+  document.getElementById('stroke-color-hex').value = STATE.stroke.color.toUpperCase();
+  document.getElementById('stroke-width').value = STATE.stroke.width;
+  document.getElementById('stroke-width-val').textContent = STATE.stroke.width + 'px';
+  document.getElementById('stroke-opacity').value = STATE.stroke.opacity;
+  document.getElementById('stroke-opacity-val').textContent = STATE.stroke.opacity + '%';
+  
+  document.getElementById('ishadow-color').value = STATE.ishadow.color;
+  document.getElementById('ishadow-color-hex').value = STATE.ishadow.color.toUpperCase();
+  ['x','y','blur','opacity'].forEach(k => {
+    const unit = k === 'opacity' ? '%' : 'px';
+    document.getElementById('ishadow-'+k).value = STATE.ishadow[k];
+    document.getElementById('ishadow-'+k+'-val').textContent = STATE.ishadow[k] + unit;
+  });
+  
+  document.getElementById('dshadow-color').value = STATE.dshadow.color;
+  document.getElementById('dshadow-color-hex').value = STATE.dshadow.color.toUpperCase();
+  ['x','y','blur','opacity'].forEach(k => {
+    const unit = k === 'opacity' ? '%' : 'px';
+    document.getElementById('dshadow-'+k).value = STATE.dshadow[k];
+    document.getElementById('dshadow-'+k+'-val').textContent = STATE.dshadow[k] + unit;
+  });
+  
+  document.getElementById('glow-color').value = STATE.glow.color;
+  document.getElementById('glow-color-hex').value = STATE.glow.color.toUpperCase();
+  document.getElementById('glow-size').value = STATE.glow.size;
+  document.getElementById('glow-size-val').textContent = STATE.glow.size + 'px';
+  document.getElementById('glow-opacity').value = STATE.glow.opacity;
+  document.getElementById('glow-opacity-val').textContent = STATE.glow.opacity + '%';
+  
+  ['depth','light','dark'].forEach(k => {
+    const unit = k === 'depth' ? 'px' : '%';
+    document.getElementById('bevel-'+k).value = STATE.bevel[k];
+    document.getElementById('bevel-'+k+'-val').textContent = STATE.bevel[k] + unit;
+  });
+  
+  document.getElementById('radius-val').value = STATE.radius;
+  document.getElementById('radius-val-display').textContent = STATE.radius + 'px';
+  
+  ['fill','stroke','ishadow','dshadow','glow','bevel'].forEach(eff => {
+    const section = document.querySelector(`[data-effect="${eff}"]`);
+    if (!section) return;
+    const btn = section.querySelector('.toggle-eye');
+    if (STATE[eff].enabled) {
+      section.classList.remove('is-off');
+      btn.classList.add('on');
+      btn.innerHTML = '<i class="fa-solid fa-eye"></i>';
+    } else {
+      section.classList.add('is-off');
+      btn.classList.remove('on');
+      btn.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+    }
+  });
+}
+
+/* TOAST */
+function showToast(msg, type) {
+  const t = document.createElement('div');
+  t.className = 'welcome-toast';
+  t.innerHTML = `
+    <i class="fa-solid ${type === 'success' ? 'fa-circle-check' : type === 'warn' ? 'fa-triangle-exclamation' : 'fa-info-circle'}" 
+       style="color: ${type === 'success' ? 'var(--success)' : type === 'warn' ? '#f59e0b' : 'var(--accent)'}"></i>
+    <div style="font-size:13px; font-weight:500;">${msg}</div>
+  `;
+  document.body.appendChild(t);
+  setTimeout(() => {
+    t.style.opacity = '0';
+    setTimeout(() => t.remove(), 400);
+  }, 2200);
+}
+
+/* RANDOM */
+function randomizeStyle() {
+  const types = ['linear', 'linear', 'linear', 'radial'];
+  const hue1 = Math.floor(Math.random() * 360);
+  const hue2 = (hue1 + 30 + Math.floor(Math.random() * 90)) % 360;
+  const hue3 = (hue1 + 180) % 360;
+  
+  STATE.fill.enabled = true;
+  STATE.fill.type = types[Math.floor(Math.random() * types.length)];
+  STATE.fill.angle = Math.floor(Math.random() * 360);
+  STATE.fill.stops = [
+    { color: hslToHex(hue1, 70 + Math.random() * 15, 55 + Math.random() * 10), pos: 0 },
+    { color: hslToHex(hue2, 70 + Math.random() * 15, 50 + Math.random() * 10), pos: 100 }
+  ];
+  
+  STATE.dshadow.enabled = true;
+  STATE.dshadow.color = hslToHex(hue1, 50, 20);
+  STATE.dshadow.y = 6 + Math.floor(Math.random() * 12);
+  STATE.dshadow.blur = 16 + Math.floor(Math.random() * 24);
+  STATE.dshadow.opacity = 25 + Math.floor(Math.random() * 25);
+  
+  if (Math.random() > 0.5) {
+    STATE.glow.enabled = true;
+    STATE.glow.color = hslToHex(hue3, 80, 60);
+    STATE.glow.size = 15 + Math.floor(Math.random() * 25);
+    STATE.glow.opacity = 40 + Math.floor(Math.random() * 30);
+  } else {
+    STATE.glow.enabled = false;
+  }
+  
+  STATE.radius = 8 + Math.floor(Math.random() * 20);
+  
+  syncUIToState();
+  applyStyle();
+}
+
+function hslToHex(h, s, l) {
+  l /= 100;
+  const a = s * Math.min(l, 1 - l) / 100;
+  const f = n => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color).toString(16).padStart(2, '0');
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+/* PLACEHOLDERS (Part 4'te dolacak) */
+function showHelp() {
+  showToast('Help — Part 4\'te interactive guide gelecek', 'info');
+}
+function exportStyle() {
+  showToast('Export — Part 4\'te CSS/Lua/JSON çıktısı gelecek', 'info');
+}
+
+/* INIT */
+renderPreviewElement();
+renderFillStops();
+applyStyle();
 </script>
 
 </body>
-      </html>
+</html>
