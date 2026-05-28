@@ -7,31 +7,26 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root[data-theme="light"]{--bg:#fafafa;--bg-2:#fff;--bg-3:#f3f4f6;--hover:#f9fafb;--text:#111827;--text-2:#374151;--muted:#6b7280;--dim:#9ca3af;--border:#e5e7eb;--border-s:#d1d5db;--accent:#3b82f6;--accent-2:#2563eb;--glow:rgba(59,130,246,.15);--success:#10b981;--danger:#ef4444;--warn:#f59e0b;--shadow:0 4px 12px rgba(0,0,0,.08);--shadow-lg:0 12px 30px rgba(0,0,0,.12);--canvas:#f3f4f6;--grid:rgba(0,0,0,.04)}
-:root[data-theme="dark"]{--bg:#0a0a0b;--bg-2:#111114;--bg-3:#18181b;--hover:#1c1c20;--text:#f4f4f5;--text-2:#d4d4d8;--muted:#a1a1aa;--dim:#71717a;--border:rgba(255,255,255,.08);--border-s:rgba(255,255,255,.16);--accent:#60a5fa;--accent-2:#3b82f6;--glow:rgba(96,165,250,.2);--success:#34d399;--danger:#f87171;--warn:#fbbf24;--shadow:0 4px 12px rgba(0,0,0,.4);--shadow-lg:0 12px 30px rgba(0,0,0,.5);--canvas:#0a0a0b;--grid:rgba(255,255,255,.04)}
-*{margin:0;padding:0;box-sizing:border-box}
-html{background:var(--bg)}
+:root[data-theme="light"]{--bg:#fafafa;--bg-2:#fff;--bg-3:#f3f4f6;--hover:#f9fafb;--text:#111827;--text-2:#374151;--muted:#6b7280;--dim:#9ca3af;--border:#e5e7eb;--border-s:#d1d5db;--accent:#3b82f6;--accent-2:#2563eb;--glow:rgba(59,130,246,.15);--success:#10b981;--danger:#ef4444;--shadow:0 4px 12px rgba(0,0,0,.08);--shadow-lg:0 12px 30px rgba(0,0,0,.12);--canvas:#f3f4f6;--grid:rgba(0,0,0,.04)}
+:root[data-theme="dark"]{--bg:#0a0a0b;--bg-2:#111114;--bg-3:#18181b;--hover:#1c1c20;--text:#f4f4f5;--text-2:#d4d4d8;--muted:#a1a1aa;--dim:#71717a;--border:rgba(255,255,255,.08);--border-s:rgba(255,255,255,.16);--accent:#60a5fa;--accent-2:#3b82f6;--glow:rgba(96,165,250,.2);--success:#34d399;--danger:#f87171;--shadow:0 4px 12px rgba(0,0,0,.4);--shadow-lg:0 12px 30px rgba(0,0,0,.5);--canvas:#0a0a0b;--grid:rgba(255,255,255,.04)}
+*{margin:0;padding:0;box-sizing:border-box}html{background:var(--bg)}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;height:100vh;overflow:hidden;transition:background .3s,color .3s}
 .topbar{height:56px;background:var(--bg-2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:16px;z-index:100}
 .brand{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:var(--text);text-decoration:none}
 .brand-logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;box-shadow:0 4px 12px var(--glow)}
-.brand .pro{color:var(--accent)}
-.tb-info{font-size:12px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:6px}
-.tb-divider{width:1px;height:24px;background:var(--border)}
-.tb-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.brand .pro{color:var(--accent)}.tb-info{font-size:12px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:6px}
+.tb-divider{width:1px;height:24px;background:var(--border)}.tb-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
 .icon-btn{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:var(--bg-2);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .15s}
 .icon-btn:hover{background:var(--hover);color:var(--text);border-color:var(--border-s)}
 .btn-ghost{padding:8px 14px;border-radius:8px;background:transparent;color:var(--text-2);border:1px solid var(--border);font-size:13px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
 .btn-ghost:hover{background:var(--hover);border-color:var(--border-s)}
 .workspace{display:grid;grid-template-columns:300px 1fr;height:calc(100vh - 56px)}
 .sidebar{background:var(--bg-2);border-right:1px solid var(--border);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border-s) transparent}
-.sidebar::-webkit-scrollbar{width:6px}
-.sidebar::-webkit-scrollbar-thumb{background:var(--border-s);border-radius:3px}
+.sidebar::-webkit-scrollbar{width:6px}.sidebar::-webkit-scrollbar-thumb{background:var(--border-s);border-radius:3px}
 .search-wrap{padding:12px 14px 8px;position:sticky;top:0;background:var(--bg-2);z-index:5;border-bottom:1px solid var(--border)}
 .search-input{width:100%;padding:9px 12px 9px 32px;border:1px solid var(--border);border-radius:8px;background:var(--bg-3);font-size:12px;color:var(--text);outline:none;transition:all .15s}
 .search-input:focus{border-color:var(--accent);background:var(--bg-2)}
-.search-wrap{position:relative}
-.search-wrap i.search-icon{position:absolute;left:24px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:11px;pointer-events:none}
+.search-wrap{position:relative}.search-wrap i.search-icon{position:absolute;left:24px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:11px;pointer-events:none}
 .sb-header{padding:14px 18px 8px;display:flex;align-items:center;justify-content:space-between}
 .sb-header h3{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)}
 .sb-header .count{font-size:10px;color:var(--dim);font-family:'JetBrains Mono',monospace}
@@ -39,8 +34,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .cat-tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px;border:1px solid var(--border);background:var(--bg-2);border-radius:8px;cursor:pointer;transition:all .15s;color:var(--text-2)}
 .cat-tab:hover{background:var(--hover);border-color:var(--border-s)}
 .cat-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 4px 12px var(--glow)}
-.cat-tab .cat-emoji{font-size:16px}
-.cat-tab .cat-name{font-size:10px;font-weight:600;font-family:'Space Grotesk',sans-serif}
+.cat-tab .cat-emoji{font-size:16px}.cat-tab .cat-name{font-size:10px;font-weight:600;font-family:'Space Grotesk',sans-serif}
 .cat-tab.special{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#fff;border-color:transparent}
 .cat-tab.special.active{background:linear-gradient(135deg,#fbbf24,#f59e0b);box-shadow:0 4px 12px rgba(251,191,36,.4)}
 .materials-section{padding:4px 14px 20px}
@@ -59,8 +53,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .empty-state i{font-size:24px;display:block;margin-bottom:8px;opacity:.5}
 .main{display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
 .canvas-wrap{background:var(--canvas);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;display:flex;align-items:center;justify-content:center;padding:30px;overflow:auto;position:relative;transition:background .3s}
-.canvas-wrap.bg-white{background:#fff;background-image:none}
-.canvas-wrap.bg-black{background:#000;background-image:none}
+.canvas-wrap.bg-white{background:#fff;background-image:none}.canvas-wrap.bg-black{background:#000;background-image:none}
 .canvas-wrap.bg-checker{background:#fff;background-image:linear-gradient(45deg,#ddd 25%,transparent 25%),linear-gradient(-45deg,#ddd 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#ddd 75%),linear-gradient(-45deg,transparent 75%,#ddd 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0}
 #preview-element{display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.2);transition:all .3s ease;position:relative}
 .preview-empty{color:var(--dim);font-size:14px;text-align:center;padding:60px;background:none!important;box-shadow:none!important;border:none!important}
@@ -68,12 +61,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .controls-bar{padding:10px 16px;background:var(--bg-2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .element-tabs{display:flex;gap:3px;background:var(--bg-3);padding:3px;border-radius:7px;border:1px solid var(--border)}
 .elem-tab{padding:5px 9px;border-radius:5px;border:none;background:transparent;color:var(--muted);font-size:11px;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
-.elem-tab:hover{color:var(--text)}
-.elem-tab.active{background:var(--bg-2);color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.elem-tab:hover{color:var(--text)}.elem-tab.active{background:var(--bg-2);color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.05)}
 .bg-tabs{display:flex;gap:3px;background:var(--bg-3);padding:3px;border-radius:7px;border:1px solid var(--border)}
 .bg-tab{width:26px;height:26px;border-radius:4px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted);background:transparent;transition:all .15s}
-.bg-tab:hover{color:var(--text)}
-.bg-tab.active{background:var(--bg-2);color:var(--accent);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.bg-tab:hover{color:var(--text)}.bg-tab.active{background:var(--bg-2);color:var(--accent);box-shadow:0 1px 2px rgba(0,0,0,.05)}
 .color-pick-wrap{display:flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--border);background:var(--bg-3);border-radius:7px}
 .color-pick-wrap label{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
 .color-pick-wrap input[type="color"]{width:24px;height:24px;border:none;padding:0;background:transparent;cursor:pointer;border-radius:5px}
@@ -89,16 +80,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .action-btn{padding:6px 12px;border-radius:7px;border:1px solid var(--border);background:var(--bg-2);color:var(--text-2);font-size:11px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
 .action-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:translateY(-1px)}
 .settings-panel{background:var(--bg-2);border-top:1px solid var(--border);max-height:42vh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border-s) transparent}
-.settings-panel::-webkit-scrollbar{width:6px}
-.settings-panel::-webkit-scrollbar-thumb{background:var(--border-s);border-radius:3px}
+.settings-panel::-webkit-scrollbar{width:6px}.settings-panel::-webkit-scrollbar-thumb{background:var(--border-s);border-radius:3px}
 .settings-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px;position:sticky;top:0;background:var(--bg-2);border-bottom:1px solid var(--border);z-index:10;flex-wrap:wrap;gap:10px}
 .settings-title{display:flex;align-items:center;gap:10px}
 .settings-title h3{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700}
 .settings-title .style-name{font-size:11px;color:var(--muted);font-weight:500;padding:3px 10px;border-radius:999px;background:var(--bg-3);border:1px solid var(--border)}
 .export-tabs{display:flex;gap:3px;background:var(--bg-3);padding:3px;border-radius:7px;border:1px solid var(--border)}
 .export-tab{padding:6px 11px;border-radius:5px;border:none;background:transparent;color:var(--muted);font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
-.export-tab:hover{color:var(--text)}
-.export-tab.active{background:var(--bg-2);color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.export-tab:hover{color:var(--text)}.export-tab.active{background:var(--bg-2);color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.05)}
 .settings-body{padding:14px 18px 18px}
 .settings-block{margin-bottom:12px;background:var(--bg-3);border:1px solid var(--border);border-radius:9px;overflow:hidden}
 .settings-block-header{display:flex;align-items:center;gap:8px;padding:9px 13px;background:var(--bg-2);border-bottom:1px solid var(--border);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-2)}
@@ -127,482 +116,417 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 </style>
 </head>
 <body>
-
 <header class="topbar">
-  <a href="#" class="brand"><div class="brand-logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div><span>Polish<span class="pro">UI</span></span></a>
-  <div class="tb-divider"></div>
-  <span class="tb-info"><i class="fa-solid fa-bookmark"></i> UI Style Reference · <span id="total-count">0</span> styles</span>
-  <div class="tb-actions">
-    <button class="btn-ghost" onclick="randomStyle()"><i class="fa-solid fa-dice"></i> Random</button>
-    <button class="icon-btn" onclick="toggleTheme()" title="Theme"><i class="fa-regular fa-moon" id="themeIcon"></i></button>
-  </div>
-</header>
-
-<div class="workspace">
-  <aside class="sidebar">
-    <div class="search-wrap">
-      <i class="fa-solid fa-magnifying-glass search-icon"></i>
-      <input type="text" class="search-input" id="search-input" placeholder="Search materials...">
-    </div>
-    <div class="sb-header"><h3>Categories</h3></div>
-    <div class="category-tabs" id="category-tabs"></div>
-    <div class="materials-section">
-      <h4><span id="materials-heading">Styles</span> <span class="count" id="mat-count"></span></h4>
-      <div class="material-grid" id="material-grid"></div>
-    </div>
-  </aside>
-
-  <main class="main">
-    <div class="controls-bar">
-      <div class="element-tabs" id="element-tabs">
-        <button class="elem-tab active" data-element="button"><i class="fa-solid fa-square"></i> Button</button>
-        <button class="elem-tab" data-element="card"><i class="fa-solid fa-id-card"></i> Card</button>
-        <button class="elem-tab" data-element="frame"><i class="fa-regular fa-square"></i> Frame</button>
-        <button class="elem-tab" data-element="panel"><i class="fa-solid fa-window-maximize"></i> Panel</button>
-        <button class="elem-tab" data-element="badge"><i class="fa-solid fa-certificate"></i> Badge</button>
-        <button class="elem-tab" data-element="container"><i class="fa-solid fa-box"></i> Container</button>
-        <button class="elem-tab" data-element="icon"><i class="fa-solid fa-circle"></i> Icon</button>
-      </div>
-      <div class="bg-tabs">
-        <button class="bg-tab active" data-bg="grid" title="Grid"><i class="fa-solid fa-border-all"></i></button>
-        <button class="bg-tab" data-bg="white" title="White"><i class="fa-regular fa-sun"></i></button>
-        <button class="bg-tab" data-bg="black" title="Black"><i class="fa-solid fa-moon"></i></button>
-        <button class="bg-tab" data-bg="checker" title="Checker"><i class="fa-solid fa-chess-board"></i></button>
-      </div>
-      <div class="hue-control">
-        <label>Hue</label>
-        <input type="range" class="hue-slider" id="hue-slider" min="-180" max="180" value="0">
-        <span class="hue-val" id="hue-val">0°</span>
-      </div>
-      <div class="color-pick-wrap">
-        <label>Tint</label>
-        <input type="color" id="tint-color" value="#3b82f6">
-        <button class="reset" onclick="resetTint()" title="Reset"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <button class="action-btn" onclick="downloadPNG()"><i class="fa-solid fa-download"></i> PNG</button>
-    </div>
-
-    <div class="canvas-wrap" id="canvas-wrap">
-      <div id="preview-element">
-        <div class="preview-empty"><i class="fa-solid fa-hand-pointer"></i><div>Pick a style from the left to start</div></div>
-      </div>
-    </div>
-
-    <div class="settings-panel">
-      <div class="settings-header">
-        <div class="settings-title"><h3>Style Settings</h3><span class="style-name" id="style-name-display">No style</span></div>
-        <div class="export-tabs" id="export-tabs">
-          <button class="export-tab active" data-tab="figma"><i class="fa-brands fa-figma"></i> Figma</button>
-          <button class="export-tab" data-tab="css"><i class="fa-brands fa-css3-alt"></i> CSS</button>
-          <button class="export-tab" data-tab="lua"><i class="fa-solid fa-cube"></i> Lua</button>
-        </div>
-      </div>
-      <div class="settings-body" id="settings-body">
-        <p style="color:var(--muted);font-size:13px;text-align:center;padding:40px 0;"><i class="fa-solid fa-arrow-left" style="margin-right:8px;"></i>Select a material from the sidebar</p>
-      </div>
-    </div>
-  </main>
+<a href="#" class="brand"><div class="brand-logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div><span>Polish<span class="pro">UI</span></span></a>
+<div class="tb-divider"></div>
+<span class="tb-info"><i class="fa-solid fa-bookmark"></i> <span id="total-count">0</span> styles</span>
+<div class="tb-actions">
+<button class="btn-ghost" onclick="randomStyle()"><i class="fa-solid fa-dice"></i> Random</button>
+<button class="icon-btn" onclick="toggleTheme()" title="Theme"><i class="fa-regular fa-moon" id="themeIcon"></i></button>
 </div>
-
+</header>
+<div class="workspace">
+<aside class="sidebar">
+<div class="search-wrap"><i class="fa-solid fa-magnifying-glass search-icon"></i><input type="text" class="search-input" id="search-input" placeholder="Search materials..."></div>
+<div class="sb-header"><h3>Categories</h3></div>
+<div class="category-tabs" id="category-tabs"></div>
+<div class="materials-section"><h4><span id="materials-heading">Styles</span> <span class="count" id="mat-count"></span></h4><div class="material-grid" id="material-grid"></div></div>
+</aside>
+<main class="main">
+<div class="controls-bar">
+<div class="element-tabs" id="element-tabs">
+<button class="elem-tab active" data-element="button"><i class="fa-solid fa-square"></i> Button</button>
+<button class="elem-tab" data-element="card"><i class="fa-solid fa-id-card"></i> Card</button>
+<button class="elem-tab" data-element="frame"><i class="fa-regular fa-square"></i> Frame</button>
+<button class="elem-tab" data-element="panel"><i class="fa-solid fa-window-maximize"></i> Panel</button>
+<button class="elem-tab" data-element="badge"><i class="fa-solid fa-certificate"></i> Badge</button>
+<button class="elem-tab" data-element="container"><i class="fa-solid fa-box"></i> Container</button>
+<button class="elem-tab" data-element="icon"><i class="fa-solid fa-circle"></i> Icon</button>
+</div>
+<div class="bg-tabs">
+<button class="bg-tab active" data-bg="grid" title="Grid"><i class="fa-solid fa-border-all"></i></button>
+<button class="bg-tab" data-bg="white" title="White"><i class="fa-regular fa-sun"></i></button>
+<button class="bg-tab" data-bg="black" title="Black"><i class="fa-solid fa-moon"></i></button>
+<button class="bg-tab" data-bg="checker" title="Checker"><i class="fa-solid fa-chess-board"></i></button>
+</div>
+<div class="hue-control"><label>Hue</label><input type="range" class="hue-slider" id="hue-slider" min="-180" max="180" value="0"><span class="hue-val" id="hue-val">0°</span></div>
+<div class="color-pick-wrap"><label>Tint</label><input type="color" id="tint-color" value="#3b82f6"><button class="reset" onclick="resetTint()"><i class="fa-solid fa-xmark"></i></button></div>
+</div>
+<div class="canvas-wrap" id="canvas-wrap"><div id="preview-element"><div class="preview-empty"><i class="fa-solid fa-hand-pointer"></i><div>Pick a style from the left to start</div></div></div></div>
+<div class="settings-panel">
+<div class="settings-header">
+<div class="settings-title"><h3>Style Settings</h3><span class="style-name" id="style-name-display">No style</span></div>
+<div class="export-tabs" id="export-tabs">
+<button class="export-tab active" data-tab="figma"><i class="fa-brands fa-figma"></i> Figma</button>
+<button class="export-tab" data-tab="css"><i class="fa-brands fa-css3-alt"></i> CSS</button>
+<button class="export-tab" data-tab="lua"><i class="fa-solid fa-cube"></i> Lua</button>
+</div>
+</div>
+<div class="settings-body" id="settings-body"><p style="color:var(--muted);font-size:13px;text-align:center;padding:40px 0;"><i class="fa-solid fa-arrow-left" style="margin-right:8px;"></i>Select a material</p></div>
+</div>
+</main>
+</div>
 <div class="toast-stack" id="toast-stack"></div>
-
 <script>
-/* ═══════════════════════════════════════════
-   MATERIAL DEFINITIONS — PART 1
-   ═══════════════════════════════════════════ */
-const MATERIALS = {
-  premium: [
-    // METAL & CLASSIC
-    {id:'metal-silver',name:'Silver',fill:{type:'linear',angle:180,stops:[{h:0,s:0,l:92,pos:0},{h:0,s:0,l:72,pos:50},{h:0,s:0,l:50,pos:100}]},stroke:{h:0,s:0,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:60,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:30,x:0,y:-1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:25,x:0,y:2,blur:4,spread:0}],radius:8},
-    {id:'metal-chrome',name:'Chrome',fill:{type:'linear',angle:180,stops:[{h:210,s:30,l:95,pos:0},{h:210,s:20,l:70,pos:30},{h:210,s:25,l:85,pos:55},{h:210,s:30,l:55,pos:100}]},stroke:{h:210,s:30,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:210,s:30,l:30,a:30,x:0,y:3,blur:6,spread:0}],radius:6},
-    {id:'metal-steel',name:'Steel',fill:{type:'linear',angle:180,stops:[{h:210,s:15,l:65,pos:0},{h:210,s:20,l:45,pos:100}]},stroke:{h:210,s:25,l:25,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:210,s:20,l:80,a:50,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:40,x:0,y:-1,blur:2,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:40,x:0,y:3,blur:6,spread:0}],radius:6},
-    {id:'metal-platinum',name:'Platinum',fill:{type:'linear',angle:180,stops:[{h:210,s:15,l:90,pos:0},{h:220,s:12,l:78,pos:50},{h:220,s:10,l:65,pos:100}]},stroke:{h:220,s:10,l:50,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:70,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:220,s:20,l:40,a:25,x:0,y:3,blur:8,spread:0}],radius:8},
-    {id:'metal-iron',name:'Iron',fill:{type:'linear',angle:180,stops:[{h:210,s:10,l:50,pos:0},{h:210,s:15,l:30,pos:100}]},stroke:{h:210,s:20,l:15,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:210,s:20,l:70,a:30,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:50,x:0,y:-2,blur:4,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:50,x:0,y:3,blur:6,spread:0}],radius:4},
-    {id:'metal-titanium',name:'Titanium',fill:{type:'linear',angle:180,stops:[{h:220,s:8,l:75,pos:0},{h:220,s:10,l:55,pos:100}]},stroke:{h:220,s:15,l:35,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:220,s:10,l:90,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:220,s:15,l:25,a:35,x:0,y:3,blur:6,spread:0}],radius:6},
-    {id:'metal-aluminum',name:'Aluminum',fill:{type:'linear',angle:180,stops:[{h:0,s:0,l:88,pos:0},{h:0,s:0,l:75,pos:100}]},stroke:{h:0,s:0,l:55,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:70,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:20,x:0,y:2,blur:4,spread:0}],radius:6},
-    {id:'metal-tungsten',name:'Tungsten',fill:{type:'linear',angle:180,stops:[{h:0,s:0,l:35,pos:0},{h:0,s:0,l:18,pos:100}]},stroke:{h:0,s:0,l:8,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:60,a:40,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:60,x:0,y:4,blur:8,spread:0}],radius:4},
-    
-    // GOLD VARIANTS
-    {id:'gold-classic',name:'Gold',fill:{type:'linear',angle:180,stops:[{h:45,s:100,l:80,pos:0},{h:42,s:90,l:60,pos:50},{h:38,s:85,l:45,pos:100}]},stroke:{h:40,s:80,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:50,s:100,l:90,a:70,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:30,s:100,l:20,a:50,x:0,y:-1,blur:0,spread:0},{type:'drop-shadow',h:40,s:90,l:30,a:40,x:0,y:4,blur:8,spread:0}],radius:8},
-    {id:'gold-rose',name:'Rose Gold',fill:{type:'linear',angle:180,stops:[{h:15,s:80,l:80,pos:0},{h:10,s:70,l:65,pos:50},{h:5,s:65,l:50,pos:100}]},stroke:{h:10,s:60,l:35,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:20,s:100,l:90,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:10,s:70,l:40,a:35,x:0,y:4,blur:10,spread:0}],radius:10},
-    {id:'gold-white',name:'White Gold',fill:{type:'linear',angle:180,stops:[{h:50,s:30,l:92,pos:0},{h:48,s:25,l:78,pos:100}]},stroke:{h:48,s:30,l:55,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:50,s:50,l:98,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:48,s:30,l:50,a:30,x:0,y:3,blur:6,spread:0}],radius:8},
-    {id:'gold-yellow',name:'Yellow Gold',fill:{type:'linear',angle:180,stops:[{h:50,s:100,l:75,pos:0},{h:45,s:100,l:55,pos:100}]},stroke:{h:42,s:100,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:55,s:100,l:90,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:45,s:100,l:30,a:50,x:0,y:4,blur:10,spread:0}],radius:6},
-    {id:'gold-antique',name:'Antique Gold',fill:{type:'linear',angle:180,stops:[{h:40,s:60,l:55,pos:0},{h:35,s:70,l:35,pos:100}]},stroke:{h:35,s:80,l:18,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:45,s:80,l:75,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:35,s:70,l:15,a:50,x:0,y:3,blur:6,spread:0}],radius:4},
-    
-    // GEMS
-    {id:'gem-diamond',name:'Diamond',fill:{type:'linear',angle:135,stops:[{h:200,s:100,l:95,pos:0},{h:210,s:80,l:85,pos:50},{h:220,s:70,l:75,pos:100}]},stroke:{h:0,s:0,l:100,a:80,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:200,s:100,l:70,a:50,x:0,y:0,blur:20,spread:0}],radius:8},
-    {id:'gem-ruby',name:'Ruby',fill:{type:'radial',angle:0,stops:[{h:355,s:100,l:65,pos:0},{h:0,s:100,l:35,pos:100}]},stroke:{h:0,s:100,l:20,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:100,l:80,a:70,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:0,s:100,l:40,a:70,x:0,y:0,blur:20,spread:0}],radius:8},
-    {id:'gem-emerald',name:'Emerald',fill:{type:'radial',angle:0,stops:[{h:140,s:100,l:55,pos:0},{h:150,s:100,l:25,pos:100}]},stroke:{h:150,s:100,l:15,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:130,s:100,l:80,a:70,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:140,s:100,l:30,a:70,x:0,y:0,blur:20,spread:0}],radius:8},
-    {id:'gem-sapphire',name:'Sapphire',fill:{type:'radial',angle:0,stops:[{h:220,s:100,l:55,pos:0},{h:230,s:100,l:25,pos:100}]},stroke:{h:230,s:100,l:15,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:210,s:100,l:80,a:70,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:220,s:100,l:30,a:70,x:0,y:0,blur:20,spread:0}],radius:8},
-    {id:'gem-amethyst',name:'Amethyst',fill:{type:'radial',angle:0,stops:[{h:280,s:80,l:65,pos:0},{h:290,s:90,l:35,pos:100}]},stroke:{h:285,s:100,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:280,s:100,l:85,a:70,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:285,s:100,l:40,a:60,x:0,y:0,blur:20,spread:0}],radius:8},
-    {id:'gem-topaz',name:'Topaz',fill:{type:'radial',angle:0,stops:[{h:35,s:100,l:65,pos:0},{h:30,s:100,l:40,pos:100}]},stroke:{h:30,s:100,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:45,s:100,l:85,a:70,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:30,s:100,l:40,a:60,x:0,y:0,blur:18,spread:0}],radius:8},
-    {id:'gem-opal',name:'Opal',fill:{type:'linear',angle:135,stops:[{h:200,s:60,l:90,pos:0},{h:280,s:50,l:85,pos:33},{h:140,s:60,l:85,pos:66},{h:30,s:80,l:85,pos:100}]},stroke:{h:0,s:0,l:100,a:80,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:200,s:60,l:60,a:40,x:0,y:4,blur:14,spread:0}],radius:10},
-    {id:'gem-jade',name:'Jade',fill:{type:'radial',angle:0,stops:[{h:140,s:50,l:70,pos:0},{h:150,s:60,l:45,pos:100}]},stroke:{h:150,s:70,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:120,s:60,l:85,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:140,s:60,l:30,a:40,x:0,y:3,blur:8,spread:0}],radius:6},
-    {id:'gem-onyx',name:'Onyx',fill:{type:'radial',angle:0,stops:[{h:0,s:0,l:25,pos:0},{h:0,s:0,l:5,pos:100}]},stroke:{h:0,s:0,l:0,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:50,a:30,x:0,y:1,blur:2,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:80,x:0,y:4,blur:12,spread:0}],radius:6},
-    {id:'gem-pearl',name:'Pearl',fill:{type:'radial',angle:0,stops:[{h:0,s:0,l:98,pos:0},{h:280,s:30,l:88,pos:60},{h:200,s:30,l:85,pos:100}]},stroke:{h:0,s:0,l:80,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:90,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:280,s:30,l:50,a:25,x:0,y:5,blur:14,spread:0}],radius:999},
-    {id:'gem-crystal',name:'Crystal',fill:{type:'linear',angle:135,stops:[{h:200,s:100,l:70,pos:0},{h:220,s:100,l:55,pos:100}]},stroke:{h:0,s:0,l:100,a:70,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:60,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:210,s:100,l:60,a:70,x:0,y:0,blur:24,spread:0}],radius:6},
-    
-    // GLASS & MARBLE
-    {id:'glass-clear',name:'Glass',fill:{type:'linear',angle:180,stops:[{h:0,s:0,l:100,pos:0},{h:0,s:0,l:95,pos:100}]},stroke:{h:0,s:0,l:100,a:60,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:10,x:0,y:8,blur:24,spread:0}],radius:16},
-    {id:'glass-frosted',name:'Frosted Glass',fill:{type:'linear',angle:135,stops:[{h:220,s:30,l:95,pos:0},{h:220,s:20,l:85,pos:100}]},stroke:{h:0,s:0,l:100,a:80,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:220,s:30,l:30,a:20,x:0,y:8,blur:20,spread:0}],radius:16},
-    {id:'glass-tinted',name:'Tinted Glass',fill:{type:'linear',angle:135,stops:[{h:200,s:60,l:35,pos:0},{h:220,s:70,l:20,pos:100}]},stroke:{h:0,s:0,l:100,a:30,width:1,position:'inside'},effects:[{type:'inner-shadow',h:200,s:80,l:80,a:30,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:30,x:0,y:8,blur:20,spread:0}],radius:12},
-    {id:'glass-mirror',name:'Mirror',fill:{type:'linear',angle:180,stops:[{h:200,s:20,l:85,pos:0},{h:200,s:30,l:55,pos:100}]},stroke:{h:0,s:0,l:100,a:90,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:90,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:200,s:30,l:40,a:30,x:0,y:4,blur:10,spread:0}],radius:6},
-    {id:'marble-white',name:'White Marble',fill:{type:'linear',angle:135,stops:[{h:0,s:0,l:96,pos:0},{h:220,s:10,l:88,pos:50},{h:0,s:0,l:92,pos:100}]},stroke:{h:0,s:0,l:70,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:40,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:20,x:0,y:6,blur:16,spread:0}],radius:12},
-    {id:'marble-black',name:'Black Marble',fill:{type:'linear',angle:135,stops:[{h:0,s:0,l:15,pos:0},{h:220,s:20,l:8,pos:50},{h:0,s:0,l:18,pos:100}]},stroke:{h:0,s:0,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:50,a:30,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:80,x:0,y:6,blur:14,spread:0}],radius:10},
-    {id:'marble-rose',name:'Rose Marble',fill:{type:'linear',angle:135,stops:[{h:340,s:30,l:90,pos:0},{h:0,s:30,l:85,pos:50},{h:340,s:30,l:88,pos:100}]},stroke:{h:340,s:30,l:60,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:340,s:30,l:40,a:25,x:0,y:5,blur:14,spread:0}],radius:10},
-    {id:'obsidian',name:'Obsidian',fill:{type:'linear',angle:135,stops:[{h:240,s:30,l:15,pos:0},{h:240,s:40,l:5,pos:100}]},stroke:{h:240,s:30,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:240,s:50,l:50,a:30,x:0,y:1,blur:2,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:80,x:0,y:6,blur:14,spread:0}],radius:10},
-    
-    // SPECIAL METALS
-    {id:'metal-copper',name:'Copper',fill:{type:'linear',angle:180,stops:[{h:20,s:80,l:65,pos:0},{h:15,s:75,l:50,pos:50},{h:10,s:70,l:35,pos:100}]},stroke:{h:15,s:80,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:30,s:100,l:85,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:15,s:80,l:25,a:40,x:0,y:4,blur:10,spread:0}],radius:8},
-    {id:'metal-brass',name:'Brass',fill:{type:'linear',angle:180,stops:[{h:42,s:70,l:65,pos:0},{h:40,s:75,l:45,pos:100}]},stroke:{h:38,s:80,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:50,s:90,l:80,a:65,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:40,s:70,l:25,a:40,x:0,y:3,blur:8,spread:0}],radius:6},
-    {id:'metal-bronze',name:'Bronze',fill:{type:'linear',angle:180,stops:[{h:25,s:60,l:50,pos:0},{h:20,s:70,l:30,pos:100}]},stroke:{h:20,s:80,l:15,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:35,s:80,l:70,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:20,s:70,l:15,a:50,x:0,y:3,blur:8,spread:0}],radius:6},
-    {id:'metal-gunmetal',name:'Gunmetal',fill:{type:'linear',angle:180,stops:[{h:220,s:15,l:35,pos:0},{h:220,s:20,l:18,pos:100}]},stroke:{h:220,s:25,l:10,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:220,s:20,l:55,a:40,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:60,x:0,y:4,blur:8,spread:0}],radius:4},
-    {id:'carbon-fiber',name:'Carbon Fiber',fill:{type:'linear',angle:135,stops:[{h:0,s:0,l:18,pos:0},{h:0,s:0,l:10,pos:100}]},stroke:{h:0,s:0,l:5,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:8,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:60,x:0,y:4,blur:10,spread:0}],radius:10},
-    {id:'metal-mercury',name:'Mercury',fill:{type:'radial',angle:0,stops:[{h:0,s:0,l:90,pos:0},{h:0,s:0,l:65,pos:50},{h:0,s:0,l:40,pos:100}]},stroke:{h:0,s:0,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:100,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:40,x:0,y:4,blur:10,spread:0}],radius:999},
-    
-    // LUXURY
-    {id:'velvet-red',name:'Red Velvet',fill:{type:'radial',angle:0,stops:[{h:350,s:60,l:35,pos:0},{h:350,s:70,l:20,pos:100}]},stroke:{h:350,s:80,l:15,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:350,s:60,l:50,a:40,x:0,y:2,blur:4,spread:0},{type:'drop-shadow',h:350,s:70,l:10,a:60,x:0,y:6,blur:14,spread:0}],radius:14},
-    {id:'velvet-purple',name:'Purple Velvet',fill:{type:'radial',angle:0,stops:[{h:280,s:60,l:35,pos:0},{h:285,s:70,l:18,pos:100}]},stroke:{h:280,s:80,l:12,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:280,s:60,l:50,a:40,x:0,y:2,blur:4,spread:0},{type:'drop-shadow',h:280,s:70,l:10,a:60,x:0,y:6,blur:14,spread:0}],radius:14},
-    {id:'silk-gold',name:'Gold Silk',fill:{type:'linear',angle:135,stops:[{h:48,s:80,l:78,pos:0},{h:42,s:90,l:60,pos:50},{h:38,s:85,l:55,pos:100}]},stroke:{h:40,s:60,l:35,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:55,s:100,l:90,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:40,s:80,l:30,a:30,x:0,y:4,blur:10,spread:0}],radius:8},
-    {id:'leather-brown',name:'Brown Leather',fill:{type:'radial',angle:0,stops:[{h:25,s:50,l:35,pos:0},{h:20,s:60,l:22,pos:100}]},stroke:{h:20,s:70,l:12,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:25,s:60,l:50,a:40,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:60,x:0,y:-2,blur:4,spread:0},{type:'drop-shadow',h:20,s:60,l:10,a:60,x:0,y:4,blur:8,spread:0}],radius:8},
-    {id:'leather-black',name:'Black Leather',fill:{type:'radial',angle:0,stops:[{h:0,s:0,l:15,pos:0},{h:0,s:0,l:5,pos:100}]},stroke:{h:0,s:0,l:0,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:40,a:30,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:70,x:0,y:-2,blur:3,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:70,x:0,y:4,blur:8,spread:0}],radius:8},
-    {id:'silk-pink',name:'Pink Silk',fill:{type:'linear',angle:135,stops:[{h:330,s:80,l:80,pos:0},{h:340,s:90,l:65,pos:100}]},stroke:{h:340,s:60,l:40,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:330,s:100,l:95,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:340,s:80,l:40,a:30,x:0,y:4,blur:10,spread:0}],radius:10},
-    
-    // HOLOGRAPHIC & IRIDESCENT
-    {id:'holographic',name:'Holographic',fill:{type:'linear',angle:135,stops:[{h:280,s:100,l:75,pos:0},{h:200,s:100,l:75,pos:33},{h:120,s:100,l:75,pos:66},{h:60,s:100,l:75,pos:100}]},stroke:{h:0,s:0,l:100,a:80,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:280,s:100,l:60,a:40,x:0,y:0,blur:20,spread:0}],radius:12},
-    {id:'iridescent',name:'Iridescent',fill:{type:'linear',angle:45,stops:[{h:180,s:80,l:85,pos:0},{h:260,s:80,l:80,pos:33},{h:330,s:80,l:80,pos:66},{h:40,s:80,l:85,pos:100}]},stroke:{h:0,s:0,l:100,a:60,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:300,s:60,l:50,a:30,x:0,y:4,blur:14,spread:0}],radius:10}
-  ],
-  
-  rpg: [
-    // SWORDS & WEAPONS
-    {id:'iron-sword',name:'Iron Sword',fill:{type:'linear',angle:180,stops:[{h:210,s:10,l:60,pos:0},{h:210,s:15,l:35,pos:100}]},stroke:{h:210,s:20,l:18,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:210,s:20,l:75,a:40,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:50,x:0,y:-2,blur:4,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:50,x:0,y:3,blur:6,spread:0}],radius:4},
-    {id:'mithril',name:'Mithril',fill:{type:'linear',angle:180,stops:[{h:200,s:50,l:85,pos:0},{h:210,s:60,l:60,pos:100}]},stroke:{h:210,s:80,l:30,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:200,s:100,l:100,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:210,s:80,l:50,a:60,x:0,y:0,blur:20,spread:0}],radius:6},
-    {id:'adamantite',name:'Adamantite',fill:{type:'linear',angle:180,stops:[{h:280,s:80,l:50,pos:0},{h:290,s:90,l:25,pos:100}]},stroke:{h:285,s:100,l:15,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:280,s:100,l:80,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:285,s:100,l:30,a:70,x:0,y:0,blur:18,spread:0}],radius:6},
-    
-    // ELEMENTAL
-    {id:'fire',name:'Fire',fill:{type:'radial',angle:0,stops:[{h:30,s:100,l:70,pos:0},{h:5,s:100,l:50,pos:60},{h:0,s:100,l:30,pos:100}]},stroke:{h:25,s:100,l:50,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:50,s:100,l:80,a:60,x:0,y:0,blur:4,spread:0},{type:'drop-shadow',h:15,s:100,l:50,a:80,x:0,y:0,blur:20,spread:0},{type:'drop-shadow',h:30,s:100,l:60,a:50,x:0,y:0,blur:40,spread:0}],radius:8},
-    {id:'lava',name:'Lava',fill:{type:'radial',angle:0,stops:[{h:50,s:100,l:60,pos:0},{h:15,s:100,l:45,pos:60},{h:0,s:100,l:25,pos:100}]},stroke:{h:0,s:100,l:30,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:50,s:100,l:70,a:60,x:0,y:0,blur:8,spread:0},{type:'drop-shadow',h:15,s:100,l:50,a:80,x:0,y:0,blur:24,spread:0}],radius:8},
-    {id:'ice',name:'Ice',fill:{type:'linear',angle:180,stops:[{h:195,s:100,l:90,pos:0},{h:200,s:90,l:70,pos:100}]},stroke:{h:0,s:0,l:100,a:80,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:90,x:0,y:2,blur:0,spread:0},{type:'drop-shadow',h:195,s:100,l:60,a:60,x:0,y:0,blur:18,spread:0}],radius:4},
-    {id:'frost',name:'Frost',fill:{type:'radial',angle:0,stops:[{h:200,s:80,l:95,pos:0},{h:210,s:70,l:75,pos:100}]},stroke:{h:200,s:100,l:50,a:80,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:90,x:0,y:2,blur:2,spread:0},{type:'drop-shadow',h:200,s:80,l:60,a:60,x:0,y:0,blur:24,spread:0}],radius:6},
-    {id:'lightning',name:'Lightning',fill:{type:'linear',angle:135,stops:[{h:55,s:100,l:75,pos:0},{h:50,s:100,l:55,pos:100}]},stroke:{h:50,s:100,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:60,s:100,l:90,a:80,x:0,y:0,blur:4,spread:0},{type:'drop-shadow',h:55,s:100,l:60,a:90,x:0,y:0,blur:24,spread:0}],radius:4},
-    {id:'poison',name:'Poison',fill:{type:'radial',angle:0,stops:[{h:100,s:100,l:55,pos:0},{h:90,s:100,l:30,pos:100}]},stroke:{h:90,s:100,l:20,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:110,s:100,l:80,a:50,x:0,y:0,blur:6,spread:0},{type:'drop-shadow',h:100,s:100,l:40,a:80,x:0,y:0,blur:20,spread:0}],radius:8},
-    {id:'nature',name:'Nature',fill:{type:'radial',angle:0,stops:[{h:120,s:60,l:55,pos:0},{h:130,s:70,l:30,pos:100}]},stroke:{h:130,s:80,l:18,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:115,s:60,l:75,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:130,s:70,l:25,a:50,x:0,y:4,blur:10,spread:0}],radius:6},
-    {id:'water',name:'Water',fill:{type:'linear',angle:180,stops:[{h:200,s:80,l:65,pos:0},{h:215,s:90,l:40,pos:100}]},stroke:{h:215,s:100,l:25,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:190,s:100,l:85,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:200,s:90,l:40,a:60,x:0,y:0,blur:16,spread:0}],radius:8},
-    {id:'wind',name:'Wind',fill:{type:'linear',angle:135,stops:[{h:175,s:50,l:85,pos:0},{h:180,s:60,l:65,pos:100}]},stroke:{h:180,s:80,l:50,a:60,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:175,s:60,l:60,a:40,x:0,y:0,blur:18,spread:0}],radius:8},
-    {id:'earth',name:'Earth',fill:{type:'linear',angle:180,stops:[{h:30,s:50,l:50,pos:0},{h:25,s:60,l:30,pos:100}]},stroke:{h:25,s:70,l:18,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:35,s:60,l:65,a:40,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:25,s:60,l:15,a:50,x:0,y:4,blur:8,spread:0}],radius:4},
-    
-    // MAGIC & ARCANE
-    {id:'arcane',name:'Arcane',fill:{type:'radial',angle:0,stops:[{h:280,s:100,l:65,pos:0},{h:260,s:100,l:30,pos:100}]},stroke:{h:280,s:100,l:50,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:300,s:100,l:80,a:60,x:0,y:0,blur:6,spread:0},{type:'drop-shadow',h:280,s:100,l:50,a:80,x:0,y:0,blur:24,spread:0}],radius:8},
-    {id:'holy-light',name:'Holy Light',fill:{type:'radial',angle:0,stops:[{h:50,s:100,l:90,pos:0},{h:45,s:100,l:70,pos:100}]},stroke:{h:0,s:0,l:100,a:90,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:0,blur:6,spread:0},{type:'drop-shadow',h:50,s:100,l:70,a:80,x:0,y:0,blur:30,spread:0}],radius:10},
-    {id:'shadow',name:'Shadow',fill:{type:'radial',angle:0,stops:[{h:270,s:60,l:20,pos:0},{h:280,s:80,l:5,pos:100}]},stroke:{h:280,s:60,l:30,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:280,s:80,l:40,a:50,x:0,y:0,blur:6,spread:0},{type:'drop-shadow',h:270,s:80,l:10,a:80,x:0,y:0,blur:24,spread:0}],radius:8},
-    {id:'mana',name:'Mana',fill:{type:'linear',angle:180,stops:[{h:240,s:100,l:70,pos:0},{h:260,s:100,l:50,pos:100}]},stroke:{h:0,s:0,l:100,a:50,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:70,x:0,y:2,blur:4,spread:0},{type:'drop-shadow',h:250,s:100,l:60,a:80,x:0,y:0,blur:24,spread:0}],radius:8},
-    {id:'cursed',name:'Cursed',fill:{type:'radial',angle:0,stops:[{h:280,s:80,l:25,pos:0},{h:300,s:100,l:10,pos:100}]},stroke:{h:280,s:100,l:40,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:290,s:100,l:50,a:60,x:0,y:0,blur:6,spread:0},{type:'drop-shadow',h:280,s:100,l:30,a:80,x:0,y:0,blur:24,spread:0}],radius:6},
-    {id:'divine',name:'Divine',fill:{type:'linear',angle:135,stops:[{h:50,s:100,l:85,pos:0},{h:0,s:0,l:100,pos:50},{h:50,s:100,l:75,pos:100}]},stroke:{h:50,s:100,l:50,a:100,width:1,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:90,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:50,s:100,l:65,a:80,x:0,y:0,blur:30,spread:0}],radius:8},
-    
-    // MATERIALS
-    {id:'wood',name:'Wood',fill:{type:'linear',angle:90,stops:[{h:30,s:50,l:45,pos:0},{h:25,s:55,l:35,pos:50},{h:30,s:50,l:45,pos:100}]},stroke:{h:25,s:60,l:20,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:35,s:60,l:60,a:30,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:25,s:60,l:15,a:50,x:0,y:4,blur:8,spread:0}],radius:4},
-    {id:'wood-dark',name:'Dark Wood',fill:{type:'linear',angle:90,stops:[{h:20,s:50,l:25,pos:0},{h:18,s:60,l:15,pos:100}]},stroke:{h:18,s:70,l:8,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:25,s:60,l:40,a:30,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:60,x:0,y:4,blur:8,spread:0}],radius:4},
-    {id:'stone',name:'Stone',fill:{type:'linear',angle:180,stops:[{h:0,s:0,l:55,pos:0},{h:0,s:0,l:35,pos:100}]},stroke:{h:0,s:0,l:20,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:75,a:30,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:50,x:0,y:-1,blur:2,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:50,x:0,y:3,blur:6,spread:0}],radius:4},
-    {id:'dark-stone',name:'Dark Stone',fill:{type:'linear',angle:180,stops:[{h:220,s:10,l:25,pos:0},{h:220,s:15,l:12,pos:100}]},stroke:{h:220,s:20,l:5,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:220,s:20,l:50,a:25,x:0,y:1,blur:0,spread:0},{type:'inner-shadow',h:0,s:0,l:0,a:80,x:0,y:-2,blur:6,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:70,x:0,y:4,blur:10,spread:0}],radius:6},
-    {id:'bone',name:'Bone',fill:{type:'linear',angle:180,stops:[{h:45,s:30,l:88,pos:0},{h:40,s:40,l:72,pos:100}]},stroke:{h:40,s:50,l:40,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:50,s:50,l:95,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:40,s:50,l:30,a:40,x:0,y:3,blur:8,spread:0}],radius:6},
-    {id:'parchment',name:'Parchment',fill:{type:'linear',angle:135,stops:[{h:40,s:50,l:80,pos:0},{h:35,s:60,l:65,pos:100}]},stroke:{h:30,s:70,l:35,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:45,s:60,l:90,a:60,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:30,s:60,l:25,a:40,x:0,y:3,blur:8,spread:0}],radius:6},
-    {id:'dragon-scale',name:'Dragon Scale',fill:{type:'linear',angle:135,stops:[{h:140,s:80,l:45,pos:0},{h:170,s:90,l:30,pos:100}]},stroke:{h:150,s:100,l:15,a:100,width:1.5,position:'inside'},effects:[{type:'inner-shadow',h:150,s:100,l:70,a:50,x:0,y:1,blur:2,spread:0},{type:'drop-shadow',h:150,s:80,l:20,a:60,x:0,y:4,blur:10,spread:0}],radius:6},
-    
-    // RARITIES
-    {id:'common',name:'Common',fill:{type:'linear',angle:180,stops:[{h:0,s:0,l:75,pos:0},{h:0,s:0,l:55,pos:100}]},stroke:{h:0,s:0,l:30,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:0,s:0,l:0,a:40,x:0,y:3,blur:6,spread:0}],radius:6},
-    {id:'uncommon',name:'Uncommon',fill:{type:'linear',angle:180,stops:[{h:120,s:60,l:55,pos:0},{h:130,s:70,l:35,pos:100}]},stroke:{h:130,s:80,l:20,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:115,s:80,l:75,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:130,s:80,l:30,a:60,x:0,y:0,blur:14,spread:0}],radius:6},
-    {id:'rare',name:'Rare',fill:{type:'linear',angle:180,stops:[{h:210,s:100,l:60,pos:0},{h:220,s:100,l:40,pos:100}]},stroke:{h:200,s:100,l:80,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:200,s:100,l:80,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:210,s:100,l:50,a:70,x:0,y:0,blur:14,spread:0}],radius:6},
-    {id:'epic',name:'Epic',fill:{type:'linear',angle:180,stops:[{h:280,s:100,l:60,pos:0},{h:290,s:100,l:35,pos:100}]},stroke:{h:280,s:100,l:80,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:280,s:100,l:80,a:50,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:280,s:100,l:50,a:80,x:0,y:0,blur:18,spread:0}],radius:6},
-    {id:'legendary',name:'Legendary',fill:{type:'linear',angle:180,stops:[{h:30,s:100,l:65,pos:0},{h:20,s:100,l:45,pos:100}]},stroke:{h:45,s:100,l:70,a:100,width:2.5,position:'inside'},effects:[{type:'inner-shadow',h:50,s:100,l:90,a:70,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:30,s:100,l:55,a:80,x:0,y:0,blur:20,spread:0},{type:'drop-shadow',h:30,s:100,l:60,a:50,x:0,y:0,blur:40,spread:0}],radius:6},
-    {id:'mythic',name:'Mythic',fill:{type:'linear',angle:180,stops:[{h:0,s:100,l:55,pos:0},{h:320,s:100,l:45,pos:100}]},stroke:{h:340,s:100,l:70,a:100,width:2.5,position:'inside'},effects:[{type:'drop-shadow',h:340,s:100,l:50,a:90,x:0,y:0,blur:24,spread:0}],radius:6},
-    {id:'celestial',name:'Celestial',fill:{type:'linear',angle:135,stops:[{h:200,s:100,l:80,pos:0},{h:280,s:100,l:70,pos:100}]},stroke:{h:0,s:0,l:100,a:100,width:2,position:'inside'},effects:[{type:'inner-shadow',h:0,s:0,l:100,a:80,x:0,y:1,blur:0,spread:0},{type:'drop-shadow',h:240,s:100,l:60,a:80,x:0,y:0,blur:28,spread:0}],radius:8}
-  ]
+const M=(id,name,fill,stroke,effects,radius)=>({id,name,fill,stroke,effects,radius});
+const F=(type,angle,...stops)=>({type,angle,stops:stops.map(s=>({h:s[0],s:s[1],l:s[2],pos:s[3]}))});
+const S=(h,s,l,a,width)=>({h,s,l,a,width,position:'inside'});
+const IS=(h,s,l,a,x,y,blur,spread=0)=>({type:'inner-shadow',h,s,l,a,x,y,blur,spread});
+const DS=(h,s,l,a,x,y,blur,spread=0)=>({type:'drop-shadow',h,s,l,a,x,y,blur,spread});
+const MATERIALS={
+premium:[
+M('silver','Silver',F('linear',180,[0,0,92,0],[0,0,72,50],[0,0,50,100]),S(0,0,30,100,1),[IS(0,0,100,60,0,1,0),IS(0,0,0,30,0,-1,0),DS(0,0,0,25,0,2,4)],8),
+M('chrome','Chrome',F('linear',180,[210,30,95,0],[210,20,70,30],[210,25,85,55],[210,30,55,100]),S(210,30,30,100,1),[IS(0,0,100,80,0,1,0),DS(210,30,30,30,0,3,6)],6),
+M('steel','Steel',F('linear',180,[210,15,65,0],[210,20,45,100]),S(210,25,25,100,1.5),[IS(210,20,80,50,0,1,0),IS(0,0,0,40,0,-1,2),DS(0,0,0,40,0,3,6)],6),
+M('platinum','Platinum',F('linear',180,[210,15,90,0],[220,12,78,50],[220,10,65,100]),S(220,10,50,100,1),[IS(0,0,100,70,0,1,0),DS(220,20,40,25,0,3,8)],8),
+M('iron','Iron',F('linear',180,[210,10,50,0],[210,15,30,100]),S(210,20,15,100,2),[IS(210,20,70,30,0,1,0),IS(0,0,0,50,0,-2,4),DS(0,0,0,50,0,3,6)],4),
+M('titanium','Titanium',F('linear',180,[220,8,75,0],[220,10,55,100]),S(220,15,35,100,1),[IS(220,10,90,60,0,1,0),DS(220,15,25,35,0,3,6)],6),
+M('aluminum','Aluminum',F('linear',180,[0,0,88,0],[0,0,75,100]),S(0,0,55,100,1),[IS(0,0,100,70,0,1,0),DS(0,0,0,20,0,2,4)],6),
+M('tungsten','Tungsten',F('linear',180,[0,0,35,0],[0,0,18,100]),S(0,0,8,100,1.5),[IS(0,0,60,40,0,1,0),DS(0,0,0,60,0,4,8)],4),
+M('gold','Gold',F('linear',180,[45,100,80,0],[42,90,60,50],[38,85,45,100]),S(40,80,30,100,1),[IS(50,100,90,70,0,1,0),IS(30,100,20,50,0,-1,0),DS(40,90,30,40,0,4,8)],8),
+M('rose-gold','Rose Gold',F('linear',180,[15,80,80,0],[10,70,65,50],[5,65,50,100]),S(10,60,35,100,1),[IS(20,100,90,60,0,1,0),DS(10,70,40,35,0,4,10)],10),
+M('white-gold','White Gold',F('linear',180,[50,30,92,0],[48,25,78,100]),S(48,30,55,100,1),[IS(50,50,98,80,0,1,0),DS(48,30,50,30,0,3,6)],8),
+M('yellow-gold','Yellow Gold',F('linear',180,[50,100,75,0],[45,100,55,100]),S(42,100,25,100,1),[IS(55,100,90,80,0,1,0),DS(45,100,30,50,0,4,10)],6),
+M('antique-gold','Antique Gold',F('linear',180,[40,60,55,0],[35,70,35,100]),S(35,80,18,100,1.5),[IS(45,80,75,50,0,1,0),DS(35,70,15,50,0,3,6)],4),
+M('diamond','Diamond',F('linear',135,[200,100,95,0],[210,80,85,50],[220,70,75,100]),S(0,0,100,80,1),[IS(0,0,100,80,0,2,0),DS(200,100,70,50,0,0,20)],8),
+M('ruby','Ruby',F('radial',0,[355,100,65,0],[0,100,35,100]),S(0,100,20,100,1),[IS(0,100,80,70,0,2,0),DS(0,100,40,70,0,0,20)],8),
+M('emerald','Emerald',F('radial',0,[140,100,55,0],[150,100,25,100]),S(150,100,15,100,1),[IS(130,100,80,70,0,2,0),DS(140,100,30,70,0,0,20)],8),
+M('sapphire','Sapphire',F('radial',0,[220,100,55,0],[230,100,25,100]),S(230,100,15,100,1),[IS(210,100,80,70,0,2,0),DS(220,100,30,70,0,0,20)],8),
+M('amethyst','Amethyst',F('radial',0,[280,80,65,0],[290,90,35,100]),S(285,100,25,100,1),[IS(280,100,85,70,0,2,0),DS(285,100,40,60,0,0,20)],8),
+M('topaz','Topaz',F('radial',0,[35,100,65,0],[30,100,40,100]),S(30,100,25,100,1),[IS(45,100,85,70,0,2,0),DS(30,100,40,60,0,0,18)],8),
+M('opal','Opal',F('linear',135,[200,60,90,0],[280,50,85,33],[140,60,85,66],[30,80,85,100]),S(0,0,100,80,1),[IS(0,0,100,80,0,1,0),DS(200,60,60,40,0,4,14)],10),
+M('jade','Jade',F('radial',0,[140,50,70,0],[150,60,45,100]),S(150,70,25,100,1),[IS(120,60,85,50,0,1,0),DS(140,60,30,40,0,3,8)],6),
+M('onyx','Onyx',F('radial',0,[0,0,25,0],[0,0,5,100]),S(0,0,0,100,1),[IS(0,0,50,30,0,1,2),DS(0,0,0,80,0,4,12)],6),
+M('pearl','Pearl',F('radial',0,[0,0,98,0],[280,30,88,60],[200,30,85,100]),S(0,0,80,100,1),[IS(0,0,100,90,0,1,0),DS(280,30,50,25,0,5,14)],999),
+M('crystal','Crystal',F('linear',135,[200,100,70,0],[220,100,55,100]),S(0,0,100,70,1),[IS(0,0,100,60,0,2,0),DS(210,100,60,70,0,0,24)],6),
+M('glass','Glass',F('linear',180,[0,0,100,0],[0,0,95,100]),S(0,0,100,60,1),[IS(0,0,100,80,0,1,0),DS(0,0,0,10,0,8,24)],16),
+M('frosted-glass','Frosted Glass',F('linear',135,[220,30,95,0],[220,20,85,100]),S(0,0,100,80,1),[IS(0,0,100,60,0,1,0),DS(220,30,30,20,0,8,20)],16),
+M('tinted-glass','Tinted Glass',F('linear',135,[200,60,35,0],[220,70,20,100]),S(0,0,100,30,1),[IS(200,80,80,30,0,1,0),DS(0,0,0,30,0,8,20)],12),
+M('mirror','Mirror',F('linear',180,[200,20,85,0],[200,30,55,100]),S(0,0,100,90,1),[IS(0,0,100,90,0,1,0),DS(200,30,40,30,0,4,10)],6),
+M('marble-white','White Marble',F('linear',135,[0,0,96,0],[220,10,88,50],[0,0,92,100]),S(0,0,70,100,1),[IS(0,0,100,40,0,1,0),DS(0,0,0,20,0,6,16)],12),
+M('marble-black','Black Marble',F('linear',135,[0,0,15,0],[220,20,8,50],[0,0,18,100]),S(0,0,30,100,1),[IS(0,0,50,30,0,1,0),DS(0,0,0,80,0,6,14)],10),
+M('marble-rose','Rose Marble',F('linear',135,[340,30,90,0],[0,30,85,50],[340,30,88,100]),S(340,30,60,100,1),[IS(0,0,100,50,0,1,0),DS(340,30,40,25,0,5,14)],10),
+M('obsidian','Obsidian',F('linear',135,[240,30,15,0],[240,40,5,100]),S(240,30,25,100,1),[IS(240,50,50,30,0,1,2),DS(0,0,0,80,0,6,14)],10),
+M('copper','Copper',F('linear',180,[20,80,65,0],[15,75,50,50],[10,70,35,100]),S(15,80,25,100,1),[IS(30,100,85,60,0,1,0),DS(15,80,25,40,0,4,10)],8),
+M('brass','Brass',F('linear',180,[42,70,65,0],[40,75,45,100]),S(38,80,25,100,1),[IS(50,90,80,65,0,1,0),DS(40,70,25,40,0,3,8)],6),
+M('bronze','Bronze',F('linear',180,[25,60,50,0],[20,70,30,100]),S(20,80,15,100,1.5),[IS(35,80,70,50,0,1,0),DS(20,70,15,50,0,3,8)],6),
+M('gunmetal','Gunmetal',F('linear',180,[220,15,35,0],[220,20,18,100]),S(220,25,10,100,1),[IS(220,20,55,40,0,1,0),DS(0,0,0,60,0,4,8)],4),
+M('carbon-fiber','Carbon Fiber',F('linear',135,[0,0,18,0],[0,0,10,100]),S(0,0,5,100,1),[IS(0,0,100,8,0,1,0),DS(0,0,0,60,0,4,10)],10),
+M('mercury','Mercury',F('radial',0,[0,0,90,0],[0,0,65,50],[0,0,40,100]),S(0,0,30,100,1),[IS(0,0,100,100,0,2,0),DS(0,0,0,40,0,4,10)],999),
+M('velvet-red','Red Velvet',F('radial',0,[350,60,35,0],[350,70,20,100]),S(350,80,15,100,1),[IS(350,60,50,40,0,2,4),DS(350,70,10,60,0,6,14)],14),
+M('velvet-purple','Purple Velvet',F('radial',0,[280,60,35,0],[285,70,18,100]),S(280,80,12,100,1),[IS(280,60,50,40,0,2,4),DS(280,70,10,60,0,6,14)],14),
+M('silk-gold','Gold Silk',F('linear',135,[48,80,78,0],[42,90,60,50],[38,85,55,100]),S(40,60,35,100,1),[IS(55,100,90,60,0,1,0),DS(40,80,30,30,0,4,10)],8),
+M('leather-brown','Brown Leather',F('radial',0,[25,50,35,0],[20,60,22,100]),S(20,70,12,100,1.5),[IS(25,60,50,40,0,1,0),IS(0,0,0,60,0,-2,4),DS(20,60,10,60,0,4,8)],8),
+M('leather-black','Black Leather',F('radial',0,[0,0,15,0],[0,0,5,100]),S(0,0,0,100,1.5),[IS(0,0,40,30,0,1,0),IS(0,0,0,70,0,-2,3),DS(0,0,0,70,0,4,8)],8),
+M('silk-pink','Pink Silk',F('linear',135,[330,80,80,0],[340,90,65,100]),S(340,60,40,100,1),[IS(330,100,95,60,0,1,0),DS(340,80,40,30,0,4,10)],10),
+M('holographic','Holographic',F('linear',135,[280,100,75,0],[200,100,75,33],[120,100,75,66],[60,100,75,100]),S(0,0,100,80,1),[IS(0,0,100,60,0,1,0),DS(280,100,60,40,0,0,20)],12),
+M('iridescent','Iridescent',F('linear',45,[180,80,85,0],[260,80,80,33],[330,80,80,66],[40,80,85,100]),S(0,0,100,60,1),[IS(0,0,100,50,0,1,0),DS(300,60,50,30,0,4,14)],10)
+],
+rpg:[
+M('iron-sword','Iron Sword',F('linear',180,[210,10,60,0],[210,15,35,100]),S(210,20,18,100,2),[IS(210,20,75,40,0,1,0),IS(0,0,0,50,0,-2,4),DS(0,0,0,50,0,3,6)],4),
+M('mithril','Mithril',F('linear',180,[200,50,85,0],[210,60,60,100]),S(210,80,30,100,1.5),[IS(200,100,100,80,0,1,0),DS(210,80,50,60,0,0,20)],6),
+M('adamantite','Adamantite',F('linear',180,[280,80,50,0],[290,90,25,100]),S(285,100,15,100,1.5),[IS(280,100,80,60,0,1,0),DS(285,100,30,70,0,0,18)],6),
+M('fire','Fire',F('radial',0,[30,100,70,0],[5,100,50,60],[0,100,30,100]),S(25,100,50,100,1.5),[IS(50,100,80,60,0,0,4),DS(15,100,50,80,0,0,20),DS(30,100,60,50,0,0,40)],8),
+M('lava','Lava',F('radial',0,[50,100,60,0],[15,100,45,60],[0,100,25,100]),S(0,100,30,100,1.5),[IS(50,100,70,60,0,0,8),DS(15,100,50,80,0,0,24)],8),
+M('ice','Ice',F('linear',180,[195,100,90,0],[200,90,70,100]),S(0,0,100,80,1.5),[IS(0,0,100,90,0,2,0),DS(195,100,60,60,0,0,18)],4),
+M('frost','Frost',F('radial',0,[200,80,95,0],[210,70,75,100]),S(200,100,50,80,1),[IS(0,0,100,90,0,2,2),DS(200,80,60,60,0,0,24)],6),
+M('lightning','Lightning',F('linear',135,[55,100,75,0],[50,100,55,100]),S(50,100,30,100,1),[IS(60,100,90,80,0,0,4),DS(55,100,60,90,0,0,24)],4),
+M('poison','Poison',F('radial',0,[100,100,55,0],[90,100,30,100]),S(90,100,20,100,1.5),[IS(110,100,80,50,0,0,6),DS(100,100,40,80,0,0,20)],8),
+M('nature','Nature',F('radial',0,[120,60,55,0],[130,70,30,100]),S(130,80,18,100,1.5),[IS(115,60,75,50,0,1,0),DS(130,70,25,50,0,4,10)],6),
+M('water','Water',F('linear',180,[200,80,65,0],[215,90,40,100]),S(215,100,25,100,1),[IS(190,100,85,60,0,1,0),DS(200,90,40,60,0,0,16)],8),
+M('wind','Wind',F('linear',135,[175,50,85,0],[180,60,65,100]),S(180,80,50,60,1),[IS(0,0,100,80,0,1,0),DS(175,60,60,40,0,0,18)],8),
+M('earth','Earth',F('linear',180,[30,50,50,0],[25,60,30,100]),S(25,70,18,100,1.5),[IS(35,60,65,40,0,1,0),DS(25,60,15,50,0,4,8)],4),
+M('arcane','Arcane',F('radial',0,[280,100,65,0],[260,100,30,100]),S(280,100,50,100,1),[IS(300,100,80,60,0,0,6),DS(280,100,50,80,0,0,24)],8),
+M('holy-light','Holy Light',F('radial',0,[50,100,90,0],[45,100,70,100]),S(0,0,100,90,1.5),[IS(0,0,100,80,0,0,6),DS(50,100,70,80,0,0,30)],10),
+M('shadow','Shadow',F('radial',0,[270,60,20,0],[280,80,5,100]),S(280,60,30,100,1),[IS(280,80,40,50,0,0,6),DS(270,80,10,80,0,0,24)],8),
+M('mana','Mana',F('linear',180,[240,100,70,0],[260,100,50,100]),S(0,0,100,50,1),[IS(0,0,100,70,0,2,4),DS(250,100,60,80,0,0,24)],8),
+M('cursed','Cursed',F('radial',0,[280,80,25,0],[300,100,10,100]),S(280,100,40,100,1.5),[IS(290,100,50,60,0,0,6),DS(280,100,30,80,0,0,24)],6),
+M('divine','Divine',F('linear',135,[50,100,85,0],[0,0,100,50],[50,100,75,100]),S(50,100,50,100,1),[IS(0,0,100,90,0,1,0),DS(50,100,65,80,0,0,30)],8),
+M('wood','Wood',F('linear',90,[30,50,45,0],[25,55,35,50],[30,50,45,100]),S(25,60,20,100,2),[IS(35,60,60,30,0,1,0),DS(25,60,15,50,0,4,8)],4),
+M('wood-dark','Dark Wood',F('linear',90,[20,50,25,0],[18,60,15,100]),S(18,70,8,100,1.5),[IS(25,60,40,30,0,1,0),DS(0,0,0,60,0,4,8)],4),
+M('stone','Stone',F('linear',180,[0,0,55,0],[0,0,35,100]),S(0,0,20,100,2),[IS(0,0,75,30,0,1,0),IS(0,0,0,50,0,-1,2),DS(0,0,0,50,0,3,6)],4),
+M('dark-stone','Dark Stone',F('linear',180,[220,10,25,0],[220,15,12,100]),S(220,20,5,100,2),[IS(220,20,50,25,0,1,0),IS(0,0,0,80,0,-2,6),DS(0,0,0,70,0,4,10)],6),
+M('bone','Bone',F('linear',180,[45,30,88,0],[40,40,72,100]),S(40,50,40,100,1.5),[IS(50,50,95,60,0,1,0),DS(40,50,30,40,0,3,8)],6),
+M('parchment','Parchment',F('linear',135,[40,50,80,0],[35,60,65,100]),S(30,70,35,100,1.5),[IS(45,60,90,60,0,1,0),DS(30,60,25,40,0,3,8)],6),
+M('dragon-scale','Dragon Scale',F('linear',135,[140,80,45,0],[170,90,30,100]),S(150,100,15,100,1.5),[IS(150,100,70,50,0,1,2),DS(150,80,20,60,0,4,10)],6),
+M('common','Common',F('linear',180,[0,0,75,0],[0,0,55,100]),S(0,0,30,100,2),[IS(0,0,100,50,0,1,0),DS(0,0,0,40,0,3,6)],6),
+M('uncommon','Uncommon',F('linear',180,[120,60,55,0],[130,70,35,100]),S(130,80,20,100,2),[IS(115,80,75,50,0,1,0),DS(130,80,30,60,0,0,14)],6),
+M('rare','Rare',F('linear',180,[210,100,60,0],[220,100,40,100]),S(200,100,80,100,2),[IS(200,100,80,50,0,1,0),DS(210,100,50,70,0,0,14)],6),
+M('epic','Epic',F('linear',180,[280,100,60,0],[290,100,35,100]),S(280,100,80,100,2),[IS(280,100,80,50,0,1,0),DS(280,100,50,80,0,0,18)],6),
+M('legendary','Legendary',F('linear',180,[30,100,65,0],[20,100,45,100]),S(45,100,70,100,2.5),[IS(50,100,90,70,0,1,0),DS(30,100,55,80,0,0,20),DS(30,100,60,50,0,0,40)],6),
+M('mythic','Mythic',F('linear',180,[0,100,55,0],[320,100,45,100]),S(340,100,70,100,2.5),[DS(340,100,50,90,0,0,24)],6),
+M('celestial','Celestial',F('linear',135,[200,100,80,0],[280,100,70,100]),S(0,0,100,100,2),[IS(0,0,100,80,0,1,0),DS(240,100,60,80,0,0,28)],8)
+],
+anime:[
+M('sakura','Sakura',F('linear',135,[340,100,88,0],[330,90,75,100]),S(340,80,65,100,1),[IS(0,0,100,60,0,1,0),DS(340,70,60,30,0,4,12)],14),
+M('cherry-blossom','Cherry Blossom',F('radial',0,[350,100,90,0],[340,90,70,100]),S(0,0,100,80,1.5),[IS(0,0,100,70,0,2,0),DS(340,80,60,35,0,6,18)],20),
+M('peach','Peach',F('linear',135,[20,100,88,0],[15,90,75,100]),S(15,80,55,100,1),[IS(30,100,95,70,0,1,0),DS(15,80,55,30,0,4,12)],14),
+M('pastel-dream','Pastel Dream',F('linear',180,[200,100,92,0],[280,80,88,100]),S(240,50,80,100,1),[IS(0,0,100,80,0,1,0),DS(240,60,70,25,0,6,16)],16),
+M('mint-cream','Mint Cream',F('linear',135,[150,80,90,0],[170,70,78,100]),S(160,50,60,100,1),[IS(0,0,100,70,0,1,0),DS(160,60,60,30,0,5,14)],14),
+M('lavender-mist','Lavender Mist',F('radial',0,[280,60,92,0],[260,50,80,100]),S(270,40,70,100,1),[DS(270,60,60,20,0,6,18)],14),
+M('baby-blue','Baby Blue',F('linear',180,[200,90,90,0],[210,80,78,100]),S(210,60,55,100,1),[IS(200,80,98,80,0,1,0),DS(210,70,60,30,0,5,14)],14),
+M('soft-cloud','Soft Cloud',F('linear',180,[200,60,96,0],[210,50,88,100]),S(0,0,100,0,0),[IS(0,0,100,100,0,2,0),DS(210,30,50,15,0,8,24)],18),
+M('cotton-candy','Cotton Candy',F('linear',135,[320,100,85,0],[200,100,85,100]),S(0,0,100,80,1),[IS(0,0,100,80,0,1,0),DS(320,80,70,30,0,5,16)],16),
+M('kawaii','Kawaii',F('linear',180,[320,100,85,0],[310,95,72,100]),S(320,100,50,100,2),[IS(0,0,100,50,0,2,0),DS(320,100,50,40,0,4,0)],16),
+M('kawaii-pink','Kawaii Pink',F('radial',0,[335,100,88,0],[330,100,70,100]),S(330,100,50,100,2.5),[IS(0,0,100,70,0,1,0),DS(330,100,60,50,0,4,0)],999),
+M('magical-girl','Magical Girl',F('linear',135,[320,100,75,0],[220,100,70,100]),S(0,0,100,80,1.5),[IS(0,0,100,60,0,1,0),DS(280,100,60,50,0,0,20)],14),
+M('anime-card','Anime Card',F('linear',135,[240,100,70,0],[320,100,70,100]),S(0,0,100,60,2),[DS(280,80,50,45,0,8,20)],12),
+M('idol-glow','Idol Glow',F('linear',135,[50,100,80,0],[320,100,75,100]),S(0,0,100,100,1),[IS(0,0,100,70,0,1,0),DS(320,100,65,60,0,0,24)],14),
+M('sunset-sky','Sunset Sky',F('linear',180,[30,100,75,0],[340,100,65,100]),S(0,0,100,50,1),[DS(0,100,50,30,0,6,18)],14),
+M('sunrise','Sunrise',F('linear',180,[50,100,80,0],[25,100,65,50],[340,100,55,100]),S(30,80,40,100,1),[DS(25,100,50,40,0,6,18)],12),
+M('aurora-pastel','Aurora Pastel',F('linear',135,[280,80,80,0],[200,80,75,50],[160,70,80,100]),S(0,0,100,60,1),[DS(280,70,60,40,0,0,20)],14),
+M('spirit','Spirit',F('radial',0,[160,80,80,0],[180,70,55,100]),S(0,0,100,60,1),[DS(170,80,55,60,0,0,30)],18),
+M('demon-slayer','Demon Slayer',F('linear',135,[0,100,50,0],[240,100,30,100]),S(0,100,30,100,2),[IS(0,0,100,30,0,1,0),DS(0,100,30,80,0,0,20)],6),
+M('magic-glow','Magic Glow',F('linear',135,[280,100,75,0],[240,100,65,100]),S(0,0,100,40,1),[DS(270,100,60,60,0,0,24),DS(270,100,70,40,0,0,48)],12),
+M('manga-panel','Manga Panel',F('solid',0,[0,0,100,0]),S(0,0,10,100,2.5),[DS(0,0,0,100,4,4,0)],4),
+M('manga-black','Manga Black',F('solid',0,[0,0,8,0]),S(0,0,100,100,2.5),[DS(0,0,100,80,4,4,0)],4),
+M('shounen','Shounen',F('linear',135,[30,100,60,0],[0,100,50,100]),S(0,100,25,100,2),[IS(50,100,80,50,0,1,0),DS(15,100,40,60,0,4,12)],8),
+M('shoujo','Shoujo',F('radial',0,[330,100,90,0],[340,80,75,100]),S(330,80,60,100,1.5),[IS(0,0,100,80,0,1,0),DS(330,80,60,50,0,0,20),DS(0,0,100,50,0,0,40)],16),
+M('mecha','Mecha',F('linear',135,[210,30,65,0],[220,50,35,100]),S(0,80,50,100,2),[IS(0,80,60,60,0,0,6),DS(0,80,40,50,0,0,14)],4),
+M('strawberry-milk','Strawberry Milk',F('linear',180,[0,80,90,0],[350,90,80,100]),S(350,80,60,100,1.5),[IS(0,0,100,80,0,1,0),DS(350,80,60,35,0,5,14)],14),
+M('matcha','Matcha',F('linear',135,[80,60,65,0],[90,70,40,100]),S(90,80,25,100,1.5),[IS(80,60,80,60,0,1,0),DS(90,60,30,40,0,4,10)],10),
+M('taiyaki','Taiyaki',F('linear',135,[40,80,70,0],[30,90,50,100]),S(30,100,30,100,1.5),[IS(50,100,85,60,0,1,0),DS(30,90,30,50,0,4,10)],12),
+M('night-mage','Night Mage',F('radial',0,[260,80,35,0],[240,90,10,100]),S(280,100,60,100,1.5),[IS(280,100,60,60,0,0,8),DS(260,100,50,80,0,0,24)],8),
+M('star-night','Star Night',F('linear',180,[240,80,25,0],[260,90,8,100]),S(50,100,80,80,1),[IS(240,80,50,30,0,1,2),DS(240,80,30,60,0,0,20)],8),
+M('sailor-moon','Sailor Moon',F('linear',180,[200,100,80,0],[240,100,50,100]),S(50,100,60,100,2),[IS(200,100,95,70,0,1,0),DS(240,100,50,60,0,0,20)],8)
+],
+cartoon:[
+M('jelly','Jelly',F('linear',180,[10,100,70,0],[350,100,55,100]),S(0,0,0,100,2),[IS(0,0,100,60,0,3,2),DS(0,0,0,80,0,4,0)],18),
+M('jelly-blue','Blue Jelly',F('linear',180,[200,100,70,0],[220,100,50,100]),S(0,0,0,100,2),[IS(0,0,100,60,0,3,2),DS(0,0,0,80,0,4,0)],18),
+M('jelly-green','Green Jelly',F('linear',180,[120,100,65,0],[140,100,45,100]),S(0,0,0,100,2),[IS(0,0,100,60,0,3,2),DS(0,0,0,80,0,4,0)],18),
+M('bubble-pop','Bubble Pop',F('radial',0,[200,100,75,0],[220,100,55,100]),S(0,0,100,100,3),[IS(0,0,100,70,-4,-4,0),DS(0,0,0,30,0,6,0)],999),
+M('cartoon-outline','Cartoon Outline',F('linear',180,[50,100,65,0],[40,100,55,100]),S(0,0,0,100,3),[DS(0,0,0,100,0,5,0)],12),
+M('sticker','Sticker',F('solid',0,[0,90,60,0]),S(0,0,100,100,5),[DS(0,0,0,30,0,4,8)],12),
+M('sticker-yellow','Yellow Sticker',F('solid',0,[50,100,65,0]),S(0,0,100,100,5),[DS(0,0,0,30,0,4,8)],12),
+M('comic-pop','Comic Pop',F('linear',135,[50,100,60,0],[25,100,55,100]),S(0,0,0,100,3),[DS(0,0,0,100,5,5,0)],8),
+M('toon-shade','Toon Shade',F('linear',180,[145,70,60,0],[145,70,60,50],[145,70,40,51],[145,70,40,100]),S(0,0,0,100,2),[DS(0,0,0,60,0,4,0)],10),
+M('pop-red','Pop Red',F('linear',180,[0,90,70,0],[0,90,50,100]),S(0,80,35,100,2),[IS(0,0,100,60,0,3,0),DS(0,80,35,100,0,5,0)],14),
+M('pop-yellow','Pop Yellow',F('linear',180,[50,100,70,0],[45,100,55,100]),S(35,100,35,100,2),[IS(55,100,90,70,0,3,0),DS(35,100,35,100,0,5,0)],14),
+M('pop-green','Pop Green',F('linear',180,[120,80,60,0],[130,80,45,100]),S(130,80,25,100,2),[IS(115,80,80,60,0,3,0),DS(130,80,25,100,0,5,0)],14),
+M('candy','Candy',F('linear',135,[320,100,75,0],[280,100,65,100]),S(0,0,100,100,3),[IS(0,0,100,50,0,2,0),DS(300,80,50,40,0,6,0)],999),
+M('cupcake','Cupcake',F('linear',180,[340,80,80,0],[330,75,65,100]),S(0,0,100,100,3),[DS(340,60,50,40,0,5,0)],18),
+M('donut','Donut',F('radial',0,[30,90,70,0],[25,80,55,100]),S(340,70,75,100,3),[IS(0,0,100,40,0,2,0),DS(0,0,0,30,0,6,8)],999),
+M('cheese','Cheese',F('linear',135,[50,100,65,0],[40,100,50,100]),S(35,100,25,100,3),[IS(55,100,80,60,0,2,0),DS(35,100,30,80,0,5,0)],8),
+M('watermelon','Watermelon',F('linear',180,[0,80,65,0],[120,60,50,100]),S(120,80,25,100,3),[IS(0,0,100,30,0,1,0),DS(0,0,0,50,0,5,0)],12),
+M('marshmallow','Marshmallow',F('linear',180,[330,100,92,0],[0,0,100,100]),S(330,60,75,100,2),[IS(0,0,100,90,0,2,2),DS(0,0,0,20,0,6,10)],14),
+M('honey','Honey',F('radial',0,[42,100,65,0],[35,100,50,100]),S(30,100,30,100,2),[IS(50,100,85,80,0,1,0),DS(35,100,35,60,0,6,14)],12),
+M('ice-cream','Ice Cream',F('linear',180,[340,60,90,0],[330,70,75,50],[30,80,75,100]),S(0,0,0,100,2.5),[IS(0,0,100,80,0,1,0),DS(0,0,0,60,0,5,0)],16),
+M('plastic-toy','Plastic Toy',F('linear',180,[200,100,70,0],[220,100,50,100]),S(220,80,30,100,2),[IS(0,0,100,80,2,2,0),DS(220,80,20,60,0,4,0)],16),
+M('rubber','Rubber',F('linear',180,[50,100,65,0],[40,100,45,100]),S(30,100,25,100,2.5),[IS(0,0,0,30,0,-3,6),DS(30,100,25,70,0,4,0)],12),
+M('slime','Slime',F('radial',0,[120,100,65,0],[100,100,40,100]),S(90,100,25,100,2),[IS(0,0,100,50,-3,-3,4),DS(100,100,30,70,0,5,8)],24)
+],
+cyber:[
+M('neon-blue','Neon Blue',F('solid',0,[0,0,5,0]),S(200,100,60,100,2),[IS(200,100,60,50,0,0,8),DS(200,100,60,100,0,0,20),DS(200,100,70,60,0,0,40)],8),
+M('neon-pink','Neon Pink',F('solid',0,[0,0,5,0]),S(320,100,60,100,2),[IS(320,100,60,50,0,0,8),DS(320,100,60,100,0,0,20),DS(320,100,70,60,0,0,40)],8),
+M('neon-green','Neon Green',F('solid',0,[0,0,5,0]),S(120,100,55,100,2),[IS(120,100,55,50,0,0,8),DS(120,100,55,100,0,0,20),DS(120,100,65,60,0,0,40)],8),
+M('neon-purple','Neon Purple',F('solid',0,[0,0,5,0]),S(280,100,60,100,2),[IS(280,100,60,50,0,0,8),DS(280,100,60,100,0,0,20)],8),
+M('neon-red','Neon Red',F('solid',0,[0,0,5,0]),S(0,100,60,100,2),[IS(0,100,60,50,0,0,8),DS(0,100,60,100,0,0,20)],8),
+M('neon-cyan','Neon Cyan',F('solid',0,[0,0,5,0]),S(180,100,55,100,2),[IS(180,100,55,50,0,0,8),DS(180,100,55,100,0,0,20)],8),
+M('cyberpunk','Cyberpunk',F('linear',135,[320,100,50,0],[280,100,30,100]),S(180,100,60,100,2),[DS(320,100,50,80,0,0,18),DS(180,100,60,60,0,0,30)],4),
+M('cyberpunk-yellow','Cyberpunk Yellow',F('linear',135,[55,100,55,0],[50,100,35,100]),S(0,100,50,100,2),[DS(55,100,50,80,0,0,18)],4),
+M('hologram','Hologram',F('linear',180,[180,100,60,0],[280,100,60,100]),S(0,0,100,60,1),[IS(0,0,100,50,0,1,0),DS(180,100,60,70,0,0,24)],6),
+M('hologram-rainbow','Rainbow Holo',F('linear',135,[0,100,65,0],[60,100,65,25],[120,100,65,50],[240,100,65,75],[300,100,65,100]),S(0,0,100,80,1),[DS(280,100,60,60,0,0,24)],10),
+M('tron','Tron',F('solid',0,[0,0,8,0]),S(190,100,55,100,2.5),[DS(190,100,55,100,0,0,15),DS(190,100,65,60,0,0,30)],0),
+M('tron-orange','Tron Orange',F('solid',0,[0,0,8,0]),S(25,100,55,100,2.5),[DS(25,100,55,100,0,0,15)],0),
+M('synthwave','Synthwave',F('linear',180,[280,100,50,0],[320,100,55,100]),S(60,100,60,100,1.5),[DS(320,100,55,80,0,0,24)],6),
+M('cyber-sunset','Cyber Sunset',F('linear',180,[30,100,60,0],[0,100,50,50],[300,100,50,100]),S(0,0,100,80,1),[DS(300,100,50,60,0,0,20)],6),
+M('matrix','Matrix',F('solid',0,[0,0,3,0]),S(120,100,50,100,1),[IS(120,100,50,40,0,0,4),DS(120,100,50,100,0,0,12)],2),
+M('glitch','Glitch',F('linear',90,[320,100,55,0],[200,100,55,100]),S(0,0,0,100,1),[DS(320,100,55,80,-3,0,0),DS(200,100,55,80,3,0,0)],0),
+M('glitch-rgb','RGB Glitch',F('solid',0,[0,0,10,0]),S(0,0,100,100,1),[DS(0,100,55,80,-3,0,0),DS(120,100,55,80,0,3,0),DS(240,100,55,80,3,0,0)],0),
+M('circuit','Circuit',F('linear',135,[170,80,25,0],[170,90,15,100]),S(170,100,55,100,1),[IS(170,100,60,40,0,1,2),DS(170,100,55,50,0,0,14)],4),
+M('circuit-blue','Blue Circuit',F('linear',135,[210,80,15,0],[220,90,8,100]),S(200,100,55,100,1),[IS(200,100,60,40,0,1,2),DS(200,100,55,60,0,0,14)],4),
+M('laser-red','Red Laser',F('solid',0,[0,0,5,0]),S(0,100,55,100,2),[IS(0,100,55,50,0,0,6),DS(0,100,55,100,0,0,18)],4),
+M('laser-green','Green Laser',F('solid',0,[0,0,5,0]),S(120,100,55,100,2),[IS(120,100,55,50,0,0,6),DS(120,100,55,100,0,0,18)],4),
+M('space','Space',F('radial',0,[260,80,25,0],[240,90,8,100]),S(260,80,50,60,1),[IS(280,100,50,30,0,0,8),DS(260,100,40,60,0,0,24)],12),
+M('nebula','Nebula',F('radial',0,[320,100,50,0],[260,100,30,60],[230,100,10,100]),S(280,100,60,80,1),[DS(320,100,50,80,0,0,30)],10),
+M('void','Void',F('radial',0,[0,0,0,0],[280,100,5,100]),S(280,100,50,100,1),[IS(280,100,30,60,0,0,8),DS(280,100,40,80,0,0,30)],8),
+M('plasma','Plasma',F('radial',0,[320,100,65,0],[280,100,35,100]),S(300,100,50,100,1.5),[IS(320,100,80,70,0,0,8),DS(300,100,50,90,0,0,30)],8),
+M('energy-core','Energy Core',F('radial',0,[200,100,80,0],[210,100,50,50],[220,100,20,100]),S(200,100,60,100,2),[IS(180,100,90,80,0,0,6),DS(200,100,60,100,0,0,24)],999)
+],
+gaming:[
+M('rank-bronze','Bronze',F('linear',180,[25,60,55,0],[20,70,35,100]),S(20,80,20,100,2),[IS(30,100,75,60,0,1,0),DS(20,70,25,50,0,4,8)],6),
+M('rank-silver','Silver',F('linear',180,[0,0,85,0],[0,0,60,100]),S(0,0,40,100,2),[IS(0,0,100,80,0,1,0),DS(0,0,30,40,0,4,8)],6),
+M('rank-gold','Gold',F('linear',180,[50,100,65,0],[42,100,45,100]),S(38,100,25,100,2),[IS(55,100,85,70,0,1,0),DS(42,100,35,70,0,4,14)],6),
+M('rank-platinum','Platinum',F('linear',180,[180,60,75,0],[190,70,50,100]),S(190,80,30,100,2),[IS(180,80,90,70,0,1,0),DS(190,80,45,70,0,0,16)],6),
+M('rank-diamond','Diamond',F('linear',180,[200,100,80,0],[220,100,55,100]),S(220,100,35,100,2),[IS(200,100,100,80,0,1,0),DS(210,100,55,80,0,0,20)],6),
+M('rank-master','Master',F('linear',180,[280,100,65,0],[300,100,40,100]),S(300,100,25,100,2),[IS(290,100,85,70,0,1,0),DS(290,100,50,80,0,0,20)],6),
+M('rank-grandmaster','Grandmaster',F('linear',180,[0,100,60,0],[0,100,35,100]),S(0,100,20,100,2.5),[IS(0,100,80,70,0,1,0),DS(0,100,45,90,0,0,24)],6),
+M('rank-challenger','Challenger',F('linear',135,[50,100,70,0],[180,100,55,100]),S(0,0,100,100,2.5),[IS(50,100,90,80,0,1,0),DS(50,100,60,80,0,0,24),DS(180,100,55,60,0,0,40)],6),
+M('hp-bar','HP Bar',F('linear',180,[0,100,55,0],[355,100,35,100]),S(0,0,0,100,2),[IS(0,100,80,60,0,1,0),IS(0,100,20,60,0,-1,0),DS(0,0,0,60,0,2,4)],4),
+M('mp-bar','MP Bar',F('linear',180,[220,100,60,0],[240,100,35,100]),S(0,0,0,100,2),[IS(220,100,80,60,0,1,0),DS(220,100,50,60,0,0,12)],4),
+M('xp-bar','XP Bar',F('linear',180,[45,100,60,0],[35,100,40,100]),S(0,0,0,100,2),[IS(45,100,80,60,0,1,0),DS(45,100,50,50,0,0,12)],4),
+M('stamina-bar','Stamina',F('linear',180,[120,100,60,0],[130,100,40,100]),S(0,0,0,100,2),[IS(120,100,80,60,0,1,0),DS(120,100,50,60,0,0,12)],4),
+M('valorant','Valorant',F('linear',135,[355,80,55,0],[350,85,35,100]),S(0,0,0,100,1),[IS(0,0,100,30,0,1,0),DS(355,80,30,60,0,5,12)],4),
+M('fortnite','Fortnite',F('linear',135,[280,100,60,0],[200,100,55,100]),S(0,0,100,80,2),[DS(280,100,50,80,0,0,18)],6),
+M('csgo','CS:GO',F('linear',135,[30,100,55,0],[20,100,35,100]),S(0,0,0,100,2),[IS(35,100,75,50,0,1,0),DS(25,100,35,70,0,4,8)],4),
+M('minecraft','Minecraft',F('linear',135,[100,60,55,0],[90,70,35,100]),S(0,0,0,100,3),[IS(100,60,75,50,0,1,0),DS(0,0,0,80,0,5,0)],0),
+M('loot-common','Common Loot',F('linear',180,[0,0,75,0],[0,0,55,100]),S(0,0,30,100,2),[IS(0,0,100,50,0,1,0),DS(0,0,0,40,0,3,6)],6),
+M('loot-rare','Rare Loot',F('linear',180,[210,100,60,0],[220,100,40,100]),S(200,100,80,100,2),[IS(200,100,80,50,0,1,0),DS(210,100,50,70,0,0,14)],6),
+M('loot-epic','Epic Loot',F('linear',180,[280,100,60,0],[290,100,35,100]),S(280,100,80,100,2),[IS(280,100,80,50,0,1,0),DS(280,100,50,80,0,0,18)],6),
+M('loot-legendary','Legendary Loot',F('linear',180,[30,100,65,0],[20,100,45,100]),S(45,100,70,100,2.5),[IS(50,100,90,70,0,1,0),DS(30,100,55,80,0,0,20),DS(30,100,60,50,0,0,40)],6),
+M('loot-mythic','Mythic Loot',F('linear',180,[0,100,55,0],[320,100,45,100]),S(340,100,70,100,2.5),[DS(340,100,50,90,0,0,24)],6),
+M('coin','Coin',F('radial',0,[50,100,75,0],[40,100,50,100]),S(35,100,30,100,2),[IS(60,100,90,70,0,1,0),DS(40,100,40,60,0,3,6)],999),
+M('gem-currency','Gem',F('linear',135,[180,100,70,0],[200,100,50,100]),S(200,100,30,100,1.5),[IS(180,100,85,80,0,1,0),DS(200,100,50,70,0,0,18)],4),
+M('achievement','Achievement',F('linear',135,[45,100,65,0],[40,100,45,100]),S(40,100,25,100,2),[IS(50,100,90,60,0,1,0),DS(45,100,40,60,0,4,10)],8),
+M('trophy','Trophy',F('linear',180,[45,100,70,0],[40,100,40,100]),S(35,100,25,100,2.5),[IS(55,100,90,80,0,1,0),DS(40,100,35,80,0,5,14)],6),
+M('play-btn','Play',F('linear',180,[120,80,60,0],[130,90,35,100]),S(130,90,20,100,2),[IS(115,90,80,60,0,1,0),DS(130,90,25,80,0,5,0)],8),
+M('danger-btn','Danger',F('linear',180,[0,100,55,0],[355,100,35,100]),S(355,100,20,100,2),[IS(0,100,80,60,0,1,0),DS(355,100,25,80,0,5,0)],8),
+M('gacha-pull','Gacha Pull',F('linear',135,[280,100,60,0],[320,100,45,100]),S(50,100,60,100,2.5),[IS(50,100,80,50,0,1,0),DS(280,100,50,80,0,0,20)],8)
+],
+minimal:[
+M('flat-blue','Flat Blue',F('solid',0,[215,90,55,0]),S(0,0,0,0,0),[],8),
+M('flat-card','Flat Card',F('solid',0,[0,0,100,0]),S(0,0,90,100,1),[DS(0,0,0,5,0,1,3)],8),
+M('soft-shadow','Soft Shadow',F('solid',0,[0,0,100,0]),S(0,0,0,0,0),[DS(0,0,0,8,0,4,16)],12),
+M('subtle-gradient','Subtle',F('linear',180,[0,0,100,0],[0,0,96,100]),S(0,0,88,100,1),[DS(0,0,0,6,0,2,6)],10),
+M('modern-button','Modern Button',F('solid',0,[0,0,10,0]),S(0,0,0,0,0),[DS(0,0,0,25,0,2,8)],8),
+M('brutalist','Brutalist',F('solid',0,[50,100,60,0]),S(0,0,0,100,3),[DS(0,0,0,100,6,6,0)],0),
+M('swiss','Swiss',F('solid',0,[0,0,100,0]),S(0,0,0,100,2),[],0),
+M('outline-only','Outline',F('solid',0,[0,0,100,0]),S(0,0,0,100,1.5),[],8),
+M('ghost-btn','Ghost',F('solid',0,[215,50,95,0]),S(215,50,50,100,1),[],8),
+M('glassmorph','Glassmorph',F('linear',135,[220,30,95,0],[220,20,90,100]),S(0,0,100,60,1),[IS(0,0,100,50,0,1,0),DS(220,30,30,15,0,4,12)],14),
+M('paper-white','Paper White',F('solid',0,[40,30,98,0]),S(40,20,80,100,1),[DS(40,20,40,10,0,2,8)],4),
+M('paper-dark','Paper Dark',F('solid',0,[220,10,18,0]),S(220,15,30,100,1),[DS(0,0,0,40,0,2,8)],4),
+M('mono-light','Mono Light',F('solid',0,[0,0,95,0]),S(0,0,80,100,1),[DS(0,0,0,8,0,2,6)],6),
+M('mono-dark','Mono Dark',F('solid',0,[0,0,15,0]),S(0,0,30,100,1),[DS(0,0,0,40,0,2,6)],6),
+M('flat-red','Flat Red',F('solid',0,[0,80,55,0]),S(0,0,0,0,0),[],8),
+M('flat-green','Flat Green',F('solid',0,[140,70,45,0]),S(0,0,0,0,0),[],8),
+M('flat-yellow','Flat Yellow',F('solid',0,[50,100,60,0]),S(0,0,0,0,0),[],8),
+M('flat-purple','Flat Purple',F('solid',0,[270,70,55,0]),S(0,0,0,0,0),[],8)
+],
+vaporwave:[
+M('vapor-classic','Vaporwave',F('linear',135,[300,100,70,0],[200,100,70,100]),S(0,0,100,80,1),[DS(300,100,55,60,0,0,24)],12),
+M('vapor-sunset','Vapor Sunset',F('linear',180,[20,100,70,0],[300,100,50,100]),S(50,100,70,80,1),[DS(300,100,50,60,0,0,24)],8),
+M('vapor-pink','Vapor Pink',F('solid',0,[330,100,75,0]),S(180,100,60,100,2),[DS(330,100,60,70,0,0,18)],8),
+M('vapor-cyan','Vapor Cyan',F('solid',0,[180,100,60,0]),S(330,100,60,100,2),[DS(180,100,50,70,0,0,18)],8),
+M('aesthetic',' Aesthetic',F('linear',135,[280,80,75,0],[180,80,75,100]),S(0,0,100,90,2),[DS(280,80,60,60,0,4,20)],14),
+M('miami','Miami',F('linear',180,[180,100,75,0],[330,100,75,100]),S(0,0,0,100,1.5),[DS(330,100,55,80,0,0,24)],6),
+M('y2k','Y2K',F('linear',135,[200,100,90,0],[280,100,85,100]),S(0,0,100,100,2),[IS(0,0,100,80,0,2,0),DS(200,100,70,40,0,0,20)],16),
+M('palm','Palm Trees',F('linear',180,[280,100,65,0],[15,100,60,100]),S(50,100,80,100,1),[DS(15,100,50,70,0,4,18)],8),
+M('grid-vapor','Grid Vapor',F('linear',180,[280,100,55,0],[200,100,45,100]),S(330,100,70,100,2),[DS(280,100,50,80,0,0,24)],4),
+M('retro-purple','Retro Purple',F('linear',135,[290,100,60,0],[250,100,40,100]),S(180,100,65,100,1.5),[DS(290,100,50,70,0,0,20)],8),
+M('lofi','Lofi',F('linear',135,[20,60,75,0],[340,70,65,100]),S(0,0,100,80,1),[DS(340,60,50,40,0,4,14)],10),
+M('cyber-pink','Cyber Pink',F('solid',0,[320,100,15,0]),S(320,100,65,100,2),[IS(320,100,65,40,0,0,8),DS(320,100,60,100,0,0,24)],4),
+M('mall-aesthetic','Mall',F('linear',180,[180,80,85,0],[330,80,85,100]),S(0,0,100,100,2),[DS(330,60,60,30,0,4,14)],12)
+],
+fantasy:[
+M('royal-purple','Royal Purple',F('linear',180,[280,80,40,0],[290,90,20,100]),S(45,100,60,100,2),[IS(280,80,60,50,0,1,0),DS(290,80,15,80,0,5,14)],8),
+M('elven','Elven',F('linear',135,[160,60,70,0],[150,70,40,100]),S(140,80,30,100,1.5),[IS(160,80,90,60,0,1,0),DS(140,80,30,50,0,4,12)],10),
+M('dwarven','Dwarven',F('linear',180,[20,60,50,0],[15,70,30,100]),S(15,80,15,100,2),[IS(30,80,70,50,0,1,0),DS(15,80,15,60,0,4,10)],4),
+M('dragon-fire','Dragon Fire',F('radial',0,[15,100,65,0],[0,100,30,100]),S(0,100,20,100,2),[IS(30,100,80,60,0,0,6),DS(15,100,40,90,0,0,24)],6),
+M('phoenix','Phoenix',F('radial',0,[40,100,70,0],[5,100,45,100]),S(0,100,35,100,2),[IS(50,100,85,70,0,0,8),DS(15,100,50,90,0,0,30)],8),
+M('unicorn','Unicorn',F('linear',135,[320,80,85,0],[200,80,85,50],[120,70,85,100]),S(0,0,100,100,1.5),[IS(0,0,100,80,0,1,0),DS(280,80,65,60,0,0,24)],14),
+M('mystic-orb','Mystic Orb',F('radial',0,[280,100,75,0],[260,100,30,100]),S(280,100,50,100,2),[IS(290,100,85,70,0,0,6),DS(280,100,50,90,0,0,30)],999),
+M('enchanted','Enchanted',F('linear',135,[140,60,65,0],[180,80,40,100]),S(170,100,30,100,1.5),[IS(140,80,80,60,0,1,2),DS(170,100,40,70,0,0,18)],6),
+M('shadow-realm','Shadow Realm',F('radial',0,[260,80,15,0],[280,100,3,100]),S(280,100,40,100,1.5),[IS(280,100,40,50,0,0,8),DS(280,100,20,90,0,0,24)],6),
+M('ancient-rune','Ancient Rune',F('linear',135,[40,80,45,0],[35,90,25,100]),S(40,100,55,100,1.5),[IS(50,100,70,60,0,1,2),DS(40,100,40,70,0,0,18)],6),
+M('blood-magic','Blood Magic',F('radial',0,[0,100,40,0],[0,100,15,100]),S(0,100,55,100,2),[IS(0,100,60,60,0,0,6),DS(0,100,30,90,0,0,24)],6),
+M('frost-king','Frost King',F('linear',180,[195,100,85,0],[210,100,55,100]),S(200,100,75,100,2),[IS(0,0,100,90,0,1,0),DS(200,100,60,80,0,0,24)],6),
+M('paladin','Paladin',F('linear',180,[50,100,85,0],[45,100,55,100]),S(45,100,40,100,2),[IS(60,100,95,80,0,1,0),DS(50,100,55,80,0,0,24)],8),
+M('necromancer','Necromancer',F('radial',0,[280,80,25,0],[270,100,8,100]),S(120,100,50,100,1.5),[IS(280,100,40,60,0,0,8),DS(120,100,40,70,0,0,24)],6),
+M('druid','Druid',F('radial',0,[100,60,40,0],[110,80,18,100]),S(100,100,55,100,1.5),[IS(100,80,60,50,0,1,2),DS(100,100,35,70,0,0,18)],6),
+M('warlock','Warlock',F('radial',0,[290,100,30,0],[270,100,10,100]),S(290,100,55,100,2),[IS(300,100,50,70,0,0,8),DS(290,100,45,90,0,0,24)],6),
+M('treasure-chest','Treasure',F('linear',180,[40,80,55,0],[35,90,30,100]),S(35,100,20,100,2),[IS(50,100,80,70,0,1,0),DS(40,100,30,80,0,5,14)],4),
+M('magic-portal','Magic Portal',F('radial',0,[280,100,70,0],[260,100,30,60],[240,100,10,100]),S(280,100,60,100,2),[IS(280,100,85,80,0,0,8),DS(280,100,50,90,0,0,30)],999),
+M('rune-stone','Rune Stone',F('linear',180,[210,20,40,0],[220,30,20,100]),S(45,100,55,100,1),[IS(210,30,60,40,0,1,0),DS(45,100,40,70,0,0,18)],4),
+M('crystal-shard','Crystal Shard',F('linear',135,[180,100,75,0],[200,100,55,100]),S(0,0,100,90,1),[IS(0,0,100,80,0,1,0),DS(190,100,55,80,0,0,24)],4),
+M('dark-knight','Dark Knight',F('linear',180,[220,30,18,0],[230,40,8,100]),S(0,100,40,100,2),[IS(220,40,40,40,0,1,0),DS(0,100,30,70,0,0,18)],4),
+M('forest-spirit','Forest Spirit',F('radial',0,[140,80,70,0],[160,90,45,100]),S(150,100,30,100,1.5),[IS(140,100,90,60,0,1,0),DS(150,100,40,70,0,0,20)],10),
+M('mage-tome','Mage Tome',F('linear',180,[280,50,30,0],[290,60,15,100]),S(45,100,50,100,1.5),[IS(280,60,50,40,0,1,0),DS(45,100,40,60,0,4,10)],4)
+],
+modern:[
+M('material-blue','Material Blue',F('solid',0,[210,90,55,0]),S(0,0,0,0,0),[DS(210,80,40,30,0,4,12)],8),
+M('material-red','Material Red',F('solid',0,[0,80,55,0]),S(0,0,0,0,0),[DS(0,80,40,30,0,4,12)],8),
+M('material-green','Material Green',F('solid',0,[140,60,45,0]),S(0,0,0,0,0),[DS(140,60,30,30,0,4,12)],8),
+M('material-purple','Material Purple',F('solid',0,[280,60,55,0]),S(0,0,0,0,0),[DS(280,60,40,30,0,4,12)],8),
+M('apple-blue','Apple Blue',F('linear',180,[210,100,65,0],[210,100,50,100]),S(0,0,0,0,0),[DS(210,80,45,40,0,6,16)],12),
+M('apple-glass',' Apple Glass',F('linear',135,[0,0,100,0],[0,0,95,100]),S(0,0,80,30,1),[IS(0,0,100,90,0,1,0),DS(0,0,0,15,0,8,24)],16),
+M('ios-button','iOS Button',F('solid',0,[210,100,55,0]),S(0,0,0,0,0),[DS(210,80,40,40,0,3,10)],10),
+M('android-fab','Android FAB',F('solid',0,[195,100,50,0]),S(0,0,0,0,0),[DS(195,80,35,40,0,6,16)],999),
+M('soft-shadow-card','Soft Card',F('solid',0,[0,0,100,0]),S(0,0,0,0,0),[DS(0,0,0,8,0,4,12),DS(0,0,0,4,0,2,4)],14),
+M('elevated-card','Elevated',F('solid',0,[0,0,100,0]),S(0,0,90,100,1),[DS(0,0,0,15,0,10,30)],12),
+M('clean-button','Clean Button',F('solid',0,[210,90,55,0]),S(0,0,0,0,0),[],10),
+M('gradient-mesh','Gradient Mesh',F('linear',135,[200,100,70,0],[280,100,70,50],[330,100,70,100]),S(0,0,0,0,0),[DS(240,80,50,40,0,8,24)],14),
+M('blurry-bg','Blurry BG',F('linear',135,[280,100,80,0],[200,100,75,100]),S(0,0,100,40,1),[IS(0,0,100,60,0,1,0),DS(240,60,50,30,0,8,30)],20),
+M('neumorphism','Neumorphism',F('solid',0,[210,20,92,0]),S(0,0,0,0,0),[IS(0,0,100,80,4,4,8),IS(0,0,0,15,-4,-4,8)],16),
+M('neumorphism-dark','Neu Dark',F('solid',0,[220,15,18,0]),S(0,0,0,0,0),[IS(220,15,30,80,4,4,8),IS(0,0,0,80,-4,-4,8)],16),
+M('discord','Discord',F('solid',0,[235,86,65,0]),S(0,0,0,0,0),[DS(235,60,40,40,0,4,12)],8),
+M('spotify','Spotify',F('solid',0,[141,73,42,0]),S(0,0,0,0,0),[DS(141,60,30,40,0,4,12)],999),
+M('youtube','YouTube',F('solid',0,[0,90,55,0]),S(0,0,0,0,0),[DS(0,80,40,40,0,4,12)],4),
+M('twitter','Twitter',F('solid',0,[210,100,55,0]),S(0,0,0,0,0),[DS(210,80,40,40,0,4,12)],999),
+M('clean-white','Clean White',F('solid',0,[0,0,100,0]),S(0,0,93,100,1),[],12),
+M('clean-dark','Clean Dark',F('solid',0,[220,15,15,0]),S(0,0,0,0,0),[DS(0,0,0,30,0,4,12)],12),
+M('saas-card','SaaS Card',F('linear',180,[0,0,100,0],[210,20,98,100]),S(0,0,90,100,1),[DS(210,30,50,8,0,4,12)],12),
+M('linear-app','Linear App',F('solid',0,[245,40,15,0]),S(245,30,30,100,1),[DS(0,0,0,30,0,4,16)],10),
+M('notion','Notion',F('solid',0,[0,0,100,0]),S(0,0,85,100,1),[DS(0,0,0,8,0,2,6)],6),
+M('vercel','Vercel',F('solid',0,[0,0,100,0]),S(0,0,0,100,1),[DS(0,0,0,15,0,2,8)],8)
+]
 };
-
-const CATEGORIES = [
-  {id:'favorites',emoji:'⭐',name:'Favorites',special:true},
-  {id:'premium',emoji:'💎',name:'Premium'},
-  {id:'rpg',emoji:'⚔️',name:'RPG'},
-  {id:'anime',emoji:'🌸',name:'Anime'},
-  {id:'cartoon',emoji:'🎨',name:'Cartoon'},
-  {id:'cyber',emoji:'🚀',name:'Cyber'},
-  {id:'gaming',emoji:'🎮',name:'Gaming'},
-  {id:'minimal',emoji:'⚪',name:'Minimal'},
-  {id:'vaporwave',emoji:'🌃',name:'Vaporwave'},
-  {id:'fantasy',emoji:'🧙',name:'Fantasy'},
-  {id:'modern',emoji:'✨',name:'Modern'}
+const CATEGORIES=[
+{id:'favorites',emoji:'⭐',name:'Favorites',special:true},
+{id:'premium',emoji:'💎',name:'Premium'},
+{id:'rpg',emoji:'⚔️',name:'RPG'},
+{id:'anime',emoji:'🌸',name:'Anime'},
+{id:'cartoon',emoji:'🎨',name:'Cartoon'},
+{id:'cyber',emoji:'🚀',name:'Cyber'},
+{id:'gaming',emoji:'🎮',name:'Gaming'},
+{id:'minimal',emoji:'⚪',name:'Minimal'},
+{id:'vaporwave',emoji:'🌃',name:'Vaporwave'},
+{id:'fantasy',emoji:'🧙',name:'Fantasy'},
+{id:'modern',emoji:'✨',name:'Modern'}
 ];
-
-let currentCategory = 'premium';
-let currentMaterialId = null;
-let currentElement = 'button';
-let currentExportTab = 'figma';
-let currentBg = 'grid';
-let hueShift = 0;
-let tintHue = null;
-let tintEnabled = false;
-let searchQuery = '';
-let favorites = JSON.parse(localStorage.getItem('polishui-favs') || '[]');
-
+let currentCategory='premium',currentMaterialId=null,currentElement='button',currentExportTab='figma',currentBg='grid',hueShift=0,tintHue=null,tintEnabled=false,searchQuery='';
+let favorites=JSON.parse(localStorage.getItem('polishui-favs')||'[]');
 function hslToHex(h,s,l){h=((h%360)+360)%360;l/=100;const a=s*Math.min(l,1-l)/100;const f=n=>{const k=(n+h/30)%12;const c=l-a*Math.max(Math.min(k-3,9-k,1),-1);return Math.round(255*c).toString(16).padStart(2,'0');};return`#${f(0)}${f(8)}${f(4)}`;}
 function hslToRgb(h,s,l){h=((h%360)+360)%360;l/=100;const a=s*Math.min(l,1-l)/100;const f=n=>{const k=(n+h/30)%12;const c=l-a*Math.max(Math.min(k-3,9-k,1),-1);return Math.round(255*c);};return{r:f(0),g:f(8),b:f(4)};}
 function hexToHsl(hex){hex=hex.replace('#','');let r=parseInt(hex.substr(0,2),16)/255,g=parseInt(hex.substr(2,2),16)/255,b=parseInt(hex.substr(4,2),16)/255;let max=Math.max(r,g,b),min=Math.min(r,g,b);let h,s,l=(max+min)/2;if(max==min){h=s=0;}else{let d=max-min;s=l>0.5?d/(2-max-min):d/(max+min);switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4;break;}h/=6;}return{h:Math.round(h*360),s:Math.round(s*100),l:Math.round(l*100)};}
 function shiftedH(originalH){let h=originalH;if(tintEnabled&&tintHue!==null){const tintBase=215;h=((h-tintBase+tintHue)%360+360)%360;}return((h+hueShift)%360+360)%360;}
 function hslaCss(h,s,l,a){return`hsla(${shiftedH(h)}, ${s}%, ${l}%, ${(a||100)/100})`;}
-
 function renderCategories(){
-  document.getElementById('category-tabs').innerHTML = CATEGORIES.map(cat=>`
-    <div class="cat-tab ${cat.id===currentCategory?'active':''} ${cat.special?'special':''}" onclick="selectCategory('${cat.id}')">
-      <div class="cat-emoji">${cat.emoji}</div><div class="cat-name">${cat.name}</div>
-    </div>`).join('');
-  // Update total count
-  let total = 0;
-  Object.keys(MATERIALS).forEach(k => total += MATERIALS[k].length);
-  document.getElementById('total-count').textContent = total;
+document.getElementById('category-tabs').innerHTML=CATEGORIES.map(cat=>`<div class="cat-tab ${cat.id===currentCategory?'active':''} ${cat.special?'special':''}" onclick="selectCategory('${cat.id}')"><div class="cat-emoji">${cat.emoji}</div><div class="cat-name">${cat.name}</div></div>`).join('');
+let total=0;Object.keys(MATERIALS).forEach(k=>total+=MATERIALS[k].length);
+document.getElementById('total-count').textContent=total;
 }
-
-function selectCategory(catId){
-  currentCategory=catId;
-  renderCategories();
-  renderMaterials();
-  const cat=CATEGORIES.find(c=>c.id===catId);
-  document.getElementById('materials-heading').textContent=cat.name+' Styles';
-}
-
-function getMaterialsForCategory(catId){
-  if(catId==='favorites'){
-    const all=[];
-    Object.keys(MATERIALS).forEach(k=>{
-      MATERIALS[k].forEach(m=>{if(favorites.includes(`${k}:${m.id}`))all.push({...m,_cat:k});});
-    });
-    return all;
-  }
-  return (MATERIALS[catId]||[]).map(m=>({...m,_cat:catId}));
-}
-
+function selectCategory(catId){currentCategory=catId;renderCategories();renderMaterials();const cat=CATEGORIES.find(c=>c.id===catId);document.getElementById('materials-heading').textContent=cat.name+' Styles';}
+function getMaterialsForCategory(catId){if(catId==='favorites'){const all=[];Object.keys(MATERIALS).forEach(k=>{MATERIALS[k].forEach(m=>{if(favorites.includes(`${k}:${m.id}`))all.push({...m,_cat:k});});});return all;}return(MATERIALS[catId]||[]).map(m=>({...m,_cat:catId}));}
 function renderMaterials(){
-  let mats=getMaterialsForCategory(currentCategory);
-  if(searchQuery){
-    const q=searchQuery.toLowerCase();
-    mats=mats.filter(m=>m.name.toLowerCase().includes(q));
-  }
-  document.getElementById('mat-count').textContent=mats.length;
-  const container=document.getElementById('material-grid');
-  if(!mats.length){
-    container.innerHTML=`<div class="empty-state" style="grid-column:1/-1"><i class="fa-regular fa-folder-open"></i>${currentCategory==='favorites'?'No favorites yet. Click ⭐ on any style!':'No styles in this category yet'}</div>`;
-    return;
-  }
-  container.innerHTML=mats.map(mat=>{
-    const previewCss=buildPreviewCss(mat);
-    const favKey=`${mat._cat}:${mat.id}`;
-    const isFav=favorites.includes(favKey);
-    return`<div class="material-card ${mat.id===currentMaterialId?'selected':''}" onclick="selectMaterial('${mat.id}','${mat._cat}')">
-      <button class="fav-btn ${isFav?'fav-on':''}" onclick="event.stopPropagation();toggleFav('${favKey}')"><i class="fa-${isFav?'solid':'regular'} fa-star"></i></button>
-      <div class="material-preview" style="${previewCss}"></div>
-      <div class="material-name">${mat.name}</div>
-    </div>`;
-  }).join('');
+let mats=getMaterialsForCategory(currentCategory);
+if(searchQuery){const q=searchQuery.toLowerCase();mats=mats.filter(m=>m.name.toLowerCase().includes(q));}
+document.getElementById('mat-count').textContent=mats.length;
+const container=document.getElementById('material-grid');
+if(!mats.length){container.innerHTML=`<div class="empty-state" style="grid-column:1/-1"><i class="fa-regular fa-folder-open"></i>${currentCategory==='favorites'?'No favorites yet':'No styles found'}</div>`;return;}
+container.innerHTML=mats.map(mat=>{const previewCss=buildPreviewCss(mat);const favKey=`${mat._cat}:${mat.id}`;const isFav=favorites.includes(favKey);return`<div class="material-card ${mat.id===currentMaterialId?'selected':''}" onclick="selectMaterial('${mat.id}','${mat._cat}')"><button class="fav-btn ${isFav?'fav-on':''}" onclick="event.stopPropagation();toggleFav('${favKey}')"><i class="fa-${isFav?'solid':'regular'} fa-star"></i></button><div class="material-preview" style="${previewCss}"></div><div class="material-name">${mat.name}</div></div>`;}).join('');
 }
-
-function buildPreviewCss(mat){
-  let bg='';
-  if(mat.fill.type==='solid'){bg=hslaCss(mat.fill.stops[0].h,mat.fill.stops[0].s,mat.fill.stops[0].l,100);}
-  else if(mat.fill.type==='linear'){const stops=mat.fill.stops.map(s=>`${hslaCss(s.h,s.s,s.l,100)} ${s.pos}%`).join(', ');bg=`linear-gradient(${mat.fill.angle}deg, ${stops})`;}
-  else if(mat.fill.type==='radial'){const stops=mat.fill.stops.map(s=>`${hslaCss(s.h,s.s,s.l,100)} ${s.pos}%`).join(', ');bg=`radial-gradient(circle, ${stops})`;}
-  return`background: ${bg};`;
-}
-
-function selectMaterial(matId,fromCat){
-  currentMaterialId=matId;
-  renderMaterials();
-  applyMaterial();
-  renderSettings();
-}
-
-function toggleFav(key){
-  const i=favorites.indexOf(key);
-  if(i>-1){favorites.splice(i,1);toast('Removed from favorites','info');}
-  else{favorites.push(key);toast('Added to favorites','success');}
-  localStorage.setItem('polishui-favs',JSON.stringify(favorites));
-  renderMaterials();
-}
-
-function getCurrentMaterial(){
-  if(!currentMaterialId)return null;
-  for(const cat of Object.keys(MATERIALS)){
-    const m=MATERIALS[cat].find(m=>m.id===currentMaterialId);
-    if(m)return{...m,_cat:cat};
-  }
-  return null;
-}
-
-function applyMaterial(){
-  const mat=getCurrentMaterial();
-  const el=document.getElementById('preview-element');
-  if(!mat)return;
-  el.innerHTML='';el.style.cssText='';
-  const configs={button:{w:'160px',h:'52px',text:'Button',fs:'14px'},card:{w:'240px',h:'300px',text:'Card',fs:'16px'},frame:{w:'320px',h:'200px',text:'Frame',fs:'14px'},panel:{w:'380px',h:'240px',text:'Panel',fs:'15px'},badge:{w:'90px',h:'32px',text:'NEW',fs:'11px'},container:{w:'300px',h:'180px',text:'Container',fs:'14px'},icon:{w:'72px',h:'72px',text:'★',fs:'28px'}};
-  const cfg=configs[currentElement];
-  let bg='';
-  if(mat.fill.type==='solid'){bg=hslaCss(mat.fill.stops[0].h,mat.fill.stops[0].s,mat.fill.stops[0].l,100);}
-  else if(mat.fill.type==='linear'){const stops=mat.fill.stops.map(s=>`${hslaCss(s.h,s.s,s.l,100)} ${s.pos}%`).join(', ');bg=`linear-gradient(${mat.fill.angle}deg, ${stops})`;}
-  else if(mat.fill.type==='radial'){const stops=mat.fill.stops.map(s=>`${hslaCss(s.h,s.s,s.l,100)} ${s.pos}%`).join(', ');bg=`radial-gradient(circle, ${stops})`;}
-  el.style.background=bg;
-  if(mat.stroke&&mat.stroke.width>0){el.style.border=`${mat.stroke.width}px solid ${hslaCss(mat.stroke.h,mat.stroke.s,mat.stroke.l,mat.stroke.a)}`;}
-  const shadows=[];
-  if(mat.effects){mat.effects.forEach(fx=>{const c=hslaCss(fx.h,fx.s,fx.l,fx.a);if(fx.type==='inner-shadow'){shadows.push(`inset ${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread||0}px ${c}`);}else{shadows.push(`${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread||0}px ${c}`);}});}
-  el.style.boxShadow=shadows.length?shadows.join(', '):'none';
-  el.style.borderRadius=(mat.radius||8)+'px';
-  el.style.width=cfg.w;el.style.height=cfg.h;el.style.fontSize=cfg.fs;
-  el.style.display='flex';el.style.alignItems='center';el.style.justifyContent='center';
-  el.style.color='#fff';el.style.fontWeight='700';el.style.textShadow='0 1px 2px rgba(0,0,0,0.3)';
-  el.textContent=cfg.text;
-  document.getElementById('style-name-display').textContent=mat.name;
-}
-
+function buildPreviewCss(mat){let bg='';if(mat.fill.type==='solid'){bg=hslaCss(mat.fill.stops[0].h,mat.fill.stops[0].s,mat.fill.stops[0].l,100);}else if(mat.fill.type==='linear'){const stops=mat.fill.stops.map(s=>`${hslaCss(s.h,s.s,s.l,100)} ${s.pos}%`).join(', ');bg=`linear-gradient(${mat.fill.angle}deg, ${stops})`;}else if(mat.fill.type==='radial'){const stops=mat.fill.stops.map(s=>`${hslaCss(s.h,s.s,s.l,100)} ${s.pos}%`).join(', ');bg=`radial-gradient(circle, ${stops})`;}return`background: ${bg};`;}
+function selectMaterial(matId){currentMaterialId=matId;renderMaterials();applyMaterial();renderSettings();}
+function toggleFav(key){const i=favorites.indexOf(key);if(i>-1){favorites.splice(i,1);toast('Removed','info');}else{favorites.push(key);toast('Added to favorites','success');}localStorage.setItem('polishui-favs',JSON.stringify(favorites));renderMaterials();}
+function getCurrentMaterial(){if(!currentMaterialId)return null;for(const cat of Object.keys(MATERIALS)){const m=MATERIALS[cat].find(m=>m.id===currentMaterialId);if(m)return{...m,_cat:cat};}return null;}
+function applyMaterial(){const mat=getCurrentMaterial();const el=document.getElementById('preview-element');if(!mat)return;el.innerHTML='';el.style.cssText='';const configs={button:{w:'160px',h:'52px',text:'Button',fs:'14px'},card:{w:'240px',h:'300px',text:'Card',fs:'16px'},frame:{w:'320px',h:'200px',text:'Frame',fs:'14px'},panel:{w:'380px',h:'240px',text:'Panel',fs:'15px'},badge:{w:'90px',h:'32px',text:'NEW',fs:'11px'},container:{w:'300px',h:'180px',text:'Container',fs:'14px'},icon:{w:'72px',h:'72px',text:'★',fs:'28px'}};const cfg=configs[currentElement];let bg='';if(mat.fill.type==='solid'){bg=hslaCss(mat.fill.stops[0].h,mat.fill.stops[0].s,mat.fill.stops[0].l,100);}else if(mat.fill.type==='linear'){const stops=mat.fill.stops.map(s=>`${hslaCss(s.h,s.s,s.l,100)} ${s.pos}%`).join(', ');bg=`linear-gradient(${mat.fill.angle}deg, ${stops})`;}else if(mat.fill.type==='radial'){const stops=mat.fill.stops.map(s=>`${hslaCss(s.h,s.s,s.l,100)} ${s.pos}%`).join(', ');bg=`radial-gradient(circle, ${stops})`;}el.style.background=bg;if(mat.stroke&&mat.stroke.width>0){el.style.border=`${mat.stroke.width}px solid ${hslaCss(mat.stroke.h,mat.stroke.s,mat.stroke.l,mat.stroke.a)}`;}const shadows=[];if(mat.effects){mat.effects.forEach(fx=>{const c=hslaCss(fx.h,fx.s,fx.l,fx.a);if(fx.type==='inner-shadow'){shadows.push(`inset ${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread||0}px ${c}`);}else{shadows.push(`${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread||0}px ${c}`);}});}el.style.boxShadow=shadows.length?shadows.join(', '):'none';el.style.borderRadius=(mat.radius||8)+'px';el.style.width=cfg.w;el.style.height=cfg.h;el.style.fontSize=cfg.fs;el.style.display='flex';el.style.alignItems='center';el.style.justifyContent='center';el.style.color='#fff';el.style.fontWeight='700';el.style.textShadow='0 1px 2px rgba(0,0,0,0.3)';el.textContent=cfg.text;document.getElementById('style-name-display').textContent=mat.name;}
 document.querySelectorAll('.elem-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.elem-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentElement=btn.dataset.element;if(currentMaterialId)applyMaterial();});});
 document.querySelectorAll('.bg-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.bg-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentBg=btn.dataset.bg;const wrap=document.getElementById('canvas-wrap');wrap.className='canvas-wrap';if(currentBg!=='grid')wrap.classList.add('bg-'+currentBg);});});
-
-const hueSlider=document.getElementById('hue-slider');
-hueSlider.addEventListener('input',()=>{hueShift=parseInt(hueSlider.value);document.getElementById('hue-val').textContent=hueShift+'°';renderMaterials();if(currentMaterialId){applyMaterial();renderSettings();}});
-
-const tintColor=document.getElementById('tint-color');
-tintColor.addEventListener('input',()=>{const hsl=hexToHsl(tintColor.value);tintHue=hsl.h;tintEnabled=true;renderMaterials();if(currentMaterialId){applyMaterial();renderSettings();}});
+const hueSlider=document.getElementById('hue-slider');hueSlider.addEventListener('input',()=>{hueShift=parseInt(hueSlider.value);document.getElementById('hue-val').textContent=hueShift+'°';renderMaterials();if(currentMaterialId){applyMaterial();renderSettings();}});
+const tintColor=document.getElementById('tint-color');tintColor.addEventListener('input',()=>{const hsl=hexToHsl(tintColor.value);tintHue=hsl.h;tintEnabled=true;renderMaterials();if(currentMaterialId){applyMaterial();renderSettings();}});
 function resetTint(){tintEnabled=false;tintHue=null;tintColor.value='#3b82f6';renderMaterials();if(currentMaterialId){applyMaterial();renderSettings();}}
-
 document.getElementById('search-input').addEventListener('input',e=>{searchQuery=e.target.value;renderMaterials();});
-
-function randomStyle(){
-  const cats=Object.keys(MATERIALS);
-  const cat=cats[Math.floor(Math.random()*cats.length)];
-  const mats=MATERIALS[cat];
-  const mat=mats[Math.floor(Math.random()*mats.length)];
-  currentCategory=cat;currentMaterialId=mat.id;
-  renderCategories();renderMaterials();applyMaterial();renderSettings();
-  toast('🎲 '+mat.name,'info');
-}
-
+function randomStyle(){const cats=Object.keys(MATERIALS);const cat=cats[Math.floor(Math.random()*cats.length)];const mats=MATERIALS[cat];const mat=mats[Math.floor(Math.random()*mats.length)];currentCategory=cat;currentMaterialId=mat.id;renderCategories();renderMaterials();applyMaterial();renderSettings();toast('🎲 '+mat.name,'info');}
 document.querySelectorAll('.export-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.export-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentExportTab=btn.dataset.tab;renderSettings();});});
-
-function renderSettings(){
-  const mat=getCurrentMaterial();
-  const body=document.getElementById('settings-body');
-  if(!mat){body.innerHTML=`<p style="color:var(--muted);font-size:13px;text-align:center;padding:40px 0;"><i class="fa-solid fa-arrow-left" style="margin-right:8px;"></i>Select a material from the sidebar</p>`;return;}
-  if(currentExportTab==='figma')body.innerHTML=renderFigmaSettings(mat);
-  else if(currentExportTab==='css')body.innerHTML=renderCssSettings(mat);
-  else if(currentExportTab==='lua')body.innerHTML=renderLuaSettings(mat);
-}
-
-function renderFigmaSettings(mat){
-  let html='';
-  html+=`<div class="settings-block"><div class="settings-block-header"><span class="block-icon icon-fill"><i class="fa-solid fa-fill-drip"></i></span>Fill</div><div class="settings-block-body">`;
-  if(mat.fill.type==='solid'){const c=mat.fill.stops[0];html+=rowWithCopy('Type','Solid');html+=colorRow('Color',hslToHex(shiftedH(c.h),c.s,c.l));}
-  else{const tn=mat.fill.type.charAt(0).toUpperCase()+mat.fill.type.slice(1)+' Gradient';html+=rowWithCopy('Type',tn);if(mat.fill.type==='linear')html+=rowWithCopy('Angle',mat.fill.angle+'°');mat.fill.stops.forEach((s,i)=>{html+=colorRow(`Stop ${i+1} (${s.pos}%)`,hslToHex(shiftedH(s.h),s.s,s.l));});}
-  html+=`</div></div>`;
-  if(mat.stroke&&mat.stroke.width>0){html+=`<div class="settings-block"><div class="settings-block-header"><span class="block-icon icon-stroke"><i class="fa-regular fa-square"></i></span>Stroke</div><div class="settings-block-body">${colorRow('Color',hslToHex(shiftedH(mat.stroke.h),mat.stroke.s,mat.stroke.l),mat.stroke.a)}${rowWithCopy('Weight',mat.stroke.width+'px')}${rowWithCopy('Position',mat.stroke.position||'Inside')}</div></div>`;}
-  if(mat.effects&&mat.effects.length){mat.effects.forEach((fx,i)=>{const isInner=fx.type==='inner-shadow';html+=`<div class="settings-block"><div class="settings-block-header"><span class="block-icon icon-effect"><i class="fa-solid ${isInner?'fa-circle-half-stroke':'fa-clone'}"></i></span>${isInner?'Inner Shadow':'Drop Shadow'}${mat.effects.length>1?' #'+(i+1):''}</div><div class="settings-block-body">${colorRow('Color',hslToHex(shiftedH(fx.h),fx.s,fx.l),fx.a)}${rowWithCopy('X',fx.x+'px')}${rowWithCopy('Y',fx.y+'px')}${rowWithCopy('Blur',fx.blur+'px')}${rowWithCopy('Spread',(fx.spread||0)+'px')}</div></div>`;});}
-  html+=`<div class="settings-block"><div class="settings-block-header"><span class="block-icon icon-corner"><i class="fa-solid fa-vector-square"></i></span>Corner Radius</div><div class="settings-block-body">${rowWithCopy('Radius',mat.radius+'px')}</div></div>`;
-  html+=`<div class="code-actions"><button class="code-btn" onclick="copyAllFigma()"><i class="fa-solid fa-copy"></i> Copy All Settings</button></div>`;
-  return html;
-}
-
+function renderSettings(){const mat=getCurrentMaterial();const body=document.getElementById('settings-body');if(!mat){body.innerHTML=`<p style="color:var(--muted);font-size:13px;text-align:center;padding:40px 0;">Select a material</p>`;return;}if(currentExportTab==='figma')body.innerHTML=renderFigmaSettings(mat);else if(currentExportTab==='css')body.innerHTML=renderCssSettings(mat);else if(currentExportTab==='lua')body.innerHTML=renderLuaSettings(mat);}
+function renderFigmaSettings(mat){let html='';html+=`<div class="settings-block"><div class="settings-block-header"><span class="block-icon icon-fill"><i class="fa-solid fa-fill-drip"></i></span>Fill</div><div class="settings-block-body">`;if(mat.fill.type==='solid'){const c=mat.fill.stops[0];html+=rowWithCopy('Type','Solid');html+=colorRow('Color',hslToHex(shiftedH(c.h),c.s,c.l));}else{const tn=mat.fill.type.charAt(0).toUpperCase()+mat.fill.type.slice(1)+' Gradient';html+=rowWithCopy('Type',tn);if(mat.fill.type==='linear')html+=rowWithCopy('Angle',mat.fill.angle+'°');mat.fill.stops.forEach((s,i)=>{html+=colorRow(`Stop ${i+1} (${s.pos}%)`,hslToHex(shiftedH(s.h),s.s,s.l));});}html+=`</div></div>`;if(mat.stroke&&mat.stroke.width>0){html+=`<div class="settings-block"><div class="settings-block-header"><span class="block-icon icon-stroke"><i class="fa-regular fa-square"></i></span>Stroke</div><div class="settings-block-body">${colorRow('Color',hslToHex(shiftedH(mat.stroke.h),mat.stroke.s,mat.stroke.l),mat.stroke.a)}${rowWithCopy('Weight',mat.stroke.width+'px')}${rowWithCopy('Position',mat.stroke.position||'Inside')}</div></div>`;}if(mat.effects&&mat.effects.length){mat.effects.forEach((fx,i)=>{const isInner=fx.type==='inner-shadow';html+=`<div class="settings-block"><div class="settings-block-header"><span class="block-icon icon-effect"><i class="fa-solid ${isInner?'fa-circle-half-stroke':'fa-clone'}"></i></span>${isInner?'Inner Shadow':'Drop Shadow'}${mat.effects.length>1?' #'+(i+1):''}</div><div class="settings-block-body">${colorRow('Color',hslToHex(shiftedH(fx.h),fx.s,fx.l),fx.a)}${rowWithCopy('X',fx.x+'px')}${rowWithCopy('Y',fx.y+'px')}${rowWithCopy('Blur',fx.blur+'px')}${rowWithCopy('Spread',(fx.spread||0)+'px')}</div></div>`;});}html+=`<div class="settings-block"><div class="settings-block-header"><span class="block-icon icon-corner"><i class="fa-solid fa-vector-square"></i></span>Corner Radius</div><div class="settings-block-body">${rowWithCopy('Radius',mat.radius+'px')}</div></div>`;html+=`<div class="code-actions"><button class="code-btn" onclick="copyAllFigma()"><i class="fa-solid fa-copy"></i> Copy All Settings</button></div>`;return html;}
 function rowWithCopy(k,v){return`<div class="settings-row"><span class="key">${k}</span><span class="value">${v}<button class="copy-btn" onclick="copyText('${escapeAttr(v)}',this)"><i class="fa-regular fa-copy"></i></button></span></div>`;}
 function colorRow(k,hex,a){const d=a!==undefined&&a<100?`${hex} · ${a}%`:hex;return`<div class="settings-row"><span class="key">${k}</span><span class="value"><span class="color-chip" style="background:${hex}"></span>${d}<button class="copy-btn" onclick="copyText('${hex}',this)"><i class="fa-regular fa-copy"></i></button></span></div>`;}
 function escapeAttr(s){return String(s).replace(/'/g,"\\'").replace(/"/g,'&quot;');}
-
-function renderCssSettings(mat){
-  const css=buildCssCode(mat);
-  return`<div class="code-block">${highlightCss(css)}</div><div class="code-actions"><button class="code-btn" onclick="copyText(${JSON.stringify(css)},this)"><i class="fa-solid fa-copy"></i> Copy CSS</button></div>`;
-}
-
-function buildCssCode(mat){
-  let bg='';
-  if(mat.fill.type==='solid'){bg=hslToHex(shiftedH(mat.fill.stops[0].h),mat.fill.stops[0].s,mat.fill.stops[0].l);}
-  else if(mat.fill.type==='linear'){const stops=mat.fill.stops.map(s=>`${hslToHex(shiftedH(s.h),s.s,s.l)} ${s.pos}%`).join(', ');bg=`linear-gradient(${mat.fill.angle}deg, ${stops})`;}
-  else if(mat.fill.type==='radial'){const stops=mat.fill.stops.map(s=>`${hslToHex(shiftedH(s.h),s.s,s.l)} ${s.pos}%`).join(', ');bg=`radial-gradient(circle, ${stops})`;}
-  let css=`.${mat.id} {\n  background: ${bg};\n`;
-  if(mat.stroke&&mat.stroke.width>0){const rgba=hslaCssExport(mat.stroke.h,mat.stroke.s,mat.stroke.l,mat.stroke.a);css+=`  border: ${mat.stroke.width}px solid ${rgba};\n`;}
-  if(mat.effects&&mat.effects.length){const shadows=mat.effects.map(fx=>{const c=hslaCssExport(fx.h,fx.s,fx.l,fx.a);if(fx.type==='inner-shadow')return`inset ${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread||0}px ${c}`;return`${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread||0}px ${c}`;});css+=`  box-shadow:\n    ${shadows.join(',\n    ')};\n`;}
-  css+=`  border-radius: ${mat.radius}px;\n}`;
-  return css;
-}
-
+function renderCssSettings(mat){const css=buildCssCode(mat);return`<div class="code-block">${highlightCss(css)}</div><div class="code-actions"><button class="code-btn" onclick="copyText(${JSON.stringify(css)},this)"><i class="fa-solid fa-copy"></i> Copy CSS</button></div>`;}
+function buildCssCode(mat){let bg='';if(mat.fill.type==='solid'){bg=hslToHex(shiftedH(mat.fill.stops[0].h),mat.fill.stops[0].s,mat.fill.stops[0].l);}else if(mat.fill.type==='linear'){const stops=mat.fill.stops.map(s=>`${hslToHex(shiftedH(s.h),s.s,s.l)} ${s.pos}%`).join(', ');bg=`linear-gradient(${mat.fill.angle}deg, ${stops})`;}else if(mat.fill.type==='radial'){const stops=mat.fill.stops.map(s=>`${hslToHex(shiftedH(s.h),s.s,s.l)} ${s.pos}%`).join(', ');bg=`radial-gradient(circle, ${stops})`;}let css=`.${mat.id} {\n  background: ${bg};\n`;if(mat.stroke&&mat.stroke.width>0){const rgba=hslaCssExport(mat.stroke.h,mat.stroke.s,mat.stroke.l,mat.stroke.a);css+=`  border: ${mat.stroke.width}px solid ${rgba};\n`;}if(mat.effects&&mat.effects.length){const shadows=mat.effects.map(fx=>{const c=hslaCssExport(fx.h,fx.s,fx.l,fx.a);if(fx.type==='inner-shadow')return`inset ${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread||0}px ${c}`;return`${fx.x}px ${fx.y}px ${fx.blur}px ${fx.spread||0}px ${c}`;});css+=`  box-shadow:\n    ${shadows.join(',\n    ')};\n`;}css+=`  border-radius: ${mat.radius}px;\n}`;return css;}
 function hslaCssExport(h,s,l,a){const{r,g,b}=hslToRgb(shiftedH(h),s,l);return`rgba(${r}, ${g}, ${b}, ${(a||100)/100})`;}
-function highlightCss(css){return css.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/(\/\*[\s\S]*?\*\/)/g,'<span class="c">$1</span>').replace(/([a-z-]+)(\s*):/g,'<span class="k">$1</span>$2:').replace(/(#[0-9a-fA-F]{3,8})/g,'<span class="n">$1</span>').replace(/(rgba?\([^)]+\))/g,'<span class="n">$1</span>').replace(/(\d+(?:\.\d+)?(?:px|%|deg|em|rem)?)/g,'<span class="n">$1</span>');}
-
-function renderLuaSettings(mat){
-  const lua=buildLuaCode(mat);
-  return`<div class="code-block">${highlightLua(lua)}</div><div class="code-actions"><button class="code-btn" onclick="copyText(${JSON.stringify(lua)},this)"><i class="fa-solid fa-copy"></i> Copy Lua</button></div>`;
-}
-
-function buildLuaCode(mat){
-  let lua=`-- PolishUI: ${mat.name}\n`;
-  lua+=`local frame = Instance.new("Frame")\n`;
-  lua+=`frame.Name = "${mat.name}"\n`;
-  lua+=`frame.Size = UDim2.new(0, 200, 0, 60)\n`;
-  lua+=`frame.AnchorPoint = Vector2.new(0.5, 0.5)\n`;
-  lua+=`frame.Position = UDim2.new(0.5, 0, 0.5, 0)\n`;
-  const main=mat.fill.stops[Math.floor(mat.fill.stops.length/2)];
-  const rgb=hslToRgb(shiftedH(main.h),main.s,main.l);
-  lua+=`frame.BackgroundColor3 = Color3.fromRGB(${rgb.r}, ${rgb.g}, ${rgb.b})\n`;
-  lua+=`frame.BorderSizePixel = 0\n\n`;
-  lua+=`local corner = Instance.new("UICorner")\n`;
-  lua+=`corner.CornerRadius = UDim.new(0, ${mat.radius})\n`;
-  lua+=`corner.Parent = frame\n\n`;
-  if(mat.fill.type!=='solid'&&mat.fill.stops.length>=2){
-    lua+=`local gradient = Instance.new("UIGradient")\n`;
-    const seq=mat.fill.stops.map(s=>{const c=hslToRgb(shiftedH(s.h),s.s,s.l);const t=(s.pos/100).toFixed(2);return`ColorSequenceKeypoint.new(${t}, Color3.fromRGB(${c.r}, ${c.g}, ${c.b}))`;}).join(',\n  ');
-    lua+=`gradient.Color = ColorSequence.new({\n  ${seq}\n})\n`;
-    let rot=0;if(mat.fill.type==='linear')rot=mat.fill.angle-90;
-    lua+=`gradient.Rotation = ${rot}\n`;
-    lua+=`gradient.Parent = frame\n\n`;
-  }
-  if(mat.stroke&&mat.stroke.width>0){
-    const sc=hslToRgb(shiftedH(mat.stroke.h),mat.stroke.s,mat.stroke.l);
-    lua+=`local stroke = Instance.new("UIStroke")\n`;
-    lua+=`stroke.Color = Color3.fromRGB(${sc.r}, ${sc.g}, ${sc.b})\n`;
-    lua+=`stroke.Thickness = ${mat.stroke.width}\n`;
-    lua+=`stroke.Transparency = ${(1-(mat.stroke.a||100)/100).toFixed(2)}\n`;
-    lua+=`stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border\n`;
-    lua+=`stroke.Parent = frame\n\n`;
-  }
-  lua+=`frame.Parent = script.Parent`;
-  return lua;
-}
-
+function highlightCss(css){return css.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/([a-z-]+)(\s*):/g,'<span class="k">$1</span>$2:').replace(/(#[0-9a-fA-F]{3,8})/g,'<span class="n">$1</span>').replace(/(rgba?\([^)]+\))/g,'<span class="n">$1</span>').replace(/(\d+(?:\.\d+)?(?:px|%|deg|em|rem)?)/g,'<span class="n">$1</span>');}
+function renderLuaSettings(mat){const lua=buildLuaCode(mat);return`<div class="code-block">${highlightLua(lua)}</div><div class="code-actions"><button class="code-btn" onclick="copyText(${JSON.stringify(lua)},this)"><i class="fa-solid fa-copy"></i> Copy Lua</button></div>`;}
+function buildLuaCode(mat){let lua=`-- PolishUI: ${mat.name}\nlocal frame = Instance.new("Frame")\nframe.Name = "${mat.name}"\nframe.Size = UDim2.new(0, 200, 0, 60)\nframe.AnchorPoint = Vector2.new(0.5, 0.5)\nframe.Position = UDim2.new(0.5, 0, 0.5, 0)\n`;const main=mat.fill.stops[Math.floor(mat.fill.stops.length/2)];const rgb=hslToRgb(shiftedH(main.h),main.s,main.l);lua+=`frame.BackgroundColor3 = Color3.fromRGB(${rgb.r}, ${rgb.g}, ${rgb.b})\nframe.BorderSizePixel = 0\n\nlocal corner = Instance.new("UICorner")\ncorner.CornerRadius = UDim.new(0, ${mat.radius})\ncorner.Parent = frame\n\n`;if(mat.fill.type!=='solid'&&mat.fill.stops.length>=2){lua+=`local gradient = Instance.new("UIGradient")\n`;const seq=mat.fill.stops.map(s=>{const c=hslToRgb(shiftedH(s.h),s.s,s.l);const t=(s.pos/100).toFixed(2);return`ColorSequenceKeypoint.new(${t}, Color3.fromRGB(${c.r}, ${c.g}, ${c.b}))`;}).join(',\n  ');lua+=`gradient.Color = ColorSequence.new({\n  ${seq}\n})\n`;let rot=0;if(mat.fill.type==='linear')rot=mat.fill.angle-90;lua+=`gradient.Rotation = ${rot}\ngradient.Parent = frame\n\n`;}if(mat.stroke&&mat.stroke.width>0){const sc=hslToRgb(shiftedH(mat.stroke.h),mat.stroke.s,mat.stroke.l);lua+=`local stroke = Instance.new("UIStroke")\nstroke.Color = Color3.fromRGB(${sc.r}, ${sc.g}, ${sc.b})\nstroke.Thickness = ${mat.stroke.width}\nstroke.Transparency = ${(1-(mat.stroke.a||100)/100).toFixed(2)}\nstroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border\nstroke.Parent = frame\n\n`;}lua+=`frame.Parent = script.Parent`;return lua;}
 function highlightLua(code){return code.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/(--[^\n]*)/g,'<span class="c">$1</span>').replace(/\b(local|function|end|if|then|else|return|for|do|while)\b/g,'<span class="p">$1</span>').replace(/\b(Instance|Color3|UDim2|UDim|Vector2|Enum|ColorSequence|ColorSequenceKeypoint)\b/g,'<span class="k">$1</span>').replace(/("[^"]*")/g,'<span class="s">$1</span>').replace(/\b(\d+(?:\.\d+)?)\b/g,'<span class="n">$1</span>');}
-
-function copyText(text,btn){
-  navigator.clipboard.writeText(text).then(()=>{
-    if(btn){btn.classList.add('copied');const ic=btn.innerHTML;btn.innerHTML='<i class="fa-solid fa-check"></i>';setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML=ic;},1500);}
-    toast('Copied!','success');
-  });
-}
-
-function copyAllFigma(){
-  const mat=getCurrentMaterial();if(!mat)return;
-  let t=`═══ POLISHUI: ${mat.name.toUpperCase()} ═══\n\n▸ FILL\n`;
-  if(mat.fill.type==='solid'){t+=`  Type: Solid\n  Color: ${hslToHex(shiftedH(mat.fill.stops[0].h),mat.fill.stops[0].s,mat.fill.stops[0].l)}\n`;}
-  else{t+=`  Type: ${mat.fill.type.charAt(0).toUpperCase()+mat.fill.type.slice(1)} Gradient\n`;if(mat.fill.type!=='radial')t+=`  Angle: ${mat.fill.angle}°\n`;mat.fill.stops.forEach((s,i)=>{t+=`  Stop ${i+1}: ${hslToHex(shiftedH(s.h),s.s,s.l)} at ${s.pos}%\n`;});}
-  if(mat.stroke&&mat.stroke.width>0){t+=`\n▸ STROKE\n  Color: ${hslToHex(shiftedH(mat.stroke.h),mat.stroke.s,mat.stroke.l)} (${mat.stroke.a}%)\n  Weight: ${mat.stroke.width}px\n  Position: ${mat.stroke.position||'Inside'}\n`;}
-  if(mat.effects&&mat.effects.length){mat.effects.forEach((fx,i)=>{const isI=fx.type==='inner-shadow';t+=`\n▸ ${isI?'INNER SHADOW':'DROP SHADOW'}${mat.effects.length>1?' #'+(i+1):''}\n  Color: ${hslToHex(shiftedH(fx.h),fx.s,fx.l)} (${fx.a}%)\n  X: ${fx.x}px   Y: ${fx.y}px\n  Blur: ${fx.blur}px   Spread: ${fx.spread||0}px\n`;});}
-  t+=`\n▸ CORNER RADIUS: ${mat.radius}px\n`;
-  navigator.clipboard.writeText(t).then(()=>{toast('All settings copied!','success');});
-}
-
-function downloadPNG(){
-  const mat=getCurrentMaterial();
-  if(!mat){toast('Pick a style first','info');return;}
-  toast('PNG export coming soon','info');
-}
-
+function copyText(text,btn){navigator.clipboard.writeText(text).then(()=>{if(btn){btn.classList.add('copied');const ic=btn.innerHTML;btn.innerHTML='<i class="fa-solid fa-check"></i>';setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML=ic;},1500);}toast('Copied!','success');});}
+function copyAllFigma(){const mat=getCurrentMaterial();if(!mat)return;let t=`═══ POLISHUI: ${mat.name.toUpperCase()} ═══\n\n▸ FILL\n`;if(mat.fill.type==='solid'){t+=`  Type: Solid\n  Color: ${hslToHex(shiftedH(mat.fill.stops[0].h),mat.fill.stops[0].s,mat.fill.stops[0].l)}\n`;}else{t+=`  Type: ${mat.fill.type.charAt(0).toUpperCase()+mat.fill.type.slice(1)} Gradient\n`;if(mat.fill.type!=='radial')t+=`  Angle: ${mat.fill.angle}°\n`;mat.fill.stops.forEach((s,i)=>{t+=`  Stop ${i+1}: ${hslToHex(shiftedH(s.h),s.s,s.l)} at ${s.pos}%\n`;});}if(mat.stroke&&mat.stroke.width>0){t+=`\n▸ STROKE\n  Color: ${hslToHex(shiftedH(mat.stroke.h),mat.stroke.s,mat.stroke.l)} (${mat.stroke.a}%)\n  Weight: ${mat.stroke.width}px\n  Position: ${mat.stroke.position||'Inside'}\n`;}if(mat.effects&&mat.effects.length){mat.effects.forEach((fx,i)=>{const isI=fx.type==='inner-shadow';t+=`\n▸ ${isI?'INNER SHADOW':'DROP SHADOW'}${mat.effects.length>1?' #'+(i+1):''}\n  Color: ${hslToHex(shiftedH(fx.h),fx.s,fx.l)} (${fx.a}%)\n  X: ${fx.x}px   Y: ${fx.y}px\n  Blur: ${fx.blur}px   Spread: ${fx.spread||0}px\n`;});}t+=`\n▸ CORNER RADIUS: ${mat.radius}px\n`;navigator.clipboard.writeText(t).then(()=>{toast('All settings copied!','success');});}
 function toggleTheme(){const html=document.documentElement;const cur=html.getAttribute('data-theme');const nx=cur==='light'?'dark':'light';html.setAttribute('data-theme',nx);localStorage.setItem('polishui-theme',nx);document.getElementById('themeIcon').className=nx==='light'?'fa-regular fa-moon':'fa-regular fa-sun';}
 (function(){const s=localStorage.getItem('polishui-theme');if(s){document.documentElement.setAttribute('data-theme',s);document.getElementById('themeIcon').className=s==='light'?'fa-regular fa-moon':'fa-regular fa-sun';}})();
-
 function toast(msg,type){const stack=document.getElementById('toast-stack');const t=document.createElement('div');t.className='toast';t.innerHTML=`<i class="fa-solid ${type==='success'?'fa-circle-check':'fa-info-circle'}" style="color:${type==='success'?'var(--success)':'var(--accent)'}"></i><span>${msg}</span>`;stack.appendChild(t);setTimeout(()=>t.remove(),2500);}
-
-renderCategories();
-renderMaterials();
+renderCategories();renderMaterials();
 </script>
 </body>
 </html>
