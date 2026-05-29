@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root[data-theme="light"]{--bg:#fafafa;--bg-2:#fff;--bg-3:#f3f4f6;--hover:#f9fafb;--text:#111827;--text-2:#374151;--muted:#6b7280;--dim:#9ca3af;--border:#e5e7eb;--border-s:#d1d5db;--accent:#3b82f6;--accent-2:#2563eb;--glow:rgba(59,130,246,.15);--success:#10b981;--danger:#ef4444;--shadow:0 4px 12px rgba(0,0,0,.08);--shadow-lg:0 12px 30px rgba(0,0,0,.12);--canvas:#1a1a1f;--grid:rgba(255,255,255,.04)}
-:root[data-theme="dark"]{--bg:#0a0a0b;--bg-2:#111114;--bg-3:#18181b;--hover:#1c1c20;--text:#f4f4f5;--text-2:#d4d4d8;--muted:#a1a1aa;--dim:#71717a;--border:rgba(255,255,255,.08);--border-s:rgba(255,255,255,.16);--accent:#60a5fa;--accent-2:#3b82f6;--glow:rgba(96,165,250,.2);--success:#34d399;--danger:#f87171;--shadow:0 4px 12px rgba(0,0,0,.4);--shadow-lg:0 12px 30px rgba(0,0,0,.5);--canvas:#050508;--grid:rgba(255,255,255,.03)}
+:root[data-theme="light"]{--bg:#fafafa;--bg-2:#fff;--bg-3:#f3f4f6;--hover:#f9fafb;--text:#111827;--text-2:#374151;--muted:#6b7280;--dim:#9ca3af;--border:#e5e7eb;--border-s:#d1d5db;--accent:#3b82f6;--accent-2:#2563eb;--glow:rgba(59,130,246,.15);--success:#10b981;--danger:#ef4444;--warn:#f59e0b;--shadow:0 4px 12px rgba(0,0,0,.08);--shadow-lg:0 12px 30px rgba(0,0,0,.12);--canvas:#1a1a1f;--grid:rgba(255,255,255,.04)}
+:root[data-theme="dark"]{--bg:#0a0a0b;--bg-2:#111114;--bg-3:#18181b;--hover:#1c1c20;--text:#f4f4f5;--text-2:#d4d4d8;--muted:#a1a1aa;--dim:#71717a;--border:rgba(255,255,255,.08);--border-s:rgba(255,255,255,.16);--accent:#60a5fa;--accent-2:#3b82f6;--glow:rgba(96,165,250,.2);--success:#34d399;--danger:#f87171;--warn:#fbbf24;--shadow:0 4px 12px rgba(0,0,0,.4);--shadow-lg:0 12px 30px rgba(0,0,0,.5);--canvas:#050508;--grid:rgba(255,255,255,.03)}
 *{margin:0;padding:0;box-sizing:border-box}html{background:var(--bg)}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;height:100vh;overflow:hidden;transition:background .3s,color .3s}
 .topbar{height:54px;background:var(--bg-2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:100}
@@ -107,6 +107,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .code-block .k{color:#79b8ff}.code-block .s{color:#9ecbff}.code-block .n{color:#ffab70}.code-block .c{color:#6a737d;font-style:italic}.code-block .p{color:#f97583}
 .code-copy-btn{width:100%;margin-top:8px;padding:9px;background:var(--accent);color:#fff;border:none;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
 .code-copy-btn:hover{background:var(--accent-2)}
+.copy-btn{width:24px;height:24px;border-radius:5px;border:1px solid var(--border);background:var(--bg-2);color:var(--muted);cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.copy-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 .toast-stack{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column-reverse;gap:8px;z-index:9999;pointer-events:none}
 .toast{background:var(--bg-2);border:1px solid var(--border);box-shadow:var(--shadow-lg);border-radius:9px;padding:11px 14px;display:flex;align-items:center;gap:9px;font-size:12px;font-weight:600;animation:slideIn .3s ease,fadeOut .3s 2s ease forwards;pointer-events:all}
 @keyframes slideIn{from{transform:translateX(20px);opacity:0}to{transform:translateX(0);opacity:1}}
@@ -419,194 +421,111 @@ const FILL_CATEGORIES=[
 ];
 
 const COMBOS=JSON.parse(localStorage.getItem('polishui-combos')||'[]');
-
 const STATE={currentLayer:'stroke',currentCategory:'all',searchQuery:'',currentElement:'button',exportTab:'figma',hueShift:0,tintHue:null,tintEnabled:false,activeStroke:null,activeFill:null,bg:'grid'};
 let favorites=JSON.parse(localStorage.getItem('polishui-favs2')||'[]');
 
-function renderCategories(){
-const cats=STATE.currentLayer==='stroke'?STROKE_CATEGORIES:STATE.currentLayer==='fill'?FILL_CATEGORIES:[{id:'all',name:'All',emoji:'🎯'}];
-document.getElementById('cat-strip').innerHTML=cats.map(c=>`<button class="cat-chip ${STATE.currentCategory===c.id?'active':''}" onclick="selectCat('${c.id}')">${c.emoji} ${c.name}</button>`).join('');
-}
+function renderCategories(){const cats=STATE.currentLayer==='stroke'?STROKE_CATEGORIES:STATE.currentLayer==='fill'?FILL_CATEGORIES:[{id:'all',name:'All',emoji:'🎯'}];document.getElementById('cat-strip').innerHTML=cats.map(c=>`<button class="cat-chip ${STATE.currentCategory===c.id?'active':''}" onclick="selectCat('${c.id}')">${c.emoji} ${c.name}</button>`).join('');}
 function selectCat(catId){STATE.currentCategory=catId;renderCategories();renderLibrary();}
-
-function getItems(){
-let items=STATE.currentLayer==='stroke'?STROKES:STATE.currentLayer==='fill'?FILLS:COMBOS;
-if(STATE.currentCategory!=='all'&&STATE.currentLayer!=='combos'){items=items.filter(i=>i.cat===STATE.currentCategory);}
-if(STATE.searchQuery){const q=STATE.searchQuery.toLowerCase();items=items.filter(i=>i.name.toLowerCase().includes(q));}
-return items;
-}
-
-function renderLibrary(){
-const items=getItems();
-document.getElementById('lib-count').textContent=items.length;
-document.getElementById('lib-heading').textContent=STATE.currentLayer==='stroke'?'Strokes':STATE.currentLayer==='fill'?'Fills':'Combos';
-const grid=document.getElementById('lib-grid');
-if(!items.length){grid.innerHTML=`<div class="empty-state"><i class="fa-regular fa-folder-open"></i>${STATE.currentLayer==='combos'?'No saved combos yet. Pick layers + click Save!':'No items found'}</div>`;return;}
-grid.innerHTML=items.map(item=>{
-const isActive=(STATE.currentLayer==='stroke'&&STATE.activeStroke===item.id)||(STATE.currentLayer==='fill'&&STATE.activeFill===item.id);
-const favKey=`${STATE.currentLayer}:${item.id}`;
-const isFav=favorites.includes(favKey);
-if(STATE.currentLayer==='combos'){
-return `<div class="lib-card" onclick="loadCombo('${item.id}')"><div class="lib-preview"><div class="preview-box" style="background:linear-gradient(135deg,#444,#888);"></div></div><div class="lib-name">${item.name}</div></div>`;
-}
-return `<div class="lib-card ${isActive?'selected':''}" onclick="selectItem('${item.id}')"><button class="fav-btn ${isFav?'fav-on':''}" onclick="event.stopPropagation();toggleFav('${favKey}')"><i class="fa-${isFav?'solid':'regular'} fa-star"></i></button><div class="lib-preview">${renderCardPreview(item)}</div><div class="lib-name">${item.name}</div></div>`;
-}).join('');
-}
-
-function renderCardPreview(item){
-if(STATE.currentLayer==='stroke'){
-if(item.svg){return `<div class="preview-box" style="background:rgba(255,255,255,0.05);">${svgFrameHTML(item.id.replace('sv-',''),62,34,'#c0c0c0','rgba(60,60,80,0.5)')}</div>`;}
-const css=item.build(2);const styleStr=Object.entries(css).map(([k,v])=>`${kebab(k)}:${v}`).join(';');
-return `<div class="preview-box" style="${styleStr};background:rgba(255,255,255,0.05);"></div>`;
-}
-const css=item.build();const styleStr=Object.entries(css).map(([k,v])=>`${kebab(k)}:${v}`).join(';');
-return `<div class="preview-box" style="${styleStr}"></div>`;
-}
+function getItems(){let items=STATE.currentLayer==='stroke'?STROKES:STATE.currentLayer==='fill'?FILLS:COMBOS;if(STATE.currentCategory!=='all'&&STATE.currentLayer!=='combos'){items=items.filter(i=>i.cat===STATE.currentCategory);}if(STATE.searchQuery){const q=STATE.searchQuery.toLowerCase();items=items.filter(i=>i.name.toLowerCase().includes(q));}return items;}
+function renderLibrary(){const items=getItems();document.getElementById('lib-count').textContent=items.length;document.getElementById('lib-heading').textContent=STATE.currentLayer==='stroke'?'Strokes':STATE.currentLayer==='fill'?'Fills':'Combos';const grid=document.getElementById('lib-grid');if(!items.length){grid.innerHTML=`<div class="empty-state"><i class="fa-regular fa-folder-open"></i>${STATE.currentLayer==='combos'?'No saved combos yet. Pick layers + click Save!':'No items found'}</div>`;return;}grid.innerHTML=items.map(item=>{const isActive=(STATE.currentLayer==='stroke'&&STATE.activeStroke===item.id)||(STATE.currentLayer==='fill'&&STATE.activeFill===item.id);const favKey=`${STATE.currentLayer}:${item.id}`;const isFav=favorites.includes(favKey);if(STATE.currentLayer==='combos'){return `<div class="lib-card" onclick="loadCombo('${item.id}')"><div class="lib-preview"><div class="preview-box" style="background:linear-gradient(135deg,#444,#888);"></div></div><div class="lib-name">${item.name}</div></div>`;}return `<div class="lib-card ${isActive?'selected':''}" onclick="selectItem('${item.id}')"><button class="fav-btn ${isFav?'fav-on':''}" onclick="event.stopPropagation();toggleFav('${favKey}')"><i class="fa-${isFav?'solid':'regular'} fa-star"></i></button><div class="lib-preview">${renderCardPreview(item)}</div><div class="lib-name">${item.name}</div></div>`;}).join('');}
+function renderCardPreview(item){if(STATE.currentLayer==='stroke'){if(item.svg){return `<div class="preview-box" style="background:rgba(255,255,255,0.05);">${svgFrameHTML(item.id.replace('sv-',''),62,34,'#c0c0c0','rgba(60,60,80,0.5)')}</div>`;}const css=item.build(2);const styleStr=Object.entries(css).map(([k,v])=>`${kebab(k)}:${v}`).join(';');return `<div class="preview-box" style="${styleStr};background:rgba(255,255,255,0.05);"></div>`;}const css=item.build();const styleStr=Object.entries(css).map(([k,v])=>`${kebab(k)}:${v}`).join(';');return `<div class="preview-box" style="${styleStr}"></div>`;}
 function kebab(s){return s.replace(/[A-Z]/g,m=>'-'+m.toLowerCase());}
+function svgFrameHTML(type,w,h,stroke,fill){fill=fill||'rgba(40,40,60,0.85)';if(type==='spike')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><polygon points="0,${h/2} ${w*0.15},0 ${w-w*0.15},0 ${w},${h/2} ${w-w*0.15},${h} ${w*0.15},${h}" fill="${fill}" stroke="${stroke}" stroke-width="2"/></svg>`;if(type==='grunge')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><path d="M3 5 L${w-5} 3 L${w-3} ${h-4} L5 ${h-3} Z" fill="${fill}" stroke="${stroke}" stroke-width="2" stroke-dasharray="4 1.5"/></svg>`;if(type==='ornate')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><rect x="3" y="3" width="${w-6}" height="${h-6}" fill="${fill}" stroke="${stroke}" stroke-width="2"/><rect x="7" y="7" width="${w-14}" height="${h-14}" fill="none" stroke="${stroke}" stroke-width="0.8"/><circle cx="7" cy="7" r="2" fill="${stroke}"/><circle cx="${w-7}" cy="7" r="2" fill="${stroke}"/><circle cx="7" cy="${h-7}" r="2" fill="${stroke}"/><circle cx="${w-7}" cy="${h-7}" r="2" fill="${stroke}"/></svg>`;if(type==='shield')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><path d="M${w/2} 2 L${w-2} ${h*0.2} L${w-2} ${h*0.7} L${w/2} ${h-2} L2 ${h*0.7} L2 ${h*0.2} Z" fill="${fill}" stroke="${stroke}" stroke-width="2"/></svg>`;if(type==='banner')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><polygon points="0,0 ${w},0 ${w-w*0.12},${h/2} ${w},${h} 0,${h} ${w*0.12},${h/2}" fill="${fill}" stroke="${stroke}" stroke-width="2"/></svg>`;if(type==='blade')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><polygon points="0,3 ${w-w*0.15},3 ${w},${h/2} ${w-w*0.15},${h-3} 0,${h-3} ${w*0.15},${h/2}" fill="${fill}" stroke="${stroke}" stroke-width="2"/></svg>`;return '';}
 
-function svgFrameHTML(type,w,h,stroke,fill){
-fill=fill||'rgba(40,40,60,0.85)';
-if(type==='spike')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><polygon points="0,${h/2} ${w*0.15},0 ${w-w*0.15},0 ${w},${h/2} ${w-w*0.15},${h} ${w*0.15},${h}" fill="${fill}" stroke="${stroke}" stroke-width="2"/></svg>`;
-if(type==='grunge')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><path d="M3 5 L${w-5} 3 L${w-3} ${h-4} L5 ${h-3} Z" fill="${fill}" stroke="${stroke}" stroke-width="2" stroke-dasharray="4 1.5"/></svg>`;
-if(type==='ornate')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><rect x="3" y="3" width="${w-6}" height="${h-6}" fill="${fill}" stroke="${stroke}" stroke-width="2"/><rect x="7" y="7" width="${w-14}" height="${h-14}" fill="none" stroke="${stroke}" stroke-width="0.8"/><circle cx="7" cy="7" r="2" fill="${stroke}"/><circle cx="${w-7}" cy="7" r="2" fill="${stroke}"/><circle cx="7" cy="${h-7}" r="2" fill="${stroke}"/><circle cx="${w-7}" cy="${h-7}" r="2" fill="${stroke}"/></svg>`;
-if(type==='shield')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><path d="M${w/2} 2 L${w-2} ${h*0.2} L${w-2} ${h*0.7} L${w/2} ${h-2} L2 ${h*0.7} L2 ${h*0.2} Z" fill="${fill}" stroke="${stroke}" stroke-width="2"/></svg>`;
-if(type==='banner')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><polygon points="0,0 ${w},0 ${w-w*0.12},${h/2} ${w},${h} 0,${h} ${w*0.12},${h/2}" fill="${fill}" stroke="${stroke}" stroke-width="2"/></svg>`;
-if(type==='blade')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><polygon points="0,3 ${w-w*0.15},3 ${w},${h/2} ${w-w*0.15},${h-3} 0,${h-3} ${w*0.15},${h/2}" fill="${fill}" stroke="${stroke}" stroke-width="2"/></svg>`;
-return '';
-}
+function selectItem(itemId){if(STATE.currentLayer==='stroke')STATE.activeStroke=itemId;else if(STATE.currentLayer==='fill')STATE.activeFill=itemId;renderLibrary();applyToPreview();renderLayerStack();renderExport();}
+function clearLayer(layer){if(layer==='stroke')STATE.activeStroke=null;else STATE.activeFill=null;renderLibrary();applyToPreview();renderLayerStack();renderExport();toast(layer+' cleared','info');}
+function renderLayerStack(){const stroke=STROKES.find(s=>s.id===STATE.activeStroke);const fill=FILLS.find(f=>f.id===STATE.activeFill);document.getElementById('stroke-val').textContent=stroke?stroke.name:'None';document.getElementById('fill-val').textContent=fill?fill.name:'None';document.getElementById('layer-stroke').classList.toggle('has-value',!!stroke);document.getElementById('layer-fill').classList.toggle('has-value',!!fill);}
 
-function selectItem(itemId){
-if(STATE.currentLayer==='stroke')STATE.activeStroke=itemId;
-else if(STATE.currentLayer==='fill')STATE.activeFill=itemId;
-renderLibrary();applyToPreview();renderLayerStack();renderExport();
-}
-
-function clearLayer(layer){
-if(layer==='stroke')STATE.activeStroke=null;
-else STATE.activeFill=null;
-renderLibrary();applyToPreview();renderLayerStack();renderExport();
-toast(layer+' cleared','info');
-}
-
-function renderLayerStack(){
-const stroke=STROKES.find(s=>s.id===STATE.activeStroke);
-const fill=FILLS.find(f=>f.id===STATE.activeFill);
-document.getElementById('stroke-val').textContent=stroke?stroke.name:'None';
-document.getElementById('fill-val').textContent=fill?fill.name:'None';
-document.getElementById('layer-stroke').classList.toggle('has-value',!!stroke);
-document.getElementById('layer-fill').classList.toggle('has-value',!!fill);
-}
-
-function applyToPreview(){
-const el=document.getElementById('preview-element');
-if(!STATE.activeStroke&&!STATE.activeFill){
-el.innerHTML=`<div class="preview-empty"><i class="fa-solid fa-layer-group"></i><h2>Welcome to PolishUI 2.0</h2><div>Pick a STROKE and FILL from the left to combine</div></div>`;
-el.style.cssText='';return;
-}
-const configs={button:{w:'180px',h:'56px',text:'Button',fs:'14px'},card:{w:'260px',h:'320px',text:'Card',fs:'16px'},frame:{w:'340px',h:'200px',text:'Frame',fs:'14px'},panel:{w:'400px',h:'250px',text:'Panel',fs:'15px'},badge:{w:'100px',h:'34px',text:'NEW',fs:'11px'},banner:{w:'320px',h:'60px',text:'BANNER',fs:'14px'},icon:{w:'76px',h:'76px',text:'★',fs:'30px'}};
-const cfg=configs[STATE.currentElement];
-el.innerHTML='';el.style.cssText='';
-el.style.width=cfg.w;el.style.height=cfg.h;el.style.fontSize=cfg.fs;
-el.style.display='flex';el.style.alignItems='center';el.style.justifyContent='center';
-el.style.color='#fff';el.style.fontWeight='700';el.style.position='relative';el.style.borderRadius='8px';
-
-const stroke=STROKES.find(s=>s.id===STATE.activeStroke);
-const fill=FILLS.find(f=>f.id===STATE.activeFill);
-
-if(stroke&&stroke.svg){
-el.style.background='transparent';
-const type=stroke.id.replace('sv-','');
-const w=parseInt(cfg.w),h=parseInt(cfg.h);
-let fillCol='rgba(40,40,60,0.85)';
-if(fill){
-const fc=fill.build();const bg=fc.background||fc.backgroundColor;
-if(bg&&!bg.includes('gradient'))fillCol=bg;
-else if(bg)fillCol=getFirstColor(bg);
-}
-el.innerHTML=svgFrameHTML(type,w,h,'#c0c0c0',fillCol);
-const textDiv=document.createElement('div');
-textDiv.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;';
-textDiv.textContent=cfg.text;
-el.appendChild(textDiv);
-}else{
-if(stroke){const css=stroke.build(2);Object.entries(css).forEach(([k,v])=>{if(!k.startsWith('_'))el.style[k]=v;});}
-if(fill){const css=fill.build();Object.entries(css).forEach(([k,v])=>{el.style[k]=v;});}
-else if(!stroke)el.style.background='rgba(60,60,80,0.85)';
-else el.style.background='rgba(60,60,80,0.85)';
-el.textContent=cfg.text;
-}
-}
+function applyToPreview(){const el=document.getElementById('preview-element');if(!STATE.activeStroke&&!STATE.activeFill){el.innerHTML=`<div class="preview-empty"><i class="fa-solid fa-layer-group"></i><h2>Welcome to PolishUI 2.0</h2><div>Pick a STROKE and FILL from the left to combine</div></div>`;el.style.cssText='';return;}const configs={button:{w:'180px',h:'56px',text:'Button',fs:'14px'},card:{w:'260px',h:'320px',text:'Card',fs:'16px'},frame:{w:'340px',h:'200px',text:'Frame',fs:'14px'},panel:{w:'400px',h:'250px',text:'Panel',fs:'15px'},badge:{w:'100px',h:'34px',text:'NEW',fs:'11px'},banner:{w:'320px',h:'60px',text:'BANNER',fs:'14px'},icon:{w:'76px',h:'76px',text:'★',fs:'30px'}};const cfg=configs[STATE.currentElement];el.innerHTML='';el.style.cssText='';el.style.width=cfg.w;el.style.height=cfg.h;el.style.fontSize=cfg.fs;el.style.display='flex';el.style.alignItems='center';el.style.justifyContent='center';el.style.color='#fff';el.style.fontWeight='700';el.style.position='relative';el.style.borderRadius='8px';const stroke=STROKES.find(s=>s.id===STATE.activeStroke);const fill=FILLS.find(f=>f.id===STATE.activeFill);if(stroke&&stroke.svg){el.style.background='transparent';const type=stroke.id.replace('sv-','');const w=parseInt(cfg.w),h=parseInt(cfg.h);let fillCol='rgba(40,40,60,0.85)';if(fill){const fc=fill.build();const bg=fc.background||fc.backgroundColor;if(bg&&!bg.includes('gradient'))fillCol=bg;else if(bg)fillCol=getFirstColor(bg);}el.innerHTML=svgFrameHTML(type,w,h,'#c0c0c0',fillCol);const textDiv=document.createElement('div');textDiv.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;';textDiv.textContent=cfg.text;el.appendChild(textDiv);}else{if(stroke){const css=stroke.build(2);Object.entries(css).forEach(([k,v])=>{if(!k.startsWith('_'))el.style[k]=v;});}if(fill){const css=fill.build();Object.entries(css).forEach(([k,v])=>{el.style[k]=v;});}else if(!stroke)el.style.background='rgba(60,60,80,0.85)';else el.style.background='rgba(60,60,80,0.85)';el.textContent=cfg.text;}}
 
 function getFirstColor(bg){const m=bg.match(/#[0-9a-fA-F]{3,8}|hsla?\([^)]+\)|rgba?\([^)]+\)/g);return m&&m.length?m[0]:'#444';}
 
 document.querySelectorAll('.layer-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.layer-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');STATE.currentLayer=btn.dataset.layer;STATE.currentCategory='all';renderCategories();renderLibrary();});});
 document.querySelectorAll('.elem-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.elem-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');STATE.currentElement=btn.dataset.element;applyToPreview();});});
 document.querySelectorAll('.bg-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.bg-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');STATE.bg=btn.dataset.bg;const canvas=document.getElementById('stage-canvas');canvas.className='stage-canvas';canvas.classList.add('bg-'+STATE.bg);});});
-
 document.getElementById('hue-slider').addEventListener('input',e=>{STATE.hueShift=parseInt(e.target.value);document.getElementById('hue-val').textContent=STATE.hueShift+'°';renderLibrary();applyToPreview();renderExport();});
 document.getElementById('tint-color').addEventListener('input',e=>{STATE.tintHue=hexToHsl(e.target.value).h;STATE.tintEnabled=true;renderLibrary();applyToPreview();renderExport();});
 function resetTint(){STATE.tintEnabled=false;STATE.tintHue=null;document.getElementById('tint-color').value='#3b82f6';renderLibrary();applyToPreview();renderExport();}
 document.getElementById('search-input').addEventListener('input',e=>{STATE.searchQuery=e.target.value;renderLibrary();});
-
 function toggleFav(key){const i=favorites.indexOf(key);if(i>-1){favorites.splice(i,1);toast('Removed','info');}else{favorites.push(key);toast('Added to favorites','success');}localStorage.setItem('polishui-favs2',JSON.stringify(favorites));renderLibrary();}
-
 function randomCombo(){STATE.activeStroke=STROKES[Math.floor(Math.random()*STROKES.length)].id;STATE.activeFill=FILLS[Math.floor(Math.random()*FILLS.length)].id;renderLibrary();applyToPreview();renderLayerStack();renderExport();toast('🎲 Random combo!','success');}
-
 function saveCombo(){if(!STATE.activeStroke&&!STATE.activeFill){toast('Pick at least one layer first','info');return;}const name=prompt('Combo name:');if(!name)return;COMBOS.push({id:'combo-'+Date.now(),name:name,stroke:STATE.activeStroke,fill:STATE.activeFill});localStorage.setItem('polishui-combos',JSON.stringify(COMBOS));toast('Saved as "'+name+'"','success');}
-
 function loadCombo(comboId){const c=COMBOS.find(x=>x.id===comboId);if(!c)return;STATE.activeStroke=c.stroke;STATE.activeFill=c.fill;applyToPreview();renderLayerStack();renderExport();toast('Loaded "'+c.name+'"','success');}
-
 document.querySelectorAll('.export-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.export-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');STATE.exportTab=btn.dataset.tab;renderExport();});});
 
-function renderExport(){
-const body=document.getElementById('export-body');
-const stroke=STROKES.find(s=>s.id===STATE.activeStroke);
-const fill=FILLS.find(f=>f.id===STATE.activeFill);
-if(!stroke&&!fill){body.innerHTML=`<div style="padding:30px 0;text-align:center;color:var(--dim);font-size:11px;"><i class="fa-solid fa-code" style="display:block;font-size:22px;margin-bottom:8px;opacity:.4;"></i>Select layers to see code</div>`;return;}
-if(STATE.exportTab==='figma')body.innerHTML=renderFigma(stroke,fill);
-else if(STATE.exportTab==='css')body.innerHTML=renderCss(stroke,fill);
-else body.innerHTML=renderLua(stroke,fill);
-}
+function renderExport(){const body=document.getElementById('export-body');const stroke=STROKES.find(s=>s.id===STATE.activeStroke);const fill=FILLS.find(f=>f.id===STATE.activeFill);if(!stroke&&!fill){body.innerHTML=`<div style="padding:30px 0;text-align:center;color:var(--dim);font-size:11px;"><i class="fa-solid fa-code" style="display:block;font-size:22px;margin-bottom:8px;opacity:.4;"></i>Select layers to see code</div>`;return;}if(STATE.exportTab==='figma')body.innerHTML=renderFigma(stroke,fill);else if(STATE.exportTab==='css')body.innerHTML=renderCss(stroke,fill);else body.innerHTML=renderLua(stroke,fill);}
 
 function renderFigma(stroke,fill){
-let html='<div style="display:flex;flex-direction:column;gap:8px;font-size:11px;">';
-if(stroke){html+=`<div style="padding:8px;background:var(--bg-3);border-radius:6px;border:1px solid var(--border);"><div style="font-weight:700;color:var(--text);margin-bottom:4px;"><i class="fa-regular fa-square"></i> Stroke: ${stroke.name}</div><div style="color:var(--muted);font-size:10px;">Apply stroke in Figma Effects panel</div></div>`;}
-if(fill){const fc=fill.build();const bg=fc.background||fc.backgroundColor||'';const colors=bg.match(/#[0-9a-fA-F]{3,8}/g)||[];html+=`<div style="padding:8px;background:var(--bg-3);border-radius:6px;border:1px solid var(--border);"><div style="font-weight:700;color:var(--text);margin-bottom:6px;"><i class="fa-solid fa-fill-drip"></i> Fill: ${fill.name}</div>${colors.map(c=>`<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;"><span style="width:14px;height:14px;border-radius:3px;background:${c};border:1px solid var(--border);"></span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;">${c.toUpperCase()}</span></div>`).join('')}</div>`;}
-html+=`</div><button class="code-copy-btn" onclick="copyAll('figma')"><i class="fa-solid fa-copy"></i> Copy All Values</button>`;
-return html;
+  let html=`<div style="display:flex;flex-direction:column;gap:10px;">`;
+  let stepNum=1;
+  if(fill){
+    const fc=fill.build();const bg=fc.background||fc.backgroundColor||'';
+    const colors=bg.match(/#[0-9a-fA-F]{6}/g)||[];
+    const isGradient=bg.includes('gradient');
+    const isLinear=bg.includes('linear-gradient');
+    const angleMatch=bg.match(/(\d+)deg/);const angle=angleMatch?angleMatch[1]:'180';
+    html+=`<div style="background:var(--bg-3);border:1px solid var(--border);border-radius:8px;padding:10px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;">${stepNum++}</div><div style="font-weight:700;font-size:12px;color:var(--text);">FILL</div><span style="margin-left:auto;font-size:9px;color:var(--muted);text-transform:uppercase;font-weight:600;">${fill.name}</span></div><div style="font-size:10px;color:var(--muted);margin-bottom:8px;line-height:1.5;">Right panel → <b style="color:var(--text);">Fill</b> → click <b style="color:var(--accent);">+</b></div>`;
+    if(isGradient){
+      const type=isLinear?'Linear':'Radial';
+      html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:11px;border-bottom:1px solid var(--border);margin-bottom:4px;"><span style="color:var(--muted);">Type</span><span style="font-weight:600;font-family:'JetBrains Mono',monospace;">${type} Gradient</span></div>`;
+      if(isLinear){html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:11px;border-bottom:1px solid var(--border);margin-bottom:6px;"><span style="color:var(--muted);">Angle</span><span style="font-weight:600;font-family:'JetBrains Mono',monospace;">${angle}°</span></div>`;}
+      html+=`<div style="font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;font-weight:700;">Color Stops</div>`;
+      colors.forEach((c,i)=>{const pos=colors.length===1?100:Math.round(i/(colors.length-1)*100);html+=`<div style="display:flex;align-items:center;gap:6px;padding:5px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;margin-bottom:4px;"><div style="width:24px;height:24px;border-radius:4px;background:${c};border:1px solid var(--border-s);"></div><div style="flex:1;"><div style="font-size:9px;color:var(--muted);font-weight:600;">Stop ${i+1} · ${pos}%</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;">${c.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${c.toUpperCase()}')" title="Copy hex"><i class="fa-regular fa-copy"></i></button></div>`;});
+    }else{
+      const c=colors[0]||'#666666';
+      html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:11px;border-bottom:1px solid var(--border);margin-bottom:6px;"><span style="color:var(--muted);">Type</span><span style="font-weight:600;font-family:'JetBrains Mono',monospace;">Solid</span></div><div style="display:flex;align-items:center;gap:6px;padding:5px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;"><div style="width:24px;height:24px;border-radius:4px;background:${c};border:1px solid var(--border-s);"></div><div style="flex:1;"><div style="font-size:9px;color:var(--muted);font-weight:600;">Color</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;">${c.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${c.toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div>`;
+    }
+    html+=`</div>`;
+  }
+  if(stroke){
+    let strokeColor='#C0C0C0';let strokeWidth='2';let glowColors=[];let isGradientStroke=false;
+    if(!stroke.svg){
+      const sc=stroke.build(2);
+      if(sc.border){const m=sc.border.match(/(\d+(?:\.\d+)?)px\s+\w+\s+(#[0-9a-fA-F]{6})/);if(m){strokeWidth=m[1];strokeColor=m[2];}}
+      if(sc.borderImage){isGradientStroke=true;const grads=sc.borderImage.match(/#[0-9a-fA-F]{6}/g)||[];glowColors=grads;if(sc.borderWidth)strokeWidth=sc.borderWidth.replace('px','');}
+      if(sc.boxShadow){const shadowColors=sc.boxShadow.match(/#[0-9a-fA-F]{6}/g)||[];if(!isGradientStroke)glowColors=glowColors.concat(shadowColors);}
+    }
+    html+=`<div style="background:var(--bg-3);border:1px solid var(--border);border-radius:8px;padding:10px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;">${stepNum++}</div><div style="font-weight:700;font-size:12px;color:var(--text);">STROKE</div><span style="margin-left:auto;font-size:9px;color:var(--muted);text-transform:uppercase;font-weight:600;">${stroke.name}</span></div>`;
+    if(stroke.svg){html+=`<div style="font-size:10px;color:var(--warn);margin-bottom:8px;line-height:1.5;padding:6px 8px;background:rgba(245,158,11,0.1);border-radius:5px;border:1px solid rgba(245,158,11,0.3);"><i class="fa-solid fa-triangle-exclamation"></i> Custom SVG shape. Use PNG export to Figma.</div>`;}
+    else{
+      html+=`<div style="font-size:10px;color:var(--muted);margin-bottom:8px;line-height:1.5;">Right panel → <b style="color:var(--text);">Stroke</b> → click <b style="color:var(--accent);">+</b></div>`;
+      if(isGradientStroke){
+        html+=`<div style="font-size:10px;color:var(--warn);margin-bottom:6px;padding:5px 7px;background:rgba(245,158,11,0.1);border-radius:5px;"><i class="fa-solid fa-info-circle"></i> Gradient stroke: Use 2 colors</div>`;
+        glowColors.slice(0,2).forEach((c,i)=>{html+=`<div style="display:flex;align-items:center;gap:6px;padding:5px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;margin-bottom:4px;"><div style="width:24px;height:24px;border-radius:4px;background:${c};border:1px solid var(--border-s);"></div><div style="flex:1;"><div style="font-size:9px;color:var(--muted);font-weight:600;">Stroke Color ${i+1}</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;">${c.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${c.toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div>`;});
+      }else{
+        html+=`<div style="display:flex;align-items:center;gap:6px;padding:5px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;margin-bottom:4px;"><div style="width:24px;height:24px;border-radius:4px;background:${strokeColor};border:1px solid var(--border-s);"></div><div style="flex:1;"><div style="font-size:9px;color:var(--muted);font-weight:600;">Color</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;">${strokeColor.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${strokeColor.toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div>`;
+      }
+      html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:5px 8px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;margin-bottom:4px;font-size:11px;"><span style="color:var(--muted);font-size:10px;font-weight:600;">Weight</span><span style="font-family:'JetBrains Mono',monospace;font-weight:600;">${strokeWidth}px</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:5px 8px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;font-size:11px;"><span style="color:var(--muted);font-size:10px;font-weight:600;">Position</span><span style="font-family:'JetBrains Mono',monospace;font-weight:600;">Inside</span></div>`;
+      if(glowColors.length&&!isGradientStroke){
+        html+=`<div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#fff;display:flex;align-items:center;justify-content:center;font-size:9px;"><i class="fa-solid fa-sun"></i></div><div style="font-weight:700;font-size:11px;color:var(--text);">Glow / Shadow</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px;line-height:1.5;">Right panel → <b style="color:var(--text);">Effects</b> → <b style="color:var(--accent);">+</b> → <b>Drop Shadow</b></div>`;
+        const glowC=glowColors[0];
+        html+=`<div style="display:flex;align-items:center;gap:6px;padding:5px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;margin-bottom:3px;"><div style="width:24px;height:24px;border-radius:4px;background:${glowC};border:1px solid var(--border-s);"></div><div style="flex:1;"><div style="font-size:9px;color:var(--muted);font-weight:600;">Shadow Color</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;">${glowC.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${glowC.toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px;"><div style="padding:5px 7px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;font-size:10px;text-align:center;"><div style="color:var(--muted);font-size:9px;font-weight:600;">Blur</div><div style="font-family:'JetBrains Mono',monospace;font-weight:600;">15px</div></div><div style="padding:5px 7px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;font-size:10px;text-align:center;"><div style="color:var(--muted);font-size:9px;font-weight:600;">Spread</div><div style="font-family:'JetBrains Mono',monospace;font-weight:600;">0px</div></div></div></div>`;
+      }
+    }
+    html+=`</div>`;
+  }
+  html+=`<div style="background:var(--bg-3);border:1px solid var(--border);border-radius:8px;padding:10px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;">${stepNum++}</div><div style="font-weight:700;font-size:12px;color:var(--text);">CORNER RADIUS</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px;line-height:1.5;">Right panel → <b style="color:var(--text);">Frame</b> → <b style="color:var(--text);">Corner radius</b></div><div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;"><span style="font-size:10px;color:var(--muted);font-weight:600;">Value</span><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);">8px</span></div></div>`;
+  html+=`</div><button class="code-copy-btn" onclick="copyFigmaInstructions()" style="margin-top:10px;"><i class="fa-solid fa-copy"></i> Copy Full Instructions</button>`;
+  return html;
 }
 
-function renderCss(stroke,fill){
-let css='.polish-style {\n';
-if(fill){const fc=fill.build();Object.entries(fc).forEach(([k,v])=>{css+=`  ${kebab(k)}: ${v};\n`;});}
-if(stroke&&!stroke.svg){const sc=stroke.build(2);Object.entries(sc).forEach(([k,v])=>{if(!k.startsWith('_'))css+=`  ${kebab(k)}: ${v};\n`;});}
-if(stroke&&stroke.svg)css+=`  /* SVG stroke: ${stroke.name} - copy SVG separately */\n`;
-css+=`  border-radius: 8px;\n}`;
-return `<div class="code-block">${highlightCss(css)}</div><button class="code-copy-btn" onclick="copyText(${JSON.stringify(css)})"><i class="fa-solid fa-copy"></i> Copy CSS</button>`;
+function copyFigmaInstructions(){
+  const stroke=STROKES.find(s=>s.id===STATE.activeStroke);const fill=FILLS.find(f=>f.id===STATE.activeFill);
+  let t='═══ POLISHUI → FIGMA GUIDE ═══\n\n';let n=1;
+  if(fill){const fc=fill.build();const bg=fc.background||fc.backgroundColor||'';const colors=bg.match(/#[0-9a-fA-F]{6}/g)||[];const isGrad=bg.includes('gradient');const isLinear=bg.includes('linear-gradient');const angleMatch=bg.match(/(\d+)deg/);const angle=angleMatch?angleMatch[1]:'180';t+=`▸ STEP ${n++}: FILL — "${fill.name}"\n  Where: Right panel → Fill → +\n`;if(isGrad){t+=`  Type: ${isLinear?'Linear':'Radial'} Gradient\n`;if(isLinear)t+=`  Angle: ${angle}°\n`;colors.forEach((c,i)=>{const pos=colors.length===1?100:Math.round(i/(colors.length-1)*100);t+=`    Stop ${i+1} (${pos}%): ${c.toUpperCase()}\n`;});}else{t+=`  Type: Solid\n  Color: ${(colors[0]||'#666').toUpperCase()}\n`;}t+='\n';}
+  if(stroke&&!stroke.svg){const sc=stroke.build(2);let strokeC='#C0C0C0',w='2';if(sc.border){const m=sc.border.match(/(\d+(?:\.\d+)?)px\s+\w+\s+(#[0-9a-fA-F]{6})/);if(m){w=m[1];strokeC=m[2];}}t+=`▸ STEP ${n++}: STROKE — "${stroke.name}"\n  Where: Right panel → Stroke → +\n  Color: ${strokeC.toUpperCase()}\n  Weight: ${w}px\n  Position: Inside\n\n`;if(sc.boxShadow){const shadowColors=sc.boxShadow.match(/#[0-9a-fA-F]{6}/g)||[];if(shadowColors.length){t+=`▸ STEP ${n++}: GLOW / DROP SHADOW\n  Where: Right panel → Effects → + → Drop Shadow\n  Color: ${shadowColors[0].toUpperCase()}\n  Blur: 15px\n  Spread: 0px\n  X: 0  Y: 0\n\n`;}}}
+  t+=`▸ STEP ${n++}: CORNER RADIUS\n  Where: Frame properties → Corner radius\n  Value: 8px\n`;
+  navigator.clipboard.writeText(t).then(()=>toast('Figma guide copied!','success'));
 }
 
+function renderCss(stroke,fill){let css='.polish-style {\n';if(fill){const fc=fill.build();Object.entries(fc).forEach(([k,v])=>{css+=`  ${kebab(k)}: ${v};\n`;});}if(stroke&&!stroke.svg){const sc=stroke.build(2);Object.entries(sc).forEach(([k,v])=>{if(!k.startsWith('_'))css+=`  ${kebab(k)}: ${v};\n`;});}if(stroke&&stroke.svg)css+=`  /* SVG stroke: ${stroke.name} */\n`;css+=`  border-radius: 8px;\n}`;return `<div class="code-block">${highlightCss(css)}</div><button class="code-copy-btn" onclick="copyText(${JSON.stringify(css)})"><i class="fa-solid fa-copy"></i> Copy CSS</button>`;}
 function highlightCss(css){return css.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/([a-z-]+)(\s*):/g,'<span class="k">$1</span>$2:').replace(/(#[0-9a-fA-F]{3,8})/g,'<span class="n">$1</span>').replace(/(rgba?\([^)]+\))/g,'<span class="n">$1</span>').replace(/(\d+(?:\.\d+)?(?:px|%|deg|em|rem)?)/g,'<span class="n">$1</span>');}
-
-function renderLua(stroke,fill){
-let lua='-- PolishUI Frame\nlocal frame = Instance.new("Frame")\nframe.Size = UDim2.new(0, 200, 0, 60)\nframe.AnchorPoint = Vector2.new(0.5, 0.5)\nframe.Position = UDim2.new(0.5, 0, 0.5, 0)\n';
-if(fill){const fc=fill.build();const bg=fc.background||fc.backgroundColor||'';const colors=bg.match(/#[0-9a-fA-F]{6}/g)||['#666666'];const hex=colors[0].replace('#','');const r=parseInt(hex.substr(0,2),16),g=parseInt(hex.substr(2,2),16),b=parseInt(hex.substr(4,2),16);lua+=`frame.BackgroundColor3 = Color3.fromRGB(${r}, ${g}, ${b})\n`;if(colors.length>=2){lua+='\nlocal gradient = Instance.new("UIGradient")\n';lua+='gradient.Color = ColorSequence.new({\n';colors.slice(0,3).forEach((c,i)=>{const h=c.replace('#','');const r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);const t=(i/(Math.min(colors.length,3)-1)).toFixed(2);lua+=`  ColorSequenceKeypoint.new(${t}, Color3.fromRGB(${r}, ${g}, ${b}))${i<Math.min(colors.length,3)-1?',':''}\n`;});lua+='})\ngradient.Rotation = 90\ngradient.Parent = frame\n';}}
-else{lua+='frame.BackgroundColor3 = Color3.fromRGB(100, 100, 100)\n';}
-lua+='frame.BorderSizePixel = 0\n\nlocal corner = Instance.new("UICorner")\ncorner.CornerRadius = UDim.new(0, 8)\ncorner.Parent = frame\n';
-if(stroke){lua+='\nlocal stroke = Instance.new("UIStroke")\nstroke.Thickness = 2\nstroke.Color = Color3.fromRGB(200, 200, 200)\nstroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border\nstroke.Parent = frame\n';}
-lua+='\nframe.Parent = script.Parent';
-return `<div class="code-block">${highlightLua(lua)}</div><button class="code-copy-btn" onclick="copyText(${JSON.stringify(lua)})"><i class="fa-solid fa-copy"></i> Copy Lua</button>`;
-}
-
+function renderLua(stroke,fill){let lua='-- PolishUI Frame\nlocal frame = Instance.new("Frame")\nframe.Size = UDim2.new(0, 200, 0, 60)\nframe.AnchorPoint = Vector2.new(0.5, 0.5)\nframe.Position = UDim2.new(0.5, 0, 0.5, 0)\n';if(fill){const fc=fill.build();const bg=fc.background||fc.backgroundColor||'';const colors=bg.match(/#[0-9a-fA-F]{6}/g)||['#666666'];const hexC=colors[0].replace('#','');const r=parseInt(hexC.substr(0,2),16),g=parseInt(hexC.substr(2,2),16),b=parseInt(hexC.substr(4,2),16);lua+=`frame.BackgroundColor3 = Color3.fromRGB(${r}, ${g}, ${b})\n`;if(colors.length>=2){lua+='\nlocal gradient = Instance.new("UIGradient")\ngradient.Color = ColorSequence.new({\n';colors.slice(0,3).forEach((c,i)=>{const h=c.replace('#','');const r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);const t=(i/(Math.min(colors.length,3)-1)).toFixed(2);lua+=`  ColorSequenceKeypoint.new(${t}, Color3.fromRGB(${r}, ${g}, ${b}))${i<Math.min(colors.length,3)-1?',':''}\n`;});lua+='})\ngradient.Rotation = 90\ngradient.Parent = frame\n';}}else{lua+='frame.BackgroundColor3 = Color3.fromRGB(100, 100, 100)\n';}lua+='frame.BorderSizePixel = 0\n\nlocal corner = Instance.new("UICorner")\ncorner.CornerRadius = UDim.new(0, 8)\ncorner.Parent = frame\n';if(stroke){lua+='\nlocal stroke = Instance.new("UIStroke")\nstroke.Thickness = 2\nstroke.Color = Color3.fromRGB(200, 200, 200)\nstroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border\nstroke.Parent = frame\n';}lua+='\nframe.Parent = script.Parent';return `<div class="code-block">${highlightLua(lua)}</div><button class="code-copy-btn" onclick="copyText(${JSON.stringify(lua)})"><i class="fa-solid fa-copy"></i> Copy Lua</button>`;}
 function highlightLua(code){return code.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/(--[^\n]*)/g,'<span class="c">$1</span>').replace(/\b(local|function|end|if|then|else|return|for|do|while)\b/g,'<span class="p">$1</span>').replace(/\b(Instance|Color3|UDim2|UDim|Vector2|Enum|ColorSequence|ColorSequenceKeypoint)\b/g,'<span class="k">$1</span>').replace(/("[^"]*")/g,'<span class="s">$1</span>').replace(/\b(\d+(?:\.\d+)?)\b/g,'<span class="n">$1</span>');}
-
 function copyText(text){navigator.clipboard.writeText(text).then(()=>toast('Copied!','success'));}
-function copyAll(type){const stroke=STROKES.find(s=>s.id===STATE.activeStroke);const fill=FILLS.find(f=>f.id===STATE.activeFill);let t=`═══ POLISHUI COMBO ═══\n\n`;if(stroke)t+=`Stroke: ${stroke.name}\n`;if(fill){t+=`Fill: ${fill.name}\n`;const fc=fill.build();const bg=fc.background||fc.backgroundColor||'';const colors=bg.match(/#[0-9a-fA-F]{3,8}/g)||[];colors.forEach(c=>{t+=`  Color: ${c}\n`;});}navigator.clipboard.writeText(t).then(()=>toast('All copied!','success'));}
-
 function toggleTheme(){const html=document.documentElement;const cur=html.getAttribute('data-theme');const nx=cur==='light'?'dark':'light';html.setAttribute('data-theme',nx);localStorage.setItem('polishui-theme',nx);document.getElementById('themeIcon').className=nx==='light'?'fa-regular fa-moon':'fa-regular fa-sun';}
 (function(){const s=localStorage.getItem('polishui-theme');if(s){document.documentElement.setAttribute('data-theme',s);document.getElementById('themeIcon').className=s==='light'?'fa-regular fa-moon':'fa-regular fa-sun';}})();
-
 function toast(msg,type){const stack=document.getElementById('toast-stack');const t=document.createElement('div');t.className='toast';t.innerHTML=`<i class="fa-solid ${type==='success'?'fa-circle-check':'fa-info-circle'}" style="color:${type==='success'?'var(--success)':'var(--accent)'}"></i><span>${msg}</span>`;stack.appendChild(t);setTimeout(()=>t.remove(),2500);}
-
 renderCategories();renderLibrary();renderLayerStack();
 </script>
 </body>
