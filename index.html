@@ -23,11 +23,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .icon-btn:hover{background:var(--hover);color:var(--text);border-color:var(--border-s)}
 .btn-ghost{padding:7px 13px;border-radius:7px;background:transparent;color:var(--text-2);border:1px solid var(--border);font-size:12px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .15s}
 .btn-ghost:hover{background:var(--hover);border-color:var(--border-s)}
-.workspace{display:grid;grid-template-columns:340px 1fr 280px;height:calc(100vh - 54px)}
+.workspace{display:grid;grid-template-columns:340px 1fr 300px;height:calc(100vh - 54px)}
 .sidebar{background:var(--bg-2);border-right:1px solid var(--border);overflow-y:auto;scrollbar-width:thin;display:flex;flex-direction:column}
 .sidebar::-webkit-scrollbar{width:6px}.sidebar::-webkit-scrollbar-thumb{background:var(--border-s);border-radius:3px}
-.layer-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:10px;background:var(--bg-2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
-.layer-tab{padding:9px 4px;border-radius:7px;border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:11px;font-weight:700;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:5px;text-transform:uppercase;letter-spacing:.5px}
+.layer-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:0;padding:8px;background:var(--bg-2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+.layer-tab{padding:8px 2px;border-radius:6px;border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:9px;font-weight:700;transition:all .15s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-transform:uppercase;letter-spacing:.3px}
+.layer-tab i{font-size:13px}
 .layer-tab:hover{color:var(--text);background:var(--bg-3)}
 .layer-tab.active{background:var(--accent);color:#fff;box-shadow:0 2px 8px var(--glow)}
 .search-wrap{padding:8px 12px;position:relative;border-bottom:1px solid var(--border);background:var(--bg-2)}
@@ -43,11 +44,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .lib-section h4{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
 .lib-section h4 .count{font-family:'JetBrains Mono',monospace;color:var(--dim)}
 .lib-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.lib-grid.shapes{grid-template-columns:1fr}
+.lib-grid.icons{grid-template-columns:repeat(3,1fr)}
 .lib-card{cursor:pointer;border-radius:8px;overflow:hidden;border:1px solid var(--border);background:var(--bg-2);transition:all .2s;position:relative}
 .lib-card:hover{transform:translateY(-2px);border-color:var(--border-s);box-shadow:var(--shadow)}
 .lib-card.selected{border-color:var(--accent);box-shadow:0 0 0 2px var(--glow)}
 .lib-preview{height:54px;width:100%;display:flex;align-items:center;justify-content:center;background:#1a1a1f;position:relative;overflow:hidden}
 .lib-preview .preview-box{width:62px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:5px}
+.lib-preview.shape-prev{height:48px;background:#fff}
+.lib-preview.icon-prev{height:48px;background:#1a1a1f}
 .lib-name{padding:5px 6px;font-size:10px;font-weight:600;color:var(--text-2);text-align:center;font-family:'Space Grotesk',sans-serif;background:var(--bg-2);border-top:1px solid var(--border)}
 .lib-card.selected .lib-name{color:var(--accent)}
 .fav-btn{position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:rgba(0,0,0,.6);border:none;color:#fff;cursor:pointer;font-size:9px;display:flex;align-items:center;justify-content:center;opacity:0;transition:all .15s;z-index:2}
@@ -57,7 +62,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .empty-state i{font-size:24px;display:block;margin-bottom:8px;opacity:.5}
 .main{display:flex;flex-direction:column;overflow:hidden;background:var(--canvas)}
 .stage-toolbar{padding:10px 16px;background:var(--bg-2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.element-tabs{display:flex;gap:3px;background:var(--bg-3);padding:3px;border-radius:7px;border:1px solid var(--border)}
+.element-tabs{display:flex;gap:3px;background:var(--bg-3);padding:3px;border-radius:7px;border:1px solid var(--border);flex-wrap:wrap}
 .elem-tab{padding:5px 9px;border-radius:5px;border:none;background:transparent;color:var(--muted);font-size:11px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:5px}
 .elem-tab:hover{color:var(--text)}
 .elem-tab.active{background:var(--bg-2);color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.05)}
@@ -71,6 +76,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .stage-canvas.bg-game{background:linear-gradient(135deg,#1e3c72,#2a5298);background-image:none}
 .stage-canvas.bg-anime{background:linear-gradient(135deg,#fbc2eb 0%,#a6c1ee 100%);background-image:none}
 #preview-element{position:relative;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.4);transition:all .3s ease}
+#preview-element svg{display:block;max-width:100%;max-height:100%}
 .preview-empty{color:rgba(255,255,255,.4);font-size:14px;text-align:center;padding:60px;background:none!important;border:none!important;box-shadow:none!important}
 .preview-empty i{font-size:42px;display:block;margin-bottom:12px;opacity:.4}
 .preview-empty h2{font-family:'Space Grotesk',sans-serif;font-size:18px;margin-bottom:6px;color:rgba(255,255,255,.7)}
@@ -107,13 +113,31 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 .code-block .k{color:#79b8ff}.code-block .s{color:#9ecbff}.code-block .n{color:#ffab70}.code-block .c{color:#6a737d;font-style:italic}.code-block .p{color:#f97583}
 .code-copy-btn{width:100%;margin-top:8px;padding:9px;background:var(--accent);color:#fff;border:none;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
 .code-copy-btn:hover{background:var(--accent-2)}
+.code-copy-btn.secondary{background:var(--bg-3);color:var(--text);border:1px solid var(--border)}
+.code-copy-btn.secondary:hover{background:var(--hover)}
 .copy-btn{width:24px;height:24px;border-radius:5px;border:1px solid var(--border);background:var(--bg-2);color:var(--muted);cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
 .copy-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.step-card{background:var(--bg-3);border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:8px}
+.step-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.step-num{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0}
+.step-title{font-weight:700;font-size:12px;color:var(--text)}
+.step-badge{margin-left:auto;font-size:9px;color:var(--muted);text-transform:uppercase;font-weight:600;background:var(--bg-2);padding:2px 7px;border-radius:999px;border:1px solid var(--border)}
+.step-desc{font-size:10px;color:var(--muted);margin-bottom:8px;line-height:1.6;padding:6px 8px;background:var(--bg-2);border-radius:5px;border:1px solid var(--border)}
+.step-desc b{color:var(--text)}
+.step-desc .arrow{color:var(--accent);font-weight:900;margin:0 3px}
+.color-row{display:flex;align-items:center;gap:6px;padding:5px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;margin-bottom:4px}
+.color-row .swatch{width:24px;height:24px;border-radius:4px;border:1px solid var(--border-s);flex-shrink:0}
+.color-row .info{flex:1;min-width:0}
+.color-row .info .lbl{font-size:9px;color:var(--muted);font-weight:600}
+.color-row .info .val{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600}
+.kv-row{display:flex;justify-content:space-between;align-items:center;padding:5px 8px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;margin-bottom:4px;font-size:11px}
+.kv-row .k{color:var(--muted);font-size:10px;font-weight:600}
+.kv-row .v{font-family:'JetBrains Mono',monospace;font-weight:600}
 .toast-stack{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column-reverse;gap:8px;z-index:9999;pointer-events:none}
 .toast{background:var(--bg-2);border:1px solid var(--border);box-shadow:var(--shadow-lg);border-radius:9px;padding:11px 14px;display:flex;align-items:center;gap:9px;font-size:12px;font-weight:600;animation:slideIn .3s ease,fadeOut .3s 2s ease forwards;pointer-events:all}
 @keyframes slideIn{from{transform:translateX(20px);opacity:0}to{transform:translateX(0);opacity:1}}
 @keyframes fadeOut{to{opacity:0;transform:translateX(20px)}}
-@media(max-width:1100px){.workspace{grid-template-columns:280px 1fr 250px}}
+@media(max-width:1100px){.workspace{grid-template-columns:280px 1fr 260px}}
 @media(max-width:900px){body{overflow:auto;height:auto}.workspace{grid-template-columns:1fr;height:auto}.sidebar,.sidebar-right{border:none;border-bottom:1px solid var(--border)}.stage-canvas{min-height:300px}}
 </style>
 </head>
@@ -121,7 +145,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 <header class="topbar">
 <a href="#" class="brand"><div class="brand-logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div><span>Polish<span class="pro">UI</span></span></a>
 <div class="tb-divider"></div>
-<span class="tb-info"><i class="fa-solid fa-layer-group"></i> Stroke + Fill Library</span>
+<span class="tb-info"><i class="fa-solid fa-layer-group"></i> Stroke · Fill · Shapes · Icons</span>
 <div class="tb-actions">
 <button class="btn-ghost" onclick="randomCombo()"><i class="fa-solid fa-dice"></i> Random</button>
 <button class="btn-ghost" onclick="saveCombo()"><i class="fa-regular fa-bookmark"></i> Save</button>
@@ -131,19 +155,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 <div class="workspace">
 <aside class="sidebar">
 <div class="layer-tabs">
-<button class="layer-tab active" data-layer="stroke"><i class="fa-regular fa-square"></i> Stroke</button>
-<button class="layer-tab" data-layer="fill"><i class="fa-solid fa-fill-drip"></i> Fill</button>
-<button class="layer-tab" data-layer="combos"><i class="fa-solid fa-bookmark"></i> Combos</button>
+<button class="layer-tab active" data-layer="stroke"><i class="fa-regular fa-square"></i><span>Stroke</span></button>
+<button class="layer-tab" data-layer="fill"><i class="fa-solid fa-fill-drip"></i><span>Fill</span></button>
+<button class="layer-tab" data-layer="shapes"><i class="fa-solid fa-shapes"></i><span>Shapes</span></button>
+<button class="layer-tab" data-layer="icons"><i class="fa-solid fa-icons"></i><span>Icons</span></button>
+<button class="layer-tab" data-layer="combos"><i class="fa-solid fa-bookmark"></i><span>Combos</span></button>
 </div>
-<div class="search-wrap">
-<i class="fa-solid fa-magnifying-glass search-icon"></i>
-<input type="text" class="search-input" id="search-input" placeholder="Search...">
-</div>
+<div class="search-wrap"><i class="fa-solid fa-magnifying-glass search-icon"></i><input type="text" class="search-input" id="search-input" placeholder="Search..."></div>
 <div class="cat-strip" id="cat-strip"></div>
-<div class="lib-section">
-<h4><span id="lib-heading">Items</span> <span class="count" id="lib-count">0</span></h4>
-<div class="lib-grid" id="lib-grid"></div>
-</div>
+<div class="lib-section"><h4><span id="lib-heading">Items</span> <span class="count" id="lib-count">0</span></h4><div class="lib-grid" id="lib-grid"></div></div>
 </aside>
 <main class="main">
 <div class="stage-toolbar">
@@ -151,10 +171,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 <button class="elem-tab active" data-element="button"><i class="fa-solid fa-square"></i> Button</button>
 <button class="elem-tab" data-element="card"><i class="fa-solid fa-id-card"></i> Card</button>
 <button class="elem-tab" data-element="frame"><i class="fa-regular fa-square"></i> Frame</button>
-<button class="elem-tab" data-element="panel"><i class="fa-solid fa-window-maximize"></i> Panel</button>
 <button class="elem-tab" data-element="badge"><i class="fa-solid fa-certificate"></i> Badge</button>
 <button class="elem-tab" data-element="banner"><i class="fa-solid fa-flag"></i> Banner</button>
-<button class="elem-tab" data-element="icon"><i class="fa-solid fa-circle"></i> Icon</button>
 </div>
 <div class="bg-tabs">
 <button class="bg-tab active" data-bg="grid" title="Grid"><i class="fa-solid fa-border-all"></i></button>
@@ -165,62 +183,37 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webk
 </div>
 </div>
 <div class="stage-canvas bg-grid" id="stage-canvas">
-<div id="preview-element">
-<div class="preview-empty">
-<i class="fa-solid fa-layer-group"></i>
-<h2>Welcome to PolishUI 2.0</h2>
-<div>Pick a STROKE and FILL from the left to combine</div>
-</div>
-</div>
+<div id="preview-element"><div class="preview-empty"><i class="fa-solid fa-layer-group"></i><h2>Welcome to PolishUI 2.0</h2><div>Pick a Stroke, Fill, Shape or Icon to begin</div></div></div>
 </div>
 </main>
 <aside class="sidebar-right">
 <div class="layer-stack">
 <h3>Active Layers</h3>
-<div class="layer-item" id="layer-stroke">
-<div class="layer-icon"><i class="fa-regular fa-square"></i></div>
-<div class="layer-info"><div class="layer-label">Stroke</div><div class="layer-value" id="stroke-val">None</div></div>
-<button class="clear-btn" onclick="clearLayer('stroke')"><i class="fa-solid fa-xmark"></i></button>
-</div>
-<div class="layer-item" id="layer-fill">
-<div class="layer-icon"><i class="fa-solid fa-fill-drip"></i></div>
-<div class="layer-info"><div class="layer-label">Fill</div><div class="layer-value" id="fill-val">None</div></div>
-<button class="clear-btn" onclick="clearLayer('fill')"><i class="fa-solid fa-xmark"></i></button>
-</div>
+<div class="layer-item" id="layer-stroke"><div class="layer-icon"><i class="fa-regular fa-square"></i></div><div class="layer-info"><div class="layer-label">Stroke</div><div class="layer-value" id="stroke-val">None</div></div><button class="clear-btn" onclick="clearLayer('stroke')"><i class="fa-solid fa-xmark"></i></button></div>
+<div class="layer-item" id="layer-fill"><div class="layer-icon"><i class="fa-solid fa-fill-drip"></i></div><div class="layer-info"><div class="layer-label">Fill</div><div class="layer-value" id="fill-val">None</div></div><button class="clear-btn" onclick="clearLayer('fill')"><i class="fa-solid fa-xmark"></i></button></div>
+<div class="layer-item" id="layer-shape"><div class="layer-icon"><i class="fa-solid fa-shapes"></i></div><div class="layer-info"><div class="layer-label">Shape</div><div class="layer-value" id="shape-val">None</div></div><button class="clear-btn" onclick="clearLayer('shape')"><i class="fa-solid fa-xmark"></i></button></div>
+<div class="layer-item" id="layer-icon"><div class="layer-icon"><i class="fa-solid fa-icons"></i></div><div class="layer-info"><div class="layer-label">Icon</div><div class="layer-value" id="icon-val">None</div></div><button class="clear-btn" onclick="clearLayer('icon')"><i class="fa-solid fa-xmark"></i></button></div>
 </div>
 <div class="props-section">
 <h3>Adjustments</h3>
-<div class="prop-row">
-<label>Hue</label>
-<input type="range" class="hue-bar" id="hue-slider" min="-180" max="180" value="0">
-<span class="val" id="hue-val">0°</span>
-</div>
-<div class="prop-row">
-<label>Tint</label>
-<input type="color" id="tint-color" value="#3b82f6">
-<button class="icon-btn" onclick="resetTint()" style="width:28px;height:24px;font-size:9px;"><i class="fa-solid fa-xmark"></i></button>
-</div>
+<div class="prop-row"><label>Hue</label><input type="range" class="hue-bar" id="hue-slider" min="-180" max="180" value="0"><span class="val" id="hue-val">0°</span></div>
+<div class="prop-row"><label>Tint</label><input type="color" id="tint-color" value="#3b82f6"><button class="icon-btn" onclick="resetTint()" style="width:28px;height:24px;font-size:9px;"><i class="fa-solid fa-xmark"></i></button></div>
 </div>
 <div class="export-panel">
 <h3 style="font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:10px;">Export</h3>
 <div class="export-tabs" id="export-tabs">
 <button class="export-tab active" data-tab="figma"><i class="fa-brands fa-figma"></i> Figma</button>
+<button class="export-tab" data-tab="svg"><i class="fa-solid fa-bezier-curve"></i> SVG</button>
 <button class="export-tab" data-tab="css"><i class="fa-brands fa-css3-alt"></i> CSS</button>
 <button class="export-tab" data-tab="lua"><i class="fa-solid fa-cube"></i> Lua</button>
 </div>
-<div id="export-body">
-<div style="padding:30px 0;text-align:center;color:var(--dim);font-size:11px;">
-<i class="fa-solid fa-code" style="display:block;font-size:22px;margin-bottom:8px;opacity:.4;"></i>
-Select layers to see code
-</div>
-</div>
+<div id="export-body"><div style="padding:30px 0;text-align:center;color:var(--dim);font-size:11px;"><i class="fa-solid fa-code" style="display:block;font-size:22px;margin-bottom:8px;opacity:.4;"></i>Select layers to see code</div></div>
 </div>
 </aside>
 </div>
 <div class="toast-stack" id="toast-stack"></div>
 <script>
 function hslToHex(h,s,l){h=((h%360)+360)%360;l/=100;const a=s*Math.min(l,1-l)/100;const f=n=>{const k=(n+h/30)%12;const c=l-a*Math.max(Math.min(k-3,9-k,1),-1);return Math.round(255*c).toString(16).padStart(2,'0');};return`#${f(0)}${f(8)}${f(4)}`;}
-function hslToRgb(h,s,l){h=((h%360)+360)%360;l/=100;const a=s*Math.min(l,1-l)/100;const f=n=>{const k=(n+h/30)%12;const c=l-a*Math.max(Math.min(k-3,9-k,1),-1);return Math.round(255*c);};return{r:f(0),g:f(8),b:f(4)};}
 function hexToHsl(hex){hex=hex.replace('#','');let r=parseInt(hex.substr(0,2),16)/255,g=parseInt(hex.substr(2,2),16)/255,b=parseInt(hex.substr(4,2),16)/255;let max=Math.max(r,g,b),min=Math.min(r,g,b);let h,s,l=(max+min)/2;if(max==min){h=s=0;}else{let d=max-min;s=l>0.5?d/(2-max-min):d/(max+min);switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4;break;}h/=6;}return{h:Math.round(h*360),s:Math.round(s*100),l:Math.round(l*100)};}
 function shiftH(h){let v=h;if(STATE.tintEnabled&&STATE.tintHue!==null){v=((v-215+STATE.tintHue)%360+360)%360;}return((v+STATE.hueShift)%360+360)%360;}
 function hex(h,s,l){return hslToHex(shiftH(h),s,l);}
@@ -228,74 +221,52 @@ function hex(h,s,l){return hslToHex(shiftH(h),s,l);}
 const STROKES=[
 {id:'st-silver',name:'Silver',cat:'metal',build:(w=2)=>({border:`${w}px solid ${hex(0,0,30)}`,boxShadow:`inset 0 1px 0 ${hex(0,0,90)},inset 0 -1px 0 ${hex(0,0,20)}`})},
 {id:'st-chrome',name:'Chrome',cat:'metal',build:(w=2)=>({borderImage:`linear-gradient(180deg,${hex(0,0,98)},${hex(210,30,55)}) 1`,borderStyle:'solid',borderWidth:w+'px',boxShadow:`inset 0 1px 0 ${hex(0,0,100)}`})},
-{id:'st-steel',name:'Steel',cat:'metal',build:(w=2)=>({border:`${w}px solid ${hex(210,15,25)}`,boxShadow:`inset 0 1px 0 ${hex(210,20,75)},inset 0 -2px 4px ${hex(0,0,0)}`})},
-{id:'st-iron',name:'Iron',cat:'metal',build:(w=2)=>({border:`${w}px solid ${hex(210,20,15)}`,boxShadow:`inset 0 1px 0 ${hex(210,15,55)},inset 0 -3px 6px ${hex(0,0,0)}`})},
-{id:'st-titanium',name:'Titanium',cat:'metal',build:(w=2)=>({border:`${w}px solid ${hex(220,10,40)}`,boxShadow:`inset 0 1px 0 ${hex(220,15,80)}`})},
+{id:'st-steel',name:'Steel',cat:'metal',build:(w=2)=>({border:`${w}px solid ${hex(210,15,25)}`,boxShadow:`inset 0 1px 0 ${hex(210,20,75)}`})},
+{id:'st-iron',name:'Iron',cat:'metal',build:(w=2)=>({border:`${w}px solid ${hex(210,20,15)}`,boxShadow:`inset 0 1px 0 ${hex(210,15,55)}`})},
 {id:'st-platinum',name:'Platinum',cat:'metal',build:(w=2)=>({borderImage:`linear-gradient(180deg,${hex(210,15,92)},${hex(220,10,60)}) 1`,borderStyle:'solid',borderWidth:w+'px'})},
-{id:'st-tungsten',name:'Tungsten',cat:'metal',build:(w=2)=>({border:`${w}px solid ${hex(0,0,12)}`,boxShadow:`inset 0 0 0 1px ${hex(0,0,30)}`})},
 {id:'st-gunmetal',name:'Gunmetal',cat:'metal',build:(w=2)=>({border:`${w}px solid ${hex(220,20,10)}`,boxShadow:`inset 0 1px 0 ${hex(220,15,40)}`})},
-{id:'st-gold',name:'Gold',cat:'gold',build:(w=2)=>({borderImage:`linear-gradient(180deg,${hex(50,100,80)},${hex(38,85,40)}) 1`,borderStyle:'solid',borderWidth:w+'px',boxShadow:`inset 0 1px 0 ${hex(55,100,90)},inset 0 -1px 0 ${hex(30,100,25)}`})},
+{id:'st-gold',name:'Gold',cat:'gold',build:(w=2)=>({borderImage:`linear-gradient(180deg,${hex(50,100,80)},${hex(38,85,40)}) 1`,borderStyle:'solid',borderWidth:w+'px',boxShadow:`inset 0 1px 0 ${hex(55,100,90)}`})},
 {id:'st-rose-gold',name:'Rose Gold',cat:'gold',build:(w=2)=>({borderImage:`linear-gradient(180deg,${hex(15,80,80)},${hex(5,65,45)}) 1`,borderStyle:'solid',borderWidth:w+'px'})},
-{id:'st-white-gold',name:'White Gold',cat:'gold',build:(w=2)=>({border:`${w}px solid ${hex(48,30,60)}`,boxShadow:`inset 0 1px 0 ${hex(50,50,95)}`})},
-{id:'st-antique-gold',name:'Antique Gold',cat:'gold',build:(w=2)=>({border:`${w}px solid ${hex(35,80,30)}`,boxShadow:`inset 0 1px 0 ${hex(45,80,75)}`})},
 {id:'st-yellow-gold',name:'Yellow Gold',cat:'gold',build:(w=2)=>({borderImage:`linear-gradient(180deg,${hex(50,100,75)},${hex(45,100,40)}) 1`,borderStyle:'solid',borderWidth:w+'px'})},
-{id:'st-diamond',name:'Diamond',cat:'gem',build:(w=2)=>({border:`${w}px solid ${hex(200,100,80)}`,boxShadow:`0 0 8px ${hex(200,100,70)},inset 0 1px 0 ${hex(0,0,100)}`})},
+{id:'st-diamond',name:'Diamond',cat:'gem',build:(w=2)=>({border:`${w}px solid ${hex(200,100,80)}`,boxShadow:`0 0 8px ${hex(200,100,70)}`})},
 {id:'st-ruby',name:'Ruby',cat:'gem',build:(w=2)=>({border:`${w}px solid ${hex(0,100,40)}`,boxShadow:`0 0 10px ${hex(0,100,50)}`})},
 {id:'st-emerald',name:'Emerald',cat:'gem',build:(w=2)=>({border:`${w}px solid ${hex(140,100,30)}`,boxShadow:`0 0 10px ${hex(140,100,40)}`})},
 {id:'st-sapphire',name:'Sapphire',cat:'gem',build:(w=2)=>({border:`${w}px solid ${hex(220,100,40)}`,boxShadow:`0 0 10px ${hex(220,100,50)}`})},
-{id:'st-crystal',name:'Crystal',cat:'gem',build:(w=2)=>({border:`${w}px solid ${hex(180,100,75)}`,boxShadow:`0 0 12px ${hex(190,100,70)},inset 0 1px 0 ${hex(0,0,100)}`})},
-{id:'st-neon-blue',name:'Neon Blue',cat:'neon',build:(w=2)=>({border:`${w}px solid ${hex(200,100,60)}`,boxShadow:`0 0 5px ${hex(200,100,60)},0 0 15px ${hex(200,100,60)},0 0 25px ${hex(200,100,70)},inset 0 0 5px ${hex(200,100,80)}`})},
+{id:'st-neon-blue',name:'Neon Blue',cat:'neon',build:(w=2)=>({border:`${w}px solid ${hex(200,100,60)}`,boxShadow:`0 0 5px ${hex(200,100,60)},0 0 15px ${hex(200,100,60)},0 0 25px ${hex(200,100,70)}`})},
 {id:'st-neon-pink',name:'Neon Pink',cat:'neon',build:(w=2)=>({border:`${w}px solid ${hex(320,100,60)}`,boxShadow:`0 0 5px ${hex(320,100,60)},0 0 15px ${hex(320,100,60)},0 0 25px ${hex(320,100,70)}`})},
 {id:'st-neon-green',name:'Neon Green',cat:'neon',build:(w=2)=>({border:`${w}px solid ${hex(120,100,55)}`,boxShadow:`0 0 5px ${hex(120,100,55)},0 0 15px ${hex(120,100,55)},0 0 25px ${hex(120,100,65)}`})},
 {id:'st-neon-purple',name:'Neon Purple',cat:'neon',build:(w=2)=>({border:`${w}px solid ${hex(280,100,60)}`,boxShadow:`0 0 5px ${hex(280,100,60)},0 0 15px ${hex(280,100,60)},0 0 25px ${hex(280,100,70)}`})},
 {id:'st-neon-red',name:'Neon Red',cat:'neon',build:(w=2)=>({border:`${w}px solid ${hex(0,100,60)}`,boxShadow:`0 0 5px ${hex(0,100,60)},0 0 15px ${hex(0,100,60)},0 0 25px ${hex(0,100,70)}`})},
 {id:'st-neon-cyan',name:'Neon Cyan',cat:'neon',build:(w=2)=>({border:`${w}px solid ${hex(180,100,55)}`,boxShadow:`0 0 5px ${hex(180,100,55)},0 0 15px ${hex(180,100,55)},0 0 25px ${hex(180,100,65)}`})},
-{id:'st-neon-yellow',name:'Neon Yellow',cat:'neon',build:(w=2)=>({border:`${w}px solid ${hex(55,100,55)}`,boxShadow:`0 0 5px ${hex(55,100,55)},0 0 15px ${hex(55,100,55)},0 0 25px ${hex(55,100,65)}`})},
-{id:'st-neon-orange',name:'Neon Orange',cat:'neon',build:(w=2)=>({border:`${w}px solid ${hex(25,100,55)}`,boxShadow:`0 0 5px ${hex(25,100,55)},0 0 15px ${hex(25,100,55)},0 0 25px ${hex(25,100,65)}`})},
 {id:'st-glow-soft',name:'Soft Glow',cat:'glow',build:(w=2)=>({border:`${w}px solid ${hex(200,80,70)}`,boxShadow:`0 0 20px ${hex(200,80,60)}`})},
-{id:'st-glow-fire',name:'Fire Glow',cat:'glow',build:(w=2)=>({border:`${w}px solid ${hex(15,100,55)}`,boxShadow:`0 0 8px ${hex(30,100,55)},0 0 20px ${hex(15,100,50)},0 0 35px ${hex(0,100,45)}`})},
+{id:'st-glow-fire',name:'Fire Glow',cat:'glow',build:(w=2)=>({border:`${w}px solid ${hex(15,100,55)}`,boxShadow:`0 0 8px ${hex(30,100,55)},0 0 20px ${hex(15,100,50)}`})},
 {id:'st-glow-ice',name:'Ice Glow',cat:'glow',build:(w=2)=>({border:`${w}px solid ${hex(195,100,85)}`,boxShadow:`0 0 10px ${hex(200,100,75)},0 0 25px ${hex(210,100,65)}`})},
 {id:'st-glow-holy',name:'Holy Glow',cat:'glow',build:(w=2)=>({border:`${w}px solid ${hex(50,100,85)}`,boxShadow:`0 0 12px ${hex(50,100,75)},0 0 30px ${hex(45,100,65)}`})},
-{id:'st-glow-toxic',name:'Toxic Glow',cat:'glow',build:(w=2)=>({border:`${w}px solid ${hex(100,100,55)}`,boxShadow:`0 0 10px ${hex(100,100,50)},0 0 25px ${hex(110,100,45)}`})},
-{id:'st-glow-shadow',name:'Shadow Glow',cat:'glow',build:(w=2)=>({border:`${w}px solid ${hex(280,80,30)}`,boxShadow:`0 0 12px ${hex(280,100,40)},0 0 28px ${hex(280,100,30)}`})},
-{id:'st-arcane',name:'Arcane',cat:'magic',build:(w=2)=>({border:`${w}px solid ${hex(280,100,55)}`,boxShadow:`0 0 14px ${hex(280,100,50)},inset 0 0 6px ${hex(280,100,70)}`})},
-{id:'st-mana',name:'Mana',cat:'magic',build:(w=2)=>({border:`${w}px solid ${hex(240,100,55)}`,boxShadow:`0 0 12px ${hex(240,100,50)},inset 0 1px 0 ${hex(220,100,80)}`})},
-{id:'st-divine',name:'Divine',cat:'magic',build:(w=2)=>({borderImage:`linear-gradient(180deg,${hex(50,100,85)},${hex(0,0,100)},${hex(50,100,75)}) 1`,borderStyle:'solid',borderWidth:w+'px',boxShadow:`0 0 18px ${hex(50,100,70)}`})},
-{id:'st-cursed',name:'Cursed',cat:'magic',build:(w=2)=>({border:`${w}px solid ${hex(290,100,40)}`,boxShadow:`0 0 12px ${hex(280,100,30)},inset 0 0 4px ${hex(280,100,15)}`})},
-{id:'st-fire-rune',name:'Fire Rune',cat:'magic',build:(w=2)=>({border:`${w}px solid ${hex(15,100,50)}`,boxShadow:`0 0 8px ${hex(25,100,55)},0 0 20px ${hex(15,100,40)},inset 0 1px 0 ${hex(40,100,70)}`})},
-{id:'st-ice-rune',name:'Ice Rune',cat:'magic',build:(w=2)=>({border:`${w}px solid ${hex(195,100,80)}`,boxShadow:`0 0 10px ${hex(200,100,70)},inset 0 1px 0 ${hex(0,0,100)}`})},
+{id:'st-arcane',name:'Arcane',cat:'magic',build:(w=2)=>({border:`${w}px solid ${hex(280,100,55)}`,boxShadow:`0 0 14px ${hex(280,100,50)}`})},
+{id:'st-mana',name:'Mana',cat:'magic',build:(w=2)=>({border:`${w}px solid ${hex(240,100,55)}`,boxShadow:`0 0 12px ${hex(240,100,50)}`})},
+{id:'st-cursed',name:'Cursed',cat:'magic',build:(w=2)=>({border:`${w}px solid ${hex(290,100,40)}`,boxShadow:`0 0 12px ${hex(280,100,30)}`})},
+{id:'st-fire-rune',name:'Fire Rune',cat:'magic',build:(w=2)=>({border:`${w}px solid ${hex(15,100,50)}`,boxShadow:`0 0 8px ${hex(25,100,55)},0 0 20px ${hex(15,100,40)}`})},
 {id:'st-wood',name:'Wood',cat:'material',build:(w=2)=>({border:`${w}px solid ${hex(25,60,20)}`,boxShadow:`inset 0 1px 0 ${hex(35,60,50)}`})},
-{id:'st-wood-dark',name:'Dark Wood',cat:'material',build:(w=2)=>({border:`${w}px solid ${hex(18,70,8)}`,boxShadow:`inset 0 1px 0 ${hex(25,60,30)}`})},
-{id:'st-stone',name:'Stone',cat:'material',build:(w=2)=>({border:`${w}px solid ${hex(0,0,20)}`,boxShadow:`inset 0 1px 0 ${hex(0,0,65)},inset 0 -1px 0 ${hex(0,0,10)}`})},
-{id:'st-bone',name:'Bone',cat:'material',build:(w=2)=>({border:`${w}px solid ${hex(40,50,40)}`,boxShadow:`inset 0 1px 0 ${hex(50,50,90)}`})},
+{id:'st-stone',name:'Stone',cat:'material',build:(w=2)=>({border:`${w}px solid ${hex(0,0,20)}`,boxShadow:`inset 0 1px 0 ${hex(0,0,65)}`})},
 {id:'st-leather',name:'Leather',cat:'material',build:(w=2)=>({border:`${w}px solid ${hex(20,70,12)}`,boxShadow:`inset 0 1px 0 ${hex(25,60,40)}`})},
-{id:'st-dragon-scale',name:'Dragon Scale',cat:'material',build:(w=2)=>({border:`${w}px solid ${hex(150,100,15)}`,boxShadow:`inset 0 1px 0 ${hex(150,100,55)},0 0 8px ${hex(140,80,25)}`})},
+{id:'st-dragon-scale',name:'Dragon Scale',cat:'material',build:(w=2)=>({border:`${w}px solid ${hex(150,100,15)}`,boxShadow:`0 0 8px ${hex(140,80,25)}`})},
 {id:'st-thin-black',name:'Thin Black',cat:'minimal',build:()=>({border:`1px solid #000`})},
-{id:'st-thin-white',name:'Thin White',cat:'minimal',build:()=>({border:`1px solid rgba(255,255,255,0.5)`})},
 {id:'st-soft-gray',name:'Soft Gray',cat:'minimal',build:()=>({border:`1px solid ${hex(0,0,80)}`})},
 {id:'st-dashed',name:'Dashed',cat:'minimal',build:(w=2)=>({border:`${w}px dashed ${hex(0,0,40)}`})},
 {id:'st-dotted',name:'Dotted',cat:'minimal',build:(w=2)=>({border:`${w}px dotted ${hex(0,0,40)}`})},
-{id:'st-double',name:'Double',cat:'minimal',build:(w=4)=>({border:`${w}px double ${hex(0,0,20)}`})},
 {id:'st-toon-thick',name:'Toon Thick',cat:'cartoon',build:(w=3)=>({border:`${w}px solid #000`})},
 {id:'st-toon-bold',name:'Toon Bold',cat:'cartoon',build:(w=4)=>({border:`${w}px solid #000`,boxShadow:`0 4px 0 0 #000`})},
 {id:'st-sticker',name:'Sticker',cat:'cartoon',build:(w=5)=>({border:`${w}px solid #fff`,boxShadow:`0 0 0 2px #000,0 6px 0 0 rgba(0,0,0,0.3)`})},
 {id:'st-comic',name:'Comic',cat:'cartoon',build:(w=3)=>({border:`${w}px solid #000`,boxShadow:`5px 5px 0 0 #000`})},
-{id:'st-anime-pink',name:'Anime Pink',cat:'anime',build:(w=2)=>({border:`${w}px solid ${hex(320,100,70)}`,boxShadow:`0 0 12px ${hex(320,100,60)},inset 0 1px 0 ${hex(0,0,100)}`})},
+{id:'st-anime-pink',name:'Anime Pink',cat:'anime',build:(w=2)=>({border:`${w}px solid ${hex(320,100,70)}`,boxShadow:`0 0 12px ${hex(320,100,60)}`})},
 {id:'st-sakura',name:'Sakura',cat:'anime',build:(w=2)=>({border:`${w}px solid ${hex(340,80,75)}`,boxShadow:`0 0 14px ${hex(340,80,65)}`})},
 {id:'st-magical-girl',name:'Magical Girl',cat:'anime',build:(w=2)=>({borderImage:`linear-gradient(135deg,${hex(320,100,75)},${hex(220,100,70)}) 1`,borderStyle:'solid',borderWidth:w+'px',boxShadow:`0 0 16px ${hex(280,100,60)}`})},
 {id:'st-holographic',name:'Holographic',cat:'special',build:(w=2)=>({borderImage:`linear-gradient(135deg,${hex(280,100,75)},${hex(200,100,75)},${hex(120,100,75)},${hex(60,100,75)}) 1`,borderStyle:'solid',borderWidth:w+'px',boxShadow:`0 0 20px ${hex(280,80,60)}`})},
-{id:'st-iridescent',name:'Iridescent',cat:'special',build:(w=2)=>({borderImage:`linear-gradient(45deg,${hex(180,80,85)},${hex(260,80,80)},${hex(330,80,80)},${hex(40,80,85)}) 1`,borderStyle:'solid',borderWidth:w+'px'})},
-{id:'st-rainbow',name:'Rainbow',cat:'special',build:(w=2)=>({borderImage:`linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3) 1`,borderStyle:'solid',borderWidth:w+'px'})},
-{id:'sv-spike',name:'Spiked',cat:'fancy',svg:true,build:()=>({_svg:'spike'})},
-{id:'sv-grunge',name:'Grunge',cat:'fancy',svg:true,build:()=>({_svg:'grunge'})},
-{id:'sv-ornate',name:'Ornate',cat:'fancy',svg:true,build:()=>({_svg:'ornate'})},
-{id:'sv-shield',name:'Shield',cat:'fancy',svg:true,build:()=>({_svg:'shield'})},
-{id:'sv-banner',name:'Banner',cat:'fancy',svg:true,build:()=>({_svg:'banner'})},
-{id:'sv-blade',name:'Blade Edge',cat:'fancy',svg:true,build:()=>({_svg:'blade'})}
+{id:'st-rainbow',name:'Rainbow',cat:'special',build:(w=2)=>({borderImage:`linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3) 1`,borderStyle:'solid',borderWidth:w+'px'})}
 ];
 
 const STROKE_CATEGORIES=[
-{id:'all',name:'All',emoji:'🎯'},{id:'metal',name:'Metal',emoji:'⚙️'},{id:'gold',name:'Gold',emoji:'🥇'},{id:'gem',name:'Gem',emoji:'💎'},{id:'neon',name:'Neon',emoji:'⚡'},{id:'glow',name:'Glow',emoji:'✨'},{id:'magic',name:'Magic',emoji:'🔮'},{id:'material',name:'Material',emoji:'🪵'},{id:'cartoon',name:'Cartoon',emoji:'🎨'},{id:'anime',name:'Anime',emoji:'🌸'},{id:'fancy',name:'Fancy',emoji:'👑'},{id:'minimal',name:'Minimal',emoji:'⚪'},{id:'special',name:'Special',emoji:'🌈'}
+{id:'all',name:'All',emoji:'🎯'},{id:'metal',name:'Metal',emoji:'⚙️'},{id:'gold',name:'Gold',emoji:'🥇'},{id:'gem',name:'Gem',emoji:'💎'},{id:'neon',name:'Neon',emoji:'⚡'},{id:'glow',name:'Glow',emoji:'✨'},{id:'magic',name:'Magic',emoji:'🔮'},{id:'material',name:'Material',emoji:'🪵'},{id:'cartoon',name:'Cartoon',emoji:'🎨'},{id:'anime',name:'Anime',emoji:'🌸'},{id:'minimal',name:'Minimal',emoji:'⚪'},{id:'special',name:'Special',emoji:'🌈'}
 ];
 
 const FILLS=[
@@ -309,136 +280,272 @@ const FILLS=[
 {id:'fl-solid-cyan',name:'Cyan',cat:'solid',build:()=>({background:hex(180,80,55)})},
 {id:'fl-solid-black',name:'Black',cat:'solid',build:()=>({background:'#0a0a0a'})},
 {id:'fl-solid-white',name:'White',cat:'solid',build:()=>({background:'#ffffff'})},
-{id:'fl-solid-dark',name:'Dark Gray',cat:'solid',build:()=>({background:'#222'})},
-{id:'fl-solid-light',name:'Light Gray',cat:'solid',build:()=>({background:'#e5e5e5'})},
 {id:'fl-silver',name:'Silver',cat:'metal',build:()=>({background:`linear-gradient(180deg,${hex(0,0,92)},${hex(0,0,72)} 50%,${hex(0,0,50)})`})},
 {id:'fl-chrome',name:'Chrome',cat:'metal',build:()=>({background:`linear-gradient(180deg,${hex(210,30,95)},${hex(210,20,70)} 30%,${hex(210,25,85)} 55%,${hex(210,30,55)})`})},
 {id:'fl-steel',name:'Steel',cat:'metal',build:()=>({background:`linear-gradient(180deg,${hex(210,15,65)},${hex(210,20,45)})`})},
-{id:'fl-iron',name:'Iron',cat:'metal',build:()=>({background:`linear-gradient(180deg,${hex(210,10,50)},${hex(210,15,30)})`})},
-{id:'fl-titanium',name:'Titanium',cat:'metal',build:()=>({background:`linear-gradient(180deg,${hex(220,8,75)},${hex(220,10,55)})`})},
 {id:'fl-platinum',name:'Platinum',cat:'metal',build:()=>({background:`linear-gradient(180deg,${hex(210,15,90)},${hex(220,12,78)} 50%,${hex(220,10,65)})`})},
-{id:'fl-gunmetal',name:'Gunmetal',cat:'metal',build:()=>({background:`linear-gradient(180deg,${hex(220,15,35)},${hex(220,20,18)})`})},
 {id:'fl-copper',name:'Copper',cat:'metal',build:()=>({background:`linear-gradient(180deg,${hex(20,80,65)},${hex(15,75,50)} 50%,${hex(10,70,35)})`})},
 {id:'fl-brass',name:'Brass',cat:'metal',build:()=>({background:`linear-gradient(180deg,${hex(42,70,65)},${hex(40,75,45)})`})},
-{id:'fl-bronze',name:'Bronze',cat:'metal',build:()=>({background:`linear-gradient(180deg,${hex(25,60,50)},${hex(20,70,30)})`})},
 {id:'fl-gold',name:'Gold',cat:'gold',build:()=>({background:`linear-gradient(180deg,${hex(50,100,80)},${hex(42,90,60)} 50%,${hex(38,85,45)})`})},
 {id:'fl-rose-gold',name:'Rose Gold',cat:'gold',build:()=>({background:`linear-gradient(180deg,${hex(15,80,80)},${hex(10,70,65)} 50%,${hex(5,65,50)})`})},
-{id:'fl-white-gold',name:'White Gold',cat:'gold',build:()=>({background:`linear-gradient(180deg,${hex(50,30,92)},${hex(48,25,78)})`})},
 {id:'fl-yellow-gold',name:'Yellow Gold',cat:'gold',build:()=>({background:`linear-gradient(180deg,${hex(50,100,75)},${hex(45,100,55)})`})},
-{id:'fl-antique-gold',name:'Antique Gold',cat:'gold',build:()=>({background:`linear-gradient(180deg,${hex(40,60,55)},${hex(35,70,35)})`})},
 {id:'fl-gold-shine',name:'Gold Shine',cat:'gold',build:()=>({background:`linear-gradient(135deg,${hex(45,100,75)} 0,${hex(60,100,90)} 30%,${hex(45,100,60)} 50%,${hex(40,100,45)} 70%,${hex(35,100,35)})`})},
 {id:'fl-diamond',name:'Diamond',cat:'gem',build:()=>({background:`linear-gradient(135deg,${hex(200,100,95)},${hex(210,80,85)} 50%,${hex(220,70,75)})`})},
 {id:'fl-ruby',name:'Ruby',cat:'gem',build:()=>({background:`radial-gradient(circle,${hex(355,100,65)},${hex(0,100,35)})`})},
 {id:'fl-emerald',name:'Emerald',cat:'gem',build:()=>({background:`radial-gradient(circle,${hex(140,100,55)},${hex(150,100,25)})`})},
 {id:'fl-sapphire',name:'Sapphire',cat:'gem',build:()=>({background:`radial-gradient(circle,${hex(220,100,55)},${hex(230,100,25)})`})},
 {id:'fl-amethyst',name:'Amethyst',cat:'gem',build:()=>({background:`radial-gradient(circle,${hex(280,80,65)},${hex(290,90,35)})`})},
-{id:'fl-topaz',name:'Topaz',cat:'gem',build:()=>({background:`radial-gradient(circle,${hex(35,100,65)},${hex(30,100,40)})`})},
 {id:'fl-opal',name:'Opal',cat:'gem',build:()=>({background:`linear-gradient(135deg,${hex(200,60,90)},${hex(280,50,85)} 33%,${hex(140,60,85)} 66%,${hex(30,80,85)})`})},
-{id:'fl-jade',name:'Jade',cat:'gem',build:()=>({background:`radial-gradient(circle,${hex(140,50,70)},${hex(150,60,45)})`})},
-{id:'fl-onyx',name:'Onyx',cat:'gem',build:()=>({background:`radial-gradient(circle,${hex(0,0,25)},${hex(0,0,5)})`})},
 {id:'fl-pearl',name:'Pearl',cat:'gem',build:()=>({background:`radial-gradient(circle,${hex(0,0,98)},${hex(280,30,88)} 60%,${hex(200,30,85)})`})},
-{id:'fl-crystal',name:'Crystal',cat:'gem',build:()=>({background:`linear-gradient(135deg,${hex(200,100,70)},${hex(220,100,55)})`})},
 {id:'fl-fire',name:'Fire',cat:'rpg',build:()=>({background:`radial-gradient(circle at 50% 70%,${hex(30,100,70)},${hex(5,100,50)} 60%,${hex(0,100,30)})`})},
 {id:'fl-lava',name:'Lava',cat:'rpg',build:()=>({background:`radial-gradient(circle,${hex(50,100,60)},${hex(15,100,45)} 60%,${hex(0,100,25)})`})},
 {id:'fl-ice',name:'Ice',cat:'rpg',build:()=>({background:`linear-gradient(180deg,${hex(195,100,90)},${hex(200,90,70)})`})},
-{id:'fl-frost',name:'Frost',cat:'rpg',build:()=>({background:`radial-gradient(circle,${hex(200,80,95)},${hex(210,70,75)})`})},
-{id:'fl-lightning',name:'Lightning',cat:'rpg',build:()=>({background:`linear-gradient(135deg,${hex(55,100,75)},${hex(50,100,55)})`})},
 {id:'fl-poison',name:'Poison',cat:'rpg',build:()=>({background:`radial-gradient(circle,${hex(100,100,55)},${hex(90,100,30)})`})},
-{id:'fl-nature',name:'Nature',cat:'rpg',build:()=>({background:`radial-gradient(circle,${hex(120,60,55)},${hex(130,70,30)})`})},
 {id:'fl-water',name:'Water',cat:'rpg',build:()=>({background:`linear-gradient(180deg,${hex(200,80,65)},${hex(215,90,40)})`})},
-{id:'fl-wind',name:'Wind',cat:'rpg',build:()=>({background:`linear-gradient(135deg,${hex(175,50,85)},${hex(180,60,65)})`})},
-{id:'fl-earth',name:'Earth',cat:'rpg',build:()=>({background:`linear-gradient(180deg,${hex(30,50,50)},${hex(25,60,30)})`})},
 {id:'fl-arcane',name:'Arcane',cat:'rpg',build:()=>({background:`radial-gradient(circle,${hex(280,100,65)},${hex(260,100,30)})`})},
 {id:'fl-holy',name:'Holy',cat:'rpg',build:()=>({background:`radial-gradient(circle,${hex(50,100,90)},${hex(45,100,70)})`})},
-{id:'fl-shadow',name:'Shadow',cat:'rpg',build:()=>({background:`radial-gradient(circle,${hex(270,60,20)},${hex(280,80,5)})`})},
 {id:'fl-mana',name:'Mana',cat:'rpg',build:()=>({background:`linear-gradient(180deg,${hex(240,100,70)},${hex(260,100,50)})`})},
-{id:'fl-cursed',name:'Cursed',cat:'rpg',build:()=>({background:`radial-gradient(circle,${hex(280,80,25)},${hex(300,100,10)})`})},
-{id:'fl-divine',name:'Divine',cat:'rpg',build:()=>({background:`linear-gradient(135deg,${hex(50,100,85)},${hex(0,0,100)} 50%,${hex(50,100,75)})`})},
 {id:'fl-common',name:'Common',cat:'gaming',build:()=>({background:`linear-gradient(180deg,${hex(0,0,75)},${hex(0,0,55)})`})},
-{id:'fl-uncommon',name:'Uncommon',cat:'gaming',build:()=>({background:`linear-gradient(180deg,${hex(120,60,55)},${hex(130,70,35)})`})},
 {id:'fl-rare',name:'Rare',cat:'gaming',build:()=>({background:`linear-gradient(180deg,${hex(210,100,60)},${hex(220,100,40)})`})},
 {id:'fl-epic',name:'Epic',cat:'gaming',build:()=>({background:`linear-gradient(180deg,${hex(280,100,60)},${hex(290,100,35)})`})},
 {id:'fl-legendary',name:'Legendary',cat:'gaming',build:()=>({background:`linear-gradient(180deg,${hex(30,100,65)},${hex(20,100,45)})`})},
 {id:'fl-mythic',name:'Mythic',cat:'gaming',build:()=>({background:`linear-gradient(180deg,${hex(0,100,55)},${hex(320,100,45)})`})},
-{id:'fl-celestial',name:'Celestial',cat:'gaming',build:()=>({background:`linear-gradient(135deg,${hex(200,100,80)},${hex(280,100,70)})`})},
-{id:'fl-hp-bar',name:'HP Bar',cat:'gaming',build:()=>({background:`linear-gradient(180deg,${hex(0,100,55)},${hex(355,100,35)})`})},
-{id:'fl-mp-bar',name:'MP Bar',cat:'gaming',build:()=>({background:`linear-gradient(180deg,${hex(220,100,60)},${hex(240,100,35)})`})},
-{id:'fl-xp-bar',name:'XP Bar',cat:'gaming',build:()=>({background:`linear-gradient(180deg,${hex(45,100,60)},${hex(35,100,40)})`})},
 {id:'fl-cyberpunk',name:'Cyberpunk',cat:'cyber',build:()=>({background:`linear-gradient(135deg,${hex(320,100,50)},${hex(280,100,30)})`})},
 {id:'fl-synthwave',name:'Synthwave',cat:'cyber',build:()=>({background:`linear-gradient(180deg,${hex(280,100,50)},${hex(320,100,55)})`})},
-{id:'fl-cyber-sunset',name:'Cyber Sunset',cat:'cyber',build:()=>({background:`linear-gradient(180deg,${hex(30,100,60)},${hex(0,100,50)} 50%,${hex(300,100,50)})`})},
 {id:'fl-matrix',name:'Matrix',cat:'cyber',build:()=>({background:hex(120,100,8)})},
-{id:'fl-space',name:'Space',cat:'cyber',build:()=>({background:`radial-gradient(circle,${hex(260,80,25)},${hex(240,90,8)})`})},
 {id:'fl-nebula',name:'Nebula',cat:'cyber',build:()=>({background:`radial-gradient(circle,${hex(320,100,50)},${hex(260,100,30)} 60%,${hex(230,100,10)})`})},
-{id:'fl-void',name:'Void',cat:'cyber',build:()=>({background:`radial-gradient(circle,${hex(0,0,0)},${hex(280,100,5)})`})},
 {id:'fl-plasma',name:'Plasma',cat:'cyber',build:()=>({background:`radial-gradient(circle,${hex(320,100,65)},${hex(280,100,35)})`})},
-{id:'fl-hologram',name:'Hologram',cat:'cyber',build:()=>({background:`linear-gradient(180deg,${hex(180,100,60)},${hex(280,100,60)})`})},
 {id:'fl-sakura',name:'Sakura',cat:'pastel',build:()=>({background:`linear-gradient(135deg,${hex(340,100,88)},${hex(330,90,75)})`})},
-{id:'fl-peach',name:'Peach',cat:'pastel',build:()=>({background:`linear-gradient(135deg,${hex(20,100,88)},${hex(15,90,75)})`})},
 {id:'fl-pastel-dream',name:'Pastel Dream',cat:'pastel',build:()=>({background:`linear-gradient(180deg,${hex(200,100,92)},${hex(280,80,88)})`})},
-{id:'fl-mint-cream',name:'Mint Cream',cat:'pastel',build:()=>({background:`linear-gradient(135deg,${hex(150,80,90)},${hex(170,70,78)})`})},
 {id:'fl-lavender',name:'Lavender',cat:'pastel',build:()=>({background:`radial-gradient(circle,${hex(280,60,92)},${hex(260,50,80)})`})},
-{id:'fl-baby-blue',name:'Baby Blue',cat:'pastel',build:()=>({background:`linear-gradient(180deg,${hex(200,90,90)},${hex(210,80,78)})`})},
 {id:'fl-cotton-candy',name:'Cotton Candy',cat:'pastel',build:()=>({background:`linear-gradient(135deg,${hex(320,100,85)},${hex(200,100,85)})`})},
-{id:'fl-kawaii',name:'Kawaii',cat:'pastel',build:()=>({background:`linear-gradient(180deg,${hex(320,100,85)},${hex(310,95,72)})`})},
 {id:'fl-magical-girl',name:'Magical Girl',cat:'pastel',build:()=>({background:`linear-gradient(135deg,${hex(320,100,75)},${hex(220,100,70)})`})},
-{id:'fl-ornate-green',name:'Ornate Green',cat:'ornate',build:()=>({background:`linear-gradient(180deg,${hex(140,80,45)},${hex(150,90,30)})`})},
-{id:'fl-ornate-blue',name:'Ornate Blue',cat:'ornate',build:()=>({background:`linear-gradient(180deg,${hex(200,90,55)},${hex(220,100,35)})`})},
-{id:'fl-ornate-red',name:'Ornate Red',cat:'ornate',build:()=>({background:`linear-gradient(180deg,${hex(0,90,50)},${hex(355,100,30)})`})},
-{id:'fl-ornate-purple',name:'Ornate Purple',cat:'ornate',build:()=>({background:`linear-gradient(180deg,${hex(280,80,50)},${hex(290,90,30)})`})},
-{id:'fl-ornate-gold',name:'Ornate Gold',cat:'ornate',build:()=>({background:`linear-gradient(180deg,${hex(45,100,55)},${hex(35,100,35)})`})},
-{id:'fl-damask-dark',name:'Damask Dark',cat:'ornate',build:()=>({background:`repeating-linear-gradient(45deg,${hex(220,20,15)} 0,${hex(220,20,15)} 8px,${hex(220,20,20)} 8px,${hex(220,20,20)} 16px)`})},
-{id:'fl-damask-gold',name:'Damask Gold',cat:'ornate',build:()=>({background:`repeating-linear-gradient(45deg,${hex(40,80,40)} 0,${hex(40,80,40)} 8px,${hex(40,80,45)} 8px,${hex(40,80,45)} 16px)`})},
 {id:'fl-marble-white',name:'White Marble',cat:'material',build:()=>({background:`linear-gradient(135deg,${hex(0,0,96)},${hex(220,10,88)} 50%,${hex(0,0,92)})`})},
 {id:'fl-marble-black',name:'Black Marble',cat:'material',build:()=>({background:`linear-gradient(135deg,${hex(0,0,15)},${hex(220,20,8)} 50%,${hex(0,0,18)})`})},
-{id:'fl-marble-rose',name:'Rose Marble',cat:'material',build:()=>({background:`linear-gradient(135deg,${hex(340,30,90)},${hex(0,30,85)} 50%,${hex(340,30,88)})`})},
-{id:'fl-obsidian',name:'Obsidian',cat:'material',build:()=>({background:`linear-gradient(135deg,${hex(240,30,15)},${hex(240,40,5)})`})},
 {id:'fl-wood',name:'Wood',cat:'material',build:()=>({background:`linear-gradient(90deg,${hex(30,50,45)} 0,${hex(25,55,35)} 30%,${hex(30,50,45)} 50%,${hex(28,55,38)} 70%,${hex(30,50,45)})`})},
-{id:'fl-wood-dark',name:'Dark Wood',cat:'material',build:()=>({background:`linear-gradient(90deg,${hex(20,50,25)} 0,${hex(18,60,15)} 50%,${hex(20,50,22)})`})},
-{id:'fl-stone',name:'Stone',cat:'material',build:()=>({background:`linear-gradient(180deg,${hex(0,0,55)},${hex(0,0,35)})`})},
-{id:'fl-leather-brown',name:'Brown Leather',cat:'material',build:()=>({background:`radial-gradient(circle,${hex(25,50,35)},${hex(20,60,22)})`})},
-{id:'fl-leather-black',name:'Black Leather',cat:'material',build:()=>({background:`radial-gradient(circle,${hex(0,0,15)},${hex(0,0,5)})`})},
 {id:'fl-velvet-red',name:'Red Velvet',cat:'material',build:()=>({background:`radial-gradient(circle,${hex(350,60,35)},${hex(350,70,20)})`})},
 {id:'fl-velvet-purple',name:'Purple Velvet',cat:'material',build:()=>({background:`radial-gradient(circle,${hex(280,60,35)},${hex(285,70,18)})`})},
 {id:'fl-glass',name:'Glass',cat:'glass',build:()=>({background:`linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.7))`,backdropFilter:'blur(8px)'})},
 {id:'fl-frosted',name:'Frosted Glass',cat:'glass',build:()=>({background:`linear-gradient(135deg,rgba(220,230,255,0.4),rgba(200,220,255,0.2))`,backdropFilter:'blur(12px)'})},
-{id:'fl-glass-dark',name:'Dark Glass',cat:'glass',build:()=>({background:`linear-gradient(135deg,rgba(0,0,0,0.6),rgba(0,0,0,0.4))`,backdropFilter:'blur(10px)'})},
 {id:'fl-holo-rainbow',name:'Holo Rainbow',cat:'special',build:()=>({background:`linear-gradient(135deg,${hex(280,100,75)},${hex(200,100,75)} 33%,${hex(120,100,75)} 66%,${hex(60,100,75)})`})},
 {id:'fl-iridescent',name:'Iridescent',cat:'special',build:()=>({background:`linear-gradient(45deg,${hex(180,80,85)},${hex(260,80,80)} 33%,${hex(330,80,80)} 66%,${hex(40,80,85)})`})},
 {id:'fl-rainbow',name:'Rainbow',cat:'special',build:()=>({background:`linear-gradient(90deg,#ff0000,#ff7f00,#ffff00,#00ff00,#0000ff,#4b0082,#9400d3)`})},
 {id:'fl-mesh-blue',name:'Mesh Blue',cat:'mesh',build:()=>({background:`radial-gradient(at 0% 0%,${hex(200,100,60)} 0,transparent 50%),radial-gradient(at 100% 100%,${hex(280,100,60)} 0,transparent 50%),${hex(220,80,40)}`})},
 {id:'fl-mesh-sunset',name:'Mesh Sunset',cat:'mesh',build:()=>({background:`radial-gradient(at 0% 0%,${hex(330,100,65)} 0,transparent 50%),radial-gradient(at 100% 100%,${hex(30,100,65)} 0,transparent 50%),${hex(360,80,55)}`})},
-{id:'fl-mesh-green',name:'Mesh Green',cat:'mesh',build:()=>({background:`radial-gradient(at 0% 0%,${hex(140,100,55)} 0,transparent 50%),radial-gradient(at 100% 100%,${hex(180,100,55)} 0,transparent 50%),${hex(160,80,40)}`})},
-{id:'fl-mesh-purple',name:'Mesh Purple',cat:'mesh',build:()=>({background:`radial-gradient(at 0% 0%,${hex(280,100,65)} 0,transparent 50%),radial-gradient(at 100% 100%,${hex(330,100,65)} 0,transparent 50%),${hex(300,80,45)}`})},
-{id:'fl-material-blue',name:'Material Blue',cat:'modern',build:()=>({background:hex(210,90,55)})},
-{id:'fl-apple-blue',name:'Apple Blue',cat:'modern',build:()=>({background:`linear-gradient(180deg,${hex(210,100,65)},${hex(210,100,50)})`})},
-{id:'fl-discord',name:'Discord',cat:'modern',build:()=>({background:hex(235,86,65)})},
-{id:'fl-spotify',name:'Spotify',cat:'modern',build:()=>({background:hex(141,73,42)})}
+{id:'fl-mesh-purple',name:'Mesh Purple',cat:'mesh',build:()=>({background:`radial-gradient(at 0% 0%,${hex(280,100,65)} 0,transparent 50%),radial-gradient(at 100% 100%,${hex(330,100,65)} 0,transparent 50%),${hex(300,80,45)}`})}
 ];
 
 const FILL_CATEGORIES=[
-{id:'all',name:'All',emoji:'🎯'},{id:'solid',name:'Solid',emoji:'⬛'},{id:'metal',name:'Metal',emoji:'⚙️'},{id:'gold',name:'Gold',emoji:'🥇'},{id:'gem',name:'Gem',emoji:'💎'},{id:'rpg',name:'Elements',emoji:'🔥'},{id:'gaming',name:'Gaming',emoji:'🎮'},{id:'cyber',name:'Cyber',emoji:'🚀'},{id:'pastel',name:'Pastel',emoji:'🌸'},{id:'ornate',name:'Ornate',emoji:'👑'},{id:'material',name:'Material',emoji:'🪵'},{id:'glass',name:'Glass',emoji:'🔮'},{id:'mesh',name:'Mesh',emoji:'🎨'},{id:'special',name:'Special',emoji:'🌈'},{id:'modern',name:'Modern',emoji:'✨'}
+{id:'all',name:'All',emoji:'🎯'},{id:'solid',name:'Solid',emoji:'⬛'},{id:'metal',name:'Metal',emoji:'⚙️'},{id:'gold',name:'Gold',emoji:'🥇'},{id:'gem',name:'Gem',emoji:'💎'},{id:'rpg',name:'Elements',emoji:'🔥'},{id:'gaming',name:'Gaming',emoji:'🎮'},{id:'cyber',name:'Cyber',emoji:'🚀'},{id:'pastel',name:'Pastel',emoji:'🌸'},{id:'material',name:'Material',emoji:'🪵'},{id:'glass',name:'Glass',emoji:'🔮'},{id:'mesh',name:'Mesh',emoji:'🎨'},{id:'special',name:'Special',emoji:'🌈'}
+];
+
+// ═══════════════════════════════════════════
+// SHAPES — Decorative dividers, labels, frames
+// ═══════════════════════════════════════════
+const SHAPES=[
+// DIVIDERS
+{id:'sh-divider-classic',name:'Classic Divider',cat:'divider',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 30" width="500" height="30"><circle cx="20" cy="15" r="5" fill="${c}"/><line x1="30" y1="15" x2="200" y2="15" stroke="${c}" stroke-width="2"/><path d="M210 15 L230 5 L250 15 L230 25 Z" fill="${c}"/><line x1="260" y1="15" x2="290" y2="15" stroke="${c}" stroke-width="2"/><path d="M300 15 L320 5 L340 15 L320 25 Z" fill="${c}"/><line x1="350" y1="15" x2="470" y2="15" stroke="${c}" stroke-width="2"/><circle cx="480" cy="15" r="5" fill="${c}"/></svg>`},
+{id:'sh-divider-ornate',name:'Ornate Divider',cat:'divider',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 50" width="500" height="50"><circle cx="20" cy="25" r="6" fill="${c}"/><path d="M30 25 L200 25" stroke="${c}" stroke-width="2"/><path d="M200 25 Q220 10 240 25 Q260 40 280 25 Q300 10 320 25" stroke="${c}" stroke-width="2.5" fill="none"/><path d="M320 25 L470 25" stroke="${c}" stroke-width="2"/><circle cx="480" cy="25" r="6" fill="${c}"/></svg>`},
+{id:'sh-divider-spike',name:'Spike Divider',cat:'divider',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 30" width="500" height="30"><circle cx="10" cy="15" r="4" fill="${c}"/><path d="M20 15 L240 12 L250 5 L260 12 L480 15 L260 18 L250 25 L240 18 Z" fill="${c}"/><circle cx="490" cy="15" r="4" fill="${c}"/></svg>`},
+{id:'sh-divider-double',name:'Double Line',cat:'divider',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 25" width="500" height="25"><circle cx="15" cy="12" r="3" fill="${c}"/><line x1="25" y1="8" x2="225" y2="8" stroke="${c}" stroke-width="1.5"/><line x1="25" y1="17" x2="225" y2="17" stroke="${c}" stroke-width="1.5"/><circle cx="250" cy="12" r="6" fill="${c}"/><line x1="275" y1="8" x2="475" y2="8" stroke="${c}" stroke-width="1.5"/><line x1="275" y1="17" x2="475" y2="17" stroke="${c}" stroke-width="1.5"/><circle cx="485" cy="12" r="3" fill="${c}"/></svg>`},
+{id:'sh-divider-flourish',name:'Flourish',cat:'divider',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 50" width="500" height="50"><line x1="20" y1="25" x2="180" y2="25" stroke="${c}" stroke-width="2"/><path d="M180 25 C200 5 220 5 240 25 C260 45 280 45 300 25 C320 5 340 5 360 25" stroke="${c}" stroke-width="2.5" fill="none"/><line x1="360" y1="25" x2="480" y2="25" stroke="${c}" stroke-width="2"/></svg>`},
+{id:'sh-divider-pointed',name:'Pointed Bar',cat:'divider',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 30" width="500" height="30"><polygon points="0,15 10,5 240,5 250,15 240,25 10,25" fill="${c}"/><circle cx="270" cy="15" r="6" fill="${c}"/><polygon points="290,15 300,5 490,5 500,15 490,25 300,25" fill="${c}"/></svg>`},
+{id:'sh-divider-victorian',name:'Victorian',cat:'divider',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 60" width="500" height="60"><line x1="20" y1="30" x2="150" y2="30" stroke="${c}" stroke-width="2"/><path d="M150 30 C170 10 190 50 210 30 Q230 10 250 30 Q270 50 290 30 C310 10 330 50 350 30" stroke="${c}" stroke-width="2.5" fill="none"/><line x1="350" y1="30" x2="480" y2="30" stroke="${c}" stroke-width="2"/><circle cx="250" cy="30" r="4" fill="${c}"/></svg>`},
+{id:'sh-divider-dots',name:'Dotted Bar',cat:'divider',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 20" width="500" height="20"><circle cx="50" cy="10" r="4" fill="${c}"/><circle cx="100" cy="10" r="3" fill="${c}"/><circle cx="150" cy="10" r="3" fill="${c}"/><circle cx="200" cy="10" r="5" fill="${c}"/><circle cx="250" cy="10" r="8" fill="${c}"/><circle cx="300" cy="10" r="5" fill="${c}"/><circle cx="350" cy="10" r="3" fill="${c}"/><circle cx="400" cy="10" r="3" fill="${c}"/><circle cx="450" cy="10" r="4" fill="${c}"/></svg>`},
+
+// LABELS / TAGS
+{id:'sh-label-banner',name:'Banner Label',cat:'label',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60"><polygon points="0,10 180,10 200,30 180,50 0,50 20,30" fill="${c}"/></svg>`},
+{id:'sh-label-ribbon',name:'Ribbon Label',cat:'label',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" width="220" height="60"><polygon points="20,15 200,15 220,30 200,45 20,45 0,30" fill="${c}"/><polygon points="0,30 20,15 20,45" fill="${c}" opacity="0.7"/><polygon points="220,30 200,15 200,45" fill="${c}" opacity="0.7"/></svg>`},
+{id:'sh-label-rounded',name:'Rounded Tag',cat:'label',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60"><rect x="10" y="10" width="180" height="40" rx="20" fill="${c}"/></svg>`},
+{id:'sh-label-fancy',name:'Fancy Label',cat:'label',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 70" width="220" height="70"><path d="M10 20 Q10 10 20 10 L200 10 Q210 10 210 20 L210 50 Q210 60 200 60 L20 60 Q10 60 10 50 Z" fill="${c}"/><circle cx="20" cy="20" r="3" fill="#fff"/><circle cx="200" cy="20" r="3" fill="#fff"/><circle cx="20" cy="50" r="3" fill="#fff"/><circle cx="200" cy="50" r="3" fill="#fff"/></svg>`},
+{id:'sh-label-tag',name:'Price Tag',cat:'label',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60"><path d="M0,30 L30,5 L190,5 L190,55 L30,55 Z" fill="${c}"/><circle cx="25" cy="30" r="5" fill="#fff"/></svg>`},
+{id:'sh-label-flag',name:'Flag',cat:'label',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60"><polygon points="0,5 180,5 200,30 180,55 0,55" fill="${c}"/></svg>`},
+{id:'sh-label-medal',name:'Medal',cat:'label',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130" width="100" height="130"><polygon points="20,0 80,0 70,30 30,30" fill="${c}" opacity="0.6"/><circle cx="50" cy="80" r="45" fill="${c}"/><polygon points="50,55 55,72 73,72 59,82 64,98 50,89 36,98 41,82 27,72 45,72" fill="#fff"/></svg>`},
+{id:'sh-label-shield',name:'Shield',cat:'label',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100" height="120"><path d="M50,5 L95,20 L95,70 Q95,100 50,115 Q5,100 5,70 L5,20 Z" fill="${c}"/></svg>`},
+{id:'sh-label-badge',name:'Star Badge',cat:'label',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><polygon points="60,5 70,40 105,40 78,60 88,95 60,75 32,95 42,60 15,40 50,40" fill="${c}"/></svg>`},
+
+// FRAMES
+{id:'sh-frame-simple',name:'Simple Frame',cat:'frame',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120"><rect x="5" y="5" width="190" height="110" fill="none" stroke="${c}" stroke-width="3"/></svg>`},
+{id:'sh-frame-double',name:'Double Frame',cat:'frame',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120"><rect x="5" y="5" width="190" height="110" fill="none" stroke="${c}" stroke-width="3"/><rect x="12" y="12" width="176" height="96" fill="none" stroke="${c}" stroke-width="1.5"/></svg>`},
+{id:'sh-frame-ornate',name:'Ornate Frame',cat:'frame',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 140" width="220" height="140"><rect x="10" y="10" width="200" height="120" fill="none" stroke="${c}" stroke-width="3"/><circle cx="10" cy="10" r="6" fill="${c}"/><circle cx="210" cy="10" r="6" fill="${c}"/><circle cx="10" cy="130" r="6" fill="${c}"/><circle cx="210" cy="130" r="6" fill="${c}"/><rect x="18" y="18" width="184" height="104" fill="none" stroke="${c}" stroke-width="1"/></svg>`},
+{id:'sh-frame-spike',name:'Spiked Frame',cat:'frame',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 120" width="220" height="120"><polygon points="0,60 30,10 190,10 220,60 190,110 30,110" fill="none" stroke="${c}" stroke-width="3"/></svg>`},
+{id:'sh-frame-banner',name:'Banner Frame',cat:'frame',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 120" width="220" height="120"><polygon points="0,0 220,0 200,60 220,120 0,120 20,60" fill="none" stroke="${c}" stroke-width="3"/></svg>`},
+{id:'sh-frame-corners',name:'Corner Brackets',cat:'frame',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120"><path d="M5,30 L5,5 L30,5 M170,5 L195,5 L195,30 M195,90 L195,115 L170,115 M30,115 L5,115 L5,90" fill="none" stroke="${c}" stroke-width="3" stroke-linecap="round"/></svg>`}
+];
+
+const SHAPE_CATEGORIES=[
+{id:'all',name:'All',emoji:'🎯'},{id:'divider',name:'Dividers',emoji:'➖'},{id:'label',name:'Labels',emoji:'🏷️'},{id:'frame',name:'Frames',emoji:'🖼️'}
+];
+
+// ═══════════════════════════════════════════
+// ICONS — Common UI icons
+// ═══════════════════════════════════════════
+const ICONS=[
+{id:'ic-heart',name:'Heart',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path d="M50,85 C20,60 10,40 25,25 C35,15 45,20 50,30 C55,20 65,15 75,25 C90,40 80,60 50,85 Z" fill="${c}"/></svg>`},
+{id:'ic-star',name:'Star',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><polygon points="50,5 62,35 95,35 68,55 80,90 50,68 20,90 32,55 5,35 38,35" fill="${c}"/></svg>`},
+{id:'ic-coin',name:'Coin',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="45" fill="${c}"/><circle cx="50" cy="50" r="35" fill="none" stroke="#fff" stroke-width="3"/><text x="50" y="62" text-anchor="middle" font-size="40" font-weight="bold" fill="#fff">$</text></svg>`},
+{id:'ic-gem',name:'Gem',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><polygon points="50,5 90,35 70,95 30,95 10,35" fill="${c}"/><line x1="10" y1="35" x2="90" y2="35" stroke="#fff" stroke-width="2"/><line x1="50" y1="5" x2="30" y2="95" stroke="#fff" stroke-width="2"/><line x1="50" y1="5" x2="70" y2="95" stroke="#fff" stroke-width="2"/></svg>`},
+{id:'ic-trophy',name:'Trophy',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path d="M30,15 L70,15 L70,40 Q70,60 50,65 Q30,60 30,40 Z" fill="${c}"/><path d="M30,25 Q15,25 15,40 Q15,50 25,50 M70,25 Q85,25 85,40 Q85,50 75,50" fill="none" stroke="${c}" stroke-width="4"/><rect x="40" y="65" width="20" height="15" fill="${c}"/><rect x="25" y="80" width="50" height="10" fill="${c}"/></svg>`},
+{id:'ic-shield',name:'Shield',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path d="M50,5 L90,20 L90,55 Q90,85 50,95 Q10,85 10,55 L10,20 Z" fill="${c}"/></svg>`},
+{id:'ic-sword',name:'Sword',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><polygon points="50,5 60,65 50,75 40,65" fill="${c}"/><rect x="30" y="65" width="40" height="8" fill="${c}"/><rect x="45" y="73" width="10" height="20" fill="${c}"/></svg>`},
+{id:'ic-bolt',name:'Lightning',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><polygon points="55,5 25,55 45,55 35,95 75,40 55,40 65,5" fill="${c}"/></svg>`},
+{id:'ic-fire',name:'Fire',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path d="M50,5 Q30,25 30,50 Q30,75 50,95 Q70,75 70,50 Q70,25 50,5 Z M50,30 Q40,45 40,60 Q40,75 50,85 Q60,75 60,60 Q60,45 50,30 Z" fill="${c}"/></svg>`},
+{id:'ic-crown',name:'Crown',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" width="100" height="80"><path d="M10,70 L15,25 L30,45 L50,15 L70,45 L85,25 L90,70 Z" fill="${c}"/><rect x="10" y="70" width="80" height="8" fill="${c}"/></svg>`},
+{id:'ic-skull',name:'Skull',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path d="M50,10 Q15,15 15,55 Q15,75 30,80 L30,90 L70,90 L70,80 Q85,75 85,55 Q85,15 50,10 Z" fill="${c}"/><circle cx="35" cy="50" r="8" fill="#fff"/><circle cx="65" cy="50" r="8" fill="#fff"/><rect x="45" y="70" width="10" height="20" fill="#fff"/></svg>`},
+{id:'ic-key',name:'Key',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="30" cy="50" r="22" fill="${c}"/><circle cx="30" cy="50" r="10" fill="#fff"/><rect x="52" y="45" width="40" height="10" fill="${c}"/><rect x="75" y="55" width="8" height="15" fill="${c}"/><rect x="85" y="55" width="8" height="10" fill="${c}"/></svg>`},
+{id:'ic-lock',name:'Lock',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><rect x="20" y="45" width="60" height="50" rx="5" fill="${c}"/><path d="M30,45 L30,30 Q30,10 50,10 Q70,10 70,30 L70,45" fill="none" stroke="${c}" stroke-width="8"/><circle cx="50" cy="65" r="6" fill="#fff"/></svg>`},
+{id:'ic-bag',name:'Bag',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path d="M25,30 L75,30 L80,90 L20,90 Z" fill="${c}"/><path d="M35,35 L35,25 Q35,15 50,15 Q65,15 65,25 L65,35" fill="none" stroke="${c}" stroke-width="5"/></svg>`},
+{id:'ic-gear',name:'Gear',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path d="M50,15 L55,5 L65,8 L65,18 L73,25 L82,22 L88,32 L83,40 L85,50 L93,55 L90,65 L80,65 L75,73 L78,82 L68,88 L60,83 L50,85 L45,93 L35,90 L35,80 L27,75 L18,78 L12,68 L17,60 L15,50 L7,45 L10,35 L20,35 L25,27 L22,18 L32,12 L40,17 Z" fill="${c}"/><circle cx="50" cy="50" r="15" fill="#fff"/></svg>`},
+{id:'ic-bell',name:'Bell',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><path d="M30,75 Q30,30 50,25 Q70,30 70,75 Z" fill="${c}"/><rect x="45" y="15" width="10" height="15" fill="${c}"/><circle cx="50" cy="85" r="8" fill="${c}"/></svg>`},
+{id:'ic-message',name:'Message',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><rect x="10" y="20" width="80" height="55" rx="8" fill="${c}"/><polygon points="35,75 45,85 50,75" fill="${c}"/></svg>`},
+{id:'ic-user',name:'User',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="35" r="20" fill="${c}"/><path d="M15,95 Q15,60 50,60 Q85,60 85,95 Z" fill="${c}"/></svg>`},
+{id:'ic-home',name:'Home',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><polygon points="50,10 90,45 90,90 60,90 60,65 40,65 40,90 10,90 10,45" fill="${c}"/></svg>`},
+{id:'ic-play',name:'Play',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="45" fill="${c}"/><polygon points="40,30 40,70 70,50" fill="#fff"/></svg>`},
+{id:'ic-arrow-right',name:'Arrow Right',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><polygon points="10,40 60,40 60,20 95,50 60,80 60,60 10,60" fill="${c}"/></svg>`},
+{id:'ic-check',name:'Check',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="45" fill="${c}"/><polyline points="30,52 45,67 72,38" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>`},
+{id:'ic-close',name:'Close',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="45" fill="${c}"/><line x1="32" y1="32" x2="68" y2="68" stroke="#fff" stroke-width="8" stroke-linecap="round"/><line x1="68" y1="32" x2="32" y2="68" stroke="#fff" stroke-width="8" stroke-linecap="round"/></svg>`},
+{id:'ic-plus',name:'Plus',cat:'common',svg:(c='#000')=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="45" fill="${c}"/><line x1="50" y1="25" x2="50" y2="75" stroke="#fff" stroke-width="8" stroke-linecap="round"/><line x1="25" y1="50" x2="75" y2="50" stroke="#fff" stroke-width="8" stroke-linecap="round"/></svg>`}
+];
+
+const ICON_CATEGORIES=[
+{id:'all',name:'All',emoji:'🎯'},{id:'common',name:'Common',emoji:'⭐'}
 ];
 
 const COMBOS=JSON.parse(localStorage.getItem('polishui-combos')||'[]');
-const STATE={currentLayer:'stroke',currentCategory:'all',searchQuery:'',currentElement:'button',exportTab:'figma',hueShift:0,tintHue:null,tintEnabled:false,activeStroke:null,activeFill:null,bg:'grid'};
+const STATE={currentLayer:'stroke',currentCategory:'all',searchQuery:'',currentElement:'button',exportTab:'figma',hueShift:0,tintHue:null,tintEnabled:false,activeStroke:null,activeFill:null,activeShape:null,activeIcon:null,bg:'grid'};
 let favorites=JSON.parse(localStorage.getItem('polishui-favs2')||'[]');
 
-function renderCategories(){const cats=STATE.currentLayer==='stroke'?STROKE_CATEGORIES:STATE.currentLayer==='fill'?FILL_CATEGORIES:[{id:'all',name:'All',emoji:'🎯'}];document.getElementById('cat-strip').innerHTML=cats.map(c=>`<button class="cat-chip ${STATE.currentCategory===c.id?'active':''}" onclick="selectCat('${c.id}')">${c.emoji} ${c.name}</button>`).join('');}
+function renderCategories(){
+const cats=STATE.currentLayer==='stroke'?STROKE_CATEGORIES:STATE.currentLayer==='fill'?FILL_CATEGORIES:STATE.currentLayer==='shapes'?SHAPE_CATEGORIES:STATE.currentLayer==='icons'?ICON_CATEGORIES:[{id:'all',name:'All',emoji:'🎯'}];
+document.getElementById('cat-strip').innerHTML=cats.map(c=>`<button class="cat-chip ${STATE.currentCategory===c.id?'active':''}" onclick="selectCat('${c.id}')">${c.emoji} ${c.name}</button>`).join('');
+}
 function selectCat(catId){STATE.currentCategory=catId;renderCategories();renderLibrary();}
-function getItems(){let items=STATE.currentLayer==='stroke'?STROKES:STATE.currentLayer==='fill'?FILLS:COMBOS;if(STATE.currentCategory!=='all'&&STATE.currentLayer!=='combos'){items=items.filter(i=>i.cat===STATE.currentCategory);}if(STATE.searchQuery){const q=STATE.searchQuery.toLowerCase();items=items.filter(i=>i.name.toLowerCase().includes(q));}return items;}
-function renderLibrary(){const items=getItems();document.getElementById('lib-count').textContent=items.length;document.getElementById('lib-heading').textContent=STATE.currentLayer==='stroke'?'Strokes':STATE.currentLayer==='fill'?'Fills':'Combos';const grid=document.getElementById('lib-grid');if(!items.length){grid.innerHTML=`<div class="empty-state"><i class="fa-regular fa-folder-open"></i>${STATE.currentLayer==='combos'?'No saved combos yet. Pick layers + click Save!':'No items found'}</div>`;return;}grid.innerHTML=items.map(item=>{const isActive=(STATE.currentLayer==='stroke'&&STATE.activeStroke===item.id)||(STATE.currentLayer==='fill'&&STATE.activeFill===item.id);const favKey=`${STATE.currentLayer}:${item.id}`;const isFav=favorites.includes(favKey);if(STATE.currentLayer==='combos'){return `<div class="lib-card" onclick="loadCombo('${item.id}')"><div class="lib-preview"><div class="preview-box" style="background:linear-gradient(135deg,#444,#888);"></div></div><div class="lib-name">${item.name}</div></div>`;}return `<div class="lib-card ${isActive?'selected':''}" onclick="selectItem('${item.id}')"><button class="fav-btn ${isFav?'fav-on':''}" onclick="event.stopPropagation();toggleFav('${favKey}')"><i class="fa-${isFav?'solid':'regular'} fa-star"></i></button><div class="lib-preview">${renderCardPreview(item)}</div><div class="lib-name">${item.name}</div></div>`;}).join('');}
-function renderCardPreview(item){if(STATE.currentLayer==='stroke'){if(item.svg){return `<div class="preview-box" style="background:rgba(255,255,255,0.05);">${svgFrameHTML(item.id.replace('sv-',''),62,34,'#c0c0c0','rgba(60,60,80,0.5)')}</div>`;}const css=item.build(2);const styleStr=Object.entries(css).map(([k,v])=>`${kebab(k)}:${v}`).join(';');return `<div class="preview-box" style="${styleStr};background:rgba(255,255,255,0.05);"></div>`;}const css=item.build();const styleStr=Object.entries(css).map(([k,v])=>`${kebab(k)}:${v}`).join(';');return `<div class="preview-box" style="${styleStr}"></div>`;}
+
+function getItems(){
+let items=STATE.currentLayer==='stroke'?STROKES:STATE.currentLayer==='fill'?FILLS:STATE.currentLayer==='shapes'?SHAPES:STATE.currentLayer==='icons'?ICONS:COMBOS;
+if(STATE.currentCategory!=='all'&&STATE.currentLayer!=='combos'){items=items.filter(i=>i.cat===STATE.currentCategory);}
+if(STATE.searchQuery){const q=STATE.searchQuery.toLowerCase();items=items.filter(i=>i.name.toLowerCase().includes(q));}
+return items;
+}
+
+function renderLibrary(){
+const items=getItems();
+document.getElementById('lib-count').textContent=items.length;
+const headings={stroke:'Strokes',fill:'Fills',shapes:'Shapes',icons:'Icons',combos:'Combos'};
+document.getElementById('lib-heading').textContent=headings[STATE.currentLayer]||'Items';
+const grid=document.getElementById('lib-grid');
+grid.className='lib-grid '+(STATE.currentLayer==='shapes'?'shapes':STATE.currentLayer==='icons'?'icons':'');
+if(!items.length){grid.innerHTML=`<div class="empty-state"><i class="fa-regular fa-folder-open"></i>${STATE.currentLayer==='combos'?'No saved combos':'No items found'}</div>`;return;}
+grid.innerHTML=items.map(item=>{
+const isActive=(STATE.currentLayer==='stroke'&&STATE.activeStroke===item.id)||(STATE.currentLayer==='fill'&&STATE.activeFill===item.id)||(STATE.currentLayer==='shapes'&&STATE.activeShape===item.id)||(STATE.currentLayer==='icons'&&STATE.activeIcon===item.id);
+const favKey=`${STATE.currentLayer}:${item.id}`;
+const isFav=favorites.includes(favKey);
+if(STATE.currentLayer==='combos')return `<div class="lib-card" onclick="loadCombo('${item.id}')"><div class="lib-preview"><div class="preview-box" style="background:linear-gradient(135deg,#444,#888);"></div></div><div class="lib-name">${item.name}</div></div>`;
+return `<div class="lib-card ${isActive?'selected':''}" onclick="selectItem('${item.id}')"><button class="fav-btn ${isFav?'fav-on':''}" onclick="event.stopPropagation();toggleFav('${favKey}')"><i class="fa-${isFav?'solid':'regular'} fa-star"></i></button><div class="lib-preview ${STATE.currentLayer==='shapes'?'shape-prev':STATE.currentLayer==='icons'?'icon-prev':''}">${renderCardPreview(item)}</div><div class="lib-name">${item.name}</div></div>`;
+}).join('');
+}
+
+function renderCardPreview(item){
+if(STATE.currentLayer==='stroke'){
+const css=item.build(2);const styleStr=Object.entries(css).map(([k,v])=>`${kebab(k)}:${v}`).join(';');
+return `<div class="preview-box" style="${styleStr};background:rgba(255,255,255,0.05);"></div>`;
+}
+if(STATE.currentLayer==='fill'){const css=item.build();const styleStr=Object.entries(css).map(([k,v])=>`${kebab(k)}:${v}`).join(';');return `<div class="preview-box" style="${styleStr}"></div>`;}
+if(STATE.currentLayer==='shapes')return `<div style="width:90%;height:90%;display:flex;align-items:center;justify-content:center;">${item.svg('#222')}</div>`;
+if(STATE.currentLayer==='icons')return `<div style="width:42px;height:42px;display:flex;align-items:center;justify-content:center;">${item.svg('#fff')}</div>`;
+return '';
+}
 function kebab(s){return s.replace(/[A-Z]/g,m=>'-'+m.toLowerCase());}
-function svgFrameHTML(type,w,h,stroke,fill){fill=fill||'rgba(40,40,60,0.85)';if(type==='spike')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><polygon points="0,${h/2} ${w*0.15},0 ${w-w*0.15},0 ${w},${h/2} ${w-w*0.15},${h} ${w*0.15},${h}" fill="${fill}" stroke="${stroke}" stroke-width="2"/></svg>`;if(type==='grunge')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><path d="M3 5 L${w-5} 3 L${w-3} ${h-4} L5 ${h-3} Z" fill="${fill}" stroke="${stroke}" stroke-width="2" stroke-dasharray="4 1.5"/></svg>`;if(type==='ornate')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><rect x="3" y="3" width="${w-6}" height="${h-6}" fill="${fill}" stroke="${stroke}" stroke-width="2"/><rect x="7" y="7" width="${w-14}" height="${h-14}" fill="none" stroke="${stroke}" stroke-width="0.8"/><circle cx="7" cy="7" r="2" fill="${stroke}"/><circle cx="${w-7}" cy="7" r="2" fill="${stroke}"/><circle cx="7" cy="${h-7}" r="2" fill="${stroke}"/><circle cx="${w-7}" cy="${h-7}" r="2" fill="${stroke}"/></svg>`;if(type==='shield')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><path d="M${w/2} 2 L${w-2} ${h*0.2} L${w-2} ${h*0.7} L${w/2} ${h-2} L2 ${h*0.7} L2 ${h*0.2} Z" fill="${fill}" stroke="${stroke}" stroke-width="2"/></svg>`;if(type==='banner')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><polygon points="0,0 ${w},0 ${w-w*0.12},${h/2} ${w},${h} 0,${h} ${w*0.12},${h/2}" fill="${fill}" stroke="${stroke}" stroke-width="2"/></svg>`;if(type==='blade')return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;"><polygon points="0,3 ${w-w*0.15},3 ${w},${h/2} ${w-w*0.15},${h-3} 0,${h-3} ${w*0.15},${h/2}" fill="${fill}" stroke="${stroke}" stroke-width="2"/></svg>`;return '';}
 
-function selectItem(itemId){if(STATE.currentLayer==='stroke')STATE.activeStroke=itemId;else if(STATE.currentLayer==='fill')STATE.activeFill=itemId;renderLibrary();applyToPreview();renderLayerStack();renderExport();}
-function clearLayer(layer){if(layer==='stroke')STATE.activeStroke=null;else STATE.activeFill=null;renderLibrary();applyToPreview();renderLayerStack();renderExport();toast(layer+' cleared','info');}
-function renderLayerStack(){const stroke=STROKES.find(s=>s.id===STATE.activeStroke);const fill=FILLS.find(f=>f.id===STATE.activeFill);document.getElementById('stroke-val').textContent=stroke?stroke.name:'None';document.getElementById('fill-val').textContent=fill?fill.name:'None';document.getElementById('layer-stroke').classList.toggle('has-value',!!stroke);document.getElementById('layer-fill').classList.toggle('has-value',!!fill);}
+function selectItem(itemId){
+if(STATE.currentLayer==='stroke')STATE.activeStroke=itemId;
+else if(STATE.currentLayer==='fill')STATE.activeFill=itemId;
+else if(STATE.currentLayer==='shapes')STATE.activeShape=itemId;
+else if(STATE.currentLayer==='icons')STATE.activeIcon=itemId;
+renderLibrary();applyToPreview();renderLayerStack();renderExport();
+}
 
-function applyToPreview(){const el=document.getElementById('preview-element');if(!STATE.activeStroke&&!STATE.activeFill){el.innerHTML=`<div class="preview-empty"><i class="fa-solid fa-layer-group"></i><h2>Welcome to PolishUI 2.0</h2><div>Pick a STROKE and FILL from the left to combine</div></div>`;el.style.cssText='';return;}const configs={button:{w:'180px',h:'56px',text:'Button',fs:'14px'},card:{w:'260px',h:'320px',text:'Card',fs:'16px'},frame:{w:'340px',h:'200px',text:'Frame',fs:'14px'},panel:{w:'400px',h:'250px',text:'Panel',fs:'15px'},badge:{w:'100px',h:'34px',text:'NEW',fs:'11px'},banner:{w:'320px',h:'60px',text:'BANNER',fs:'14px'},icon:{w:'76px',h:'76px',text:'★',fs:'30px'}};const cfg=configs[STATE.currentElement];el.innerHTML='';el.style.cssText='';el.style.width=cfg.w;el.style.height=cfg.h;el.style.fontSize=cfg.fs;el.style.display='flex';el.style.alignItems='center';el.style.justifyContent='center';el.style.color='#fff';el.style.fontWeight='700';el.style.position='relative';el.style.borderRadius='8px';const stroke=STROKES.find(s=>s.id===STATE.activeStroke);const fill=FILLS.find(f=>f.id===STATE.activeFill);if(stroke&&stroke.svg){el.style.background='transparent';const type=stroke.id.replace('sv-','');const w=parseInt(cfg.w),h=parseInt(cfg.h);let fillCol='rgba(40,40,60,0.85)';if(fill){const fc=fill.build();const bg=fc.background||fc.backgroundColor;if(bg&&!bg.includes('gradient'))fillCol=bg;else if(bg)fillCol=getFirstColor(bg);}el.innerHTML=svgFrameHTML(type,w,h,'#c0c0c0',fillCol);const textDiv=document.createElement('div');textDiv.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2;';textDiv.textContent=cfg.text;el.appendChild(textDiv);}else{if(stroke){const css=stroke.build(2);Object.entries(css).forEach(([k,v])=>{if(!k.startsWith('_'))el.style[k]=v;});}if(fill){const css=fill.build();Object.entries(css).forEach(([k,v])=>{el.style[k]=v;});}else if(!stroke)el.style.background='rgba(60,60,80,0.85)';else el.style.background='rgba(60,60,80,0.85)';el.textContent=cfg.text;}}
+function clearLayer(layer){
+if(layer==='stroke')STATE.activeStroke=null;
+else if(layer==='fill')STATE.activeFill=null;
+else if(layer==='shape')STATE.activeShape=null;
+else if(layer==='icon')STATE.activeIcon=null;
+renderLibrary();applyToPreview();renderLayerStack();renderExport();
+toast(layer+' cleared','info');
+}
 
-function getFirstColor(bg){const m=bg.match(/#[0-9a-fA-F]{3,8}|hsla?\([^)]+\)|rgba?\([^)]+\)/g);return m&&m.length?m[0]:'#444';}
+function renderLayerStack(){
+const stroke=STROKES.find(s=>s.id===STATE.activeStroke);
+const fill=FILLS.find(f=>f.id===STATE.activeFill);
+const shape=SHAPES.find(s=>s.id===STATE.activeShape);
+const icon=ICONS.find(i=>i.id===STATE.activeIcon);
+document.getElementById('stroke-val').textContent=stroke?stroke.name:'None';
+document.getElementById('fill-val').textContent=fill?fill.name:'None';
+document.getElementById('shape-val').textContent=shape?shape.name:'None';
+document.getElementById('icon-val').textContent=icon?icon.name:'None';
+document.getElementById('layer-stroke').classList.toggle('has-value',!!stroke);
+document.getElementById('layer-fill').classList.toggle('has-value',!!fill);
+document.getElementById('layer-shape').classList.toggle('has-value',!!shape);
+document.getElementById('layer-icon').classList.toggle('has-value',!!icon);
+}
+
+function getFillColor(){
+const fill=FILLS.find(f=>f.id===STATE.activeFill);
+if(!fill)return '#3a3a55';
+const fc=fill.build();const bg=fc.background||fc.backgroundColor||'';
+if(bg&&!bg.includes('gradient'))return bg;
+if(bg){const m=bg.match(/#[0-9a-fA-F]{6}/);if(m)return m[0];}
+return '#3a3a55';
+}
+
+function applyToPreview(){
+const el=document.getElementById('preview-element');
+if(!STATE.activeStroke&&!STATE.activeFill&&!STATE.activeShape&&!STATE.activeIcon){
+el.innerHTML=`<div class="preview-empty"><i class="fa-solid fa-layer-group"></i><h2>Welcome to PolishUI 2.0</h2><div>Pick a Stroke, Fill, Shape or Icon to begin</div></div>`;
+el.style.cssText='';return;
+}
+const shape=SHAPES.find(s=>s.id===STATE.activeShape);
+const icon=ICONS.find(i=>i.id===STATE.activeIcon);
+const stroke=STROKES.find(s=>s.id===STATE.activeStroke);
+const fill=FILLS.find(f=>f.id===STATE.activeFill);
+const fillCol=getFillColor();
+
+// SHAPE OR ICON priority
+if(shape){
+el.innerHTML='';el.style.cssText='';
+el.style.maxWidth='90%';el.style.maxHeight='400px';
+el.innerHTML=shape.svg(fillCol);
+return;
+}
+if(icon){
+el.innerHTML='';el.style.cssText='';
+el.style.width='150px';el.style.height='150px';
+let filters=[];
+if(stroke){
+const sc=stroke.build(2);
+if(sc.boxShadow){
+const m=sc.boxShadow.match(/#[0-9a-fA-F]{6}/g)||[];
+m.forEach(c=>filters.push(`drop-shadow(0 0 6px ${c})`));
+}
+}
+if(filters.length)el.style.filter=filters.join(' ');
+el.innerHTML=icon.svg(fillCol);
+return;
+}
+
+// Normal element (stroke + fill)
+const configs={button:{w:'180px',h:'56px',text:'Button',fs:'14px'},card:{w:'260px',h:'320px',text:'Card',fs:'16px'},frame:{w:'340px',h:'200px',text:'Frame',fs:'14px'},badge:{w:'100px',h:'34px',text:'NEW',fs:'11px'},banner:{w:'320px',h:'60px',text:'BANNER',fs:'14px'}};
+const cfg=configs[STATE.currentElement];
+el.innerHTML='';el.style.cssText='';
+el.style.width=cfg.w;el.style.height=cfg.h;el.style.fontSize=cfg.fs;
+el.style.display='flex';el.style.alignItems='center';el.style.justifyContent='center';
+el.style.color='#fff';el.style.fontWeight='700';el.style.position='relative';el.style.borderRadius='8px';
+if(stroke){const css=stroke.build(2);Object.entries(css).forEach(([k,v])=>el.style[k]=v);}
+if(fill){const css=fill.build();Object.entries(css).forEach(([k,v])=>el.style[k]=v);}
+else if(!stroke)el.style.background='rgba(60,60,80,0.85)';
+else el.style.background='rgba(60,60,80,0.85)';
+el.textContent=cfg.text;
+}
 
 document.querySelectorAll('.layer-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.layer-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');STATE.currentLayer=btn.dataset.layer;STATE.currentCategory='all';renderCategories();renderLibrary();});});
 document.querySelectorAll('.elem-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.elem-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');STATE.currentElement=btn.dataset.element;applyToPreview();});});
@@ -447,80 +554,124 @@ document.getElementById('hue-slider').addEventListener('input',e=>{STATE.hueShif
 document.getElementById('tint-color').addEventListener('input',e=>{STATE.tintHue=hexToHsl(e.target.value).h;STATE.tintEnabled=true;renderLibrary();applyToPreview();renderExport();});
 function resetTint(){STATE.tintEnabled=false;STATE.tintHue=null;document.getElementById('tint-color').value='#3b82f6';renderLibrary();applyToPreview();renderExport();}
 document.getElementById('search-input').addEventListener('input',e=>{STATE.searchQuery=e.target.value;renderLibrary();});
-function toggleFav(key){const i=favorites.indexOf(key);if(i>-1){favorites.splice(i,1);toast('Removed','info');}else{favorites.push(key);toast('Added to favorites','success');}localStorage.setItem('polishui-favs2',JSON.stringify(favorites));renderLibrary();}
-function randomCombo(){STATE.activeStroke=STROKES[Math.floor(Math.random()*STROKES.length)].id;STATE.activeFill=FILLS[Math.floor(Math.random()*FILLS.length)].id;renderLibrary();applyToPreview();renderLayerStack();renderExport();toast('🎲 Random combo!','success');}
-function saveCombo(){if(!STATE.activeStroke&&!STATE.activeFill){toast('Pick at least one layer first','info');return;}const name=prompt('Combo name:');if(!name)return;COMBOS.push({id:'combo-'+Date.now(),name:name,stroke:STATE.activeStroke,fill:STATE.activeFill});localStorage.setItem('polishui-combos',JSON.stringify(COMBOS));toast('Saved as "'+name+'"','success');}
-function loadCombo(comboId){const c=COMBOS.find(x=>x.id===comboId);if(!c)return;STATE.activeStroke=c.stroke;STATE.activeFill=c.fill;applyToPreview();renderLayerStack();renderExport();toast('Loaded "'+c.name+'"','success');}
+function toggleFav(key){const i=favorites.indexOf(key);if(i>-1){favorites.splice(i,1);}else{favorites.push(key);toast('Favorited','success');}localStorage.setItem('polishui-favs2',JSON.stringify(favorites));renderLibrary();}
+function randomCombo(){STATE.activeStroke=STROKES[Math.floor(Math.random()*STROKES.length)].id;STATE.activeFill=FILLS[Math.floor(Math.random()*FILLS.length)].id;renderLibrary();applyToPreview();renderLayerStack();renderExport();toast('🎲 Random!','success');}
+function saveCombo(){if(!STATE.activeStroke&&!STATE.activeFill&&!STATE.activeShape&&!STATE.activeIcon){toast('Pick layers first','info');return;}const name=prompt('Combo name:');if(!name)return;COMBOS.push({id:'combo-'+Date.now(),name:name,stroke:STATE.activeStroke,fill:STATE.activeFill,shape:STATE.activeShape,icon:STATE.activeIcon});localStorage.setItem('polishui-combos',JSON.stringify(COMBOS));toast('Saved!','success');}
+function loadCombo(comboId){const c=COMBOS.find(x=>x.id===comboId);if(!c)return;STATE.activeStroke=c.stroke;STATE.activeFill=c.fill;STATE.activeShape=c.shape;STATE.activeIcon=c.icon;applyToPreview();renderLayerStack();renderExport();toast('Loaded!','success');}
 document.querySelectorAll('.export-tab').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.export-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');STATE.exportTab=btn.dataset.tab;renderExport();});});
 
-function renderExport(){const body=document.getElementById('export-body');const stroke=STROKES.find(s=>s.id===STATE.activeStroke);const fill=FILLS.find(f=>f.id===STATE.activeFill);if(!stroke&&!fill){body.innerHTML=`<div style="padding:30px 0;text-align:center;color:var(--dim);font-size:11px;"><i class="fa-solid fa-code" style="display:block;font-size:22px;margin-bottom:8px;opacity:.4;"></i>Select layers to see code</div>`;return;}if(STATE.exportTab==='figma')body.innerHTML=renderFigma(stroke,fill);else if(STATE.exportTab==='css')body.innerHTML=renderCss(stroke,fill);else body.innerHTML=renderLua(stroke,fill);}
-
-function renderFigma(stroke,fill){
-  let html=`<div style="display:flex;flex-direction:column;gap:10px;">`;
-  let stepNum=1;
-  if(fill){
-    const fc=fill.build();const bg=fc.background||fc.backgroundColor||'';
-    const colors=bg.match(/#[0-9a-fA-F]{6}/g)||[];
-    const isGradient=bg.includes('gradient');
-    const isLinear=bg.includes('linear-gradient');
-    const angleMatch=bg.match(/(\d+)deg/);const angle=angleMatch?angleMatch[1]:'180';
-    html+=`<div style="background:var(--bg-3);border:1px solid var(--border);border-radius:8px;padding:10px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;">${stepNum++}</div><div style="font-weight:700;font-size:12px;color:var(--text);">FILL</div><span style="margin-left:auto;font-size:9px;color:var(--muted);text-transform:uppercase;font-weight:600;">${fill.name}</span></div><div style="font-size:10px;color:var(--muted);margin-bottom:8px;line-height:1.5;">Right panel → <b style="color:var(--text);">Fill</b> → click <b style="color:var(--accent);">+</b></div>`;
-    if(isGradient){
-      const type=isLinear?'Linear':'Radial';
-      html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:11px;border-bottom:1px solid var(--border);margin-bottom:4px;"><span style="color:var(--muted);">Type</span><span style="font-weight:600;font-family:'JetBrains Mono',monospace;">${type} Gradient</span></div>`;
-      if(isLinear){html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:11px;border-bottom:1px solid var(--border);margin-bottom:6px;"><span style="color:var(--muted);">Angle</span><span style="font-weight:600;font-family:'JetBrains Mono',monospace;">${angle}°</span></div>`;}
-      html+=`<div style="font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;font-weight:700;">Color Stops</div>`;
-      colors.forEach((c,i)=>{const pos=colors.length===1?100:Math.round(i/(colors.length-1)*100);html+=`<div style="display:flex;align-items:center;gap:6px;padding:5px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;margin-bottom:4px;"><div style="width:24px;height:24px;border-radius:4px;background:${c};border:1px solid var(--border-s);"></div><div style="flex:1;"><div style="font-size:9px;color:var(--muted);font-weight:600;">Stop ${i+1} · ${pos}%</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;">${c.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${c.toUpperCase()}')" title="Copy hex"><i class="fa-regular fa-copy"></i></button></div>`;});
-    }else{
-      const c=colors[0]||'#666666';
-      html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:11px;border-bottom:1px solid var(--border);margin-bottom:6px;"><span style="color:var(--muted);">Type</span><span style="font-weight:600;font-family:'JetBrains Mono',monospace;">Solid</span></div><div style="display:flex;align-items:center;gap:6px;padding:5px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;"><div style="width:24px;height:24px;border-radius:4px;background:${c};border:1px solid var(--border-s);"></div><div style="flex:1;"><div style="font-size:9px;color:var(--muted);font-weight:600;">Color</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;">${c.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${c.toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div>`;
-    }
-    html+=`</div>`;
-  }
-  if(stroke){
-    let strokeColor='#C0C0C0';let strokeWidth='2';let glowColors=[];let isGradientStroke=false;
-    if(!stroke.svg){
-      const sc=stroke.build(2);
-      if(sc.border){const m=sc.border.match(/(\d+(?:\.\d+)?)px\s+\w+\s+(#[0-9a-fA-F]{6})/);if(m){strokeWidth=m[1];strokeColor=m[2];}}
-      if(sc.borderImage){isGradientStroke=true;const grads=sc.borderImage.match(/#[0-9a-fA-F]{6}/g)||[];glowColors=grads;if(sc.borderWidth)strokeWidth=sc.borderWidth.replace('px','');}
-      if(sc.boxShadow){const shadowColors=sc.boxShadow.match(/#[0-9a-fA-F]{6}/g)||[];if(!isGradientStroke)glowColors=glowColors.concat(shadowColors);}
-    }
-    html+=`<div style="background:var(--bg-3);border:1px solid var(--border);border-radius:8px;padding:10px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;">${stepNum++}</div><div style="font-weight:700;font-size:12px;color:var(--text);">STROKE</div><span style="margin-left:auto;font-size:9px;color:var(--muted);text-transform:uppercase;font-weight:600;">${stroke.name}</span></div>`;
-    if(stroke.svg){html+=`<div style="font-size:10px;color:var(--warn);margin-bottom:8px;line-height:1.5;padding:6px 8px;background:rgba(245,158,11,0.1);border-radius:5px;border:1px solid rgba(245,158,11,0.3);"><i class="fa-solid fa-triangle-exclamation"></i> Custom SVG shape. Use PNG export to Figma.</div>`;}
-    else{
-      html+=`<div style="font-size:10px;color:var(--muted);margin-bottom:8px;line-height:1.5;">Right panel → <b style="color:var(--text);">Stroke</b> → click <b style="color:var(--accent);">+</b></div>`;
-      if(isGradientStroke){
-        html+=`<div style="font-size:10px;color:var(--warn);margin-bottom:6px;padding:5px 7px;background:rgba(245,158,11,0.1);border-radius:5px;"><i class="fa-solid fa-info-circle"></i> Gradient stroke: Use 2 colors</div>`;
-        glowColors.slice(0,2).forEach((c,i)=>{html+=`<div style="display:flex;align-items:center;gap:6px;padding:5px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;margin-bottom:4px;"><div style="width:24px;height:24px;border-radius:4px;background:${c};border:1px solid var(--border-s);"></div><div style="flex:1;"><div style="font-size:9px;color:var(--muted);font-weight:600;">Stroke Color ${i+1}</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;">${c.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${c.toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div>`;});
-      }else{
-        html+=`<div style="display:flex;align-items:center;gap:6px;padding:5px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;margin-bottom:4px;"><div style="width:24px;height:24px;border-radius:4px;background:${strokeColor};border:1px solid var(--border-s);"></div><div style="flex:1;"><div style="font-size:9px;color:var(--muted);font-weight:600;">Color</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;">${strokeColor.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${strokeColor.toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div>`;
-      }
-      html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:5px 8px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;margin-bottom:4px;font-size:11px;"><span style="color:var(--muted);font-size:10px;font-weight:600;">Weight</span><span style="font-family:'JetBrains Mono',monospace;font-weight:600;">${strokeWidth}px</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:5px 8px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;font-size:11px;"><span style="color:var(--muted);font-size:10px;font-weight:600;">Position</span><span style="font-family:'JetBrains Mono',monospace;font-weight:600;">Inside</span></div>`;
-      if(glowColors.length&&!isGradientStroke){
-        html+=`<div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#fff;display:flex;align-items:center;justify-content:center;font-size:9px;"><i class="fa-solid fa-sun"></i></div><div style="font-weight:700;font-size:11px;color:var(--text);">Glow / Shadow</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px;line-height:1.5;">Right panel → <b style="color:var(--text);">Effects</b> → <b style="color:var(--accent);">+</b> → <b>Drop Shadow</b></div>`;
-        const glowC=glowColors[0];
-        html+=`<div style="display:flex;align-items:center;gap:6px;padding:5px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;margin-bottom:3px;"><div style="width:24px;height:24px;border-radius:4px;background:${glowC};border:1px solid var(--border-s);"></div><div style="flex:1;"><div style="font-size:9px;color:var(--muted);font-weight:600;">Shadow Color</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;">${glowC.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${glowC.toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px;"><div style="padding:5px 7px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;font-size:10px;text-align:center;"><div style="color:var(--muted);font-size:9px;font-weight:600;">Blur</div><div style="font-family:'JetBrains Mono',monospace;font-weight:600;">15px</div></div><div style="padding:5px 7px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;font-size:10px;text-align:center;"><div style="color:var(--muted);font-size:9px;font-weight:600;">Spread</div><div style="font-family:'JetBrains Mono',monospace;font-weight:600;">0px</div></div></div></div>`;
-      }
-    }
-    html+=`</div>`;
-  }
-  html+=`<div style="background:var(--bg-3);border:1px solid var(--border);border-radius:8px;padding:10px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;">${stepNum++}</div><div style="font-weight:700;font-size:12px;color:var(--text);">CORNER RADIUS</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px;line-height:1.5;">Right panel → <b style="color:var(--text);">Frame</b> → <b style="color:var(--text);">Corner radius</b></div><div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:var(--bg-2);border:1px solid var(--border);border-radius:5px;"><span style="font-size:10px;color:var(--muted);font-weight:600;">Value</span><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);">8px</span></div></div>`;
-  html+=`</div><button class="code-copy-btn" onclick="copyFigmaInstructions()" style="margin-top:10px;"><i class="fa-solid fa-copy"></i> Copy Full Instructions</button>`;
-  return html;
+function renderExport(){
+const body=document.getElementById('export-body');
+const stroke=STROKES.find(s=>s.id===STATE.activeStroke);
+const fill=FILLS.find(f=>f.id===STATE.activeFill);
+const shape=SHAPES.find(s=>s.id===STATE.activeShape);
+const icon=ICONS.find(i=>i.id===STATE.activeIcon);
+if(!stroke&&!fill&&!shape&&!icon){body.innerHTML=`<div style="padding:30px 0;text-align:center;color:var(--dim);font-size:11px;"><i class="fa-solid fa-code" style="display:block;font-size:22px;margin-bottom:8px;opacity:.4;"></i>Select layers to see code</div>`;return;}
+if(STATE.exportTab==='figma')body.innerHTML=renderFigma(stroke,fill,shape,icon);
+else if(STATE.exportTab==='svg')body.innerHTML=renderSvgTab(stroke,fill,shape,icon);
+else if(STATE.exportTab==='css')body.innerHTML=renderCss(stroke,fill);
+else body.innerHTML=renderLua(stroke,fill);
 }
 
-function copyFigmaInstructions(){
-  const stroke=STROKES.find(s=>s.id===STATE.activeStroke);const fill=FILLS.find(f=>f.id===STATE.activeFill);
-  let t='═══ POLISHUI → FIGMA GUIDE ═══\n\n';let n=1;
-  if(fill){const fc=fill.build();const bg=fc.background||fc.backgroundColor||'';const colors=bg.match(/#[0-9a-fA-F]{6}/g)||[];const isGrad=bg.includes('gradient');const isLinear=bg.includes('linear-gradient');const angleMatch=bg.match(/(\d+)deg/);const angle=angleMatch?angleMatch[1]:'180';t+=`▸ STEP ${n++}: FILL — "${fill.name}"\n  Where: Right panel → Fill → +\n`;if(isGrad){t+=`  Type: ${isLinear?'Linear':'Radial'} Gradient\n`;if(isLinear)t+=`  Angle: ${angle}°\n`;colors.forEach((c,i)=>{const pos=colors.length===1?100:Math.round(i/(colors.length-1)*100);t+=`    Stop ${i+1} (${pos}%): ${c.toUpperCase()}\n`;});}else{t+=`  Type: Solid\n  Color: ${(colors[0]||'#666').toUpperCase()}\n`;}t+='\n';}
-  if(stroke&&!stroke.svg){const sc=stroke.build(2);let strokeC='#C0C0C0',w='2';if(sc.border){const m=sc.border.match(/(\d+(?:\.\d+)?)px\s+\w+\s+(#[0-9a-fA-F]{6})/);if(m){w=m[1];strokeC=m[2];}}t+=`▸ STEP ${n++}: STROKE — "${stroke.name}"\n  Where: Right panel → Stroke → +\n  Color: ${strokeC.toUpperCase()}\n  Weight: ${w}px\n  Position: Inside\n\n`;if(sc.boxShadow){const shadowColors=sc.boxShadow.match(/#[0-9a-fA-F]{6}/g)||[];if(shadowColors.length){t+=`▸ STEP ${n++}: GLOW / DROP SHADOW\n  Where: Right panel → Effects → + → Drop Shadow\n  Color: ${shadowColors[0].toUpperCase()}\n  Blur: 15px\n  Spread: 0px\n  X: 0  Y: 0\n\n`;}}}
-  t+=`▸ STEP ${n++}: CORNER RADIUS\n  Where: Frame properties → Corner radius\n  Value: 8px\n`;
-  navigator.clipboard.writeText(t).then(()=>toast('Figma guide copied!','success'));
+function renderFigma(stroke,fill,shape,icon){
+let html='';
+let n=1;
+const fillCol=getFillColor();
+
+// SHAPE / ICON instructions
+if(shape||icon){
+const item=shape||icon;
+const svgCode=item.svg(fillCol);
+html+=`<div class="step-card"><div class="step-head"><div class="step-num">${n++}</div><div class="step-title">${shape?'PASTE SHAPE':'PASTE ICON'}</div><div class="step-badge">${item.name}</div></div>
+<div class="step-desc">Click <b>Copy SVG</b> below <span class="arrow">→</span> Open Figma <span class="arrow">→</span> Press <b>Ctrl+V</b> (Cmd+V on Mac)<br>The shape pastes as <b style="color:var(--accent);">editable vector!</b></div>
+<button class="code-copy-btn" onclick='copyText(${JSON.stringify(svgCode)})'><i class="fa-solid fa-code"></i> Copy SVG Code</button>
+<button class="code-copy-btn secondary" onclick="downloadSvgFile('${item.id}','${item.name.replace(/ /g,'_')}')" style="margin-top:6px;"><i class="fa-solid fa-download"></i> Download SVG File</button></div>`;
+if(fill){
+html+=`<div class="step-card"><div class="step-head"><div class="step-num">${n++}</div><div class="step-title">CHANGE COLOR</div><div class="step-badge">${fill.name}</div></div>
+<div class="step-desc">In Figma <span class="arrow">→</span> Select shape <span class="arrow">→</span> Right panel <b>Fill</b> <span class="arrow">→</span> Paste color below</div>
+<div class="color-row"><div class="swatch" style="background:${fillCol}"></div><div class="info"><div class="lbl">Hex Color</div><div class="val">${fillCol.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${fillCol.toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div></div>`;
+}
+if(stroke){
+const sc=stroke.build(2);
+const glowMatch=sc.boxShadow?sc.boxShadow.match(/#[0-9a-fA-F]{6}/g):null;
+if(glowMatch){
+html+=`<div class="step-card"><div class="step-head"><div class="step-num">${n++}</div><div class="step-title">ADD GLOW</div><div class="step-badge">${stroke.name}</div></div>
+<div class="step-desc">Select shape <span class="arrow">→</span> Right panel <b>Effects</b> <span class="arrow">→</span> <b>+</b> <span class="arrow">→</span> <b>Drop Shadow</b></div>
+<div class="color-row"><div class="swatch" style="background:${glowMatch[0]}"></div><div class="info"><div class="lbl">Glow Color</div><div class="val">${glowMatch[0].toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${glowMatch[0].toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div>
+<div class="kv-row"><span class="k">Blur</span><span class="v">15px</span></div><div class="kv-row"><span class="k">Spread</span><span class="v">0</span></div><div class="kv-row"><span class="k">X / Y</span><span class="v">0 / 0</span></div></div>`;
+}
+}
+return html;
 }
 
-function renderCss(stroke,fill){let css='.polish-style {\n';if(fill){const fc=fill.build();Object.entries(fc).forEach(([k,v])=>{css+=`  ${kebab(k)}: ${v};\n`;});}if(stroke&&!stroke.svg){const sc=stroke.build(2);Object.entries(sc).forEach(([k,v])=>{if(!k.startsWith('_'))css+=`  ${kebab(k)}: ${v};\n`;});}if(stroke&&stroke.svg)css+=`  /* SVG stroke: ${stroke.name} */\n`;css+=`  border-radius: 8px;\n}`;return `<div class="code-block">${highlightCss(css)}</div><button class="code-copy-btn" onclick="copyText(${JSON.stringify(css)})"><i class="fa-solid fa-copy"></i> Copy CSS</button>`;}
-function highlightCss(css){return css.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/([a-z-]+)(\s*):/g,'<span class="k">$1</span>$2:').replace(/(#[0-9a-fA-F]{3,8})/g,'<span class="n">$1</span>').replace(/(rgba?\([^)]+\))/g,'<span class="n">$1</span>').replace(/(\d+(?:\.\d+)?(?:px|%|deg|em|rem)?)/g,'<span class="n">$1</span>');}
-function renderLua(stroke,fill){let lua='-- PolishUI Frame\nlocal frame = Instance.new("Frame")\nframe.Size = UDim2.new(0, 200, 0, 60)\nframe.AnchorPoint = Vector2.new(0.5, 0.5)\nframe.Position = UDim2.new(0.5, 0, 0.5, 0)\n';if(fill){const fc=fill.build();const bg=fc.background||fc.backgroundColor||'';const colors=bg.match(/#[0-9a-fA-F]{6}/g)||['#666666'];const hexC=colors[0].replace('#','');const r=parseInt(hexC.substr(0,2),16),g=parseInt(hexC.substr(2,2),16),b=parseInt(hexC.substr(4,2),16);lua+=`frame.BackgroundColor3 = Color3.fromRGB(${r}, ${g}, ${b})\n`;if(colors.length>=2){lua+='\nlocal gradient = Instance.new("UIGradient")\ngradient.Color = ColorSequence.new({\n';colors.slice(0,3).forEach((c,i)=>{const h=c.replace('#','');const r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);const t=(i/(Math.min(colors.length,3)-1)).toFixed(2);lua+=`  ColorSequenceKeypoint.new(${t}, Color3.fromRGB(${r}, ${g}, ${b}))${i<Math.min(colors.length,3)-1?',':''}\n`;});lua+='})\ngradient.Rotation = 90\ngradient.Parent = frame\n';}}else{lua+='frame.BackgroundColor3 = Color3.fromRGB(100, 100, 100)\n';}lua+='frame.BorderSizePixel = 0\n\nlocal corner = Instance.new("UICorner")\ncorner.CornerRadius = UDim.new(0, 8)\ncorner.Parent = frame\n';if(stroke){lua+='\nlocal stroke = Instance.new("UIStroke")\nstroke.Thickness = 2\nstroke.Color = Color3.fromRGB(200, 200, 200)\nstroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border\nstroke.Parent = frame\n';}lua+='\nframe.Parent = script.Parent';return `<div class="code-block">${highlightLua(lua)}</div><button class="code-copy-btn" onclick="copyText(${JSON.stringify(lua)})"><i class="fa-solid fa-copy"></i> Copy Lua</button>`;}
+// Normal stroke+fill
+if(fill){
+const fc=fill.build();const bg=fc.background||fc.backgroundColor||'';
+const colors=bg.match(/#[0-9a-fA-F]{6}/g)||[];
+const isGrad=bg.includes('gradient');const isLinear=bg.includes('linear-gradient');
+const angleMatch=bg.match(/(\d+)deg/);const angle=angleMatch?angleMatch[1]:'180';
+html+=`<div class="step-card"><div class="step-head"><div class="step-num">${n++}</div><div class="step-title">FILL</div><div class="step-badge">${fill.name}</div></div>
+<div class="step-desc">In Figma <span class="arrow">→</span> Right panel <b>Fill</b> <span class="arrow">→</span> Click <b style="color:var(--accent);">+</b></div>`;
+if(isGrad){
+html+=`<div class="kv-row"><span class="k">Type</span><span class="v">${isLinear?'Linear':'Radial'} Gradient</span></div>`;
+if(isLinear)html+=`<div class="kv-row"><span class="k">Angle</span><span class="v">${angle}°</span></div>`;
+html+=`<div style="font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin:6px 0 4px;font-weight:700;">Color Stops</div>`;
+colors.forEach((c,i)=>{const pos=colors.length===1?100:Math.round(i/(colors.length-1)*100);html+=`<div class="color-row"><div class="swatch" style="background:${c}"></div><div class="info"><div class="lbl">Stop ${i+1} · ${pos}%</div><div class="val">${c.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${c.toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div>`;});
+}else{
+const c=colors[0]||'#666';
+html+=`<div class="kv-row"><span class="k">Type</span><span class="v">Solid</span></div><div class="color-row"><div class="swatch" style="background:${c}"></div><div class="info"><div class="lbl">Color</div><div class="val">${c.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${c.toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div>`;
+}
+html+=`</div>`;
+}
+
+if(stroke){
+const sc=stroke.build(2);
+let strokeC='#C0C0C0',w='2';
+if(sc.border){const m=sc.border.match(/(\d+(?:\.\d+)?)px\s+\w+\s+(#[0-9a-fA-F]{6})/);if(m){w=m[1];strokeC=m[2];}}
+const glowMatch=sc.boxShadow?sc.boxShadow.match(/#[0-9a-fA-F]{6}/g):null;
+html+=`<div class="step-card"><div class="step-head"><div class="step-num">${n++}</div><div class="step-title">STROKE</div><div class="step-badge">${stroke.name}</div></div>
+<div class="step-desc">Right panel <b>Stroke</b> <span class="arrow">→</span> Click <b style="color:var(--accent);">+</b></div>
+<div class="color-row"><div class="swatch" style="background:${strokeC}"></div><div class="info"><div class="lbl">Color</div><div class="val">${strokeC.toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${strokeC.toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div>
+<div class="kv-row"><span class="k">Weight</span><span class="v">${w}px</span></div><div class="kv-row"><span class="k">Position</span><span class="v">Inside</span></div></div>`;
+if(glowMatch){
+html+=`<div class="step-card"><div class="step-head"><div class="step-num">${n++}</div><div class="step-title">GLOW / SHADOW</div></div>
+<div class="step-desc">Right panel <b>Effects</b> <span class="arrow">→</span> <b style="color:var(--accent);">+</b> <span class="arrow">→</span> <b>Drop Shadow</b></div>
+<div class="color-row"><div class="swatch" style="background:${glowMatch[0]}"></div><div class="info"><div class="lbl">Color</div><div class="val">${glowMatch[0].toUpperCase()}</div></div><button class="copy-btn" onclick="copyText('${glowMatch[0].toUpperCase()}')"><i class="fa-regular fa-copy"></i></button></div>
+<div class="kv-row"><span class="k">Blur</span><span class="v">15px</span></div><div class="kv-row"><span class="k">Spread</span><span class="v">0px</span></div></div>`;
+}
+}
+
+html+=`<div class="step-card"><div class="step-head"><div class="step-num">${n++}</div><div class="step-title">CORNER RADIUS</div></div><div class="step-desc">Select frame <span class="arrow">→</span> <b>Corner radius</b></div><div class="kv-row"><span class="k">Value</span><span class="v" style="color:var(--accent);">8px</span></div></div>`;
+return html;
+}
+
+function renderSvgTab(stroke,fill,shape,icon){
+const item=shape||icon;
+if(!item){return `<div style="padding:24px 0;text-align:center;color:var(--dim);font-size:11px;line-height:1.6;"><i class="fa-solid fa-bezier-curve" style="display:block;font-size:24px;margin-bottom:8px;opacity:.4;"></i>SVG export available when<br>a <b>Shape</b> or <b>Icon</b> is selected</div>`;}
+const fillCol=getFillColor();
+const svgCode=item.svg(fillCol);
+return `<div class="step-card"><div class="step-head"><div class="step-num">1</div><div class="step-title">SVG CODE</div><div class="step-badge">${item.name}</div></div><div class="step-desc">Paste in Figma/HTML/anywhere</div><div class="code-block">${escapeHtml(svgCode)}</div></div>
+<button class="code-copy-btn" onclick='copyText(${JSON.stringify(svgCode)})'><i class="fa-solid fa-copy"></i> Copy SVG</button>
+<button class="code-copy-btn secondary" onclick="downloadSvgFile('${item.id}','${item.name.replace(/ /g,'_')}')" style="margin-top:6px;"><i class="fa-solid fa-download"></i> Download .svg File</button>`;
+}
+
+function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function downloadSvgFile(itemId,name){
+const item=SHAPES.find(s=>s.id===itemId)||ICONS.find(i=>i.id===itemId);
+if(!item)return;
+const svg=item.svg(getFillColor());
+const blob=new Blob([svg],{type:'image/svg+xml'});
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');
+a.href=url;a.download='polishui-'+name+'.svg';a.click();
+URL.revokeObjectURL(url);
+toast('SVG downloaded!','success');
+}
+
+function renderCss(stroke,fill){let css='.polish-style {\n';if(fill){const fc=fill.build();Object.entries(fc).forEach(([k,v])=>{css+=`  ${kebab(k)}: ${v};\n`;});}if(stroke){const sc=stroke.build(2);Object.entries(sc).forEach(([k,v])=>{css+=`  ${kebab(k)}: ${v};\n`;});}css+=`  border-radius: 8px;\n}`;return `<div class="code-block">${highlightCss(css)}</div><button class="code-copy-btn" onclick="copyText(${JSON.stringify(css)})"><i class="fa-solid fa-copy"></i> Copy CSS</button>`;}
+function highlightCss(css){return css.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/([a-z-]+)(\s*):/g,'<span class="k">$1</span>$2:').replace(/(#[0-9a-fA-F]{3,8})/g,'<span class="n">$1</span>').replace(/(\d+(?:\.\d+)?(?:px|%|deg)?)/g,'<span class="n">$1</span>');}
+function renderLua(stroke,fill){let lua='-- PolishUI Frame\nlocal frame = Instance.new("Frame")\nframe.Size = UDim2.new(0, 200, 0, 60)\nframe.AnchorPoint = Vector2.new(0.5, 0.5)\nframe.Position = UDim2.new(0.5, 0, 0.5, 0)\n';if(fill){const fc=fill.build();const bg=fc.background||fc.backgroundColor||'';const colors=bg.match(/#[0-9a-fA-F]{6}/g)||['#666666'];const hexC=colors[0].replace('#','');const r=parseInt(hexC.substr(0,2),16),g=parseInt(hexC.substr(2,2),16),b=parseInt(hexC.substr(4,2),16);lua+=`frame.BackgroundColor3 = Color3.fromRGB(${r}, ${g}, ${b})\n`;if(colors.length>=2){lua+='\nlocal gradient = Instance.new("UIGradient")\ngradient.Color = ColorSequence.new({\n';colors.slice(0,3).forEach((c,i)=>{const h=c.replace('#','');const r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);const t=(i/(Math.min(colors.length,3)-1)).toFixed(2);lua+=`  ColorSequenceKeypoint.new(${t}, Color3.fromRGB(${r}, ${g}, ${b}))${i<Math.min(colors.length,3)-1?',':''}\n`;});lua+='})\ngradient.Rotation = 90\ngradient.Parent = frame\n';}}lua+='frame.BorderSizePixel = 0\n\nlocal corner = Instance.new("UICorner")\ncorner.CornerRadius = UDim.new(0, 8)\ncorner.Parent = frame\n';if(stroke){lua+='\nlocal stroke = Instance.new("UIStroke")\nstroke.Thickness = 2\nstroke.Color = Color3.fromRGB(200, 200, 200)\nstroke.Parent = frame\n';}lua+='\nframe.Parent = script.Parent';return `<div class="code-block">${highlightLua(lua)}</div><button class="code-copy-btn" onclick="copyText(${JSON.stringify(lua)})"><i class="fa-solid fa-copy"></i> Copy Lua</button>`;}
 function highlightLua(code){return code.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/(--[^\n]*)/g,'<span class="c">$1</span>').replace(/\b(local|function|end|if|then|else|return|for|do|while)\b/g,'<span class="p">$1</span>').replace(/\b(Instance|Color3|UDim2|UDim|Vector2|Enum|ColorSequence|ColorSequenceKeypoint)\b/g,'<span class="k">$1</span>').replace(/("[^"]*")/g,'<span class="s">$1</span>').replace(/\b(\d+(?:\.\d+)?)\b/g,'<span class="n">$1</span>');}
 function copyText(text){navigator.clipboard.writeText(text).then(()=>toast('Copied!','success'));}
 function toggleTheme(){const html=document.documentElement;const cur=html.getAttribute('data-theme');const nx=cur==='light'?'dark':'light';html.setAttribute('data-theme',nx);localStorage.setItem('polishui-theme',nx);document.getElementById('themeIcon').className=nx==='light'?'fa-regular fa-moon':'fa-regular fa-sun';}
